@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 export default function Schedule() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [league, setLeague] = useState(1);
+
   const today = new Date();
   const todayForDefault = today.toISOString().slice(0, 10);
   const [defaultDate, setDefaultDate] = useState(todayForDefault);
@@ -21,9 +23,14 @@ export default function Schedule() {
     setDate(selected);
   };
 
+  const selectLeague = (e) => {
+    const selected = e.target.value;
+    setLeague(selected);
+  }
+
   useEffect(() => {
     axios
-      .get(`http://localhost:5001/api/schedule?date=${date}`)
+      .get(`http://localhost:5001/api/schedule?&date=${date}&leId=${league}`)
       .then((res) => {
         setGames(res.data);
         setLoading(false);
@@ -119,6 +126,10 @@ export default function Schedule() {
 
       <div className="overflow-x-auto">
         <input type="date" onChange={handleChange} className="border p-2 rounded mb-4" defaultValue={defaultDate}/>
+        <select className="p-2" onChange={selectLeague}>
+          <option value="1">1군</option>
+          <option value="2">2군</option>
+        </select>
 
         {games.length > 0 ?
           <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -130,6 +141,8 @@ export default function Schedule() {
                 <th className="py-3 px-4 text-left">원정팀</th>
                 <th className="py-3 px-4 text-center">스코어</th>
                 <th className="py-3 px-4 text-left">홈팀</th>
+                <th className="py-3 px-4 text-left"></th>
+                <th className="py-3 px-4 text-left">경기 정보</th>
               </tr>
             </thead>
             <tbody>
@@ -150,16 +163,19 @@ export default function Schedule() {
                     <td className="py-3 px-4">{game.gameTime}</td>
                     <td className="py-3 px-4">{game.stadium}</td>
                     <td className="py-3 px-4 flex items-center gap-2">
-                      <span className="text-base">{game.awayTeamName === '' ?
-                                                    game.awayTeamName = '히어로즈' :
-                                                    game.awayTeamName
-                                                  }
+                      <span className="text-base">
+                        {game.awayTeamName === '' ?
+                          game.awayTeamName = '히어로즈' :
+                          game.awayTeamName
+                        }
                       </span>
-                      <img
-                      src={`https://statiz.sporki.com/data/team/ci/${date.slice(0, 4)}/${getTeamIcon(date.slice(0, 4), game.awayTeamName)}.svg`}
-                      alt={game.awayTeamName}
-                      className="w-12 h-12"
-                      />
+                      <div>
+                        <img
+                        src={`https://statiz.co.kr/data/team/ci/${date.slice(0, 4)}/${getTeamIcon(date.slice(0, 4), game.awayTeamName)}.svg`}
+                        alt={game.awayTeamName}
+                        className="w-12 h-12"
+                        />
+                      </div>
                     </td>
                     <td className="py-3 px-4 text-center">
                       {game.gameState < 2 ?
@@ -169,21 +185,23 @@ export default function Schedule() {
                       game.gameScore}
                     </td>
                     <td className="py-3 px-4 flex items-center gap-2">
-                      <span className="text-base">{game.homeTeamName === '' ?
-                                                    game.homeTeamName = '히어로즈' :
-                                                    game.homeTeamName
-                                                  }
+                      <span className="text-base">
+                        {game.homeTeamName === '' ?
+                          game.homeTeamName = '히어로즈' :
+                          game.homeTeamName
+                        }
                       </span>
                       <img
-                      src={`https://statiz.sporki.com/data/team/ci/${date.slice(0, 4)}/${getTeamIcon(date.slice(0, 4), game.homeTeamName)}.svg`}
+                      src={`https://statiz.co.kr/data/team/ci/${date.slice(0, 4)}/${getTeamIcon(date.slice(0, 4), game.homeTeamName)}.svg`}
                       alt={game.homeTeamName}
                       className="w-12 h-12"
                       />
                     </td>
+                    <td></td>
                     <td className="py-3 px-4 flex items-center gap-2">
                       {(game.gameState === "2" || game.gameState === "3") && parseInt(game.gameID.slice(0, 4)) >= 2010 ? (
                         <Link
-                          to={`/relay/${game.seriesId}/${game.gameID}`}
+                          to={`/relay/${league}/${game.seriesId}/${game.gameID}`}
                           className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
                         >
                           문자 중계

@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const { date } = req.query; // YYYYMMDD 형식
+    const { date, leId } = req.query; // YYYYMMDD 형식
     if (!date) {
       return res.status(400).json({ error: "날짜를 입력해주세요 (YYYYMMDD)" });
     }
@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
     var srId = 0;
     let isNoGame = false;
     while (true) {
-      const url = `http://koreabaseball.com/ws/Main.asmx/GetKboGameList?&dataType=json&leId=1&srId=${srId}&date=` + date;
+      const url = `http://koreabaseball.com/ws/Main.asmx/GetKboGameList?&dataType=json&leId=${leId}&srId=${srId}&date=` + date;
       const res = await axios.get(url, {
         headers: {
           "User-Agent":

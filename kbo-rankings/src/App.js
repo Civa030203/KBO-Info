@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Ranking from "./pages/Ranking";
 import Schedule from "./pages/Schedule";
 import Relay from "./pages/Relay";
+import PlayerSearch from "./pages/PlayerSearch"
+import Data from "./pages/Data";
 
 function Home() {
   return (
@@ -26,6 +28,12 @@ function Home() {
       >
         선수 응원가 들으러 가기
       </Link>
+      <Link
+        to="/playerData"
+        className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+      >
+        선수 기록실
+      </Link>
     </div>
   );
 }
@@ -37,7 +45,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/ranking" element={<Ranking />} />
         <Route path="/schedule" element={<Schedule />} />
-        <Route path="/relay/:seriesId/:gameID" element={<Relay />} />
+        <Route path="/relay/:leagueId/:seriesId/:gameID" element={<Relay />} />
+        <Route path="/playerData" element={<PlayerSearch />}/>
+        <Route path="/playerData/:pId" element={<Data />}/>
       </Routes>
     </Router>
   );
