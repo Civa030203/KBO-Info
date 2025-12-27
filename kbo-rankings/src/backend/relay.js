@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
   try {
     // 두 API 요청을 병렬로 실행
-    const [liveRes, postGameRes] = await Promise.all([
+    const [liveRes, postGameRes, scoreBoardRes] = await Promise.all([
       axios.get(url, {
         headers: {
           "User-Agent":
@@ -37,10 +37,10 @@ router.get("/", async (req, res) => {
         ? JSON.parse(postGameRes.data)
         : postGameRes.data;
 
-    // 두 데이터를 합쳐서 반환
+    // 세 데이터를 합쳐서 반환
     res.json({
       live: liveData,
-      postGame: postGameData,
+      postGame: postGameData
     });
   } catch (err) {
     console.error("API 요청 실패:", err.message);

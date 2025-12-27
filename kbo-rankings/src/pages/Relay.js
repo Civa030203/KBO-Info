@@ -10,10 +10,6 @@ export default function LiveTextPage() {
   const [seriesId, setSeriesId] = useState(useParams().seriesId);
   const [gameId, setGameId] = useState(useParams().gameID);
   const [leagueId, setLeagueId] = useState(useParams().leagueId);
-  const [awayTeamColor1, setAwayTeamColor1] = useState(null);
-  const [awayTeamColor2, setAwayTeamColor2] = useState(null);
-  const [homeTeamColor1, setHomeTeamColor1] = useState(null);
-  const [homeTeamColor2, setHomeTeamColor2] = useState(null);
   const [maxInn, setMaxInn] = useState(1);
   const [inn, setInn] = useState(null);
 
@@ -34,6 +30,7 @@ export default function LiveTextPage() {
 
         gData.data.forEach((dt) => {
           if (dt.gameID === gameId) {
+            console.log(dt);
             setMaxInn(dt.gameMaxInn);
           }
         });
@@ -49,8 +46,8 @@ export default function LiveTextPage() {
             order: "ASC",
           },
         });
-
         setLive(res.data);
+
       } catch (err) {
         console.error(err);
       } finally {
@@ -74,6 +71,7 @@ export default function LiveTextPage() {
           `http://localhost:5001/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
         );
         setScoreData(resScore.data);
+        
       } catch (err) {
         console.error("스코어보드 API 실패:", err);
       }
@@ -85,6 +83,7 @@ export default function LiveTextPage() {
       return () => clearInterval(scoreInterval);
     }
   }, [leagueId, seriesId, gameId]);
+  
 
 
   if (loading) return <p className="text-center p-4">불러오는 중...</p>;
@@ -115,7 +114,7 @@ export default function LiveTextPage() {
           <thead className="bg-gray-100">
             <tr>
               <th className="border px-2 py-1">팀</th>
-              {[...Array(9)].map((_, i) => (
+              {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
                 <th key={i} className="border px-2 py-1">
                   {i + 1}
                 </th>
@@ -123,26 +122,29 @@ export default function LiveTextPage() {
               <th className="border px-2 py-1 font-bold">R</th>
               <th className="border px-2 py-1">H</th>
               <th className="border px-2 py-1">E</th>
+              <th className="border px-2 py-1">B</th>
             </tr>
           </thead>
           <tbody>
             <tr className="bg-blue-50">
-              <td className="border px-2 py-1 font-semibold">AWAY</td>
-              {[...Array(9)].map((_, i) => (
-                <td key={i} className="border px-2 py-1">-</td>
+              <td className="border px-2 py-1 font-semibold">{scoreData.teamData[0]}</td>
+              {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
+                <td key={i} className="border px-2 py-1">{scoreData.scoreData[0][i]}</td>
               ))}
-              <td className="border px-2 py-1 font-bold">0</td>
-              <td className="border px-2 py-1">0</td>
-              <td className="border px-2 py-1">0</td>
+              <td className="border px-2 py-1 font-bold">{scoreData.resultData[0][0]}</td>
+              <td className="border px-2 py-1">{scoreData.resultData[0][1]}</td>
+              <td className="border px-2 py-1">{scoreData.resultData[0][2]}</td>
+              <td className="border px-2 py-1">{scoreData.resultData[0][3]}</td>
             </tr>
             <tr className="bg-red-50">
-              <td className="border px-2 py-1 font-semibold">HOME</td>
-              {[...Array(9)].map((_, i) => (
-                <td key={i} className="border px-2 py-1">-</td>
+              <td className="border px-2 py-1 font-semibold">{scoreData.teamData[1]}</td>
+              {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
+                <td key={i} className="border px-2 py-1">{scoreData.scoreData[1][i]}</td>
               ))}
-              <td className="border px-2 py-1 font-bold">0</td>
-              <td className="border px-2 py-1">0</td>
-              <td className="border px-2 py-1">0</td>
+              <td className="border px-2 py-1 font-bold">{scoreData.resultData[1][0]}</td>
+              <td className="border px-2 py-1">{scoreData.resultData[1][1]}</td>
+              <td className="border px-2 py-1">{scoreData.resultData[1][2]}</td>
+              <td className="border px-2 py-1">{scoreData.resultData[1][3]}</td>
             </tr>
           </tbody>
         </table>

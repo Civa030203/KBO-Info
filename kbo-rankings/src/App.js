@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Ranking from "./pages/Ranking";
-import Schedule from "./pages/Schedule";
-import Relay from "./pages/Relay";
-import PlayerSearch from "./pages/PlayerSearch"
-import Data from "./pages/Data";
+import Ranking from "./pages/ranking";
+import Schedule from "./pages/schedule";
+import Relay from "./pages/relay";
+import PlayerSearch from "./pages/player-search"
+import Data from "./pages/data";
 
 function Home() {
   return (
