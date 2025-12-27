@@ -1,4 +1,3 @@
-import { NestApplicationContextOptions } from "@nestjs/common/interfaces/nest-application-context-options.interface";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
