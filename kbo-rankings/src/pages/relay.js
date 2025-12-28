@@ -25,7 +25,7 @@ export default function LiveTextPage() {
     const fetchLive = async () => {
       try {
         const gData = await axios.get(
-          `http://localhost:5001/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
+          `https://kbo-info.onrender.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
         );
 
         gData.data.forEach((dt) => {
@@ -37,7 +37,7 @@ export default function LiveTextPage() {
 
         if (!inn) return;
 
-        const res = await axios.get(`http://localhost:5001/api/relay`, {
+        const res = await axios.get(`https://kbo-info.onrender.com/api/relay`, {
           params: {
             le_id: leagueId,
             sr_id: seriesId,
@@ -68,7 +68,7 @@ export default function LiveTextPage() {
     const fetchScore = async () => {
       try {
         const resScore = await axios.get(
-          `http://localhost:5001/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
+          `https://kbo-info.onrender.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
         );
         setScoreData(resScore.data);
         

@@ -17,7 +17,7 @@ export default function Data() {
         if (!pId) return;
 
         axios
-            .get(`http://localhost:5001/api/playerData?pId=${pId}`)
+            .get(`https://kbo-info.onrender.com/api/playerData?pId=${pId}`)
             .then((res) => {
                 setPlayer(res.data);
                 setYearIndex(res.data.records.length - 1); // 최신 시즌으로 설정

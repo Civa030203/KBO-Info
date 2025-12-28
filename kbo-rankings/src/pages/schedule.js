@@ -30,7 +30,7 @@ export default function Schedule() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5001/api/schedule?&date=${date}&leId=${league}`)
+      .get(`https://kbo-info.onrender.com/api/schedule?&date=${date}&leId=${league}`)
       .then((res) => {
         setGames(res.data);
         setLoading(false);

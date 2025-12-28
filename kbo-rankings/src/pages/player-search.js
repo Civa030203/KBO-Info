@@ -8,7 +8,7 @@ export default function PlayerSearch() {
 
     const clickSearchBtn = () => {
         axios
-            .get(`http://localhost:5001/api/playerSearch?query=${query}`)
+            .get(`https://kbo-info.onrender.com/api/playerSearch?query=${query}`)
             .then((res) => {
                 setData(res.data);
             })
