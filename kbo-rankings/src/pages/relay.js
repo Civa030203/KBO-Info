@@ -184,8 +184,8 @@ export default function LiveTextPage() {
                     className="w-12 h-16 rounded-full"
                   />
                   <div>
-                    <h2 className="font-semibold text-gray-800">{bat.BAT_ORDER_NO}번타자</h2>
-                    <p className="text-gray-600">{bat.BAT_P_NM}</p>
+                    <p className="font-semibold text-gray-600">{bat.BAT_P_NM}</p>
+                    <h2 className="text-gray-800">{bat.BAT_ORDER_NO}번타자</h2>
                   </div>
                 </div>
                 <ul className="mt-2 space-y-2">
