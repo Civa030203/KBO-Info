@@ -184,7 +184,7 @@ export default function LiveTextPage() {
                     className="w-12 h-16 rounded-full"
                   />
                   <div>
-                    <p className="font-semibold">{bat.BAT_P_NM}</p>
+                    <Link to={`https://kbo-info.vercel.app/playerData/${bat.BAT_P_ID}}`} className="font-semibold">{bat.BAT_P_NM}</Link>
                     <h2 className="text-gray-600 text-sm">{bat.BAT_ORDER_NO}번타자</h2>
                   </div>
                 </div>
