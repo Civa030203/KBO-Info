@@ -72,6 +72,7 @@ export default function LiveTextPage() {
         );
         setScoreData(resScore.data);
         
+        
       } catch (err) {
         console.error("스코어보드 API 실패:", err);
       }
@@ -213,7 +214,10 @@ export default function LiveTextPage() {
               live.postGame.listResult.map((res, resIdx) => (
                 <ul className="mt-2 space-y-2" key={resIdx}>
                   <li className="p-2 border-b last:border-none text-sm">
-                    <span>{res.LIVETEXT_IF}</span>
+                    {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[0][1]) && inning.TB_SC === 'B' ? 
+                      <span>{res.LIVETEXT_IF}</span> :
+                      <span></span>
+                      }
                   </li>
                 </ul>
               ))}
