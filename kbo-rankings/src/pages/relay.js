@@ -214,7 +214,7 @@ export default function LiveTextPage() {
               live.postGame.listResult.map((res, resIdx) => (
                 <ul className="mt-2 space-y-2" key={resIdx}>
                   <li className="p-2 border-b last:border-none text-sm">
-                    {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[0][1]) && inning.TB_SC === 'B' ? 
+                    {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ? 
                       <span>{res.LIVETEXT_IF}</span> :
                       <span></span>
                       }
