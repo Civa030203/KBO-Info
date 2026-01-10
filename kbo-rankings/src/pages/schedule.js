@@ -194,7 +194,7 @@ export default function Schedule() {
                   </td>
 
                   {/* 스코어 */}
-                  <td className="py-3 px-4">
+                  <td className="py-3 px-4 whitespace-nowrap md:text-sm">
                     {game.gameState < 2 ? (
                       <span>경기 전</span>
                     ) : game.gameState >= 4 ? (
