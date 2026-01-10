@@ -157,7 +157,7 @@ export default function Schedule() {
                   }
                 >
                   {game.gameType === "정규경기" ? (
-                    <td className="py-3 px-4">{game.date}</td>
+                    <td className="py-3 px-4 hidden md:table-cell">{game.date}</td>
                   ) : (
                     <td className="py-3 px-4 text-xs whitespace-nowrap hidden md:table-cell">
                       <span>
