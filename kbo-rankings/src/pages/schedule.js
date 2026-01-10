@@ -137,7 +137,7 @@ export default function Schedule() {
               <tr>
                 <th className="py-3 px-4 hidden md:table-cell">날짜</th>
                 <th className="py-3 px-4">시간</th>
-                <th className="py-3 px-4">구장</th>
+                <th className="py-3 px-4 hidden md:table-cell">구장</th>
                 <th className="py-3 px-4">원정팀</th>
                 <th className="py-3 px-4">스코어</th>
                 <th className="py-3 px-4">홈팀</th>
@@ -159,7 +159,7 @@ export default function Schedule() {
                   {game.gameType === "정규경기" ? (
                     <td className="py-3 px-4">{game.date}</td>
                   ) : (
-                    <td className="py-3 px-4 text-xs whitespace-nowrap">
+                    <td className="py-3 px-4 text-xs whitespace-nowrap hidden md:table-cell">
                       <span>
                         {game.date}
                         <br />
@@ -169,7 +169,7 @@ export default function Schedule() {
                   )}
 
                   <td className="py-3 px-4">{game.gameTime}</td>
-                  <td className="py-3 px-4">{game.stadium}</td>
+                  <td className="py-3 px-4 hidden md:table-cell">{game.stadium}</td>
 
                   {/* 원정팀 */}
                   <td className="py-3 px-4">
