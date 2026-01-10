@@ -141,7 +141,7 @@ export default function Schedule() {
                 <th className="py-3 px-4">원정팀</th>
                 <th className="py-3 px-4">스코어</th>
                 <th className="py-3 px-4">홈팀</th>
-                <th className="py-3 px-4"></th>
+                <th className="py-3 px-4 hidden md:table-cell"></th>
                 <th className="py-3 px-4">경기 정보</th>
               </tr>
             </thead>
@@ -207,7 +207,7 @@ export default function Schedule() {
                   {/* 홈팀 */}
                   <td className="py-3 px-4">
                     <div className="flex items-center justify-center gap-2 shrink-0">
-                      <span className="text-base">
+                      <span className="text-base hidden md:table-cell">
                         {game.homeTeamName === ""
                           ? "히어로즈"
                           : game.homeTeamName}
