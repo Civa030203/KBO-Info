@@ -132,7 +132,7 @@ export default function Schedule() {
         </select>
 
         {games.length > 0 ? (
-          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden text-center text-sm">
+          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden text-center md:text-sm">
             <thead className="bg-gray-800 text-white">
               <tr>
                 <th className="py-3 px-4 hidden md:table-cell">날짜</th>
@@ -159,7 +159,7 @@ export default function Schedule() {
                   {game.gameType === "정규경기" ? (
                     <td className="py-3 px-4">{game.date}</td>
                   ) : (
-                    <td className="py-3 px-4 text-xs whitespace-pre-wrap">
+                    <td className="py-3 px-4 text-xs whitespace-nowrap">
                       <span>
                         {game.date}
                         <br />
