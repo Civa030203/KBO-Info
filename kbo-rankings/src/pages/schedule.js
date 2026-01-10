@@ -226,7 +226,7 @@ export default function Schedule() {
                     </div>
                   </td>
 
-                  <td className="py-3 px-4"></td>
+                  <td className="py-3 px-4 hidden md:table-cell"></td>
 
                   {/* 경기 정보 */}
                   <td className="py-3 px-4">
