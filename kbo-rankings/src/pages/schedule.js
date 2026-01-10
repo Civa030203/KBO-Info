@@ -132,12 +132,12 @@ export default function Schedule() {
         </select>
 
         {games.length > 0 ? (
-          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden text-center">
+          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden text-center text-sm">
             <thead className="bg-gray-800 text-white">
               <tr>
                 <th className="py-3 px-4 hidden md:table-cell">날짜</th>
                 <th className="py-3 px-4">시간</th>
-                <th className="py-3 px-4 hidden md:table-cell">구장</th>
+                <th className="py-3 px-4">구장</th>
                 <th className="py-3 px-4">원정팀</th>
                 <th className="py-3 px-4">스코어</th>
                 <th className="py-3 px-4">홈팀</th>
@@ -157,9 +157,9 @@ export default function Schedule() {
                   }
                 >
                   {game.gameType === "정규경기" ? (
-                    <td className="py-3 px-4 hidden md:table-cell">{game.date}</td>
+                    <td className="py-3 px-4">{game.date}</td>
                   ) : (
-                    <td className="py-3 px-4 text-xs whitespace-pre-wrap hidden md:table-cell">
+                    <td className="py-3 px-4 text-xs whitespace-pre-wrap">
                       <span>
                         {game.date}
                         <br />
@@ -169,12 +169,12 @@ export default function Schedule() {
                   )}
 
                   <td className="py-3 px-4">{game.gameTime}</td>
-                  <td className="py-3 px-4 hidden md:table-cell">{game.stadium}</td>
+                  <td className="py-3 px-4">{game.stadium}</td>
 
                   {/* 원정팀 */}
                   <td className="py-3 px-4">
-                    <div className="flex items-center justify-center gap-2">
-                      <span className="text-base">
+                    <div className="flex items-center justify-center gap-2 shrink-0">
+                      <span className="text-base hidden md:table-cell">
                         {game.awayTeamName === ""
                           ? "히어로즈"
                           : game.awayTeamName}
@@ -206,7 +206,7 @@ export default function Schedule() {
 
                   {/* 홈팀 */}
                   <td className="py-3 px-4">
-                    <div className="flex items-center justify-center gap-2">
+                    <div className="flex items-center justify-center gap-2 shrink-0">
                       <span className="text-base">
                         {game.homeTeamName === ""
                           ? "히어로즈"
