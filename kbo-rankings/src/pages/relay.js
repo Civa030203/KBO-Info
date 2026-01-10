@@ -210,16 +210,17 @@ export default function LiveTextPage() {
                 </ul>
               </div>
             ))}
-            {inn === maxInn &&
-              live.postGame.listResult.map((res, resIdx) => (
-                <ul className="mt-2 space-y-2" key={resIdx}>
-                  <li className="p-2 border-b last:border-none text-sm">
-                    {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ? 
-                      <span>{res.LIVETEXT_IF}</span> : <p></p>
+              {inn === maxInn &&
+                live.postGame.listResult.map((res, resIdx) => (
+                  <ul className="mt-2 space-y-2" key={resIdx}>
+                    <li className="p-2 border-b last:border-none text-sm">
+                      {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ? 
+                        <span>{res.LIVETEXT_IF}</span> : <p></p>
                       }
-                  </li>
-                </ul>
-              ))}
+                    </li>
+                  </ul>
+                ))
+              }
           </div>
         </div>
       ))}
