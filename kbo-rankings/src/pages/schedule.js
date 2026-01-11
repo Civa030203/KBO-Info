@@ -138,11 +138,11 @@ export default function Schedule() {
                 <th className="py-3 px-4 hidden md:table-cell">날짜</th>
                 <th className="py-3 px-4">시간</th>
                 <th className="py-3 px-4 hidden md:table-cell">구장</th>
-                <th className="py-3 px-4">원정팀</th>
-                <th className="py-3 px-4">스코어</th>
+                <th className="py-3 px-4 whitespace-nowrap">원정팀</th>
+                <th className="py-3 px-4 whitespace-nowrap">스코어</th>
                 <th className="py-3 px-4">홈팀</th>
                 <th className="py-3 px-4 hidden md:table-cell"></th>
-                <th className="py-3 px-4">경기 정보</th>
+                <th className="py-3 px-4 whitespace-nowrap">경기 정보</th>
               </tr>
             </thead>
 
@@ -234,7 +234,7 @@ export default function Schedule() {
                     parseInt(game.gameID.slice(0, 4)) >= 2010 ? (
                       <Link
                         to={`/relay/${league}/${game.seriesId}/${game.gameID}`}
-                        className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+                        className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition whitespace-nowrap"
                         target="_blank"
                       >
                         문자 중계
