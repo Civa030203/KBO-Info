@@ -132,7 +132,7 @@ export default function Schedule() {
         </select>
 
         {games.length > 0 ? (
-          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden text-center md:text-sm">
+          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden text-center md:text-sm table-fixed">
             <thead className="bg-gray-800 text-white">
               <tr>
                 <th className="py-3 px-4 hidden md:table-cell">날짜</th>
@@ -157,7 +157,7 @@ export default function Schedule() {
                   }
                 >
                   {game.gameType === "정규경기" ? (
-                    <td className="py-3 px-4 hidden md:table-cell">{game.date}</td>
+                    <td className="py-3 px-4 text-xs whitespace-nowrap hidden md:table-cell">{game.date}</td>
                   ) : (
                     <td className="py-3 px-4 text-xs whitespace-nowrap hidden md:table-cell">
                       <span>
@@ -198,7 +198,8 @@ export default function Schedule() {
                     {game.gameState < 2 ? (
                       <span>경기 전</span>
                     ) : game.gameState >= 4 ? (
-                      <span>취소된 경기입니다.</span>
+                      <><span className="hidden sm:inline">취소된 경기입니다.</span>
+                      <span className="sm:hidden">경기취소</span></>
                     ) : (
                       game.gameScore
                     )}
