@@ -135,12 +135,12 @@ export default function Schedule() {
           <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden text-center md:text-sm table-fixed">
             <thead className="bg-gray-800 text-white">
               <tr>
-                <th className="py-3 px-4 hidden md:table-cell">날짜</th>
+                <th className="py-3 px-4 hidden md:table-cell text-left">날짜</th>
                 <th className="py-3 px-4">시간</th>
                 <th className="py-3 px-4 hidden md:table-cell">구장</th>
                 <th className="py-3 px-4 whitespace-nowrap">원정팀</th>
                 <th className="py-3 px-4 whitespace-nowrap">스코어</th>
-                <th className="py-3 px-4">홈팀</th>
+                <th className="py-3 px-4 whitespace-nowrap">홈팀</th>
                 <th className="py-3 px-4 hidden md:table-cell"></th>
                 <th className="py-3 px-4 whitespace-nowrap">경기 정보</th>
               </tr>
@@ -157,9 +157,9 @@ export default function Schedule() {
                   }
                 >
                   {game.gameType === "정규경기" ? (
-                    <td className="py-3 px-4 text-xs whitespace-nowrap hidden md:table-cell">{game.date}</td>
+                    <td className="py-3 px-4 whitespace-nowrap hidden md:table-cell">{game.date}</td>
                   ) : (
-                    <td className="py-3 px-4 text-xs whitespace-nowrap hidden md:table-cell">
+                    <td className="py-3 px-4 whitespace-nowrap hidden md:table-cell">
                       <span>
                         {game.date}
                         <br />
