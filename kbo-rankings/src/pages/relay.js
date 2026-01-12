@@ -215,7 +215,9 @@ export default function LiveTextPage() {
                   <ul className="mt-2 space-y-2" key={resIdx}>
                     <li className="p-2 border-b last:border-none text-sm">
                       {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ? 
-                        <span>{res.LIVETEXT_IF}</span> : <p></p>
+                        <span>{res.LIVETEXT_IF}</span> :
+                          parseInt(scoreData.resultData[0][0]) < parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'T' ?
+                            <span>{res.LIVETEXT_IF}</span> : <span></span>
                       }
                     </li>
                   </ul>
