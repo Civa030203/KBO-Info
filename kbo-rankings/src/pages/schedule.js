@@ -234,7 +234,7 @@ export default function Schedule() {
                     parseInt(game.gameID.slice(0, 4)) >= 2010 ? (
                       <Link
                         to={`/relay/${league}/${game.seriesId}/${game.gameID}`}
-                        className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition whitespace-nowrap"
+                        className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
                         target="_blank"
                       >
                         문자 중계
