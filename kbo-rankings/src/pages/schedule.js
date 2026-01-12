@@ -199,7 +199,7 @@ export default function Schedule() {
                       <span>경기 전</span>
                     ) : game.gameState >= 4 ? (
                       <><span className="hidden sm:inline">취소된 경기입니다.</span>
-                      <span className="sm:hidden">경기취소</span></>
+                      <span className="sm:hidden">취소</span></>
                     ) : (
                       game.gameScore
                     )}
