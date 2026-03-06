@@ -2,6 +2,61 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
+// 국가대표 경기 등에서 변경되는 선수 ID를 원본 KBO 선수 ID로 매핑하는 객체
+const playerIdMap = {
+  // "변경된_국대_ID": "원본_KBO_ID" 형식으로 추가해주시면 됩니다.
+  // 예: "12345": "67890",
+  "10200": "68220",
+  "10204": "54263",
+  "10206": "52060",
+  "10209": "67143",
+  "10215": "55743",
+  "10216": "51897",
+  "10218": "79345",
+  "10222": "51907",
+  "10223": "69737",
+  "10224": "69102",
+  "10225": "53764",
+  "10228": "65207",
+  "10231": "62415",
+  "10232": "52001",
+  "10243": "64001",
+  "10244": "67119",
+  "10245": "68900",
+  "10246": "73211",
+  "10248": "76715",
+  "10249": "50030",
+  "10250": "51111",
+  "10251": "50106",
+  "10252": "68912",
+  "10253": "52605",
+  "10254": "67304",
+  "10256": "62404",
+  "10257": "67341"
+};
+
+// 매핑된 ID가 있으면 반환하고, 없으면 원래 ID를 반환하는 함수
+const getRealPlayerId = (id) => playerIdMap[id] || id;
+
+// 해외 진출 등 KBO를 떠난 선수의 마지막 KBO 연도를 지정하는 객체
+const lastKboYearMap = {
+  // "원본_KBO_ID": 마지막_KBO_연도 (숫자) 형식으로 추가해주세요.
+  // 예: "67341": 2023, // 이정후
+  // 예: "64300": 2020, // 김하성
+  "67341": 2023,
+  "67304": 2024,
+  "67119": 2023
+};
+
+// 프로필 이미지의 연도를 구하는 헬퍼 함수
+const getPlayerImageYear = (gameYear, playerId) => {
+  const realId = getRealPlayerId(playerId);
+  if (lastKboYearMap[realId]) {
+    return lastKboYearMap[realId];
+  }
+  return gameYear > 2016 ? gameYear : 2016;
+};
+
 export default function LiveTextPage() {
   const [live, setLive] = useState(null);
   const [postGame, setPostGame] = useState(null);
@@ -71,8 +126,8 @@ export default function LiveTextPage() {
           `https://kbo-info.onrender.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
         );
         setScoreData(resScore.data);
-        
-        
+
+
       } catch (err) {
         console.error("스코어보드 API 실패:", err);
       }
@@ -84,7 +139,7 @@ export default function LiveTextPage() {
       return () => clearInterval(scoreInterval);
     }
   }, [leagueId, seriesId, gameId]);
-  
+
 
 
   if (loading) return <p className="text-center p-4">불러오는 중...</p>;
@@ -176,16 +231,12 @@ export default function LiveTextPage() {
               <div key={batIdx} className="mb-4">
                 <div className="flex items-center gap-4 p-4 border-l-4 border-blue-600 bg-white shadow-sm rounded-md">
                   <img
-                    src={
-                      parseInt(gameId.slice(0, 4)) > 2016
-                        ? `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${gameId.slice(0, 4)}/${bat.BAT_P_ID}.jpg`
-                        : `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2016/${bat.BAT_P_ID}.jpg`
-                    }
+                    src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${getPlayerImageYear(parseInt(gameId.slice(0, 4)), bat.BAT_P_ID)}/${getRealPlayerId(bat.BAT_P_ID)}.jpg`}
                     alt={bat.BAT_P_NM}
                     className="w-12 h-16 rounded-full"
                   />
                   <div>
-                    <Link to={`https://kbo-info.vercel.app/playerData/${bat.BAT_P_ID}`} className="font-semibold">{bat.BAT_P_NM}</Link>
+                    <Link to={`https://kbo-info.vercel.app/playerData/${getRealPlayerId(bat.BAT_P_ID)}`} className="font-semibold">{bat.BAT_P_NM}</Link>
                     <h2 className="text-gray-600 text-sm">{bat.BAT_ORDER_NO}번타자</h2>
                   </div>
                 </div>
@@ -197,10 +248,10 @@ export default function LiveTextPage() {
                           play.TEXTSTYLE_SC === "2"
                             ? "italic text-gray-400"
                             : play.TEXTSTYLE_SC === "13" || play.TEXTSTYLE_SC === "14"
-                            ? "font-bold"
-                            : play.TEXTSTYLE_SC === "23" || play.TEXTSTYLE_SC === "24"
-                            ? "font-bold text-blue-300"
-                            : ""
+                              ? "font-bold"
+                              : play.TEXTSTYLE_SC === "23" || play.TEXTSTYLE_SC === "24"
+                                ? "font-bold text-blue-300"
+                                : ""
                         }
                       >
                         {play.LIVETEXT_IF}
@@ -210,19 +261,19 @@ export default function LiveTextPage() {
                 </ul>
               </div>
             ))}
-              {inn === maxInn &&
-                live.postGame.listResult.map((res, resIdx) => (
-                  <ul className="mt-2 space-y-2" key={resIdx}>
-                    <li className="p-2 border-b last:border-none text-sm">
-                      {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ? 
-                        <span>{res.LIVETEXT_IF}</span> :
-                          parseInt(scoreData.resultData[0][0]) < parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'T' ?
-                            <span>{res.LIVETEXT_IF}</span> : <span></span>
-                      }
-                    </li>
-                  </ul>
-                ))
-              }
+            {inn === maxInn &&
+              live.postGame.listResult.map((res, resIdx) => (
+                <ul className="mt-2 space-y-2" key={resIdx}>
+                  <li className="p-2 border-b last:border-none text-sm">
+                    {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ?
+                      <span>{res.LIVETEXT_IF}</span> :
+                      parseInt(scoreData.resultData[0][0]) < parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'T' ?
+                        <span>{res.LIVETEXT_IF}</span> : <span></span>
+                    }
+                  </li>
+                </ul>
+              ))
+            }
           </div>
         </div>
       ))}
