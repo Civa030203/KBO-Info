@@ -119,6 +119,7 @@ router.get("/", async (req, res) => {
 
     // 최종 응답
     res.json({
+      currentTeam,
       name,
       position,
       birth,
