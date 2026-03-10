@@ -18,6 +18,7 @@ router.get("/", async (req, res) => {
     let $ = cheerio.load(response.data);
 
     // --- 기본 정보 ---
+    const currentTeam = $("#h4Team").text()
     const name = $("#contents > div.sub-content > div.player_info > div.player_basic > ul > li:nth-child(1)").text().substr(5);
     const position = $("#cphContents_cphContents_cphContents_playerProfile_lblPosition").text().trim();
     const birth = $("#cphContents_cphContents_cphContents_playerProfile_lblBirthday").text().trim();
@@ -44,13 +45,13 @@ router.get("/", async (req, res) => {
 
     rows.each((i, row) => {
       const tds = $(row).find("td");
-      
+
       if (tds.length === 0) return;
 
       // 필요한 열 인덱스 (0부터 시작)
       const year = tds.eq(0).text().trim();       // 연도
       const team = tds.eq(1).text().trim();       // 팀명
-      if (position.substr(0, 1) == "투" ) {
+      if (position.substr(0, 1) == "투") {
         const win = tds.eq(6).text().trim();
         const loss = tds.eq(7).text().trim();
         const save = tds.eq(8).text().trim();
@@ -90,19 +91,19 @@ router.get("/", async (req, res) => {
           whip
         });
       } else {
-      const avg = tds.eq(2).text().trim();        // 타율 (2번 열)
-      const slg = tds.eq(19).text().trim();       // 장타율 (20번 열)
-      const obp = tds.eq(20).text().trim();       // 출루율 (21번 열)
-      const hr = tds.eq(10).text().trim();        // 홈런 (11번 열)
-      const rbi = tds.eq(12).text().trim();       // 타점 (13번 열)
+        const avg = tds.eq(2).text().trim();        // 타율 (2번 열)
+        const slg = tds.eq(19).text().trim();       // 장타율 (20번 열)
+        const obp = tds.eq(20).text().trim();       // 출루율 (21번 열)
+        const hr = tds.eq(10).text().trim();        // 홈런 (11번 열)
+        const rbi = tds.eq(12).text().trim();       // 타점 (13번 열)
 
-      // OPS 계산
-      let ops = "-";
-      if (!isNaN(parseFloat(slg)) && !isNaN(parseFloat(obp))) {
-        ops = (parseFloat(slg) + parseFloat(obp)).toFixed(3);
-      }
-      
-      records.push({
+        // OPS 계산
+        let ops = "-";
+        if (!isNaN(parseFloat(slg)) && !isNaN(parseFloat(obp))) {
+          ops = (parseFloat(slg) + parseFloat(obp)).toFixed(3);
+        }
+
+        records.push({
           year,
           team,
           avg,
@@ -111,9 +112,9 @@ router.get("/", async (req, res) => {
           hr,
           rbi,
           ops
-        }); 
+        });
       }
-      
+
     });
 
     // 최종 응답
