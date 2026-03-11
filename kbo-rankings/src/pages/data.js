@@ -42,15 +42,22 @@ export default function Data() {
     useEffect(() => {
         if (!player) return;
 
+        let team = "";
+
         if (!player.records || player.records.length === 0 || yearIndex === -1) {
-            setMainColor("#9ca3af");
-            setSubColor("#d1d5db");
-            setTeamFullName("소속팀 없음");
-            setTeamId(null);
-            return;
+            team = player.currentTeam;
+            if (!team) {
+                setMainColor("#9ca3af");
+                setSubColor("#d1d5db");
+                setTeamFullName("소속팀 없음");
+                setTeamId(null);
+                return;
+            }
+        } else {
+            team = player.records[yearIndex].team;
         }
 
-        let team = player.records[yearIndex].team;
+        if (team === "울산 웨일즈") team = "울산"
         if (team === "SK") team = "SSG";
         if (team === "우리" || team === "히어로즈" || team === "넥센") team = "키움";
         if (team === "해태") team = "KIA";
@@ -59,9 +66,14 @@ export default function Data() {
         if (teamData[team]) {
             setMainColor(teamData[team].mainColor.substr(1, 7));
             setSubColor(teamData[team].subColor.substr(1, 7));
+        } else {
+            setMainColor("#9ca3af");
+            setSubColor("#d1d5db");
         }
 
-        switch (player.records[yearIndex].team) {
+        const originalTeam = (!player.records || player.records.length === 0 || yearIndex === -1) ? player.currentTeam : player.records[yearIndex].team;
+
+        switch (originalTeam) {
             case "MBC":
                 setTeamFullName("MBC 청룡");
                 setTeamId("5001");
@@ -177,7 +189,14 @@ export default function Data() {
                 setTeamId("12001");
                 break;
 
+            case "UL":
+                setTeamFullName("울산 웨일즈");
+                setTeamId("13001");
+                break;
+
             default:
+                setTeamFullName(originalTeam);
+                setTeamId(null);
                 break;
         }
 
@@ -211,15 +230,16 @@ export default function Data() {
                         <img
                             src={(player.records && player.records.length > 0 && yearIndex !== -1 && player.records[yearIndex].year >= 2017) ?
                                 `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${player.records[yearIndex].year}/${pId}.jpg` :
-                                `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2017/${pId}.jpg`}
+                                (!player.records) ? `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2017/${pId}.jpg` :
+                                    `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2017/${pId}.jpg`}
                             alt={player.name}
                             className="w-24 h-28 rounded-full border-4 border-white shadow-md"
                         />
                         <div className="ml-4">
                             <h2 className="text-2xl font-bold text-gray-100">{player.name}</h2>
-                            {teamId && player.records && player.records.length > 0 && yearIndex !== -1 && (
+                            {teamId && (
                                 <img
-                                    src={`https://statiz.co.kr/data/team/ci/${player.records[yearIndex].year}/${teamId}.svg`}
+                                    src={`https://statiz.co.kr/data/team/ci/${(player.records && player.records.length > 0 && yearIndex !== -1) ? player.records[yearIndex].year : new Date().getFullYear()}/${teamId}.svg`}
                                     className="absolute right-6 top-6 w-24 opacity-30"
                                     alt="팀 로고"
                                 />

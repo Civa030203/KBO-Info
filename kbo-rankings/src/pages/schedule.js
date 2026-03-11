@@ -115,6 +115,26 @@ export default function Schedule() {
         teamID = 12001;
         break;
 
+      case "대한민국":
+        teamID = "KR";
+        break;
+
+      case "체코":
+        teamID = "CZ";
+        break;
+
+      case "일본":
+        teamID = "JP";
+        break;
+
+      case "대만":
+        teamID = "TW";
+        break;
+
+      case "호주":
+        teamID = "AU";
+        break;
+
       default:
         break;
     }
@@ -199,13 +219,11 @@ export default function Schedule() {
                           : game.awayTeamName}
                       </span>
                       <img
-                        src={`https://statiz.co.kr/data/team/ci/${searchParams.date.slice(
-                          0,
-                          4
-                        )}/${getTeamIcon(
-                          searchParams.date.slice(0, 4),
-                          game.awayTeamName
-                        )}.svg`}
+                        src={
+                          isNaN(getTeamIcon(searchParams.date.slice(0, 4), game.awayTeamName))
+                            ? `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/international/emblem_${getTeamIcon(searchParams.date.slice(0, 4), game.awayTeamName)}.png`
+                            : `https://statiz.co.kr/data/team/ci/${searchParams.date.slice(0, 4)}/${getTeamIcon(searchParams.date.slice(0, 4), game.awayTeamName)}.svg`
+                        }
                         alt={game.awayTeamName}
                         className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0"
                       />
@@ -233,13 +251,11 @@ export default function Schedule() {
                           : game.homeTeamName}
                       </span>
                       <img
-                        src={`https://statiz.co.kr/data/team/ci/${searchParams.date.slice(
-                          0,
-                          4
-                        )}/${getTeamIcon(
-                          searchParams.date.slice(0, 4),
-                          game.homeTeamName
-                        )}.svg`}
+                        src={
+                          isNaN(getTeamIcon(searchParams.date.slice(0, 4), game.homeTeamName))
+                            ? `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/international/emblem_${getTeamIcon(searchParams.date.slice(0, 4), game.homeTeamName)}.png`
+                            : `https://statiz.co.kr/data/team/ci/${searchParams.date.slice(0, 4)}/${getTeamIcon(searchParams.date.slice(0, 4), game.homeTeamName)}.svg`
+                        }
                         alt={game.homeTeamName}
                         className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0"
                       />

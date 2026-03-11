@@ -11,5 +11,6 @@ export const teamData = {
   "KT": { icon: `https://statiz.co.kr/data/team/ci/2025/12001.svg`, mainColor: "[#000000]", subColor: "[#EB1C24]" },
   "KIA": { icon: `https://statiz.co.kr/data/team/ci/2025/2002.svg`, mainColor: "[#ea0029]", subColor: "[#06141F]" },
   "한화": { icon: `https://statiz.co.kr/data/team/ci/2025/7002.svg`, mainColor: "[#fc4e00]", subColor: "[#07111F]" },
-  "현대": { icon: `https://statiz.co.kr/data/team/ci/2007/4004.svg`, mainColor: "[#007f55", subColor: "[#000000"}
+  "현대": { icon: `https://statiz.co.kr/data/team/ci/2007/4004.svg`, mainColor: "[#007f55", subColor: "[#000000" },
+  "울산": { icon: `https:////6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblemF_UL.png`, mainColor: "[#c70000", subColor: "[#060202" }
 };
