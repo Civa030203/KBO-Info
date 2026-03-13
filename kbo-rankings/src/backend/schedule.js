@@ -14,61 +14,65 @@ router.get("/", async (req, res) => {
     // const today = new Date();
     // const formattedDate = `${today.getFullYear()}${today.getMonth() + 1<10?`0${today.getMonth() + 1}`:today.getMonth() + 1}${today.getDate()<10?`0${today.getDate()}`:today.getDate()}`;
 
-    let data = null;
-    var srId = 0;
-    let isNoGame = false;
-    while (true) {
-      const url = `http://koreabaseball.com/ws/Main.asmx/GetKboGameList?&dataType=json&leId=${leId}&srId=${srId}&date=` + date;
-      const res = await axios.get(url, {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-        },
-      });
-      data = res.data;
-      // if (data.game.length >= 1) break;
-      if (srId >= 10) break;
-      srId += 1;
+    const requests = [];
+    for (let currentSrId = 0; currentSrId <= 10; currentSrId++) {
+      const url = `http://koreabaseball.com/ws/Main.asmx/GetKboGameList?&dataType=json&leId=${leId}&srId=${currentSrId}&date=${date}`;
+      requests.push(
+        axios.get(url, {
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+          },
+        }).then(res => ({ srId: currentSrId, data: res.data }))
+      );
     }
 
-    const gameData = []
+    const responses = await Promise.all(requests);
+    const gameData = [];
 
-    for (var i = 0; i < data.game.length; i++) {
-      gameData.push({
-        date: data.game[i].G_DT_TXT,
-        gameID: data.game[i].G_ID,
-        gameTime: data.game[i].G_TM,
-        stadium: data.game[i].S_NM,
-        gameScore: `${data.game[i].T_SCORE_CN} : ${data.game[i].B_SCORE_CN}`,
-        awayTeam: data.game[i].AWAY_ID,
-        homeTeam: data.game[i].HOME_ID,
-        awayTeamName: data.game[i].AWAY_NM,
-        homeTeamName: data.game[i].HOME_NM,
-        awaySPitcher: data.game[i].T_PIT_P_ID,
-        homeSPitcher: data.game[i].B_PIT_P_ID,
-        isCanceled: data.game[i].CANCEL_SC_ID,
-        gameState: data.game[i].GAME_STATE_SC,
-        gameType: data.game[i].GAME_SC_NM,
-        gameNumber: data.game[i].VS_GAME_CN,
-        seriesId: srId,
-        gameMaxInn: data.game[i].GAME_INN_NO
-      });
+    for (const response of responses) {
+      if (response.data && response.data.game && response.data.game.length > 0) {
+        for (let i = 0; i < response.data.game.length; i++) {
+          const gameInfo = response.data.game[i];
+          const newGame = {
+            date: gameInfo.G_DT_TXT,
+            gameID: gameInfo.G_ID,
+            gameTime: gameInfo.G_TM,
+            stadium: gameInfo.S_NM,
+            gameScore: `${gameInfo.T_SCORE_CN} : ${gameInfo.B_SCORE_CN}`,
+            awayTeam: gameInfo.AWAY_ID,
+            homeTeam: gameInfo.HOME_ID,
+            awayTeamName: gameInfo.AWAY_NM,
+            homeTeamName: gameInfo.HOME_NM,
+            awaySPitcher: gameInfo.T_PIT_P_ID,
+            homeSPitcher: gameInfo.B_PIT_P_ID,
+            isCanceled: gameInfo.CANCEL_SC_ID,
+            gameState: gameInfo.GAME_STATE_SC,
+            gameType: gameInfo.GAME_SC_NM,
+            gameNumber: gameInfo.VS_GAME_CN,
+            seriesId: response.srId,
+            gameMaxInn: gameInfo.GAME_INN_NO
+          };
 
-      switch (gameData[i].gameType.slice(0, 2)) {
-        case 'WC':
-          gameData[i].gameType = '와일드카드 결정전 ' + String(gameData[i].gameNumber) + "차전";
-          break;
-        case '준P':
-          gameData[i].gameType = '준플레이오프 ' + String(gameData[i].gameNumber) + "차전";
-          break;
-        case 'PO':
-          gameData[i].gameType = '플레이오프 ' + String(gameData[i].gameNumber) + "차전";
-          break;
-        case 'KS':
-          gameData[i].gameType = '한국시리즈 ' + String(gameData[i].gameNumber) + "차전";
-          break;
-        default:
-          break;
+          switch (newGame.gameType.slice(0, 2)) {
+            case 'WC':
+              newGame.gameType = '와일드카드 결정전 ' + String(newGame.gameNumber) + "차전";
+              break;
+            case '준P':
+              newGame.gameType = '준플레이오프 ' + String(newGame.gameNumber) + "차전";
+              break;
+            case 'PO':
+              newGame.gameType = '플레이오프 ' + String(newGame.gameNumber) + "차전";
+              break;
+            case 'KS':
+              newGame.gameType = '한국시리즈 ' + String(newGame.gameNumber) + "차전";
+              break;
+            default:
+              break;
+          }
+
+          gameData.push(newGame);
+        }
       }
     }
 
