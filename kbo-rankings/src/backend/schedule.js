@@ -22,11 +22,11 @@ router.get("/", async (req, res) => {
       const res = await axios.get(url, {
         headers: {
           "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
         },
       });
       data = res.data;
-      if (data.game.length >= 1) break;
+      // if (data.game.length >= 1) break;
       if (srId >= 10) break;
       srId += 1;
     }

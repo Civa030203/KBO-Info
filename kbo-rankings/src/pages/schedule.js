@@ -135,6 +135,10 @@ export default function Schedule() {
         teamID = "AU";
         break;
 
+      case "도미니카":
+        team = "DO";
+        break;
+
       default:
         break;
     }
