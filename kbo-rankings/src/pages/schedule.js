@@ -146,6 +146,18 @@ export default function Schedule() {
     return teamID;
   };
 
+  const getTeamLogoUrl = (year, teamName) => {
+    if (teamName.includes("상무")) return "/sangmu.svg";
+    if (teamName.includes("고양")) return "/goyang.svg";
+    if (teamName.includes("울산")) return "/ulsan.svg";
+
+    const iconID = getTeamIcon(year, teamName);
+    if (isNaN(iconID)) {
+      return `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/international/emblem_${iconID}.png`;
+    }
+    return `https://statiz.co.kr/data/team/ci/${year}/${iconID}.svg`;
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       {/* 메인 화면 버튼 */}
@@ -223,11 +235,7 @@ export default function Schedule() {
                           : game.awayTeamName}
                       </span>
                       <img
-                        src={
-                          isNaN(getTeamIcon(searchParams.date.slice(0, 4), game.awayTeamName))
-                            ? `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/international/emblem_${getTeamIcon(searchParams.date.slice(0, 4), game.awayTeamName)}.png`
-                            : `https://statiz.co.kr/data/team/ci/${searchParams.date.slice(0, 4)}/${getTeamIcon(searchParams.date.slice(0, 4), game.awayTeamName)}.svg`
-                        }
+                        src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.awayTeamName)}
                         alt={game.awayTeamName}
                         className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0"
                       />
@@ -257,11 +265,7 @@ export default function Schedule() {
                           : game.homeTeamName}
                       </span>
                       <img
-                        src={
-                          isNaN(getTeamIcon(searchParams.date.slice(0, 4), game.homeTeamName))
-                            ? `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/international/emblem_${getTeamIcon(searchParams.date.slice(0, 4), game.homeTeamName)}.png`
-                            : `https://statiz.co.kr/data/team/ci/${searchParams.date.slice(0, 4)}/${getTeamIcon(searchParams.date.slice(0, 4), game.homeTeamName)}.svg`
-                        }
+                        src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.homeTeamName)}
                         alt={game.homeTeamName}
                         className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0"
                       />
