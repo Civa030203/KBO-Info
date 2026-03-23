@@ -61,8 +61,6 @@ const getPlayerImageYear = (gameYear, playerId) => {
 
 export default function LiveTextPage() {
   const [live, setLive] = useState(null);
-  const [postGame, setPostGame] = useState(null);
-  const [pgLoading, setPgLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [seriesId, setSeriesId] = useState(useParams().seriesId);
   const [gameId, setGameId] = useState(useParams().gameID);
