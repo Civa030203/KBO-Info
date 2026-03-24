@@ -15,7 +15,7 @@ export default function Ranking() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-2 sm:p-6">
     {/* 메인 화면 버튼 */}
       <div className="mb-4">
         <Link
@@ -27,16 +27,16 @@ export default function Ranking() {
       </div>
       <h1 className="text-3xl font-bold text-center mb-6">📊 KBO 팀 순위</h1>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+        <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden text-sm sm:text-base whitespace-nowrap">
           <thead className="bg-blue-600 text-white">
             <tr>
-              <th className="py-3 px-4 text-left">순위</th>
-              <th className="py-3 px-4 text-left">팀명</th>
-              <th className="py-3 px-4 text-left">승</th>
-              <th className="py-3 px-4 text-left">패</th>
-              <th className="py-3 px-4 text-left">무</th>
-              <th className="py-3 px-4 text-left">승률</th>
-              <th className="py-3 px-4 text-left">게임차</th>
+              <th className="py-2 px-2 sm:py-3 sm:px-4 text-center">순위</th>
+              <th className="py-2 px-2 sm:py-3 sm:px-4 text-left">팀명</th>
+              <th className="py-2 px-2 sm:py-3 sm:px-4 text-center">승</th>
+              <th className="py-2 px-2 sm:py-3 sm:px-4 text-center">패</th>
+              <th className="py-2 px-2 sm:py-3 sm:px-4 text-center">무</th>
+              <th className="py-2 px-2 sm:py-3 sm:px-4 text-center">승률</th>
+              <th className="py-2 px-2 sm:py-3 sm:px-4 text-center">게임차</th>
             </tr>
           </thead>
           <tbody>
@@ -49,22 +49,22 @@ export default function Ranking() {
                   tData.mainColor ? "bg-" + tData.mainColor + " text-white" : ""
                 }`}
               >
-                <td className="py-3 px-4">{team.rank}</td>
-                <td className="py-3 px-4 flex items-center gap-2">
+                <td className="py-2 px-2 sm:py-3 sm:px-4 text-center font-semibold">{team.rank}</td>
+                <td className="py-2 px-2 sm:py-3 sm:px-4 flex items-center gap-1 sm:gap-2">
                   {tData.icon && (
                     <img
                       src={tData.icon}
                       alt={team.team}
-                      className="w-6 h-6"
+                      className="w-5 h-5 sm:w-6 sm:h-6"
                     />
                   )}
-                  {team.team}
+                  <span className="font-medium">{team.team}</span>
                 </td>
-                <td className="py-3 px-4">{team.win}</td>
-                <td className="py-3 px-4">{team.lose}</td>
-                <td className="py-3 px-4">{team.draw}</td>
-                <td className="py-3 px-4">{team.winRate}</td>
-                <td className="py-3 px-4">{team.gamesBehind}</td>
+                <td className="py-2 px-2 sm:py-3 sm:px-4 text-center">{team.win}</td>
+                <td className="py-2 px-2 sm:py-3 sm:px-4 text-center">{team.lose}</td>
+                <td className="py-2 px-2 sm:py-3 sm:px-4 text-center">{team.draw}</td>
+                <td className="py-2 px-2 sm:py-3 sm:px-4 text-center">{team.winRate}</td>
+                <td className="py-2 px-2 sm:py-3 sm:px-4 text-center">{team.gamesBehind}</td>
               </tr>
             );
           })}
