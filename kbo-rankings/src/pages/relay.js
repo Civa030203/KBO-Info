@@ -164,43 +164,43 @@ export default function LiveTextPage() {
 
       <h1 className="text-xl font-bold mb-4">KBO 문자중계</h1>
 
-      {/* ✅ 스코어보드 (임시 데이터용 틀) */}
-      <div className="overflow-x-auto mb-6">
-        <table className="min-w-full border border-gray-300 text-center text-sm bg-white shadow rounded-lg">
-          <thead className="bg-gray-100">
+      {/* ✅ 스코어보드 */}
+      <div className="overflow-x-auto mb-6 rounded-lg shadow border border-gray-200">
+        <table className="border-collapse text-center text-xs bg-white w-full">
+          <thead className="bg-gray-100 text-gray-600">
             <tr>
-              <th className="border px-2 py-1">팀</th>
+              <th className="border border-gray-200 px-3 py-2 text-left sticky left-0 z-10 bg-gray-100 font-semibold min-w-[4rem]">팀</th>
               {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                <th key={i} className="border px-2 py-1">
+                <th key={i} className="border border-gray-200 px-2 py-2 min-w-[1.75rem]">
                   {i + 1}
                 </th>
               ))}
-              <th className="border px-2 py-1 font-bold">R</th>
-              <th className="border px-2 py-1">H</th>
-              <th className="border px-2 py-1">E</th>
-              <th className="border px-2 py-1">B</th>
+              <th className="border border-gray-200 px-2 py-2 font-bold text-blue-700 bg-blue-50 min-w-[2rem]">R</th>
+              <th className="border border-gray-200 px-2 py-2 min-w-[2rem]">H</th>
+              <th className="border border-gray-200 px-2 py-2 min-w-[2rem]">E</th>
+              <th className="border border-gray-200 px-2 py-2 min-w-[2rem]">B</th>
             </tr>
           </thead>
           <tbody>
             <tr className="bg-blue-50">
-              <td className="border px-2 py-1 font-semibold">{scoreData.teamData[0]}</td>
+              <td className="border border-gray-200 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-blue-50">{scoreData.teamData[0]}</td>
               {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                <td key={i} className="border px-2 py-1">{scoreData.scoreData[0][i]}</td>
+                <td key={i} className="border border-gray-200 px-2 py-2">{scoreData.scoreData[0][i]}</td>
               ))}
-              <td className="border px-2 py-1 font-bold">{scoreData.resultData[0][0]}</td>
-              <td className="border px-2 py-1">{scoreData.resultData[0][1]}</td>
-              <td className="border px-2 py-1">{scoreData.resultData[0][2]}</td>
-              <td className="border px-2 py-1">{scoreData.resultData[0][3]}</td>
+              <td className="border border-gray-200 px-2 py-2 font-bold text-blue-700 bg-blue-100">{scoreData.resultData[0][0]}</td>
+              <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[0][1]}</td>
+              <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[0][2]}</td>
+              <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[0][3]}</td>
             </tr>
             <tr className="bg-red-50">
-              <td className="border px-2 py-1 font-semibold">{scoreData.teamData[1]}</td>
+              <td className="border border-gray-200 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-red-50">{scoreData.teamData[1]}</td>
               {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                <td key={i} className="border px-2 py-1">{scoreData.scoreData[1][i]}</td>
+                <td key={i} className="border border-gray-200 px-2 py-2">{scoreData.scoreData[1][i]}</td>
               ))}
-              <td className="border px-2 py-1 font-bold">{scoreData.resultData[1][0]}</td>
-              <td className="border px-2 py-1">{scoreData.resultData[1][1]}</td>
-              <td className="border px-2 py-1">{scoreData.resultData[1][2]}</td>
-              <td className="border px-2 py-1">{scoreData.resultData[1][3]}</td>
+              <td className="border border-gray-200 px-2 py-2 font-bold text-blue-700 bg-blue-100">{scoreData.resultData[1][0]}</td>
+              <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[1][1]}</td>
+              <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[1][2]}</td>
+              <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[1][3]}</td>
             </tr>
           </tbody>
         </table>
