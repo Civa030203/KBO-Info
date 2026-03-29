@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import { GAME_VIDEO_MAP } from "./videoMap";
 
 // 국가대표 경기 등에서 변경되는 선수 ID를 원본 KBO 선수 ID로 매핑하는 객체
 const playerIdMap = {
@@ -59,6 +60,8 @@ const getPlayerImageYear = (gameYear, playerId) => {
   return gameYear > 2016 ? gameYear : 2016;
 };
 
+// SOOP(아프리카TV) 등 외부 중계/리플레이 링크 매핑 객체는 videoMap.js에서 관리합니다.
+
 export default function LiveTextPage() {
   const [live, setLive] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -67,6 +70,10 @@ export default function LiveTextPage() {
   const [leagueId, setLeagueId] = useState(useParams().leagueId);
   const [maxInn, setMaxInn] = useState(1);
   const [inn, setInn] = useState(null);
+  const [videoVisible, setVideoVisible] = useState(true);
+
+  // 현재 경기의 비디오 링크 가져오기
+  const videoUrl = GAME_VIDEO_MAP[gameId];
 
   useEffect(() => {
     if (maxInn) {
@@ -162,7 +169,48 @@ export default function LiveTextPage() {
         </Link>
       </div>
 
-      <h1 className="text-xl font-bold mb-4">KBO 문자중계</h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-xl font-bold">KBO 문자중계</h1>
+        {videoUrl && (
+          <button
+            onClick={() => setVideoVisible(!videoVisible)}
+            className="text-xs font-medium px-3 py-1 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 transition flex items-center gap-1"
+          >
+            {videoVisible ? "📺 비디오 숨기기" : "📺 비디오 보기"}
+          </button>
+        )}
+      </div>
+
+      {/* ✅ SOOP 비디오 컨테이너 */}
+      {videoUrl && videoVisible && (
+        <div className="mb-6 overflow-hidden rounded-2xl border border-gray-100 shadow-xl bg-black aspect-video relative group">
+          {videoUrl.includes(".m3u8") ? (
+            <video
+              src={videoUrl}
+              className="w-full h-full"
+              controls
+              autoPlay
+              muted
+              playsInline
+            >
+              해당 브라우저는 비디오 재생을 지원하지 않습니다.
+            </video>
+          ) : (
+            <iframe
+              src={videoUrl}
+              className="w-full h-full"
+              allowFullScreen
+              title="KBO Live Broadcast"
+            ></iframe>
+          )}
+
+          <div className="absolute top-4 left-4 pointer-events-none">
+            <span className="bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider shadow-lg animate-pulse">
+              {live?.postGame?.listResult?.length > 0 ? "REPLAY" : "LIVE"}
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* ✅ 스코어보드 */}
       <div className="overflow-x-auto mb-6 rounded-lg shadow border border-gray-200">
