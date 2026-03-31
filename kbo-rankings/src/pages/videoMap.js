@@ -11,9 +11,9 @@ export const GAME_VIDEO_MAP = {
   "20260329HTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260329/781/292787781/REGL_26C81106_292787781_1.smil/manifest.m3u8",
   "20260329LTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260329/785/292787785/REGL_44EC7D47_292787785_1.smil/manifest.m3u8",
   "20260329OBNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260329/649/292787649/REGL_C8B12F68_292787649_1.smil/manifest.m3u8?rp=p02",
-  "20260331HTLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-08/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.5rQqtmFXx7awwi9DWI8R0yFMao03cVU5DJwexdokXw5aMRm0-teV0CeiHsD0FXejdjg2LKEeY7sHMys7TH0yG_U4D91fr-veAmYhPqLy06GcnDV33u7zMMaE2MgIqxZHnDLGxIiy-47DiVJoJbsVEbW3q-j2orTWittyErESD3Q-1jOFRrrR7TvUuwdX95tX",
-  "20260331WOSK0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.gS6xdMMvAdFZxOYieFrJYK2VbhBn64XCW-0OELViBMCxkxjzYsTpzqhWLTmDCuh3_iyEBJnsxuWj4J4cbAjpRlQy2q2v_DsPbWHEWl__q2lZLO5Fh78TyVVRjFsMFGH2WbLb145W0QUIazgwc-wkiFaBS-hHCpT1bYJCJK6f0SaiOHPOIdRLBuUdat1BFKGv",
-  "20260331OBSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-31/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.gS6xdMMvAdFZxOYieFrJYJcAlNVGNhHHaBDKc80bSUTPTnQ7MJ9Sx-4HZiBwsHitvsZ_azhSlVUjSTlR8Lc09O8Vd3fuvarKqHS48wVkW44FEm7nAMR70MF5DAXf4TZMvFoEZmb_RPStpcJWsc94cUM-eamNE5sIZcZeK0iPifx7eh7XQqNUAoiCGw9Nzt0B",
-  "20260331KTHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.gS6xdMMvAdFZxOYieFrJYI-DmqBxEq9gnTaNqCG5fkw2OvnYq2GC0hH_1Kwl98QMWMfaeHL9cGUQUq_s4cNTBnMcfnqiIHGOdQMuPbKTvq4P5PcLv-sjSzJZksJjhnF3Jv7j4-XP_m77TGxQYUpSvrMa2YogEL832BkRnQcvk1c,",
-  "20260331LTNC0": "https://live-global-cdn-v02.sooplive.com/live-stm-09/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.yH-kIB1vxeMq2EtCWOczCnYwgvaIpBxEdXjUIznKrFMy-bm4wK5FFqe-EMFL3GF6pg4phefBM8OG5hQyMfw9WnMbgh16yOhxLgeu3sd8aJ8jdMotrj6TKyYeReOTlhctYUyN2xrj4TZX6wBCeM6GGLRXvfWeEGvUz2MGTDd3Q6-z02fhdON5qn7y646zbv_Q"
+  "20260331HTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/027/292845027/REGL_9CA26991_292845027_1_4000k.mp4/manifest.m3u8?cv=v1&rp=p03",
+  "20260331WOSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/237/292845237/REGL_9CDE9A43_292845237_1.smil/manifest.m3u8?rp=p03",
+  "20260331OBSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/239/292845239/REGL_42585825_292845239_1.smil/manifest.m3u8?rp=p03",
+  "20260331KTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/247/292845247/REGL_8B45A884_292845247_1.smil/manifest.m3u8?rp=p03",
+  "20260331LTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/367/292845367/REGL_36C182C5_292845367_1_4000k.mp4/manifest.m3u8?cv=v1&rp=p03"
 };
