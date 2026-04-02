@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { GAME_VIDEO_MAP } from "./videoMap";
+import Hls from "hls.js";
 
 // 국가대표 경기 등에서 변경되는 선수 ID를 원본 KBO 선수 ID로 매핑하는 객체
 const playerIdMap = {
@@ -71,9 +72,43 @@ export default function LiveTextPage() {
   const [maxInn, setMaxInn] = useState(1);
   const [inn, setInn] = useState(null);
   const [videoVisible, setVideoVisible] = useState(true);
+  const videoRef = useRef(null);
 
   // 현재 경기의 비디오 링크 가져오기
   const videoUrl = GAME_VIDEO_MAP[gameId];
+
+  // HLS 비디오 처리
+  useEffect(() => {
+    let hls = null;
+    const video = videoRef.current;
+
+    if (videoUrl && videoUrl.includes(".m3u8") && video) {
+      if (Hls.isSupported()) {
+        hls = new Hls();
+        hls.loadSource(videoUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          if (videoVisible) {
+            video.play().catch(err => console.error("Auto-play failed:", err));
+          }
+        });
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        // Safari 등 HLS를 기본 지원하는 브라우저
+        video.src = videoUrl;
+        video.addEventListener("loadedmetadata", () => {
+          if (videoVisible) {
+            video.play().catch(err => console.error("Auto-play failed:", err));
+          }
+        });
+      }
+    }
+
+    return () => {
+      if (hls) {
+        hls.destroy();
+      }
+    };
+  }, [videoUrl, videoVisible]);
 
   useEffect(() => {
     if (maxInn) {
@@ -186,7 +221,7 @@ export default function LiveTextPage() {
         <div className="mb-6 overflow-hidden rounded-2xl border border-gray-100 shadow-xl bg-black aspect-video relative group">
           {videoUrl.includes(".m3u8") ? (
             <video
-              src={videoUrl}
+              ref={videoRef}
               className="w-full h-full"
               controls
               autoPlay
