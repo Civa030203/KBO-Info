@@ -25,5 +25,20 @@ export const GAME_VIDEO_MAP = {
   "20260402WOSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.vdpQJa5jTIeQzbG9-HRDAOlqWBPiwP_wi3jA7Z58g-s0juDMIV8XUPIpWqR1m1kEoCJGxdgi1X2eGA6M5GiphGWLf72IvjDCC91cnNh6F1NV8VKJHWgWQUhJZMYTtwFbtJX494UUcJTqD3JZ0paQzzEyfZvktgZdsl4HNaNXJBPIbbbtxAWn16ZX6X5gTJx5",
   "20260402OBSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-25/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.vdpQJa5jTIeQzbG9-HRDALKlOJAeIvErGxso8v2zynOKmyLRgpf5MJWnBoqRc0U9RsEeiiA5cioUKZ5W5Cg00pZztDdEhtriJu4YQdTv3XXoYotGSZ9lvjjTLVULxOPSwgWJgCwrGMERmtIjM0ViPZWTD3E4vCxfmoj-EyU6TaUZlmuDPuOHQOePPEFKgtCg",
   "20260402LTNC0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.vdpQJa5jTIeQzbG9-HRDAJV7oOea-hz39cC7q77ZypxvFcA_1ZGF5-WgkldiL6qW-iI-MnJUiERJxxkwMGLAKGnrHLxBhs58nEYkGfKN5hRqy4mmF-gygjuV_sTKgKagDFZXPd0Rrl7tCJl_YzYMMEJZPyhXdrTNmDjmd7mnCKN-E-s6A3X54zfd5sHrIXmu",
-  "20260402KTHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-37/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.vdpQJa5jTIeQzbG9-HRDAHFI8rrt09TgEKI2kwrzcp-bGYH7JO3VKWGcSrQw8AjFJSP11xIwTrMjTDKn8u7GgAc_hhy9hvZarOu4Kd9r0zhf8Mlt9rcCMuloo3HetXxm_7crFGtakilod1skUTkgqAzBio3DwufuT2Nbt1U3DQpyYQHeMcth1qx0awF5C9TN"
+  "20260402KTHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-37/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.vdpQJa5jTIeQzbG9-HRDAHFI8rrt09TgEKI2kwrzcp-bGYH7JO3VKWGcSrQw8AjFJSP11xIwTrMjTDKn8u7GgAc_hhy9hvZarOu4Kd9r0zhf8Mlt9rcCMuloo3HetXxm_7crFGtakilod1skUTkgqAzBio3DwufuT2Nbt1U3DQpyYQHeMcth1qx0awF5C9TN",
+  "20260403HHOB0": "",
+  "20260403SKLT0": "",
+  "20260403SSKT0": "",
+  "20260403NCHT0": "",
+  "20260403LGWO0": "",
+  "20260404HHOB0": "",
+  "20260404SKLT0": "",
+  "20260404SSKT0": "",
+  "20260404NCHT0": "",
+  "20260404LGWO0": "",
+  "20260405HHHOB": "",
+  "20260405WSKLT": "",
+  "20260405OSSKT": "",
+  "20260405LNCHT": "",
+  "20260405KLGWO": ""
 };
