@@ -181,7 +181,7 @@ export default function LiveTextPage() {
 
       {/* ✅ SOOP 비디오 컨테이너 */}
       {videoUrl && videoVisible && (
-        <div className="mb-6 overflow-hidden rounded-2xl border border-gray-100 shadow-xl bg-black aspect-video relative group">
+        <div className="mb-6 overflow-hidden rounded-2xl border border-gray-100 shadow-xl bg-black aspect-video relative group sticky top-4 z-50">
           {videoUrl.includes(".m3u8") ? (
             <video
               src={videoUrl}
