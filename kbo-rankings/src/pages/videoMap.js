@@ -1,6 +1,7 @@
 // KBO 경기별 SOOP(구 아프리카TV) 중계 및 다시보기 링크 매핑
 export const GAME_VIDEO_MAP = {
   // gameId를 키로 사용 (예: "20260329OBNC0")
+  // 2026년 3월
   "20260328KTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260328/821/292760821/REGL_A4DD0338_292760821_1.smil/manifest.m3u8",
   "20260328WOHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260328/683/292760683/REGL_E10F8093_292760683_1.smil/manifest.m3u8",
   "20260328HTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260328/819/292760819/REGL_56359CA9_292760819_1.smil/manifest.m3u8",
@@ -16,6 +17,8 @@ export const GAME_VIDEO_MAP = {
   "20260331OBSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/239/292845239/REGL_42585825_292845239_1.smil/manifest.m3u8",
   "20260331LTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/367/292845367/REGL_36C182C5_292845367_1.smil/manifest.m3u8",
   "20260331KTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/247/292845247/REGL_8B45A884_292845247_1.smil/manifest.m3u8",
+
+  // 2026년 4월
   "20260401HTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260401/979/292871979/REGL_338AFC60_292871979_1.smil/manifest.m3u8",
   "20260401WOSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260401/253/292872253/REGL_647478C9_292872253_1.smil/manifest.m3u8",
   "20260401OBSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260401/261/292872261/REGL_36BE314A_292872261_1.smil/manifest.m3u8",
