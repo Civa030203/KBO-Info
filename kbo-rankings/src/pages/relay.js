@@ -109,7 +109,6 @@ export default function LiveTextPage() {
 
         gData.data.forEach((dt) => {
           if (dt.gameID === gameId) {
-            console.log(dt);
             setMaxInn(dt.gameMaxInn);
           }
         });
