@@ -88,7 +88,7 @@ export const GAME_VIDEO_MAP = {
   "20260417WOKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260417/771/293297771/REGL_C0BDB255_293297771_1.smil/manifest.m3u8",
   "20260418HTOB0": "",
   "20260418HHLT0": "",
-  "20260418LGSS0": "",
+  "20260418LGSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-22/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.dVhFWNAtuWs2fkduYHuLMjft8qon1Dcm4mxk5GM6Ol4mE_PpK3cpTUr1Yva4iWWKBIZVRfF0mgeC-eRDbZagBy7niAp8UqijoRkU8cK-NAIDUT3SHL5aSdQ8GKEBPpPcMqRmkeHO0-sQ8B4lx0jRDbe-fRU13gUqurnIxoHApWY,",
   "20260418SKNC0": "",
   "20260418WOKT0": "",
   "20260419HTOB0": "",
