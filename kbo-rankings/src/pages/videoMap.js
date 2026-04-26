@@ -121,7 +121,7 @@ export const GAME_VIDEO_MAP = {
   "20260425LTHT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-39/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.eqUIB50MB6PM5btDXaUjhou7morly1sRqVZ_D-9DLCKQ_aOjUAwUw8RYTJfxfjh2oJRUuvt2epB5e-nQWmU9tcNk-in3veF9z6EPsVaS93tifG_vI_sagm1otD40Urv5Q2CcQKfOXYOPg9SbXdqIZS3M_zw1PlHImoExGMFp4Kc,",
   "20260425SSWO0": "https://live-global-cdn-v02.sooplive.com/live-stm-08/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.eqUIB50MB6PM5btDXaUjhoYieCptfT_wueJRSxmHtHD8a3OVaLQ-3VCP4mqsCJZnSEx3d4J9_ykrjN1YlyZW-vmZVEKiH_K1qjo3um3Ngnyx-F0fqbfCE2jYZ25eHneDlYjpsbyajDT4coKSv2GrSMWWaq6NtQbNTaeAVu4tJ2E,",
   "20260425NCHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.-F2hQTHj0_KNK8AjuIW5U7c0X-xR_qbf44oMq0CRJY9QHua7ev8m1mOfwxhVVNe4vglhXd6OQdm_T7WDcbEy6sqR-M-WmTjrUgLXXP5N5dlF6M2u2m1BAxl71cQVKNt3XIclfEmcP4mHTmN-c-7mlzSNhEXcUwvcppxh-Ro1P40,",
-  "20260426LGOB0": "",
+  "20260426LGOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.s8t-RbVCdgAQtrasfPGRdujZrW9xTmss86VrLuzFK0vLaBLKlrB1Hn1TnCfN0SluQu031DVWusVyHlKOppnCJ4m8GGdsoZf90MvLmkNLmzu7WGHpvs3_rVbuG7HvVWYNvHL_AvHH3i5znIm28deM3cqwjeu1lnmhAHMCNQV8dZk,",
   "20260426KTSK0": "",
   "20260426LTHT0": "",
   "20260426SSWO0": "",
