@@ -195,9 +195,9 @@ export const GAME_VIDEO_MAP = {
   "20260509HTLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260509/877/293874877/REGL_4F5B0DFB_293874877_1.mp4/manifest.m3u8",
   "20260509SSNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260509/881/293874881/REGL_783F1FFF_293874881_1.mp4/manifest.m3u8",
   "20260509KTWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260509/889/293874889/REGL_698CB590_293874889_1.mp4/manifest.m3u8",
-  "20260510SKOB0": "",
-  "20260510HTLT0": "",
-  "20260510SSNC0": "",
-  "20260510KTWO0": "",
-  "20260510LGHH0": ""
+  "20260510SKOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-27/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.3WYnadKAE25EFGNUx8AArlTBxBL73ALQFJi8jx5soqxA5_sdweQuBUWiTsMoGETGFxn8zLJOvX8BZcWLt1R7I3pm3tM-IyJ1iGoOIVBjGv7G8C01cmqOH27zZYSfmtMpUtafpGuJlA_tTaMd9UhNevnoJ9f3pEyCpmy1OtCH11x2zvuIobZx3FYXtPuMnkHR",
+  "20260510HTLT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-28/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.9mkgrIBpCBoj15_9oHW5tlZTvWmzcyzjMabV16ZoVUhTw53_FtbOrPIiPNkM5KfmS0qrO4uPkdj6cqryYmG_aO6QD6cYNp6faC5QMJUfApt2fv2mSavd3-FVOWxtps28WT1mhsVgFpaSRitPYqQucWhSpWZ0MZpX2oCZSMcWDaCNHXF7NhOSFkn6jqe9ZSDs",
+  "20260510SSNC0": "https://live-global-cdn-v02.sooplive.com/live-stm-10/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.9mkgrIBpCBoj15_9oHW5toHOPoUDNobyzqte83NxaMq0bGTpW-ZjP3IKzmmhL-SYUdddFqzg1WSLjR9jD_sxznQn4h2LxsYnbmqm2bnwBL_b3X9rOapjrurl8zlCUCkAzzhtpXfTO6Nqm3QefNDH6-GUs0kTxRsoF8DuhAebdUtxpWG66BlnNZMqbPjZL-ty",
+  "20260510KTWO0": "https://live-global-cdn-v02.sooplive.com/live-stm-04/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.9mkgrIBpCBoj15_9oHW5tu4BfIY50xk_QQj9AELYhC2aDp5NcJxArNcJOKeBMSQltg1WFOaaBkY1BZKpWtyQmazQ2YClYDQFFbXeQ8ZWWMFLD5KTjktGxmqJ2EGlnsJlv1lz5xx_HHCexotjkrag2Sa3120M5bSNIZv4RUTDFuNKo6e2mnTA5NnIFtb33CUp",
+  "20260510LGHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-25/auth_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.3WYnadKAE25EFGNUx8AAriR1AekEj8bXm-ky82AeSYNDz8PM2e6I2MwIevERPUSWnSKOem3-6JSh5VL-Xd1AW-cd1d-8PoHR_UKm2luaWAWOdGNc3iBh_PabPu52Mg15UbBd-ehMxehS3jr4XGl56ewo4QHdFzBzfJZa69UcWAJ4zbtnN_odUw-t3IYF0eBv"
 };
