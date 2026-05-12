@@ -163,22 +163,22 @@ export default function Schedule() {
     if (String(game.gameState) === "2" || String(game.gameState) === "3") return true;
     // 4 이상: 취소 등
     if (game.gameState >= 4) return false;
-    
+
     // 경기 전(1 등)인 경우 시간 체크
     if (!game.gameTime || !searchDate) return false;
-    
+
     const timeParts = game.gameTime.split(":");
     if (timeParts.length !== 2) return false;
-    
+
     const year = parseInt(searchDate.substring(0, 4), 10);
     const month = parseInt(searchDate.substring(4, 6), 10) - 1;
     const day = parseInt(searchDate.substring(6, 8), 10);
     const hour = parseInt(timeParts[0], 10);
     const minute = parseInt(timeParts[1], 10);
-    
+
     const gameDate = new Date(year, month, day, hour, minute);
     const now = new Date();
-    
+
     // 경기 시작 20분 전
     const relayOpenTime = new Date(gameDate.getTime() - 20 * 60 * 1000);
     return now >= relayOpenTime;
@@ -278,7 +278,7 @@ export default function Schedule() {
                     ) : game.gameState === 2 ? (
                       <div className="flex flex-col items-center justify-center">
                         <span className="text-red-600">{game.gameScore}</span>
-                        <span className="text-[10px] md:text-xs text-gray-500 font-normal mt-0.5">1회초</span>
+                        <span className="text-[10px] md:text-xs text-gray-500 font-normal mt-0.5">{game.gameMaxInn}회{game.isTopOrBottom}</span>
                       </div>
                     ) : (
                       game.gameScore

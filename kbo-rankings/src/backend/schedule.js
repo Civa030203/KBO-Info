@@ -51,7 +51,8 @@ router.get("/", async (req, res) => {
             gameType: gameInfo.GAME_SC_NM,
             gameNumber: gameInfo.VS_GAME_CN,
             seriesId: response.srId,
-            gameMaxInn: gameInfo.GAME_INN_NO
+            gameMaxInn: gameInfo.GAME_INN_NO,
+            isTopOrBottom: gameInfo.GAME_TB_SC_NM
           };
 
           switch (newGame.gameType.slice(0, 2)) {
