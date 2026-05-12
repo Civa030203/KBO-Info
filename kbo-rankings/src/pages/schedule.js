@@ -250,7 +250,10 @@ export default function Schedule() {
                       <><span className="hidden sm:inline">취소된 경기입니다.</span>
                         <span className="sm:hidden">취소</span></>
                     ) : game.gameState == 2 ? (
-                      <span className="text-red-600">{game.gameScore}</span>
+                      <div className="flex flex-col items-center justify-center">
+                        <span className="text-red-600">{game.gameScore}</span>
+                        <span className="text-[10px] md:text-xs text-gray-500 font-normal mt-0.5">1회초</span>
+                      </div>
                     ) : (
                       game.gameScore
                     )}
