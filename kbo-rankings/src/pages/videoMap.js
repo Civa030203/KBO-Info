@@ -232,19 +232,19 @@ export const GAME_VIDEO_MAP = {
   "20260514HHWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260514/169/294004169/REGL_D4C4F505_294004169_1.mp4/manifest.m3u8",
 
   // 5월 2주차 주말 시리즈
-  "20260515LTOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-27/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.oeF-9Auix5EGwe8cbgT5wCtFdDRr5_CqTZAZzg_8dbEn98Ih_7_16H3ei4jJm3Ev7swo_IZVioj0CkQTnqoFixThGZgCvY04Q1YfwDmNClomRgsO4KT_O7laF-DJSaspzgfKkwnrILpOWSUyQ2bMqPSTdh_cNrWtc1EB_Urlj-EZx_izKdmhv4N6FlVkFXdD",
-  "20260515LGSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-25/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.oeF-9Auix5EGwe8cbgT5wHorZqAFH3YexvGD7muQ7dzuZbOWGMXMD9kw5uW7OBRapQPo0L2noZjRVy_KlZ3Ke4yXmCVqLfVBO7WrMpxxijf2wGp9P6969BGFkpQUBSaaFznLngp0hs3vY5YLwxnlYiacqG7C18dwJxdGPQOVUT-6ngs9nmpVCK0lFpG7W5V5",
-  "20260515HTSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-36/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.5R5wArBJW8kCckxB-Kb5fu1Q-J_rcW0LiH0mPQ6arhj4KqnoHkRhDZJ8X29ocpsVWdeFktRlY8WsPVw9CTNpr0oE82KDt19UxcBgt5PKTckB2gMg4AHsvfu1sHZafGrFNozpulsx--dqGLVd3bHBrxaOMnMFYGdx28D4R8pmsr8glYrJ32XDlo0H36muTBUk",
-  "20260515WONC0": "https://live-global-cdn-v02.sooplive.com/live-stmc-24/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.sI7jLAcCxa7HM4k6Gp1dUpaGvSd_vMX7VjcsWUb0DNd-imputCmmOM6Uy_GqbnlccpvCFmfJcsFjwanCdfFlMvKOj3jXlRu5dj5TtPgPHDMlKBrtEvzFMiGmXrX7bCem-z6CCFcCgthFSmmHA7L1gD_uWpXo6NRqfmKKN0oY-xqlD5eKBChwf0vuvULVoARb",
-  "20260515HHKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-35/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.oeF-9Auix5EGwe8cbgT5wKI8iI0_VHiEeB4iMbZNUI3dXPnSr8gC8TzF8_MmTKxwjLBON4-Z3YBCgS7-fzI2YQz043_9Et-_XjzeTdGPK9D01-KHB8p0G9_MtMfmVyLoPQCI73k_eqQYtUdiUTYTZ6U1d7N2LU6r942Wm9I3EhRy9WQ5zlOohD5I9jF18JPB",
+  "20260515LTOB0": "",
+  "20260515LGSK0": "",
+  "20260515HTSS0": "",
+  "20260515WONC0": "",
+  "20260515HHKT0": "",
   "20260516HHKT0": "",
-  "20260516LTOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-36/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.8EbTRMIgbUA4XAFlTdBQ_C0Upwd5pC98LnnN8afLd6ccMOe9OJMPAm1PRIcpRtVZ-SiM6qw_UKy9nyKm2psg3LwrsFQBSwtcJEY508SdZa4T88mtUmRbhebPi1n4LMPgWiLhdRNG13SyeLJOFQc8cNKS0Pp_B9dUKHwske01_VEkfDQa7VcGQ4d8Dcau7OEsYiwa9Jh3jTnWw29daZMJsg",
-  "20260516LGSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-36/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.8EbTRMIgbUA4XAFlTdBQ_GxQCmAUZEQWv7SBGdjjRaYt_8yHJbWgFyckIFtAX4Zgq3nkxXaWPAEjv-0ZGM3kHivK3Mf4NKPGYfbOt9rYctPuDwSmstF42TJWfUCC4exeyI1y4dVC-8_3zVt5KknWosdwY3VC58BDIwtXqLjo9xa8RtUyef56fgBY3StGYlvPqU_TzXAKcz5iJz9rUiwjCw",
-  "20260516HTSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-36/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.8EbTRMIgbUA4XAFlTdBQ_JDpUGvGj5IBGHckfyHYGa3u4aZyphHW4s9_HrseGQwxXPeCxLpDFMhPvMmBaAtGwn3v_P9c6dcdkNQfFKYGqT-2bwdU2pjrj-BZ5ToPJ46qkEol4fDZ3dvRBdWv0JoS7JlOZL2ZGwtIyIwm7iwDQ_OeNtmj03zuZoZapL5pnx2XXYwU2pifgi79M4UKSPHymQ",
-  "20260516WONC0": "https://live-global-cdn-v02.sooplive.com/live-stmc-29/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.8EbTRMIgbUA4XAFlTdBQ_CHO5rVg9JTSRWjh3p6WG6FcF08y67d4twVq5iyyIhrxNRiNhiqWk5KyQNse-gZHN6G_R3wm_-7W4HuPY3H3Gd7kEew9uojErd6mJbH1EBwY4peGvN0C-CKDwifc3C5DAockxQu4hBuH1oez2kxLvt-kY3Mk4_X-nYZkFutjysCUz3i0B_oqnhBdgEsEEiXyRA",
-  "20260517LTOB0": "",
-  "20260517LGSK0": "",
-  "20260517HTSS0": "",
-  "20260517WONC0": "",
-  "20260517HHKT0": ""
+  "20260516LTOB0": "",
+  "20260516LGSK0": "",
+  "20260516HTSS0": "",
+  "20260516WONC0": "",
+  "20260517LTOB0": "https://live-global-cdn-v02.sooplive.com/live-stm-20/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.8luXWfD9B51dXOSlqLER3XblwDnCU_bc0BFvZQe38imehaoG3K40uUoaV8xDv9Uv8NO-Z7kRbnJ4X34N9QMzKS0_61vMty6IyAvM3CXqqye0hFvGpS31dBWM02FtwAPeb28zdzKReevvNeAI33soTykICjkZ1hXp4H4EIs0fAD3hTheGjN8zFj14Ctcar5pg6FAcLIaPQjAE8UFVFijyZw",
+  "20260517LGSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-36/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.L2MKESykEC6OSrdq66kEzPDj328BXrhb47RfO3jI_OQdprSb3SIWOa_9nhR8SL5aonPsS7AI4-RTNk-z0vdmufE4Klh-ThJOmicKYO5Q_7qoeWEwIeKyPzGUTUmcFYxvIEPOAaQ44fho2Jj4Vh_MzlByGgCE0hTjTxBL_cUp_qncNdhrbdouItejHPacrfmSbP85GZ9TyU99mepc3Ga6mQ",
+  "20260517HTSS0": "https://live-global-cdn-v02.sooplive.com/live-stm-20/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.8luXWfD9B51dXOSlqLER3Y8WqnXG8xok50PhEp5no9W52JZQCvkfBzW8KQY4ZSBz26AO5pTu8mwaKoXmBcvUEx1_O189_27Rl_6rX_M156oxpjiWdqWa7FzoRg0vP2lCeh0FvxjqtYg19ZJPZJn8MMr1nTOwnmcYlLBmsJRXsjdsjTt2xRnwuDasR37jgzmPHT9w-sSTnBRCSmJUCf4FcQ",
+  "20260517WONC0": "https://live-global-cdn-v02.sooplive.com/live-stmc-38/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.8luXWfD9B51dXOSlqLER3dnYBv4xo6A43v6N0MRAcp1mMdjAMpYYXT7B772Ou9y61FKL7o7dJQ6xZXnEvlOnvyhMyjAFDgcjfbbvomXAUE2cLX7OR8BcsIcuFZXqbeWcg_Vr6rV8oTZ0BH8ub31sTS4L1-GWeNMn2BpPQsAAxL78aQD1jGPxrM66HvToBso4ofLhb7Hai9Ci_pnKtoSj1Q",
+  "20260517HHKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-29/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.8luXWfD9B51dXOSlqLER3QT-b1sCfLnEgPHWu0TsxKT5-Wb1b9rbxdxcmrTUPYIVvN2t5fSNmxBMKjNAWAocqnHLkrGJIYvosl1WQFVesGa6_LwZmfVZ4RY4G3CQ1j2IwxPMBo130Qi7g63BS3XzJ68BKef5_H_M03-frw9NBFZ_mvGpmGKHJ6ezak3Ybi4Tp81XhCAI6ChR28jHQtoCWw"
 };
