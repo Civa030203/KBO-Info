@@ -249,11 +249,11 @@ export const GAME_VIDEO_MAP = {
   "20260517HHKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260517/559/294079559/REGL_59FBF62B_294079559_1.mp4/manifest.m3u8",
 
   // 5월 3주차 주중 시리즈
-  "20260519NCOB0": "",
-  "20260519LGHT0": "",
-  "20260519SKWO0": "",
-  "20260519LTHH0": "",
-  "20260519KTSS0": "",
+  "20260519NCOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-29/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2diXVtzFkBWq0mF1ibr0sQ-f_LJeGst0zrCEldlHD0vh26NEclOFeArU84Cmg4pOKm0jQl5GmMhbBW2b3Y2TDYoEGk6NvZOKMA7sWq6uXKfL6PLSMNYR9Vidt9X24k05vNCFz8dCmqYXekZpuTMEqqa1cLnRZF4_Nd42cISvl-WP6XBwhHRFpYKlp7z9YinhbflOudp6bBbuM_2QhkxBRQ",
+  "20260519LGHT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-21/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2diXVtzFkBWq0mF1ibr0sVdW7j-1U5NrsghMp52-xs2K_4QutHIgylYdmj8qH3L3COr1oPczFmSt8HFNJaMTis6-xHC-KvqVkS6hvrL0ts3X66DdDthXTbz49JpPiUA_-zQdjtg9_juxPD6H3OMZqbl5uzN-IFC49I0d-qOjpPtTMjFHmoUvWZt1HcbWOlyi7PJDOkbJpOHv26hGtijIVw",
+  "20260519SKWO0": "https://live-global-cdn-v02.sooplive.com/live-stmc-31/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2diXVtzFkBWq0mF1ibr0sbcgqE0vaIparZhA-AeIZPogOcz0uusA3XFkVZG-cuOt_b53jfjKn9ivZejVXOP_NhHH9XPYggSUwLz9-l0LOprNdB--sOPAS22m9nIybIlO2SWP54cIHo3kmIFoa5V4gU1CBWJaNYhQk-5WJ5ZQanDmjVEnnqlPIove4NjWQCqbThcF1ZYreXA9J467sfgaUw",
+  "20260519LTHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-24/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2diXVtzFkBWq0mF1ibr0sTbXBzFcFyZpPCIh076Et7pVpaSLFimKpmCKESMAqcSFxi2mC91HIcg0L8MS0cbVkMrRZ2XmVRjvyexmxZCyX9gDFePrZ6besmu033LJ1eJNZ5z3FtTZEET1niyFNZSpeAeJ3KNdqrZgURmGyl1POFOQY9LChvNnaiStv6D3h13AdKPDVq3h8LrAI-DNS34jFA",
+  "20260519KTSS0": "https://live-global-cdn-v02.sooplive.com/live-stm-18/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2diXVtzFkBWq0mF1ibr0sQvnILFpiBwVxIcCl3GFFe0bdb7wZ9iazJynyyJDFXsnku15vMozqdIlB2OmVW4YTw3ov98z3LdsJUHh5iV0fiozVR9_9qgnSinVcd9xBNX94CLIi9JZQ12szKiDL6KOvglJ4uEJgVI58CH1UsIx54s-nGMD-3wegRJqWaSxFIpAKqejKc9EN5t4cAc9AiygMQ",
   "20260520NCOB0": "",
   "20260520LGHT0": "",
   "20260520SKWO0": "",
