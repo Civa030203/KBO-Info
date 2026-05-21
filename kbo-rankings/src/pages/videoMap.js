@@ -255,11 +255,11 @@ export const GAME_VIDEO_MAP = {
   "20260519LTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260519/969/294134969/REGL_8C2797CA_294134969_1.mp4/manifest.m3u8",
   "20260519KTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260519/983/294134983/REGL_07E5C40F_294134983_1.mp4/manifest.m3u8",
   "20260520SKWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260520/665/294160665/REGL_6B8F18B5_294160665_1.mp4/manifest.m3u8",
-  "20260521NCOB0": "",
-  "20260521LGHT0": "",
-  "20260521SKWO0": "",
-  "20260521LTHH0": "",
-  "20260521KTSS0": "",
+  "20260521NCOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-38/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.AnLL0wsGweKUWKojrNHm25IN-AMQal24KlBG_ah8FuTmqQLX6GkM3V7nJm6rxrp47DSBgFo7PZviW7aSMS-94MkmY4_KgYZUcqa0EU7dE3l4A-Hir9wbvw3zpvxvOd8zLQfuKzKjEi5SAeTcYzhZndULygzHU_Z5RheZEPUNpcJINbXD5DdFBRUz2ogB6a_r",
+  "20260521LGHT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-39/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.AnLL0wsGweKUWKojrNHm25WGHInv_m9vDRGgQZoR8B1Mcco6H1e00TyMAIhCLEw-nhb72kQx45Uo4D8WwaOdaBEEe9Yuq5cUWBGOgbINpdhgGp0ZPgF-OwaLVT-op2NcuKs9XwwINLNFWouCar8qBCvXVku2_nbvKdUrvM2o-VJ2PL5rwzpwh02pyuwYkMBc",
+  "20260521SKWO0": "https://live-global-cdn-v02.sooplive.com/live-stmc-39/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.AnLL0wsGweKUWKojrNHm22Dr38vd4Rnuyxukn8S-1kZoekS3ZLkq0TE8lDfENJB7zooI2LQr4oofEfG0fAWW9_NEYjjJB3gqPPZu_w-ff7Q2PLzuexxukd8fP1SLpJ7FirMzwdoKYc9Kw3WeA-aS9e6SHTN2Rrmg6OHftEH2zRybOTZ_sG7e7ycaz6k09AZr",
+  "20260521LTHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-39/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.AnLL0wsGweKUWKojrNHm28S2rN1wjiI0UY0W7A1RBNRR6t6y5wBnSKUS8sif-gGVj8UAxmaZ1bWlJJZ2Qg2jxuDLVDXCSsv9i_hNmyuLbnpPslo6ZGQSeiFktKC3f4XPZCVzlM0iM3q4wRFdwB2fzFjMBeWlx6uJpOEpFK1j-i2WhDPKRzUqQaQIGLmgCro9",
+  "20260521KTSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-21/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.AnLL0wsGweKUWKojrNHm221sRroBXAMd8rEkOjBDbVnNEVxuW1UkYLLLlqo_zycPsZOQq6bQmb8SWvLmmLUgW1QoB2F5q85fCGgdxKc2YDfHnWLnWiqYvi23OccgQzWCLcOIsvosYQdBbXKwMZgtyNIjjhGJTHlP-mFga7vzUhX-TjMZHLQ6F8cO5_CGc_WD",
 
   // 5월 3주차 주말 시리즈
   "20260522WOLG0": "",
