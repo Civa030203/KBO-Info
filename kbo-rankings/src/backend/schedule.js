@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 
     const requests = [];
     for (let currentSrId = 0; currentSrId <= 10; currentSrId++) {
-      const url = `http://koreabaseball.com/ws/Main.asmx/GetKboGameList?&dataType=json&leId=${leId}&srId=${currentSrId}&date=${date}`;
+      const url = `https://m.koreabaseball.com/ws/Kbo.asmx/GetKboGameList?leId=${leId}&srId=${currentSrId}&date=${date}`;
       requests.push(
         axios.get(url, {
           headers: {
