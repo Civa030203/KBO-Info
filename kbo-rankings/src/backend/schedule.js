@@ -55,21 +55,23 @@ router.get("/", async (req, res) => {
             isTopOrBottom: gameInfo.GAME_TB_SC_NM
           };
 
-          switch (newGame.gameType.slice(0, 2)) {
-            case 'WC':
-              newGame.gameType = '와일드카드 결정전 ' + String(newGame.gameNumber) + "차전";
-              break;
-            case '준P':
-              newGame.gameType = '준플레이오프 ' + String(newGame.gameNumber) + "차전";
-              break;
-            case 'PO':
-              newGame.gameType = '플레이오프 ' + String(newGame.gameNumber) + "차전";
-              break;
-            case 'KS':
-              newGame.gameType = '한국시리즈 ' + String(newGame.gameNumber) + "차전";
-              break;
-            default:
-              break;
+          if (newGame.gameType !== undefined) {
+            switch (newGame.gameType.slice(0, 2)) {
+              case 'WC':
+                newGame.gameType = '와일드카드 결정전 ' + String(newGame.gameNumber) + "차전";
+                break;
+              case '준P':
+                newGame.gameType = '준플레이오프 ' + String(newGame.gameNumber) + "차전";
+                break;
+              case 'PO':
+                newGame.gameType = '플레이오프 ' + String(newGame.gameNumber) + "차전";
+                break;
+              case 'KS':
+                newGame.gameType = '한국시리즈 ' + String(newGame.gameNumber) + "차전";
+                break;
+              default:
+                break;
+            }
           }
 
           gameData.push(newGame);
