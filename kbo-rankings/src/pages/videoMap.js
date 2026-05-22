@@ -262,11 +262,11 @@ export const GAME_VIDEO_MAP = {
   "20260521KTSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-21/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.AnLL0wsGweKUWKojrNHm221sRroBXAMd8rEkOjBDbVnNEVxuW1UkYLLLlqo_zycPsZOQq6bQmb8SWvLmmLUgW1QoB2F5q85fCGgdxKc2YDfHnWLnWiqYvi23OccgQzWCLcOIsvosYQdBbXKwMZgtyNIjjhGJTHlP-mFga7vzUhX-TjMZHLQ6F8cO5_CGc_WD",
 
   // 5월 3주차 주말 시리즈
-  "20260522WOLG0": "",
-  "20260522SSLT0": "",
-  "20260522NCKT0": "",
-  "20260522SKHT0": "",
-  "20260522OBHH0": "",
+  "20260522WOLG0": "https://live-global-cdn-v02.sooplive.com/live-stmc-23/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Wi_XUwsKDHI_oKdvvdFTVlsx3Nj6AHDKCUZX8_OkoAQYzRJ6vAubBNelH0Baxc7jbVqZOsF7FLgII3s2gWDH2uGZmfCBljP21Yx5XA5FXjcSKvt2RlmEchEoFtqsZGnYpmtjFGRNUuxEW-YLxSAj5EgvwA3StrTuulxav2pfIG4TMvCay6pcTSS8P2cM9kZx",
+  "20260522SSLT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-37/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Wi_XUwsKDHI_oKdvvdFTVvLBcVp4hNiBNKqZ1Ff2w3q1UqvUmfHR5p47GRZAokacxmHqL3cjDtHc4sO7udBmC_2KOugc5qGqO2TGesGT1YoIbgaFgKNEKJWNst0z-JpDOx1LAj-IP6TOwjr9TEXO7UgbTTChnnEINjJ7_kWkv5ui6XJkw-ed6-Zcvl4mOEJr",
+  "20260522NCKT0": "https://live-global-cdn-v02.sooplive.com/live-stm-17/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Wi_XUwsKDHI_oKdvvdFTViH4WBkxHiCsqI1VqyQcdkUE5HtchyRTR_oDB_2vzIfEYJZ46fZ1XeIeWrjStNuLrGNuNlbG6GrO48GK4g8wdaq6DX-vD9neehVWMQQeBmyBAHl5vTTI0wwef18epmmWxkxjBl5av3-wJ0CPq2_Rv-mn95zYS-K7buxD1basDHGA",
+  "20260522SKHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-17/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Wi_XUwsKDHI_oKdvvdFTVr3DqMBsgudKrAfL30P62E_eppQzQ6Y9k-F7DLIP7CR97vc53uliGVRqxtqBAobCiouJEo8AOyTsmyB5QofDTDCCObg2CZNSHGlRyT1bogv6wtr1v9GdqFNsTGplvNgDlkmfmlt-uW-9USQ79rc68xyMtg1_bvLYlSwvclNeIKxR",
+  "20260522OBHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-22/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Wi_XUwsKDHI_oKdvvdFTVrIv39DQVjSWEMIeUT7pBlPmtDd6nCCLlMhY5A6HEtlVvAqkqutHE7f57IYNkWCMCJAxo94rA2dWGMxrgarZ5BfXxQ8UWzCuNE1Jn_g8i4BgMD7WiKw5ZQo5oulNV90jvlTDB5b_NBNPcqs_ZPJo9OXqfl3Pu2TDIEX_G6fYYwOH",
   "20260523WOLG0": "",
   "20260523SSLT0": "",
   "20260523NCKT0": "",
