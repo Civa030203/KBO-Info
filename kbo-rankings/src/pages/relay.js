@@ -88,6 +88,7 @@ export default function LiveTextPage() {
   const [maxInn, setMaxInn] = useState(1);
   const [inn, setInn] = useState(null);
   const [videoVisible, setVideoVisible] = useState(true);
+  const [mobileLineupOpen, setMobileLineupOpen] = useState(false);
 
   // 현재 경기의 비디오 링크 가져오기
   const videoUrl = GAME_VIDEO_MAP[gameId];
@@ -104,7 +105,7 @@ export default function LiveTextPage() {
     const fetchLive = async () => {
       try {
         const gData = await axios.get(
-          `https://kbo-info.onrender.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
+          `http://localhost:5001/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
         );
 
         gData.data.forEach((dt) => {
@@ -115,7 +116,7 @@ export default function LiveTextPage() {
 
         if (!inn) return;
 
-        const res = await axios.get(`https://kbo-info.onrender.com/api/relay`, {
+        const res = await axios.get(`http://localhost:5001/api/relay`, {
           params: {
             le_id: leagueId,
             sr_id: seriesId,
@@ -146,7 +147,7 @@ export default function LiveTextPage() {
     const fetchScore = async () => {
       try {
         const resScore = await axios.get(
-          `https://kbo-info.onrender.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
+          `http://localhost:5001/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
         );
         setScoreData(resScore.data);
 
@@ -209,7 +210,7 @@ export default function LiveTextPage() {
   const renderLineup = (lineup, teamName) => {
     if (!lineup || lineup.length === 0 || !teamName) return null;
     const teamStyle = teamData[teamName] || {};
-    let inlineStyle = { backgroundColor: '#1f2937' }; // default dark gray
+    let inlineStyle = { backgroundColor: '#1f2937' };
     if (teamStyle.mainColor) {
       const rawColor = teamStyle.mainColor.replace('[', '').replace(']', '');
       inlineStyle = { backgroundColor: rawColor };
@@ -269,8 +270,18 @@ export default function LiveTextPage() {
 
 
 
-  if (loading) return <p className="text-center p-4">불러오는 중...</p>;
-  if (!live) return <p className="text-center p-4">데이터가 없습니다.</p>;
+  // 팀 컬러 헬퍼: 공격 팀 이름에서 mainColor 조회
+  const getTeamColor = (teamName) => {
+    if (!teamName) return '#3b82f6';
+    const style = teamData[teamName];
+    if (style && style.mainColor) {
+      return style.mainColor.replace(/[\[\]]/g, '');
+    }
+    return '#3b82f6';
+  };
+
+  if (loading) return <p className="text-center p-4 text-gray-300">불러오는 중...</p>;
+  if (!live) return <p className="text-center p-4 text-gray-300">데이터가 없습니다.</p>;
 
   const handleChange = (e) => {
     const selected = e.target.value;
@@ -278,7 +289,7 @@ export default function LiveTextPage() {
   };
 
   return (
-    <div className="flex justify-center gap-6 p-4 w-full max-w-7xl mx-auto min-h-screen">
+    <div className="flex justify-center gap-6 p-4 w-full max-w-7xl mx-auto min-h-screen bg-[#0a0a0a] text-gray-100">
       {/* 원정팀 라인업 (PC 전용) */}
       <div className="hidden xl:block w-72 shrink-0">
         {renderLineup(lineupData.away, scoreData?.teamData?.[0])}
@@ -290,18 +301,18 @@ export default function LiveTextPage() {
         <div className="mb-4">
           <Link
             to="/schedule"
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
           >
             ⬅ 메인 화면으로
           </Link>
         </div>
 
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-xl font-bold">KBO 문자중계</h1>
+          <h1 className="text-xl font-bold text-white">KBO 문자중계</h1>
           {videoUrl && (
             <button
               onClick={() => setVideoVisible(!videoVisible)}
-              className="text-xs font-medium px-3 py-1 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 transition flex items-center gap-1"
+              className="text-xs font-medium px-3 py-1 bg-gray-700 text-gray-200 rounded-full hover:bg-gray-600 transition flex items-center gap-1"
             >
               {videoVisible ? "📺 비디오 숨기기" : "📺 비디오 보기"}
             </button>
@@ -310,7 +321,7 @@ export default function LiveTextPage() {
 
         {/* ✅ SOOP 비디오 컨테이너 */}
         {videoUrl && videoVisible && (
-          <div className="mb-6 overflow-hidden rounded-2xl border border-gray-100 shadow-xl bg-black aspect-video relative group sticky top-4 z-50">
+          <div className="mb-6 overflow-hidden rounded-2xl border border-gray-700 shadow-xl bg-black aspect-video relative group sticky top-4 z-50">
             {videoUrl.includes(".m3u8") ? (
               <video
                 src={videoUrl}
@@ -340,92 +351,118 @@ export default function LiveTextPage() {
         )}
 
         {/* ✅ 스코어보드 */}
-        <div className="overflow-x-auto mb-6 rounded-lg shadow border border-gray-200">
-          <table className="border-collapse text-center text-xs bg-white w-full">
-            <thead className="bg-gray-100 text-gray-600">
+        <div className="overflow-x-auto mb-6 rounded-lg shadow border border-gray-700">
+          <table className="border-collapse text-center text-xs bg-gray-900 text-gray-200 w-full">
+            <thead className="bg-gray-800 text-gray-400">
               <tr>
-                <th className="border border-gray-200 px-3 py-2 text-left sticky left-0 z-10 bg-gray-100 font-semibold min-w-[4rem]">팀</th>
+                <th className="border border-gray-700 px-3 py-2 text-left sticky left-0 z-10 bg-gray-800 font-semibold min-w-[4rem]">팀</th>
                 {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                  <th key={i} className="border border-gray-200 px-2 py-2 min-w-[1.75rem]">
+                  <th key={i} className="border border-gray-700 px-2 py-2 min-w-[1.75rem]">
                     {i + 1}
                   </th>
                 ))}
-                <th className="border border-gray-200 px-2 py-2 font-bold text-blue-700 bg-blue-50 min-w-[2rem]">R</th>
-                <th className="border border-gray-200 px-2 py-2 min-w-[2rem]">H</th>
-                <th className="border border-gray-200 px-2 py-2 min-w-[2rem]">E</th>
-                <th className="border border-gray-200 px-2 py-2 min-w-[2rem]">B</th>
+                <th className="border border-gray-700 px-2 py-2 font-bold text-blue-400 bg-gray-800 min-w-[2rem]">R</th>
+                <th className="border border-gray-700 px-2 py-2 min-w-[2rem]">H</th>
+                <th className="border border-gray-700 px-2 py-2 min-w-[2rem]">E</th>
+                <th className="border border-gray-700 px-2 py-2 min-w-[2rem]">B</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-blue-50">
-                <td className="border border-gray-200 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-blue-50">{scoreData.teamData[0]}</td>
+              <tr className="bg-gray-900">
+                <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-900">{scoreData.teamData[0]}</td>
                 {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                  <td key={i} className="border border-gray-200 px-2 py-2">{scoreData.scoreData[0][i]}</td>
+                  <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[0][i]}</td>
                 ))}
-                <td className="border border-gray-200 px-2 py-2 font-bold text-blue-700 bg-blue-100">{scoreData.resultData[0][0]}</td>
-                <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[0][1]}</td>
-                <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[0][2]}</td>
-                <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[0][3]}</td>
+                <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[0][0]}</td>
+                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][1]}</td>
+                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][2]}</td>
+                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][3]}</td>
               </tr>
-              <tr className="bg-red-50">
-                <td className="border border-gray-200 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-red-50">{scoreData.teamData[1]}</td>
+              <tr className="bg-gray-800/50">
+                <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-800/50">{scoreData.teamData[1]}</td>
                 {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                  <td key={i} className="border border-gray-200 px-2 py-2">{scoreData.scoreData[1][i]}</td>
+                  <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[1][i]}</td>
                 ))}
-                <td className="border border-gray-200 px-2 py-2 font-bold text-blue-700 bg-blue-100">{scoreData.resultData[1][0]}</td>
-                <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[1][1]}</td>
-                <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[1][2]}</td>
-                <td className="border border-gray-200 px-2 py-2">{scoreData.resultData[1][3]}</td>
+                <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[1][0]}</td>
+                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][1]}</td>
+                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][2]}</td>
+                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][3]}</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        {/* 회차 선택 */}
-        <select
-          onChange={(e) => setInn(Number(e.target.value))}
-          className="border p-2 rounded mb-4"
-          value={inn ?? "1"}
-        >
-          {[...Array(maxInn)].map((_, i) => (
-            <option key={i + 1} value={i + 1}>
-              {i + 1}회
-            </option>
-          ))}
-        </select>
+        {/* 회차 선택 및 모바일 라인업 보기 버튼 */}
+        <div className="flex items-center justify-between gap-2 mb-4">
+          <select
+            onChange={(e) => setInn(Number(e.target.value))}
+            className="border border-gray-600 p-2 rounded flex-none w-32 bg-gray-800 text-white"
+            value={inn ?? "1"}
+          >
+            {[...Array(maxInn)].map((_, i) => (
+              <option key={i + 1} value={i + 1}>
+                {i + 1}회
+              </option>
+            ))}
+          </select>
+
+          <button
+            onClick={() => setMobileLineupOpen(!mobileLineupOpen)}
+            className="xl:hidden px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
+          >
+            {mobileLineupOpen ? "라인업 닫기" : "라인업 보기"}
+          </button>
+        </div>
+
+        {/* 모바일 환경 라인업 */}
+        {mobileLineupOpen && (
+          <div className="xl:hidden w-full flex flex-col sm:flex-row gap-4 mb-6">
+            <div className="flex-1">
+              {renderLineup(lineupData.away, scoreData?.teamData?.[0])}
+            </div>
+            <div className="flex-1">
+              {renderLineup(lineupData.home, scoreData?.teamData?.[1])}
+            </div>
+          </div>
+        )}
 
         {/* 문자중계 */}
-        {live.live.listInnTb.map((inning, inningIdx) => (
+        {live.live.listInnTb.map((inning, inningIdx) => {
+          const attackTeamColor = getTeamColor(inning.T_NM);
+          return (
           <div key={inningIdx} className="mb-6">
-            <h4 className="text-s font-bold mb-2">
+            <h4 className="text-s font-bold mb-2 text-gray-200">
               {inn}회{inning.TB_NM} {inning.T_NM} 공격
             </h4>
 
-            <div className="border rounded-lg p-4 bg-white shadow">
+            <div className="border border-gray-700 rounded-lg p-4 bg-gray-900 shadow">
               {inning.listBatOrder.map((bat, batIdx) => (
                 <div key={batIdx} className="mb-4">
-                  <div className="flex items-center gap-4 p-4 border-l-4 border-blue-600 bg-white shadow-sm rounded-md">
+                  <div
+                    className="flex items-center gap-4 p-4 border-l-4 bg-gray-800 shadow-sm rounded-md"
+                    style={{ borderLeftColor: attackTeamColor }}
+                  >
                     <img
                       src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${getPlayerImageYear(parseInt(gameId.slice(0, 4)), bat.BAT_P_ID)}/${getRealPlayerId(bat.BAT_P_ID)}.jpg`}
                       alt={bat.BAT_P_NM}
                       className="w-12 h-16 rounded-full"
                     />
                     <div>
-                      <Link to={`https://kbo-info.vercel.app/playerData/${getRealPlayerId(bat.BAT_P_ID)}`} className="font-semibold">{bat.BAT_P_NM}</Link>
-                      <h2 className="text-gray-600 text-sm">{bat.BAT_ORDER_NO}번타자</h2>
+                      <Link to={`https://kbo-info.vercel.app/playerData/${getRealPlayerId(bat.BAT_P_ID)}`} className="font-semibold text-gray-100 hover:text-blue-400 hover:underline transition-colors">{bat.BAT_P_NM}</Link>
+                      <h2 className="text-gray-400 text-sm">{bat.BAT_ORDER_NO}번타자</h2>
                     </div>
                   </div>
                   <ul className="mt-2 space-y-2">
                     {bat.listData.map((play, playIdx) => (
-                      <li key={playIdx} className="p-2 border-b last:border-none text-sm">
+                      <li key={playIdx} className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300">
                         <span
                           className={
                             play.TEXTSTYLE_SC === "2"
-                              ? "italic text-gray-400"
+                              ? "italic text-gray-500"
                               : play.TEXTSTYLE_SC === "13" || play.TEXTSTYLE_SC === "14"
-                                ? "font-bold"
+                                ? "font-bold text-gray-100"
                                 : play.TEXTSTYLE_SC === "23" || play.TEXTSTYLE_SC === "24"
-                                  ? "font-bold text-blue-300"
+                                  ? "font-bold text-blue-400"
                                   : ""
                           }
                         >
@@ -439,7 +476,7 @@ export default function LiveTextPage() {
               {inn === maxInn &&
                 live.postGame.listResult.map((res, resIdx) => (
                   <ul className="mt-2 space-y-2" key={resIdx}>
-                    <li className="p-2 border-b last:border-none text-sm">
+                    <li className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300">
                       {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ?
                         <span>{res.LIVETEXT_IF}</span> :
                         parseInt(scoreData.resultData[0][0]) < parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'T' ?
@@ -451,7 +488,7 @@ export default function LiveTextPage() {
               }
             </div>
           </div>
-        ))}
+        )})}
       </div>
 
       {/* 홈팀 라인업 (PC 전용) */}

@@ -1,4 +1,6 @@
 node_modules/
+# 모든 하위 폴더에 있는 node_modules 폴더를 전부 무시합니다.
+**/node_modules/
 build/
 .DS_Store
 .next/

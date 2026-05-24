@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 
 export default function Main() {
   return (
@@ -6,7 +6,7 @@ export default function Main() {
       <Link
         to="/ranking"
         className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 transition"
-      >⚾ KBO 팀 순위 보러가기</Link>"
+      >??KBO ?� ?�위 보러가�?/Link>"
     </div>
   );
 }

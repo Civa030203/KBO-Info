@@ -17,7 +17,7 @@ export default function Data() {
         if (!pId) return;
 
         axios
-            .get(`https://kbo-info.onrender.com/api/playerData?pId=${pId}`)
+            .get(`http://localhost:5001/api/playerData?pId=${pId}`)
             .then((res) => {
                 setPlayer(res.data);
                 if (res.data.records && res.data.records.length > 0) {
@@ -205,18 +205,18 @@ export default function Data() {
 
 
     if (!player) {
-        return <div className="text-center mt-10 text-lg">불러오는 중...</div>;
+        return <div className="text-center mt-10 text-lg text-gray-300">불러오는 중...</div>;
     } else {
         return (
             <><div className="m-4">
                 <Link
                     to="/playerData"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
                 >
                     ⬅ 이전 화면으로
                 </Link>
             </div>
-                <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-100">
+                <div className="max-w-2xl mx-auto bg-gray-900 shadow-lg rounded-2xl overflow-hidden border border-gray-700">
 
                     {/* 상단 배너 + 프로필 */}
                     <div
@@ -233,7 +233,7 @@ export default function Data() {
                                 (!player.records) ? `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2017/${pId}.jpg` :
                                     `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2017/${pId}.jpg`}
                             alt={player.name}
-                            className="w-24 h-28 rounded-full border-4 border-white shadow-md"
+                            className="w-24 h-28 rounded-full border-4 border-gray-700 shadow-md"
                         />
                         <div className="ml-4">
                             <h2 className="text-2xl font-bold text-gray-100">{player.name}</h2>
@@ -257,36 +257,36 @@ export default function Data() {
                     </div>
 
                     {/* 기본 정보 */}
-                    <div className="px-6 py-4 border-t border-gray-100">
-                        <h3 className="text-lg font-semibold mb-2">선수 정보</h3>
+                    <div className="px-6 py-4 border-t border-gray-700">
+                        <h3 className="text-lg font-semibold mb-2 text-gray-100">선수 정보</h3>
                         <div className="grid grid-cols-2 gap-y-2 text-sm">
-                            <div className="text-gray-500">등번호</div>
-                            <div>{player.backNo}</div>
+                            <div className="text-gray-400">등번호</div>
+                            <div className="text-gray-200">{player.backNo}</div>
 
-                            <div className="text-gray-500">생년월일</div>
-                            <div>{player.birth}</div>
+                            <div className="text-gray-400">생년월일</div>
+                            <div className="text-gray-200">{player.birth}</div>
 
-                            <div className="text-gray-500">체격</div>
-                            <div>{player.body}</div>
+                            <div className="text-gray-400">체격</div>
+                            <div className="text-gray-200">{player.body}</div>
 
-                            <div className="text-gray-500">포지션</div>
-                            <div>{player.position}</div>
+                            <div className="text-gray-400">포지션</div>
+                            <div className="text-gray-200">{player.position}</div>
 
-                            <div className="text-gray-500">입단</div>
-                            <div>{player.proDebut}</div>
+                            <div className="text-gray-400">입단</div>
+                            <div className="text-gray-200">{player.proDebut}</div>
                         </div>
                     </div>
 
                     {/* 시즌 스탯 */}
-                    <div className="px-6 py-4 border-t border-gray-100">
+                    <div className="px-6 py-4 border-t border-gray-700">
                         {(!player.records || player.records.length === 0 || yearIndex === -1) ? (
                             <div className="text-center py-10">
-                                <p className="text-gray-500 font-medium">시즌 기록이 없습니다.</p>
+                                <p className="text-gray-400 font-medium">시즌 기록이 없습니다.</p>
                             </div>
                         ) : (
                             <>
-                                <h3 className="text-lg font-semibold mb-2">{player.records[yearIndex].year} 시즌 성적</h3>
-                                <select name="yearSelect" onChange={GetStatYear} defaultValue={player.records[yearIndex].year}>
+                                <h3 className="text-lg font-semibold mb-2 text-gray-100">{player.records[yearIndex].year} 시즌 성적</h3>
+                                <select name="yearSelect" onChange={GetStatYear} defaultValue={player.records[yearIndex].year} className="bg-gray-800 text-white border border-gray-600 rounded px-2 py-1 mb-2">
                                     {player.records.map((r) => (
                                         <option key={r.year} value={r.year}>
                                             {r.year}
@@ -295,31 +295,31 @@ export default function Data() {
                                 </select>
                                 <div className="grid grid-cols-3 text-center text-sm">
                                     <div>
-                                        <p className="text-gray-500">{player.position.substr(0, 1) == "투" ? "승리" : "타율"}</p>
-                                        <p className="text-xl font-semibold">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].win : player.records[yearIndex].avg}</p>
+                                        <p className="text-gray-400">{player.position.substr(0, 1) == "투" ? "승리" : "타율"}</p>
+                                        <p className="text-xl font-semibold text-gray-100">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].win : player.records[yearIndex].avg}</p>
                                     </div>
                                     <div>
-                                        <p className="text-gray-500">{player.position.substr(0, 1) == "투" ? "패배" : "홈런"}</p>
-                                        <p className="text-xl font-semibold">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].loss : player.records[yearIndex].hr}</p>
+                                        <p className="text-gray-400">{player.position.substr(0, 1) == "투" ? "패배" : "홈런"}</p>
+                                        <p className="text-xl font-semibold text-gray-100">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].loss : player.records[yearIndex].hr}</p>
                                     </div>
                                     <div>
-                                        <p className="text-gray-500">{player.position.substr(0, 1) == "투" ? "평균자책점" : "타점"}</p>
-                                        <p className="text-xl font-semibold">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].era : player.records[yearIndex].rbi}</p>
+                                        <p className="text-gray-400">{player.position.substr(0, 1) == "투" ? "평균자책점" : "타점"}</p>
+                                        <p className="text-xl font-semibold text-gray-100">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].era : player.records[yearIndex].rbi}</p>
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-3 text-center text-sm mt-4">
                                     <div>
-                                        <p className="text-gray-500">{player.position.substr(0, 1) == "투" ? "세이브" : "출루율"}</p>
-                                        <p className="text-xl font-semibold">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].save : player.records[yearIndex].obp}</p>
+                                        <p className="text-gray-400">{player.position.substr(0, 1) == "투" ? "세이브" : "출루율"}</p>
+                                        <p className="text-xl font-semibold text-gray-100">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].save : player.records[yearIndex].obp}</p>
                                     </div>
                                     <div>
-                                        <p className="text-gray-500">{player.position.substr(0, 1) == "투" ? "홀드" : "장타율"}</p>
-                                        <p className="text-xl font-semibold">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].hold : player.records[yearIndex].slg}</p>
+                                        <p className="text-gray-400">{player.position.substr(0, 1) == "투" ? "홀드" : "장타율"}</p>
+                                        <p className="text-xl font-semibold text-gray-100">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].hold : player.records[yearIndex].slg}</p>
                                     </div>
                                     <div>
-                                        <p className="text-gray-500">{player.position.substr(0, 1) == "투" ? "WHIP" : "OPS"}</p>
-                                        <p className="text-xl font-semibold">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].whip : player.records[yearIndex].ops}</p>
+                                        <p className="text-gray-400">{player.position.substr(0, 1) == "투" ? "WHIP" : "OPS"}</p>
+                                        <p className="text-xl font-semibold text-gray-100">{player.position.substr(0, 1) == "투" ? player.records[yearIndex].whip : player.records[yearIndex].ops}</p>
                                     </div>
                                 </div>
                             </>
@@ -327,12 +327,12 @@ export default function Data() {
                     </div>
 
                     {/* KBO 공식 페이지 링크 */}
-                    <div className="px-6 py-4 border-t border-gray-100 bg-gray-50">
+                    <div className="px-6 py-4 border-t border-gray-700 bg-gray-800">
                         <Link
                             to={"https://www.koreabaseball.com/Record/Player/" + (player.position.substr(0, 1) === "투" ? "PitcherDetail" : "HitterDetail") + `/Basic.aspx?playerId=${pId}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-blue-600 font-medium hover:underline text-sm"
+                            className="text-blue-400 font-medium hover:underline text-sm"
                         >
                             KBO 공식 선수 정보 보기 →
                         </Link>

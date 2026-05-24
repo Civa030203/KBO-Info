@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'HakgyoansimGeurimilgi';
+  src: url('./fonts/Hakgyoansim Geurimilgi OTF R.otf') format('opentype'),
+       url('./fonts/Hakgyoansim Geurimilgi TTF R.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body, * {
+  font-family: 'HakgyoansimGeurimilgi', sans-serif;
+}
