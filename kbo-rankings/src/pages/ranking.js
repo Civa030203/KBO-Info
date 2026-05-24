@@ -9,7 +9,7 @@ export default function Ranking() {
 
   useEffect(() => {
     axios
-      .get("http://http://kbo-info.onrender.com/api/rankings")
+      .get("https://kbo-info.onrender.com/api/rankings")
       .then((res) => setRankings(res.data))
       .catch((err) => console.error(err));
   }, []);

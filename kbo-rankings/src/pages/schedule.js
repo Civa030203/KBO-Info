@@ -38,7 +38,7 @@ export default function Schedule() {
     setLoading(true);
 
     axios
-      .get(`http://kbo-info.onrender.com/api/schedule?&date=${searchParams.date}&leId=${searchParams.league}`)
+      .get(`https://kbo-info.onrender.com/api/schedule?&date=${searchParams.date}&leId=${searchParams.league}`)
       .then((res) => {
         if (!ignore) {
           setGames(res.data);
