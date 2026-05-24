@@ -276,5 +276,5 @@ export const GAME_VIDEO_MAP = {
   "20260524SSLT0": "",
   "20260524NCKT0": "",
   "20260524SKHT0": "",
-  "20260524OBHH0": ""
+  "20260524OBHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.jjkQx45SSX6lCaYAwwa-b5m5MWiHZVocsPgrAE890mpdUX96C_0NNwLDPVC2faPGICrlqAHA3w4E5WHAVRZiOL3JRnl6BLyV-lcUfFP8DMGKoqg1OjHbPupQVd9-Rx02iqOKk_vyw45XLfGMHw86C0t7Qz5NjOUGv4aBgco1o0u_rBj4cCXfP0KfvRhiDKpN"
 };
