@@ -268,13 +268,13 @@ export const GAME_VIDEO_MAP = {
   "20260522SKHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260522/873/294211873/REGL_4ACF3166_294211873_1.mp4/manifest.m3u8",
   "20260522OBHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260522/881/294211881/REGL_DEB0CBE3_294211881_1.mp4/manifest.m3u8",
   "20260523WOLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260523/237/294233237/REGL_85C6FA54_294233237_1.mp4/manifest.m3u8",
-  "20260523SSLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-19/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.asElIv8F9-VGSwHmf-Pk1Pd0wK8lLJ8uEZ9wLtTefmOXszceTiVTC-igm1-IQOwXszp5lXz7hpcWbG8Q-rOOMnGeplSbuS08Zvrm8sdO3rGC2iuWlD4wz3XomzSIg9DSCSXq_CSwsjRiiE658OpqZBo6PDZyHLSXQMiya9SGBLOUS-PPPaTWjXUaejGt98AEHDEGc50L6_2tvBAayg80Ig",
-  "20260523NCKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-24/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.CX9jO7ukm7buczscPBHFvibuS7vIvfpC3ieyfSLGaqbvAPrmPyPskZpoHwJ_K8csACluPp4YNGn9k6Lf_djcdpxLLVxH9WPvQ7mhHmrDEUq39YrQTmOJ4PnNiCUcRridQXvQUt6UuFQ5XfqtR2qgKSSRkyYRTXs7TDsALRt4ipCi6cQZOtL0BViW-zNLtTN_O-ponFxWONDSO0SeQUK7XQ",
-  "20260523SKHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-16/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.asElIv8F9-VGSwHmf-Pk1M8kGVfmZTmW7mQ7TUWQbr-imVnkPozhLIQ3mGg6pXLhrsUlVWlPgwVWfBk6h7QpguPoJwkyH6i_e90F4QMlOVJfsML4hYwownFoHC62hzhy4x5n67NHb1X7skpFyrth-_ZaFtSTOXOvryfTRf4VMbhFbgVIPDotTg5ECZ-xbgJC6xJI7zOxyyxKD-pDRfttrw",
-  "20260523OBHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-19/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.asElIv8F9-VGSwHmf-Pk1DLWooYPybMaJswKZheIqzcWX_-eyZs3nFWix4Anz6s1JuUFO8oFLPFH6gwp1cj497fIipAEettDkKhMbLJ3ttJyT2E4w8yV2x2KPRDjDE-DBGKUZQPVzYqrsc7CSYhj6rQUBYAvaSuB8umyAb-6VtDvFwPB08NsrwcgBD_iaoPX3qRqyxyRVhADTEjODQrM3g",
-  "20260524WOLG0": "",
-  "20260524SSLT0": "",
-  "20260524NCKT0": "",
-  "20260524SKHT0": "",
-  "20260524OBHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.jjkQx45SSX6lCaYAwwa-b5m5MWiHZVocsPgrAE890mpdUX96C_0NNwLDPVC2faPGICrlqAHA3w4E5WHAVRZiOL3JRnl6BLyV-lcUfFP8DMGKoqg1OjHbPupQVd9-Rx02iqOKk_vyw45XLfGMHw86C0t7Qz5NjOUGv4aBgco1o0u_rBj4cCXfP0KfvRhiDKpN"
+  "20260523SSLT0": "",
+  "20260523NCKT0": "",
+  "20260523SKHT0": "",
+  "20260523OBHH0": "",
+  "20260524WOLG0": "https://live-global-cdn-v02.sooplive.com/live-stmc-23/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.QmcpoWRzrdFiilmIh9cU7OypT5dJ7KWJH1Orbt2t0Y8WWqJ6NbIyrrvRDvWVvXzgt8XK0JHPrBMCcNrkzfVAkXjSNJE3PFbssmAx9tvqamaIMqjb-Fq2qsugh0lUHq8ArDy7GE6CNZOM4clFzrk3IxwJt0UV8aI-0K7gpsjSiQnWpoeJyOcuMVFWoTuP3DHWRXU9IHZhLeMipSS-BJr9Tw",
+  "20260524OBHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.jjkQx45SSX6lCaYAwwa-b5m5MWiHZVocsPgrAE890mpdUX96C_0NNwLDPVC2faPGICrlqAHA3w4E5WHAVRZiOL3JRnl6BLyV-lcUfFP8DMGKoqg1OjHbPupQVd9-Rx02iqOKk_vyw45XLfGMHw86C0t7Qz5NjOUGv4aBgco1o0u_rBj4cCXfP0KfvRhiDKpN",
+  "20260524SKHT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-23/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.QmcpoWRzrdFiilmIh9cU7EbdZQc59_qOMCC1XKGtUVGiDAa4a6rvoNicGvrnKY_EEImH_p2BNZYPvzWH8cbXZMM7dJqNwy0Lw2uHK6qqEDIrBWqtS2PzCy1GMI-IwLl_Nb_cQKaYxG6D0HiFY1Qiyce9liysLlOnLbqifPL80CsMNbKDMl-gAQnUDJy3rgQtGfB1C2YlqwRAtvcv-fbZaw",
+  "20260524SSLT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.QmcpoWRzrdFiilmIh9cU7L6CdKsQHHOfc56C4D0TdDXe-lDkd0PGsrOZvcS6Ri7Hku9qfq9A4PAsqks_-RhIdc5Rn0RBu-Ql93CQsMQfZzaR5J87wwwzS44xUp1V0aLpidzo8JxmYHfG-d0the28_pWzr8SIPevHXgjLU4EuE29qVO7oafePf0ZCay051rUc6M7Qr5VX4pE1opr3LoCRyA",
+  "20260524NCKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-37/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.QmcpoWRzrdFiilmIh9cU7NO1IvUOvb_VPxAhcyB7fxYp-8BFtzqmzdr3TXhDdIlJKd8_NpSao18mZZjPKjczvb_nYRWy3Y0cQT8nIrlYeprduu3U0X7-eRe6LSQD2ZhmVrN-6JYRF7ENBjCgXhDnVTsaCthQ3js3wifMSj0NlzoBShfzRQigV0Ll4r9hMIJxHYH-F0DBHmCgXkky_3Qf5Q"
 };
