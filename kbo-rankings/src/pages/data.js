@@ -17,7 +17,7 @@ export default function Data() {
         if (!pId) return;
 
         axios
-            .get(`http://localhost:5001/api/playerData?pId=${pId}`)
+            .get(`http://http://kbo-info.onrender.com/api/playerData?pId=${pId}`)
             .then((res) => {
                 setPlayer(res.data);
                 if (res.data.records && res.data.records.length > 0) {

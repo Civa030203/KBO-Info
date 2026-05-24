@@ -105,7 +105,7 @@ export default function LiveTextPage() {
     const fetchLive = async () => {
       try {
         const gData = await axios.get(
-          `http://localhost:5001/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
+          `http://http://kbo-info.onrender.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
         );
 
         gData.data.forEach((dt) => {
@@ -116,7 +116,7 @@ export default function LiveTextPage() {
 
         if (!inn) return;
 
-        const res = await axios.get(`http://localhost:5001/api/relay`, {
+        const res = await axios.get(`http://http://kbo-info.onrender.com/api/relay`, {
           params: {
             le_id: leagueId,
             sr_id: seriesId,
@@ -147,7 +147,7 @@ export default function LiveTextPage() {
     const fetchScore = async () => {
       try {
         const resScore = await axios.get(
-          `http://localhost:5001/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
+          `http://http://kbo-info.onrender.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
         );
         setScoreData(resScore.data);
 
@@ -430,65 +430,66 @@ export default function LiveTextPage() {
         {live.live.listInnTb.map((inning, inningIdx) => {
           const attackTeamColor = getTeamColor(inning.T_NM);
           return (
-          <div key={inningIdx} className="mb-6">
-            <h4 className="text-s font-bold mb-2 text-gray-200">
-              {inn}회{inning.TB_NM} {inning.T_NM} 공격
-            </h4>
+            <div key={inningIdx} className="mb-6">
+              <h4 className="text-s font-bold mb-2 text-gray-200">
+                {inn}회{inning.TB_NM} {inning.T_NM} 공격
+              </h4>
 
-            <div className="border border-gray-700 rounded-lg p-4 bg-gray-900 shadow">
-              {inning.listBatOrder.map((bat, batIdx) => (
-                <div key={batIdx} className="mb-4">
-                  <div
-                    className="flex items-center gap-4 p-4 border-l-4 bg-gray-800 shadow-sm rounded-md"
-                    style={{ borderLeftColor: attackTeamColor }}
-                  >
-                    <img
-                      src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${getPlayerImageYear(parseInt(gameId.slice(0, 4)), bat.BAT_P_ID)}/${getRealPlayerId(bat.BAT_P_ID)}.jpg`}
-                      alt={bat.BAT_P_NM}
-                      className="w-12 h-16 rounded-full"
-                    />
-                    <div>
-                      <Link to={`https://kbo-info.vercel.app/playerData/${getRealPlayerId(bat.BAT_P_ID)}`} className="font-semibold text-gray-100 hover:text-blue-400 hover:underline transition-colors">{bat.BAT_P_NM}</Link>
-                      <h2 className="text-gray-400 text-sm">{bat.BAT_ORDER_NO}번타자</h2>
+              <div className="border border-gray-700 rounded-lg p-4 bg-gray-900 shadow">
+                {inning.listBatOrder.map((bat, batIdx) => (
+                  <div key={batIdx} className="mb-4">
+                    <div
+                      className="flex items-center gap-4 p-4 border-l-4 bg-gray-800 shadow-sm rounded-md"
+                      style={{ borderLeftColor: attackTeamColor }}
+                    >
+                      <img
+                        src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${getPlayerImageYear(parseInt(gameId.slice(0, 4)), bat.BAT_P_ID)}/${getRealPlayerId(bat.BAT_P_ID)}.jpg`}
+                        alt={bat.BAT_P_NM}
+                        className="w-12 h-16 rounded-full"
+                      />
+                      <div>
+                        <Link to={`https://kbo-info.vercel.app/playerData/${getRealPlayerId(bat.BAT_P_ID)}`} className="font-semibold text-gray-100 hover:text-blue-400 hover:underline transition-colors">{bat.BAT_P_NM}</Link>
+                        <h2 className="text-gray-400 text-sm">{bat.BAT_ORDER_NO}번타자</h2>
+                      </div>
                     </div>
+                    <ul className="mt-2 space-y-2">
+                      {bat.listData.map((play, playIdx) => (
+                        <li key={playIdx} className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300">
+                          <span
+                            className={
+                              play.TEXTSTYLE_SC === "2"
+                                ? "italic text-gray-500"
+                                : play.TEXTSTYLE_SC === "13" || play.TEXTSTYLE_SC === "14"
+                                  ? "font-bold text-gray-100"
+                                  : play.TEXTSTYLE_SC === "23" || play.TEXTSTYLE_SC === "24"
+                                    ? "font-bold text-blue-400"
+                                    : ""
+                            }
+                          >
+                            {play.LIVETEXT_IF}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="mt-2 space-y-2">
-                    {bat.listData.map((play, playIdx) => (
-                      <li key={playIdx} className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300">
-                        <span
-                          className={
-                            play.TEXTSTYLE_SC === "2"
-                              ? "italic text-gray-500"
-                              : play.TEXTSTYLE_SC === "13" || play.TEXTSTYLE_SC === "14"
-                                ? "font-bold text-gray-100"
-                                : play.TEXTSTYLE_SC === "23" || play.TEXTSTYLE_SC === "24"
-                                  ? "font-bold text-blue-400"
-                                  : ""
-                          }
-                        >
-                          {play.LIVETEXT_IF}
-                        </span>
+                ))}
+                {inn === maxInn &&
+                  live.postGame.listResult.map((res, resIdx) => (
+                    <ul className="mt-2 space-y-2" key={resIdx}>
+                      <li className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300">
+                        {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ?
+                          <span>{res.LIVETEXT_IF}</span> :
+                          parseInt(scoreData.resultData[0][0]) < parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'T' ?
+                            <span>{res.LIVETEXT_IF}</span> : <span></span>
+                        }
                       </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-              {inn === maxInn &&
-                live.postGame.listResult.map((res, resIdx) => (
-                  <ul className="mt-2 space-y-2" key={resIdx}>
-                    <li className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300">
-                      {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ?
-                        <span>{res.LIVETEXT_IF}</span> :
-                        parseInt(scoreData.resultData[0][0]) < parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'T' ?
-                          <span>{res.LIVETEXT_IF}</span> : <span></span>
-                      }
-                    </li>
-                  </ul>
-                ))
-              }
+                    </ul>
+                  ))
+                }
+              </div>
             </div>
-          </div>
-        )})}
+          )
+        })}
       </div>
 
       {/* 홈팀 라인업 (PC 전용) */}

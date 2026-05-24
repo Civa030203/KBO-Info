@@ -38,7 +38,7 @@ export default function Schedule() {
     setLoading(true);
 
     axios
-      .get(`http://localhost:5001/api/schedule?&date=${searchParams.date}&leId=${searchParams.league}`)
+      .get(`http://kbo-info.onrender.com/api/schedule?&date=${searchParams.date}&leId=${searchParams.league}`)
       .then((res) => {
         if (!ignore) {
           setGames(res.data);
@@ -236,7 +236,7 @@ export default function Schedule() {
                   const awayColor = teamData[awayName]?.mainColor?.replace(/[\[\]]/g, '') || '#3f3f46';
                   const homeColor = teamData[homeName]?.mainColor?.replace(/[\[\]]/g, '') || '#3f3f46';
                   return {
-                     background: `linear-gradient(to right, ${awayColor}99, ${homeColor}99)`
+                    background: `linear-gradient(to right, ${awayColor}99, ${homeColor}99)`
                   };
                 };
 
@@ -247,128 +247,129 @@ export default function Schedule() {
                   const awayScore = parseInt(awayStr.trim(), 10);
                   const homeScore = parseInt(homeStr.trim(), 10);
                   if (awayScore > homeScore) {
-                     awayOutcome = "W";
-                     homeOutcome = "L";
+                    awayOutcome = "W";
+                    homeOutcome = "L";
                   } else if (awayScore < homeScore) {
-                     awayOutcome = "L";
-                     homeOutcome = "W";
+                    awayOutcome = "L";
+                    homeOutcome = "W";
                   }
                 }
 
                 return (
-                <tr
-                  key={idx}
-                  style={getRowStyle(game)}
-                  className="border-b border-gray-700/50 hover:brightness-125 transition text-gray-100"
-                >
-                  {game.gameType === "정규경기" ? (
-                    <td className="py-2 px-1 md:py-3 md:px-4 whitespace-nowrap hidden md:table-cell">{game.date}</td>
-                  ) : (
-                    <td className="py-2 px-1 md:py-3 md:px-4 whitespace-nowrap hidden md:table-cell">
-                      <span>
-                        {game.date}
-                        <br />
-                        {game.gameType}
-                      </span>
+                  <tr
+                    key={idx}
+                    style={getRowStyle(game)}
+                    className="border-b border-gray-700/50 hover:brightness-125 transition text-gray-100"
+                  >
+                    {game.gameType === "정규경기" ? (
+                      <td className="py-2 px-1 md:py-3 md:px-4 whitespace-nowrap hidden md:table-cell">{game.date}</td>
+                    ) : (
+                      <td className="py-2 px-1 md:py-3 md:px-4 whitespace-nowrap hidden md:table-cell">
+                        <span>
+                          {game.date}
+                          <br />
+                          {game.gameType}
+                        </span>
+                      </td>
+                    )}
+
+                    <td className="py-2 px-1 md:py-3 md:px-4 text-xs md:text-sm">{game.gameTime}</td>
+                    <td className="py-2 px-1 md:py-3 md:px-4 hidden md:table-cell">{game.stadium}</td>
+
+                    {/* 원정팀 */}
+                    <td className="py-2 px-1 md:py-3 md:px-4">
+                      <div className="flex flex-col items-center justify-center gap-1">
+                        <div className="flex items-center justify-center gap-1 md:gap-2">
+                          <span className="text-sm md:text-base hidden md:table-cell font-semibold drop-shadow-md">
+                            {game.awayTeamName === ""
+                              ? "히어로즈"
+                              : game.awayTeamName}
+                          </span>
+                          <img
+                            src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.awayTeamName)}
+                            alt={game.awayTeamName}
+                            className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0 drop-shadow-md"
+                          />
+                        </div>
+                        {game.gameState < 2 && game.awaySPitcherName && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.awaySPitcherName}</span>
+                        )}
+                        {String(game.gameState) === "3" && awayOutcome === "W" && game.winPitcher && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">승 - {game.winPitcher}</span>
+                        )}
+                        {String(game.gameState) === "3" && awayOutcome === "L" && game.lostPitcher && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">패 - {game.lostPitcher}</span>
+                        )}
+                      </div>
                     </td>
-                  )}
 
-                  <td className="py-2 px-1 md:py-3 md:px-4 text-xs md:text-sm">{game.gameTime}</td>
-                  <td className="py-2 px-1 md:py-3 md:px-4 hidden md:table-cell">{game.stadium}</td>
+                    {/* 스코어 */}
+                    <td className="py-2 px-1 md:py-3 md:px-4 whitespace-nowrap text-xs md:text-sm font-semibold">
+                      {game.gameState < 2 ? (
+                        <span className="text-gray-300 drop-shadow-md">경기 전</span>
+                      ) : game.gameState >= 4 ? (
+                        <><span className="hidden sm:inline text-gray-400 drop-shadow-md">취소된 경기입니다.</span>
+                          <span className="sm:hidden text-gray-400 drop-shadow-md">취소</span></>
+                      ) : String(game.gameState) === "2" ? (
+                        <div className="flex flex-col items-center justify-center drop-shadow-md">
+                          <span className="text-red-400 text-base">{game.gameScore}</span>
+                          <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">{game.gameMaxInn}회{game.isTopOrBottom}</span>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center justify-center drop-shadow-md">
+                          <span className="text-white text-base">{game.gameScore}</span>
+                          <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">종료</span>
+                        </div>
+                      )}
+                    </td>
 
-                  {/* 원정팀 */}
-                  <td className="py-2 px-1 md:py-3 md:px-4">
-                    <div className="flex flex-col items-center justify-center gap-1">
-                      <div className="flex items-center justify-center gap-1 md:gap-2">
-                        <span className="text-sm md:text-base hidden md:table-cell font-semibold drop-shadow-md">
-                          {game.awayTeamName === ""
-                            ? "히어로즈"
-                            : game.awayTeamName}
-                        </span>
-                        <img
-                          src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.awayTeamName)}
-                          alt={game.awayTeamName}
-                          className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0 drop-shadow-md"
-                        />
+                    {/* 홈팀 */}
+                    <td className="py-2 px-1 md:py-3 md:px-4">
+                      <div className="flex flex-col items-center justify-center gap-1">
+                        <div className="flex items-center justify-center gap-1 md:gap-2">
+                          <span className="text-sm md:text-base hidden md:table-cell font-semibold drop-shadow-md">
+                            {game.homeTeamName === ""
+                              ? "히어로즈"
+                              : game.homeTeamName}
+                          </span>
+                          <img
+                            src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.homeTeamName)}
+                            alt={game.homeTeamName}
+                            className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0 drop-shadow-md"
+                          />
+                        </div>
+                        {game.gameState < 2 && game.homeSPitcherName && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.homeSPitcherName}</span>
+                        )}
+                        {String(game.gameState) === "3" && homeOutcome === "W" && game.winPitcher && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">승 - {game.winPitcher}</span>
+                        )}
+                        {String(game.gameState) === "3" && homeOutcome === "L" && game.lostPitcher && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">패 - {game.lostPitcher}</span>
+                        )}
                       </div>
-                      {game.gameState < 2 && game.awaySPitcherName && (
-                        <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.awaySPitcherName}</span>
-                      )}
-                      {String(game.gameState) === "3" && awayOutcome === "W" && game.winPitcher && (
-                        <span className="text-[10px] md:text-xs text-gray-300 font-medium">승 - {game.winPitcher}</span>
-                      )}
-                      {String(game.gameState) === "3" && awayOutcome === "L" && game.lostPitcher && (
-                        <span className="text-[10px] md:text-xs text-gray-300 font-medium">패 - {game.lostPitcher}</span>
-                      )}
-                    </div>
-                  </td>
+                    </td>
 
-                  {/* 스코어 */}
-                  <td className="py-2 px-1 md:py-3 md:px-4 whitespace-nowrap text-xs md:text-sm font-semibold">
-                    {game.gameState < 2 ? (
-                      <span className="text-gray-300 drop-shadow-md">경기 전</span>
-                    ) : game.gameState >= 4 ? (
-                      <><span className="hidden sm:inline text-gray-400 drop-shadow-md">취소된 경기입니다.</span>
-                        <span className="sm:hidden text-gray-400 drop-shadow-md">취소</span></>
-                    ) : String(game.gameState) === "2" ? (
-                      <div className="flex flex-col items-center justify-center drop-shadow-md">
-                        <span className="text-red-400 text-base">{game.gameScore}</span>
-                        <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">{game.gameMaxInn}회{game.isTopOrBottom}</span>
-                      </div>
-                    ) : (
-                      <div className="flex flex-col items-center justify-center drop-shadow-md">
-                        <span className="text-white text-base">{game.gameScore}</span>
-                        <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">종료</span>
-                      </div>
-                    )}
-                  </td>
+                    <td className="py-2 px-1 md:py-3 md:px-4 hidden md:table-cell"></td>
 
-                  {/* 홈팀 */}
-                  <td className="py-2 px-1 md:py-3 md:px-4">
-                    <div className="flex flex-col items-center justify-center gap-1">
-                      <div className="flex items-center justify-center gap-1 md:gap-2">
-                        <span className="text-sm md:text-base hidden md:table-cell font-semibold drop-shadow-md">
-                          {game.homeTeamName === ""
-                            ? "히어로즈"
-                            : game.homeTeamName}
-                        </span>
-                        <img
-                          src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.homeTeamName)}
-                          alt={game.homeTeamName}
-                          className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0 drop-shadow-md"
-                        />
-                      </div>
-                      {game.gameState < 2 && game.homeSPitcherName && (
-                        <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.homeSPitcherName}</span>
+                    {/* 경기 정보 */}
+                    <td className="py-2 px-1 md:py-3 md:px-4">
+                      {isRelayAvailable(game, searchParams.date) &&
+                        parseInt(game.gameID.slice(0, 4)) >= 2010 ? (
+                        <Link
+                          to={`/relay/${searchParams.league}/${game.seriesId}/${game.gameID}`}
+                          className="inline-block px-2 py-1 md:px-4 md:py-2 bg-blue-600/90 text-white text-xs md:text-sm rounded-lg shadow hover:bg-blue-500 transition whitespace-nowrap"
+                          target="_blank"
+                        >
+                          문자 중계
+                        </Link>
+                      ) : (
+                        <span></span>
                       )}
-                      {String(game.gameState) === "3" && homeOutcome === "W" && game.winPitcher && (
-                        <span className="text-[10px] md:text-xs text-gray-300 font-medium">승 - {game.winPitcher}</span>
-                      )}
-                      {String(game.gameState) === "3" && homeOutcome === "L" && game.lostPitcher && (
-                        <span className="text-[10px] md:text-xs text-gray-300 font-medium">패 - {game.lostPitcher}</span>
-                      )}
-                    </div>
-                  </td>
-
-                  <td className="py-2 px-1 md:py-3 md:px-4 hidden md:table-cell"></td>
-
-                  {/* 경기 정보 */}
-                  <td className="py-2 px-1 md:py-3 md:px-4">
-                    {isRelayAvailable(game, searchParams.date) &&
-                      parseInt(game.gameID.slice(0, 4)) >= 2010 ? (
-                      <Link
-                        to={`/relay/${searchParams.league}/${game.seriesId}/${game.gameID}`}
-                        className="inline-block px-2 py-1 md:px-4 md:py-2 bg-blue-600/90 text-white text-xs md:text-sm rounded-lg shadow hover:bg-blue-500 transition whitespace-nowrap"
-                        target="_blank"
-                      >
-                        문자 중계
-                      </Link>
-                    ) : (
-                      <span></span>
-                    )}
-                  </td>
-                </tr>
-              )})}
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         ) : (
