@@ -279,11 +279,11 @@ export const GAME_VIDEO_MAP = {
   "20260524NCKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260524/181/294259181/REGL_0F1F74A9_294259181_1.mp4/manifest.m3u8",
 
   // 5??4주차 주중 ?�리�?
-  "20260526HHNC0": "",
-  "20260526HTWO0": "",
-  "20260526KTOB0": "",
+  "20260526HHNC0": "https://live-global-cdn-v02.sooplive.com/live-stmc-27/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RorQwJfiQ8v9WoFQLRMFBpkTfxKLcHhzz-ccmml-ZG83XpRi4Y0w58OpppvzNoEsYWLnQy97rQM1C8Ne74riF8alR1g6TUPMZeQR-wOznGZBrWpCnrjOrQnSQqUZ73soDzT5WuQPj7SFfElHXlDrWeo9smYKVdyHRk7_vS1PwAO8yrAzK4nHR5oNi7D55CkU",
+  "20260526HTWO0": "https://live-global-cdn-v02.sooplive.com/live-stmc-27/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RorQwJfiQ8v9WoFQLRMFBgjS40zRepKUyyPPzCIeQy7cUFwUIW1OPgw8Dod0Sd775cZw_Ia7M85kc3LqxdzXZ0l8wC7ZcPKZ5k3nWuC65FUjds0PrpTpOApjxJxYEzh0k-rwyL35tzSm8QTv0gZZfk5BRe1Kz_SQM_nbj9Wla6A8gRGPkb0LB_BMS48MWMyk",
+  "20260526KTOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-28/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RorQwJfiQ8v9WoFQLRMFBoIPhT1vpviivMUVx6MBVRGyBET_LAaAe3Zj_fkjBJQndXjXXhTbRADvBFgGV-qtazHPIxfGAbJkU8SY3QSB0FFqTFs5JmDh6HtG6thIOjnQI-ffN_jpZ9Sts6IDIbg__mdVPkeg-kTsDyDeN8t7pEUO38kOPx3bnAmYNaQqpA2U",
   "20260526SSSK0": "",
-  "20260526LGLT0": "",
+  "20260526LGLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-19/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RorQwJfiQ8v9WoFQLRMFBkqzJZcLPlGx1dP3nkUhGsU_ckOAPQ2ETAnsN5uz1QHplGdr3QAoxCzSN8b3WG7C-IU1GWdCY79GbmrxNxcgs99ByIwUzyb-E_uLTkTp6sO9K0wwDiHQZFX4zpCVAfO4SCrnODdlDUb6uHe2ZgzzvgninawCDnisp0Cd-wvem1lg",
   "20260527HHNC0": "",
   "20260527HTWO0": "",
   "20260527KTOB0": "",
