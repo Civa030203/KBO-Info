@@ -288,11 +288,11 @@ export const GAME_VIDEO_MAP = {
   "20260527KTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260527/533/294339533/REGL_839E74C3_294339533_1.mp4/manifest.m3u8",
   "20260527SSSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260527/547/294339547/REGL_656CDCC8_294339547_1.mp4/manifest.m3u8",
   "20260527LGLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260527/539/294339539/REGL_1358DA15_294339539_1.mp4/manifest.m3u8",
-  "20260528HHNC0": "",
-  "20260528HTWO0": "",
-  "20260528KTOB0": "",
-  "20260528SSSK0": "",
-  "20260528LGLT0": "",
+  "20260528HHNC0": "https://live-global-cdn-v02.sooplive.com/live-stmc-26/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2eB4xgSa9bYR3sLTBIXpI7LtU4tL_2jGlp3r89CcPrftODxOTET17nL6ZUEWdCMC7thrcmPcF3fZstsdpQO4HsH9bEP-PM4AIWwYA5iI_5VMFRHT8eHmsqoRw911WP2tABVZrYtJT5AFLIZETg_Hg_HvvNem5wMmnOoA9FDVWt7tcupyg1AypsJYTGagqxLF70EfzAIrCSzht6sC7oEYHg",
+  "20260528HTWO0": "https://live-global-cdn-v02.sooplive.com/live-stmc-22/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2eB4xgSa9bYR3sLTBIXpI8izHsRo8jSsSNfvpBz__OlkRYbXGkBL0hylK4W0Osi0AVA-t3P_rE7WKtIbbeZaPAusTkxD5cflm90qkrbiy3BsuofbZc-RSersvDfIeBtTpnbzoYTrytmIy2qj0OI4N9DT_2Qa7IwYl_hlFXi1duRvIgZmKC7pZ1tFl2ZB4d8BbEC7e0NKLgq9DZ8y4u-xig",
+  "20260528KTOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-25/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2eB4xgSa9bYR3sLTBIXpI-acgqNTtJfcIoBXCH3WKYTPP8M0DObsI8vskRT_3_vMsgSJPfwKDncrrRzkTOlhuO4j6SfzP_pL3ez1wAhZHy86cq1nl79cnHMm20IGuhqKdkqpWIJdZ_RFz7boE-aHZIQccIK5Gwr73anLAWDLK0PobCkR43rKnUEjiiNFT3RZ4jBkDFKuBN26Y3Gpo1TTlg",
+  "20260528SSSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-31/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2eB4xgSa9bYR3sLTBIXpIx3Vky80F7wMWre1HQq8ChEQMpVLvr5Z654klUcZxVwKd3Y2BCNOEv0km9BPDLJBbv0RlA1xR2yvvoe5mVjzLBImQlKfV0JqNIz4cfFYGzfdSDhzG0qPqqZ-OF83qIoFx59CLcCAyAMBsoJ1I1XpnGcdqLeYYeSi5Vz0RsGC72vfR2-2SgYoq3vhRdK-UsCQ0w",
+  "20260528LGLT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-25/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.2eB4xgSa9bYR3sLTBIXpI4TM6SCd4SFlnj6OHSHXWN9YqNHYk2_KUu9uZEL_BVHOyjHjwDBNswYwYF-jWn1NxNoEYPjhQrKQdGsM_BOWgdQ3qp0cKs0BzyffXzqkIkQ_zje1b981Ijn7yYt8nwJTJVULD5NUBoYuDoSZ6_tcdK4Ja4KrLLLvz6qdKZhwAO1XdsoN7m41_ZM_g18HSP_exw",
 
   // 5월 4주차 주말 시리즈
   "20260529KTWO0": "",
