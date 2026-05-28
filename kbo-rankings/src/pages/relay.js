@@ -164,6 +164,31 @@ export default function LiveTextPage() {
     }
   }, [leagueId, seriesId, gameId]);
 
+  // 노게임(우천 취소) 등으로 스케줄 API에서 maxInn을 정상적으로 받아오지 못했을 때 스코어보드를 기반으로 복구
+  useEffect(() => {
+    if (scoreData && scoreData.scoreData && scoreData.scoreData.length > 0) {
+      let calculatedMaxInn = 0;
+      const awayScores = scoreData.scoreData[0] || [];
+      const homeScores = scoreData.scoreData[1] || [];
+      
+      awayScores.forEach((score, index) => {
+        if (score !== undefined && score !== null && score !== "" && score !== "-") {
+           calculatedMaxInn = Math.max(calculatedMaxInn, index + 1);
+        }
+      });
+      homeScores.forEach((score, index) => {
+        if (score !== undefined && score !== null && score !== "" && score !== "-") {
+           calculatedMaxInn = Math.max(calculatedMaxInn, index + 1);
+        }
+      });
+      
+      // 스케줄 API의 maxInn(기본값 1 포함)보다 진행된 이닝이 크다면 업데이트
+      if (calculatedMaxInn > (maxInn || 0)) {
+        setMaxInn(calculatedMaxInn);
+      }
+    }
+  }, [scoreData, maxInn]);
+
   const [lineupData, setLineupData] = useState({ away: [], home: [] });
 
   // 라인업 데이터 가져오기

@@ -1,7 +1,8 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { teamData } from "./src/teamData";
+import { GAME_VIDEO_MAP } from "./videoMap";
 
 export default function Schedule() {
   const [games, setGames] = useState([]);
@@ -162,7 +163,11 @@ export default function Schedule() {
     // 2: 진행 중, 3: 종료
     if (String(game.gameState) === "2" || String(game.gameState) === "3") return true;
     // 4 이상: 취소 등
-    if (game.gameState >= 4) return false;
+    if (game.gameState >= 4) {
+      // 노게임(우천 취소) 경기 중 영상이 남아있는 경우 문자 중계 진입 허용
+      if (GAME_VIDEO_MAP[game.gameID]) return true;
+      return false;
+    }
 
     // 경기 전(1 등)인 경우 시간 체크
     if (!game.gameTime || !searchDate) return false;
