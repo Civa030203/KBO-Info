@@ -170,18 +170,18 @@ export default function LiveTextPage() {
       let calculatedMaxInn = 0;
       const awayScores = scoreData.scoreData[0] || [];
       const homeScores = scoreData.scoreData[1] || [];
-      
+
       awayScores.forEach((score, index) => {
         if (score !== undefined && score !== null && score !== "" && score !== "-") {
-           calculatedMaxInn = Math.max(calculatedMaxInn, index + 1);
+          calculatedMaxInn = Math.max(calculatedMaxInn, index + 1);
         }
       });
       homeScores.forEach((score, index) => {
         if (score !== undefined && score !== null && score !== "" && score !== "-") {
-           calculatedMaxInn = Math.max(calculatedMaxInn, index + 1);
+          calculatedMaxInn = Math.max(calculatedMaxInn, index + 1);
         }
       });
-      
+
       // 스케줄 API의 maxInn(기본값 1 포함)보다 진행된 이닝이 크다면 업데이트
       if (calculatedMaxInn > (maxInn || 0)) {
         setMaxInn(calculatedMaxInn);
