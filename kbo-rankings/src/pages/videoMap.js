@@ -304,7 +304,7 @@ export const GAME_VIDEO_MAP = {
   "20260530LTNC0": "",
   "20260530HTLG0": "",
   "20260530SKHH0": "",
-  "20260530OBSS0": "",
+  "20260530OBSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-36/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.6TbZXCJ5wfQTlwI2uAD5FyKtSFaHuzMiaJVQMpyCgpXJ2g5d5VieeiBbvpCqMYSTCivc7HsgCvTFdPpbXEAAmnipqORVv0iYk2yYp3NoKdHrM7AWf-HOKYJLn417mHlzEmPUPd1GvvHMuQJk8pUzGQ1KTa7tfXvCmLm9jUmKTRtgbbGKPtWtI2t7FZ0UlflD",
   "20260531KTWO0": "",
   "20260531LTNC0": "",
   "20260531HTLG0": "",
