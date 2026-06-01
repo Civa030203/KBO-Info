@@ -21,25 +21,44 @@ export default function PlayerSearch() {
 
     function getTeamName(teamID) {
         switch (teamID) {
+            case "삼성": return "삼성 라이온즈";
+
             case "해태": return "해태 타이거즈";
             case "KIA": return "KIA 타이거즈";
-            case "삼성": return "삼성 라이온즈";
+
+            case "롯데": return "롯데 자이언츠";
+
+            case "삼미": return "삼미 슈퍼스타즈";
+            case "청보": return "청보 핀토스";
+            case "태평양": return "태평양 돌핀스";
+            case "현대": return "현대 유니콘스";
+
+            case "MBC": return "MBC 청룡";
+            case "LG": return "LG 트윈스";
+
             case "OB": return "OB 베어스";
             case "두산": return "두산 베어스";
-            case "SK": return "SK 와이번스";
-            case "SSG": return "SSG 랜더스";
-            case "LG": return "LG 트윈스";
-            case "롯데": return "롯데 자이언츠";
+
             case "빙그레": return "빙그레 이글스";
             case "한화": return "한화 이글스";
-            case "KT": return "KT 위즈";
-            case "NC": return "NC 다이노스";
+
+            case "쌍방울": return "쌍방울 레이더스";
+
+            case "SK": return "SK 와이번스";
+            case "SSG": return "SSG 랜더스";
+
             case "우리": return "우리 히어로즈";
             case "히어로즈": return "서울 히어로즈";
             case "넥센": return "넥센 히어로즈";
             case "키움": return "키움 히어로즈";
-            case "현대": return "현대 유니콘스";
-            case "울산": return "울산 고래스"; // 임의 명칭 혹은 teamID 유지
+
+            case "NC": return "NC 다이노스";
+
+            case "KT": return "KT 위즈";
+
+            case "울산": return "울산 웨일즈";
+            case "상무": return "상무 피닉스";
+            case "경찰": return "경찰 야구단";
             default: return teamID;
         }
     }
