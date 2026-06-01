@@ -33,7 +33,7 @@ export default function PlayerSearch() {
             case "태평양": return "태평양 돌핀스";
             case "현대": return "현대 유니콘스";
 
-            case "MBC": return "MBC 청룡";
+            case "MBC ": return "MBC 청룡";
             case "LG": return "LG 트윈스";
 
             case "OB": return "OB 베어스";
