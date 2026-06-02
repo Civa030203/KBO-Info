@@ -313,7 +313,7 @@ export const GAME_VIDEO_MAP = {
 
   //2026년 6월
   //6월 1주차 주중 시리즈
-  "20260602HHOB0": "",
+  "20260602HHOB0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BySRy_3BUzOM8GTYOMms1UH7DvAe0FJoGH1M0_CxnAJ4S9HMREoKkAAF9hbk1VOXz8iSJEkNFLsL28P2U9YCCUYiigBlZhIXRrx_R9gfC-4aADpahj4lR0D8lJ_-kOZAvdVzPH7AKJfpGeIanfRZAgfs_i1Cy9zMvjNVP7oXVj5ZJbDPQi2igSR3yS7FgYYE",
   "20260602WOSK0": "",
   "20260602NCSS0": "",
   "20260602LTHT0": "",
