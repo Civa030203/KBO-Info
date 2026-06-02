@@ -53,10 +53,12 @@ const lastKboYearMap = {
 };
 
 // 프로필 이미지의 연도를 구하는 헬퍼 함수
-const getPlayerImageYear = (gameYear, playerId) => {
+const getPlayerImageYear = (gameYear, playerId, seriesId) => {
   const realId = getRealPlayerId(playerId);
-  if (lastKboYearMap[realId]) {
-    return lastKboYearMap[realId];
+  if (seriesId != [0, 1, 3, 4, 5, 7]) {
+    if (lastKboYearMap[realId]) {
+      return lastKboYearMap[realId];
+    }
   }
   return gameYear > 2016 ? gameYear : 2016;
 };
@@ -259,7 +261,7 @@ export default function LiveTextPage() {
         <div className="flex-1 p-2 space-y-1.5 bg-black/10 backdrop-blur-sm">
           {lineup.map((player, idx) => {
             const realPlayerId = getRealPlayerId(player.playerCode);
-            const imageYear = getPlayerImageYear(gameYear, player.playerCode);
+            const imageYear = getPlayerImageYear(gameYear, player.playerCode, seriesId);
             return (
               <div key={idx} className="flex justify-between items-center text-white py-2 px-2.5 rounded hover:bg-white/20 transition-all duration-200 shadow-sm bg-white/10 border border-white/5">
                 <div className="flex items-center gap-2.5">
