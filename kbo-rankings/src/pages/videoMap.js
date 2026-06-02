@@ -313,11 +313,11 @@ export const GAME_VIDEO_MAP = {
 
   //2026년 6월
   //6월 1주차 주중 시리즈
-  "20260602HHOB0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BySRy_3BUzOM8GTYOMms1UH7DvAe0FJoGH1M0_CxnAJ4S9HMREoKkAAF9hbk1VOXz8iSJEkNFLsL28P2U9YCCUYiigBlZhIXRrx_R9gfC-4aADpahj4lR0D8lJ_-kOZAvdVzPH7AKJfpGeIanfRZAgfs_i1Cy9zMvjNVP7oXVj5ZJbDPQi2igSR3yS7FgYYE",
-  "20260602WOSK0": "",
-  "20260602NCSS0": "",
-  "20260602LTHT0": "",
-  "20260602LGKT0": "",
+  "20260602HHOB0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BySRy_3BUzOM8GTYOMms1UH7DvAe0FJoGH1M0_CxnAJ4S9HMREoKkAAF9hbk1VOXz8iSJEkNFLsL28P2U9YCCUYiigBlZhIXRrx_R9gfC-4aADpahj4lR0D8lJ_-kOZAvdVzPH7AKJfpGeIanfRZAgfs_i1Cy9zMvjNVP7oXVj5ZJbDPQi2igSR3yS7FgYYEhttps://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BySRy_3BUzOM8GTYOMms1UH7DvAe0FJoGH1M0_CxnAJ4S9HMREoKkAAF9hbk1VOXz8iSJEkNFLsL28P2U9YCCUYiigBlZhIXRrx_R9gfC-74PRYjf1i-Wh0lHYio0sAHExjyJcUH6Tzm_iYkt_7cAUj87QL7CqU3D2zUyby6hVzxpMAbBSERKL7joioTnnLPGRpBeZ3PSDtfPQ1nMJBOsw",
+  "20260602WOSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-35/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BySRy_3BUzOM8GTYOMms1aLDQnCHm1T6faznu7dXt8stBzKPNbUVbFbhP8XfmW6jaet5_ahE7J6AV7am1Wd0J7kWQODtELUZrH6Mnqo8ph-_big4c-KBgfou5c5ftqDlaW3FJvohYWzwc6wAvAnp8ksKCOeujEIP1sl01rgCOdTTA1cHQbBBqBrZxK-jSmpVjevYw2pOOnk2qHrb2DHXhg",
+  "20260602NCSS0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BySRy_3BUzOM8GTYOMms1SZ1Fh8toASTTjJ8tbFQX2sYUCl8myouOf0biifGsFzs3NHQN7XJTKuKggMfi2-VuZfJtvW_Xgt8eiI25A7b9EOjheDb3jN0lef46gIlAiPCXu0AYns9pmE8V3dmNpu9QNr64fb_dZADjvhE4WrLJyDMiGAYyVa5GNbJ48nI7SaLx-5uvWtXbdddOHT0tFkcyg",
+  "20260602LTHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-10/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BySRy_3BUzOM8GTYOMms1QHXpWg9eCxMGnfD-KSL1cOgEY4IIiNW8W2vZmKNZ8bLiLi10o0jQsX1qYDV8RAcixL5KxxuoFLyHz540mWgj0SvoE4tKH6q8LShaHgR7xl-CZgL8E1CgbmbE9-srPjY3cRpsYkPFR_0fXY8QvwGB9HjkfqbM3SiGehsqOjFzvOISlvyB4g9ON5oflcN8DNLoQ",
+  "20260602LGKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BySRy_3BUzOM8GTYOMms1aX8hLBSFToB0dBDVMNxiCNN8TleGDOhzlorUJv6Xa_MbBdaAAguXx9dxDoYXECZ_27_WSQ5mNLltxOpTNjFS3P9IVq3RRRL8NOUP3FJp62cjWi3uzWLW1ctK3ZlQX4qJoxFooj2sp4ZOqY52fRpGRKrZv7fTYGP2yXiUTwwP7EWuE0Tpn4AbbBy66_YFP7cxA",
   "20260603HHOB0": "",
   "20260603WOSK0": "",
   "20260603NCSS0": "",
