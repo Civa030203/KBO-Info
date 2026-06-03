@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// 1. teamData.js 파일 임포트 (경로가 src/teamData.js 이므로 상대 경로 확인 필요)
+// 1. teamData.js 파일 임포트
 import { teamData } from "./src/teamData";
 
 export default function PlayerSearch() {
@@ -22,46 +22,49 @@ export default function PlayerSearch() {
     function getTeamName(teamID) {
         switch (teamID) {
             case "삼성": return "삼성 라이온즈";
-
             case "해태": return "해태 타이거즈";
             case "KIA": return "KIA 타이거즈";
-
             case "롯데": return "롯데 자이언츠";
-
             case "삼미": return "삼미 슈퍼스타즈";
             case "청보": return "청보 핀토스";
             case "태평양": return "태평양 돌핀스";
             case "현대": return "현대 유니콘스";
-
             case "MBC ": return "MBC 청룡";
             case "LG": return "LG 트윈스";
-
             case "OB": return "OB 베어스";
             case "두산": return "두산 베어스";
-
             case "빙그레": return "빙그레 이글스";
             case "한화": return "한화 이글스";
-
             case "쌍방울": return "쌍방울 레이더스";
-
             case "SK": return "SK 와이번스";
             case "SSG": return "SSG 랜더스";
-
             case "우리": return "우리 히어로즈";
             case "히어로즈": return "서울 히어로즈";
             case "넥센": return "넥센 히어로즈";
             case "키움": return "키움 히어로즈";
-
             case "NC": return "NC 다이노스";
-
             case "KT": return "KT 위즈";
-
             case "울산": return "울산 웨일즈";
             case "상무": return "상무 피닉스";
             case "경찰": return "경찰 야구단";
             default: return teamID;
         }
     }
+
+    // 이미지 로드 실패 시 연도를 변경해 재시도하거나 기본 이미지를 띄워주는 함수
+    const handleImgError = (e, pId) => {
+        // 현재 이미지 주소 추출
+        const currentSrc = e.target.src;
+
+        // 1단계: 만약 2026년 주소로 시도했다가 깨진 경우, 올드 선수일 수 있으므로 과거 활약 연도(예: 2020년)로 재시도
+        if (currentSrc.includes("/2026/")) {
+            e.target.src = `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2020/${pId}.jpg`;
+        }
+        // 2단계: 2020년 주소마저 깨졌거나 다른 연도도 없는 완전 과거 레전드/신인 선수는 안전한 KBO 공식 실루엣으로 대체
+        else {
+            e.target.src = "https://www.koreabaseball.com/file/image/bg/no_buddy.png";
+        }
+    };
 
     return (
         <>
@@ -99,20 +102,14 @@ export default function PlayerSearch() {
                         ) : (
                             <div className="flex flex-col gap-4">
                                 {data.map((player, idx) => {
-                                    // 2. pData.js 기준 records 배열의 마지막 요소에서 활약 연도 추출
-                                    let activeYear = "2026"; // 기본 디폴트 값
-                                    if (player.records && player.records.length > 0) {
-                                        // records의 가장 마지막 데이터의 year 추출
-                                        activeYear = player.records[player.records.length - 1].year;
-                                    }
-
+                                    // 기본적으로 2026년 이미지로 첫 로딩을 시도합니다.
+                                    // 만약 백엔드 검색 결과에 activeYear 데이터가 포함되도록 커스텀하셨다면 player.activeYear를 넣으시면 됩니다.
+                                    const activeYear = player.activeYear || "2026";
                                     const profileImgUrl = `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${activeYear}/${player.pId}.jpg`;
 
-                                    // 3. teamData에서 현재 선수의 팀 정보 매칭 및 대괄호 제거 후 컬러값 추출
-                                    const teamKey = player.team; // 예: "두산", "키움" 등
+                                    const teamKey = player.team;
                                     const teamStyle = teamData[teamKey] || { mainColor: "[#1f2937]", subColor: "[#4b5563]" };
 
-                                    // "[#1a1748]" -> "#1a1748" 형태로 변환
                                     const pureMainColor = teamStyle.mainColor.replace(/[\[\]]/g, "");
                                     const pureSubColor = teamStyle.subColor.replace(/[\[\]]/g, "");
 
@@ -122,7 +119,6 @@ export default function PlayerSearch() {
                                             key={idx}
                                             className="block overflow-hidden rounded-xl border p-6 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl"
                                             style={{
-                                                // 팀 고유 컬러를 활용한 다크 그라데이션 및 테두리선 부여
                                                 background: `linear-gradient(135deg, ${pureMainColor}dd, #0b0f19)`,
                                                 borderColor: pureSubColor
                                             }}
@@ -136,9 +132,8 @@ export default function PlayerSearch() {
                                                             src={profileImgUrl}
                                                             alt={player.name}
                                                             className="w-full h-full object-cover"
-                                                            onError={(e) => {
-                                                                e.target.src = "https://mykbo.net/images/default_player.png";
-                                                            }}
+                                                            // 객체(e)와 선수의 고유 pId를 핸들러에 같이 넘겨주어 유연하게 대처합니다.
+                                                            onError={(e) => handleImgError(e, player.pId)}
                                                         />
                                                     </div>
 
@@ -171,7 +166,7 @@ export default function PlayerSearch() {
                                                     </div>
                                                 </div>
 
-                                                {/* 우측 배경 디자인 요소: 은은하게 깔아주는 대형 팀 로고 아이콘 */}
+                                                {/* 우측 배경 디자인 요소 */}
                                                 {teamStyle.icon && (
                                                     <div className="w-24 h-24 opacity-15 pointer-events-none select-none hidden sm:block">
                                                         <img src={teamStyle.icon} alt="" className="w-full h-full object-contain filter grayscale invert" />

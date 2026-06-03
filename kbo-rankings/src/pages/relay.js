@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { GAME_VIDEO_MAP } from "./videoMap";
@@ -55,7 +55,7 @@ const lastKboYearMap = {
 // 프로필 이미지의 연도를 구하는 헬퍼 함수
 const getPlayerImageYear = (gameYear, playerId, seriesId) => {
   const realId = getRealPlayerId(playerId);
-  if (seriesId != [0, 1, 3, 4, 5, 7]) {
+  if (![0, 1, 3, 4, 5, 7].includes(Number(seriesId))) {
     if (lastKboYearMap[realId]) {
       return lastKboYearMap[realId];
     }
@@ -91,6 +91,15 @@ export default function LiveTextPage() {
   const [inn, setInn] = useState(null);
   const [videoVisible, setVideoVisible] = useState(true);
   const [mobileLineupOpen, setMobileLineupOpen] = useState(false);
+  const [autoScroll, setAutoScroll] = useState(false);
+  const bottomRef = useRef(null);
+
+  // 자동 스크롤 처리
+  useEffect(() => {
+    if (autoScroll && bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [live, autoScroll, inn]);
 
   // 현재 경기의 비디오 링크 가져오기
   const videoUrl = GAME_VIDEO_MAP[gameId];
@@ -310,10 +319,7 @@ export default function LiveTextPage() {
   if (loading) return <p className="text-center p-4 text-gray-300">불러오는 중...</p>;
   if (!live) return <p className="text-center p-4 text-gray-300">데이터가 없습니다.</p>;
 
-  const handleChange = (e) => {
-    const selected = e.target.value;
-    setInn(selected);
-  };
+
 
   return (
     <div className="flex justify-center gap-6 p-4 w-full max-w-7xl mx-auto min-h-screen bg-[#0a0a0a] text-gray-100">
@@ -421,17 +427,29 @@ export default function LiveTextPage() {
 
         {/* 회차 선택 및 모바일 라인업 보기 버튼 */}
         <div className="flex items-center justify-between gap-2 mb-4">
-          <select
-            onChange={(e) => setInn(Number(e.target.value))}
-            className="border border-gray-600 p-2 rounded flex-none w-32 bg-gray-800 text-white"
-            value={inn ?? "1"}
-          >
-            {[...Array(maxInn)].map((_, i) => (
-              <option key={i + 1} value={i + 1}>
-                {i + 1}회
-              </option>
-            ))}
-          </select>
+          <div className="flex items-center gap-4">
+            <select
+              onChange={(e) => setInn(Number(e.target.value))}
+              className="border border-gray-600 p-2 rounded flex-none w-32 bg-gray-800 text-white"
+              value={inn ?? "1"}
+            >
+              {[...Array(maxInn)].map((_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}회
+                </option>
+              ))}
+            </select>
+
+            <label className="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={autoScroll}
+                onChange={(e) => setAutoScroll(e.target.checked)}
+                className="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
+              />
+              자동 스크롤
+            </label>
+          </div>
 
           <button
             onClick={() => setMobileLineupOpen(!mobileLineupOpen)}
@@ -517,6 +535,7 @@ export default function LiveTextPage() {
             </div>
           )
         })}
+        <div ref={bottomRef} />
       </div>
 
       {/* 홈팀 라인업 (PC 전용) */}
