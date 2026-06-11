@@ -356,11 +356,11 @@ export const GAME_VIDEO_MAP = {
   "20260610HTHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-16/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.YA68GOCGxv0TU6-0JW04IDKR6ygZsI58o2CzBpLnbwYec-J685nLkv6Ez97sHoC3XkPJscaK3IsF0GmjIUkvN5D1gz4Yt2IsJdb5ncBdx7sNFZWJ45djQdU5cu4XOGo5vV94Yt3Q1MHs5k5n2HCVAm9ykTymoqDMCAuwixQiqXXsd4kFxR2vqO70XAo5HeaOEAdjTSE0tRL3-lj8wx4ozA",
   "20260610OBLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.dH1tSFi27sKNbxPyhkcJdDNn1GrcsoTCooViIFgHJ8gE_cIo8zrlEewrn7cvPeQb4QDBTaZ7plhNM2eUl9JtZPNtg4ExvDgwzApm8fHit4fJfHrvC1J3eYulGsq_ok_wanZBmNbBT0Vb_bEKqf71BmgBBULow1JQ8-g6KPf1b4u6J8JO8CVxTnpHSrUSbi5NKY7wM5uXuaTxwPxFadoH-g",
   "20260610SSKT0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.dH1tSFi27sKNbxPyhkcJdNNZvvuEspT8JwoDUqhBLa9_Tj3sai7pBbgVrHkbn5E_dlgWQPlQr500MGtbVDCkPYDRE-WKZ4xGBoAsX7t9-3sVdVrDyyeS42Jm8dHPNOhn_87Qf4ws_g6f6EOMHeiO8ZKgDip53CELh2fGDdQlRDC5xew7Un_mZH-dPW47JtLb05nJB2WKe8xJIe59kUvvBA",
-  "20260611NCWO0": "",
-  "20260611SKLG0": "",
-  "20260611HTHH0": "",
-  "20260611OBLT0": "",
-  "20260611SSKT0": "",
+  "20260611NCWO0": "https://live-global-cdn-v02.sooplive.com/live-stmc-21/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.QND6_nhVHSFhXwVfjU8mSCxP4Fw-HDXyZG-n6Oj2XAPXHisY_vKU8zaCjCnIMU05LJSG0QHuCdfGk5Q-J3XMSs7KNuBYzohpMrDJdbDxVnDHDezy1pNiGTOKUn3jLjmtRp_Akwdak4ralmn7KYdTLvE4CHKlnhVVIGirUcAQmalXYBfoPIRL1NTE66YGE8I-W5F-ucIIGMEwQKX5eN6K8g",
+  "20260611SKLG0": "https://live-global-cdn-v02.sooplive.com/live-stmc-21/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.QND6_nhVHSFhXwVfjU8mSPLw7y-y9r9EAcuIDsnBbry0BILpOywhHPkc1Y3zcY-6URS8d4GpyYx67t02bO7_TtW9y5aZ2ivaGsDQFu60jO7F9zO_nfkrrGK85f6cZ87TT9xoYLBeVyXb9QqamcH9qncUF2jSQIJZXSu4SKfPvV_SfQE7_gP93ubhvX7c1qyt3jwEZH0THbjfpveQRStbBQ",
+  "20260611HTHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-21/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.QND6_nhVHSFhXwVfjU8mSAPNepvlfqwdpNzqcMqGatCodL1gj7DIgSPAwRaYputVFOAtM-l-S6YUREjZzTZ8PUJlzaCBhGDjmyL4bgKkYKP78tc4ZrmsHpB4XUE-mQJvoJmQ6JJmD6xJyYNzYID51DMBfAiVjXqI31NnhPjWJw1nW4ZXXz0x8obJGX2ghobJoXHm7Fj30-dXsT2c9mCoDA",
+  "20260611OBLT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-21/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.QND6_nhVHSFhXwVfjU8mSBS7QA3pqKMwpzNn41c4TfAPXdYyG0J1iI_Hb79rJUuGi8VjHc-NSgTlnFtkqTkTeGK77BVfsEGbwmj01q2F2ullpwMzUXG5V65pOrU3iQFAG8jA7llo6_SIKKjJKNk00MXkpnMc72qn9Py-sirkVc8FZ2MTzjWv75G6qS0cq80MasPeqoCmrYWVcF51jLTbhg",
+  "20260611SSKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-21/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.QND6_nhVHSFhXwVfjU8mSOFuUZdV2_9sZ25zMUbNfQ0AurRuUgPiZ3RHxUaf2iapOqIsTssC2I4ULHrIXxLDgeutsxpyfLYOtiArLkUC2RgWcl5E4glbYbitSehTFsIs_xvVVzwzu3BXsQ8mLD3LFNByAsfVBr_x8NRb0XG9QiYSIcw4C3XKFNFxSzw13bqBlpEfK4B3tIwiippWp68F9A",
 
   //6월 2주차 주말 시리즈
   "20260612HHWO0": "",
