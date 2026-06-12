@@ -363,11 +363,11 @@ export const GAME_VIDEO_MAP = {
   "20260611SSKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260611/591/294733591/REGL_505C7CAD_294733591_1.mp4/manifest.m3u8",
 
   //6월 2주차 주말 시리즈
-  "20260612HHWO0": "",
-  "20260612LTLG0": "",
-  "20260612SKSS0": "",
-  "20260612OBHT0": "",
-  "20260612NCKT0": "",
+  "20260612HHWO0": "https://live-global-cdn-v02.sooplive.com/live-stm-12/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.p0biocbI2f6MUXPIKwLkHeJyD3VnynywjBRz9aTmMOlbf-6aXOvtIvta0hPWDvEfVmk6J7hBkw4_xZLBy6zWsisanTcIYL9PV_SOh_0MMqnXHHunj05YoGy5aGg3TRD7ZpJyU9er4aSwmn23egkIlKYGq0TD-tIh9It1uXCz37QkBq7HRL3MJG8b-CF2YTPC6B2-H7ggph-KW3uuIReyJQ",
+  "20260612LTLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-12/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.teSrmgMibHdRnBFcxvsdDh6feRDm6TUPGBpwgQ96RjAejmHkcpK9hKoqhKX0LzCtfygSpMd4iXfKrTKOVYr2J7my5W8pdODhsFMS6DXo-_53FIeBaWcpKMcHBj7fKs1A4dG8AXq4LLwjpxsaD-pOQNhMDmwlAmrcAXFWokMW6sCiwdq66z0h-GEVUvpc_Llpxs_68bSSXiMuGpv42S8Atw",
+  "20260612SKSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-28/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.teSrmgMibHdRnBFcxvsdDteStKCfB2nwXvUJVJ95qaKgIv8wl_E1ZpMHCJBScBdszHs9bRtr2DBRLxmJyyBNzVbSOh9A5s_Zeuv4epT6UtF-VHL4wOi830KWNnmfvY49KDPw2ho4PqBWVRmJuU6u-KL4i7H3fdWHNksq7C0IrUEouNwoJqHvCSUDcYVPz3KBWZozw8velry6A2PDGHm5mg",
+  "20260612OBHT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-38/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.kh9ruNUcPF015Qx3PNHZpwW-uhDH142nXQj3eIiolW_azavp4Y6YpLYRqgNjK9myNIczLozHDg88cDRfthPy3Ek2FEnhKU7wvxuhTGkYeVO7BUsIVNJ6YmSj8q4kNpo-PgsXm_K-9SmNFoKZLWR87yf-ot_Oz91-g1lM3e0naO6MZjzJfacE5dNGwoYZ7SszMUp1cS3A7CNdlyAam0A-GQ",
+  "20260612NCKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-30/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.FLKq36bHLDI6IOm8wSNVYcHAu3kGvj9foda9eW7BNOikShaRJub_eqQn0mgBkMFZT3QzhEpPGQcI4dg2jAV9XysLJHlVpb0y24tveHuWK_PJ9IhbqwatCyBJLLduGRyi9SZmPjxhniOYrjRnG0QpLdMOPGDtnTPvAaPS6fzcjq3wH_WA840nP-zAgnqDgl0xOF2fyp4CaY9Mew_xp7I_Ow",
   "20260613HHWO0": "",
   "20260613LTLG0": "",
   "20260613SKSS0": "",
