@@ -221,12 +221,18 @@ export default function LiveTextPage() {
 
         const targetUrl = `https://api-gw.sports.naver.com/schedule/games/${apiGameId}/preview`;
 
-        // corsproxy.io 등 다수의 프록시가 네이버 보안에 의해 403을 반환하는 상황으로 판단됨
-        // 마지막 무료 퍼블릭 프록시인 api.codetabs.com 으로 시도
-        const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${targetUrl}`;
-
-        const res = await axios.get(proxyUrl);
-        const previewData = res.data?.result?.previewData;
+        // cors.lol 프록시로 1차 시도, 실패 시 allorigins.win으로 fallback
+        let previewData = null;
+        try {
+          const corsLolUrl = `https://cors.lol/?url=${encodeURIComponent(targetUrl)}`;
+          const res = await axios.get(corsLolUrl);
+          previewData = res.data?.result?.previewData;
+        } catch {
+          const allOriginsUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+          const res2 = await axios.get(allOriginsUrl);
+          const parsed = typeof res2.data?.contents === "string" ? JSON.parse(res2.data.contents) : res2.data?.contents;
+          previewData = parsed?.result?.previewData;
+        }
 
         if (previewData) {
           setLineupData({
