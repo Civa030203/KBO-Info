@@ -219,20 +219,12 @@ export default function LiveTextPage() {
           apiGameId = `${gameId}${year}`;
         }
 
-        const targetUrl = `https://api-gw.sports.naver.com/schedule/games/${apiGameId}/preview`;
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const baseUrl = isLocalhost ? "http://localhost:5001" : "https://kbo-info.onrender.com";
+        const targetUrl = `${baseUrl}/api/relay/preview?gameId=${apiGameId}`;
 
-        // cors.lol 프록시로 1차 시도, 실패 시 allorigins.win으로 fallback
-        let previewData = null;
-        try {
-          const corsLolUrl = `https://cors.lol/?url=${encodeURIComponent(targetUrl)}`;
-          const res = await axios.get(corsLolUrl);
-          previewData = res.data?.result?.previewData;
-        } catch {
-          const allOriginsUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
-          const res2 = await axios.get(allOriginsUrl);
-          const parsed = typeof res2.data?.contents === "string" ? JSON.parse(res2.data.contents) : res2.data?.contents;
-          previewData = parsed?.result?.previewData;
-        }
+        const res = await axios.get(targetUrl);
+        const previewData = res.data?.result?.previewData;
 
         if (previewData) {
           setLineupData({

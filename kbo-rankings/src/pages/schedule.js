@@ -38,8 +38,11 @@ export default function Schedule() {
     let ignore = false;
     setLoading(true);
 
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const baseUrl = isLocalhost ? "http://localhost:5001" : "https://kbo-info.onrender.com";
+
     axios
-      .get(`https://kbo-info.onrender.com/api/schedule?&date=${searchParams.date}&leId=${searchParams.league}`)
+      .get(`${baseUrl}/api/schedule?&date=${searchParams.date}&leId=${searchParams.league}`)
       .then((res) => {
         if (!ignore) {
           setGames(res.data);
@@ -299,6 +302,12 @@ export default function Schedule() {
                         {game.gameState < 2 && game.awaySPitcherName && (
                           <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.awaySPitcherName}</span>
                         )}
+                        {String(game.gameState) === "2" && game.awayTeamCurrentPlayer && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">
+                            {game.isTopOrBottom === "초" ? "타 - " : "투 - "}
+                            {game.awayTeamCurrentPlayer}
+                          </span>
+                        )}
                         {String(game.gameState) === "3" && awayOutcome === "W" && game.winPitcher && (
                           <span className="text-[10px] md:text-xs text-gray-300 font-medium">승 - {game.winPitcher}</span>
                         )}
@@ -345,6 +354,12 @@ export default function Schedule() {
                         </div>
                         {game.gameState < 2 && game.homeSPitcherName && (
                           <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.homeSPitcherName}</span>
+                        )}
+                        {String(game.gameState) === "2" && game.homeTeamCurrentPlayer && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">
+                            {game.isTopOrBottom === "초" ? "투 - " : "타 - "}
+                            {game.homeTeamCurrentPlayer}
+                          </span>
                         )}
                         {String(game.gameState) === "3" && homeOutcome === "W" && game.winPitcher && (
                           <span className="text-[10px] md:text-xs text-gray-300 font-medium">승 - {game.winPitcher}</span>

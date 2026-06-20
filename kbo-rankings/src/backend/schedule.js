@@ -56,7 +56,9 @@ router.get("/", async (req, res) => {
             gameNumber: gameInfo.VS_GAME_CN,
             seriesId: response.srId,
             gameMaxInn: gameInfo.GAME_INN_NO,
-            isTopOrBottom: gameInfo.GAME_TB_SC_NM
+            isTopOrBottom: gameInfo.GAME_TB_SC_NM,
+            awayTeamCurrentPlayer: gameInfo.T_P_NM,
+            homeTeamCurrentPlayer: gameInfo.B_P_NM
           };
 
           if (newGame.gameType !== undefined) {

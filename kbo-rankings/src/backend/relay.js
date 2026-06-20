@@ -48,4 +48,29 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/preview", async (req, res) => {
+  const { gameId } = req.query;
+
+  const targetUrl = `https://api-gw.sports.naver.com/schedule/games/${gameId}/preview`;
+
+  try {
+    const response = await axios.get(targetUrl, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        Referer: "https://sports.naver.com/",
+        Origin: "https://sports.naver.com",
+      },
+    });
+
+    const previewData =
+      typeof response.data === "string" ? JSON.parse(response.data) : response.data;
+
+    res.json(previewData);
+  } catch (err) {
+    console.error("Naver Preview API 요청 실패:", err.message);
+    res.status(500).json({ error: "데이터를 가져오지 못했습니다." });
+  }
+});
+
 module.exports = router;
