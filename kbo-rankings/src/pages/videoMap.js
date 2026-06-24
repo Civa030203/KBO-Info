@@ -413,11 +413,11 @@ export const GAME_VIDEO_MAP = {
   "20260621HTKT0": "",
 
   // 6월 4주차 주중 시리즈
-  "20260623HTWO0": "https://live-global-cdn-v02.sooplive.com/live-stmc-35/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.qWTHfyNisc62QYu3Xpf3Xiiva77pk7YEArydYaBr_MABOF7iJmhXFoZCO2Wd39ZBZZeKz_pk4jLb1NnRvJEAyQblo2_td4uTgCbRiO5Glg1MoTxPmQGCOKt7nnThr3nySQzsGiSAX2F8lY3dAUA3blafVUA4mIPolwu1dY-j2r8zXNs9oQrVejc7oMWh0sVsn9x-mWp_5Yp4qvsCJ6LNmQ",
-  "20260623SSLG0": "https://live-global-cdn-v02.sooplive.com/live-stmc-30/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.qWTHfyNisc62QYu3Xpf3XloaK6k41Rpy1utdzm45i0a9jC3ieyLZKLBinTPpTGcHaI471YBzLUIfGmFbcHRDyV0U9JNWjeU_01DVTOHzJqVp2Hwoem_5XuHfQPux0F8KeIaBRqQifOr1Hq3j1iE0lPWzYFZGli2-2pZ2nW5aIBzHm4iiqPkCNRK4XWO5Htz9BxF_khydN6quZJMHM_quRg",
-  "20260623OBHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-35/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.qWTHfyNisc62QYu3Xpf3Xsbl5KC1sxumNyzgsdyWMVZpFYvzjBi_cdYg4yrzESWvyu5EAYxEcj8CLiu08i56QKFv1IFwTy2TqyiEnaX4KPoqZQUtNu58Xl9iyHMyc-gvoqYsKnESR2JlTyzd4xXwnqskVj9gR3CDRUWO5_g_Ip0ah_oRIHsV32RGnb-ONlFxv35gmOSJ7Z-qMfmIM2ueVg",
-  "20260623NCLT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-35/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.qWTHfyNisc62QYu3Xpf3Xn4q33Wc4w86D7uvFmEFsrFWBC_L3SpIVN8CsnIet76F4EcWDAG-fR_JjrAsQ8bS7YDgi3BbHsmsXxIbTt5eISy9cgzhZm7uRoM0SQ77gitsSODk9zqZqhDS8qTU0mEXEhW4xeKorkRtsFmiVZKzM8TYDlMbewJR18ReaPswo9g9kCJtDwC8Fhra6OSpgrrbPw",
-  "20260623SKKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-35/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.qWTHfyNisc62QYu3Xpf3XiECdi8UTpdw9rS86F4PWU9Avr47D1S9mipADSXmR_5dLa8RKxoX64lcp4-oCrmX-TYVildcIJ_bE6xJB4PB_4p-m1cuqoms4RJyqWyyNxYzDxI2tXzDVjEwLVjWgim34UCGcY0y659R-rXin_1qXuJ1spCT4S--wst3IfwGLPOyDVaSaudBmXaQPgMrYnqPeQ",
+  "20260623HTWO0": "",
+  "20260623SSLG0": "",
+  "20260623OBHH0": "",
+  "20260623NCLT0": "",
+  "20260623SKKT0": "",
   "20260624HTWO0": "",
   "20260624SSLG0": "",
   "20260624OBHH0": "",
