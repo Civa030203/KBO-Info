@@ -423,11 +423,11 @@ export const GAME_VIDEO_MAP = {
   "20260624OBHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260624/837/295067837/REGL_5F0D89AA_295067837_1.mp4/manifest.m3u8",
   "20260624NCLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260624/829/295067829/REGL_355129B8_295067829_1.mp4/manifest.m3u8",
   "20260624SKKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260624/833/295067833/REGL_D2FADD47_295067833_1.mp4/manifest.m3u8",
-  "20260625HTWO0": "",
-  "20260625SSLG0": "",
-  "20260625OBHH0": "",
-  "20260625NCLT0": "",
-  "20260625SKKT0": "",
+  "20260625HTWO0": "https://live-global-cdn-v02.sooplive.com/live-stm-10/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.YBcpA3mCPg_ZiqJvHNqQn9IvUEC98r80lHKd8DY1MEV5J7m8nfHjjUdZSQyZn9FNhgSLebddoVQAfldSqXmSlK8TxOZSMtVY0flWL8GvlPuFv-isKefGOF2YAQJDXuqWOZ_jGlmz_UDIgTq3QdP0gQEggGy6YVAEWkKqG8nS0QuqXDoxHTskivFp2QeARZZ4sya2jE5XBXuzyd1X9LCl2Q",
+  "20260625SSLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-10/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.YBcpA3mCPg_ZiqJvHNqQn8tRFausGYmXKQ42OyNi23ySVIuOR9YcftKuqxzL-W44EawOC0413O9aHNyJ9bP9pxmdNj2ZCXKwEW_iNcbvR0As3Tm_EaJnGgXLHFL2sLJWRrYeQXn4ccd5-AeaYoSXxKFGjb0S1eeJXZARzv2EMkgE6zUHpik_o_TrrzHLxjrfcfyG1fURj0RyJnKWohfpAQ",
+  "20260625OBHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-10/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.YBcpA3mCPg_ZiqJvHNqQn2ihd-_2IrftpXsJj-RQD9ExAknu371xcRInXL8Z7SR1IvdO2y-yW4XCihXCPqvhYx5SyKx7MzgX2yNlSsrYMf-wdJBZ6O7x3d-Voh24IrX83LlGkB8IyZAGmvJS0gRb66VplK551smn4yTr-6TjTrraoMLB6Gs11m1FkmFUXKJwNCw_b3Hw3H0rsKyolF02Iw",
+  "20260625NCLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-10/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.YBcpA3mCPg_ZiqJvHNqQn8av0QgC2H92Qej3TP3vYG32rkvXaTk0cdUVTMsXAGu6bZospxBFVV2O9PUPy1FBsWqlLASAR9rKao0C9k1Od1-jyEr69G4kpyKllT9Sgu0deoSI_2tvj7Ddo56cHG_gVIsB1TS1Hn1xGp4BEvvhh6qnbMeKflM4USgKlwY0i5lWixF8tT6VJKf5pjhecimabQ",
+  "20260625SKKT0": "https://live-global-cdn-v02.sooplive.com/live-stm-10/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.YBcpA3mCPg_ZiqJvHNqQn8av0QgC2H92Qej3TP3vYG32rkvXaTk0cdUVTMsXAGu6bZospxBFVV2O9PUPy1FBsWqlLASAR9rKao0C9k1Od1-jyEr69G4kpyKllT9Sgu0deoSI_2tvj7Ddo56cHG_gVIsB1TS1Hn1xGp4BEvvhh6qnbMeKflM4USgKlwY0i5lWixF8tT6VJKf5pjhecimabQ",
 
   // 6월 4주차 주말 시리즈
   "20260626WONC0": "",
