@@ -447,11 +447,11 @@ export const GAME_VIDEO_MAP = {
   "20260628LGLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260628/483/295168483/REGL_DA24AF7C_295168483_1.mp4/manifest.m3u8",
 
   // 7월 1주차 주중 시리즈
-  "20260630LGWO0": "",
-  "20260630SSNC0": "",
-  "20260630LTOB0": "",
-  "20260630KTHH0": "",
-  "20260630SKHT0": "",
+  "20260630LGWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/965/295216965/REGL_88A52E97_295216965_1.smil/manifest.m3u8?rp=p01",
+  "20260630SSNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/973/295216973/REGL_AB3D016F_295216973_1.smil/manifest.m3u8?rp=p01",
+  "20260630LTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/971/295216971/REGL_BCB8ED22_295216971_1.smil/manifest.m3u8?rp=p01",
+  "20260630KTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/969/295216969/REGL_86EA0994_295216969_1.smil/manifest.m3u8?rp=p01",
+  "20260630SKHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/967/295216967/REGL_B6FBDA69_295216967_1.smil/manifest.m3u8?rp=p01",
   // 2026년 7월
   "20260701LGWO0": "",
   "20260701SSNC0": "",
