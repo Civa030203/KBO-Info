@@ -121,7 +121,7 @@ export default function LiveTextPage() {
 
         gData.data.forEach((dt) => {
           if (dt.gameID === gameId) {
-            setMaxInn(dt.gameMaxInn);
+            setMaxInn((prev) => Math.max(prev || 1, dt.gameMaxInn || 1));
           }
         });
 
