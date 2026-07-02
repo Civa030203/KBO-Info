@@ -238,11 +238,13 @@ export default function Data() {
                         <div className="ml-4">
                             <h2 className="text-2xl font-bold text-gray-100">{player.name}</h2>
                             {teamId && (
-                                <img
-                                    src={`https://statiz.co.kr/data/team/ci/${(player.records && player.records.length > 0 && yearIndex !== -1) ? player.records[yearIndex].year : new Date().getFullYear()}/${teamId}.svg`}
-                                    className="absolute right-6 top-6 w-24 opacity-30"
-                                    alt="팀 로고"
-                                />
+                                <div className="absolute right-6 top-1/2 -translate-y-1/2 w-28 h-28 opacity-15 pointer-events-none select-none">
+                                    <img
+                                        src={`https://statiz.co.kr/data/team/ci/${(player.records && player.records.length > 0 && yearIndex !== -1) ? player.records[yearIndex].year : new Date().getFullYear()}/${teamId}.svg`}
+                                        className="w-full h-full object-contain filter grayscale invert"
+                                        alt="팀 로고"
+                                    />
+                                </div>
                             )}
                             <p className="text-gray-400">{player.position}</p>
                             <p className="text-sm font-medium mt-1">
