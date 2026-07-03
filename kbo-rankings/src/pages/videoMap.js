@@ -465,11 +465,11 @@ export const GAME_VIDEO_MAP = {
   "20260702SKHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260702/157/295268157/REGL_04BF148C_295268157_1.mp4/manifest.m3u8",
 
   // 7월 1주차 주말 시리즈
-  "20260703OBWO0": "",
-  "20260703HHLG0": "",
-  "20260703SSSK0": "",
-  "20260703NCHT0": "",
-  "20260703LTKT0": "",
+  "20260703OBWO0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.59JvCGmu0OOdOZ6BIkXoFOZg76riQSFqQasOJcg2ocge0JAQgYWP1Tj9kAFZqThqgVeAK_gaSfJfJUkuMWQHzS0oHXjIVnowmLP-Le6bIxE6HEu1coW8kaXQQHYF2kHPPdMF2VtqshYGG01PyM69jUeTmR0Zgw0GkVdyARm31p5KN_3SBw94k8vXgSEGx5Xg",
+  "20260703HHLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-13/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.59JvCGmu0OOdOZ6BIkXoFABoEwiwywO7CEJvG1OG_vobUZnx5sbebQ0u1Oe6TVvRgW6qyiUgZanaQZ8PPOVLmyfaNMQB7Ze3bRrjfCd3VjBLZYMtlWIhLj3cW_pvtNuBxto4sW3BWKUPcfvBWcA2u-TxdeaBWjBdBDEB0HioiEffVX9y1O_OlI3H-HDoUZq4",
+  "20260703SSSK0": "https://live-global-cdn-v02.sooplive.com/live-stm-13/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.59JvCGmu0OOdOZ6BIkXoFBpTrnvNz_AHs_OqloNZSOo3xSydBo5m87DQO2FXpunZehKBg_PXPPK2S1slcTRGQnOjJ7eik538ETSGfyyfGhjvoeQiCcyVtiN4J-xfyCdh0AVBG9vHetugukcvxOUh41yX01xKBAaYC4Pr6OkJ8itupiaqgAXeqLmCIXiZ6QDb",
+  "20260703NCHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-13/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.59JvCGmu0OOdOZ6BIkXoFOKOnAraqsYJrh9FRcOe7yS-tuvbqstK0pWxg3iydmneHuDoVgOFUmYPRFf_ZcO1V-dQZWYkYdCHGqPATzRSloI4RBhDy-qt4je1BMibx5GxuB9TRonxgDnMASSZfU3YzGbHv-_NNAgwrHqSGx_mBqEqAHIWidRmccyWm-qdZoQM",
+  "20260703LTKT0": "https://live-global-cdn-v02.sooplive.com/live-stm-13/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.59JvCGmu0OOdOZ6BIkXoFBTRpjK0fdm3CHInzn5MK8Y7bon9bCb5imfC_EJoSfWgjwUB3JGhxyRAg8Fe0ljrFbfLTD-UZBjEawhpgiMRGAgM5KhBcGY4a0a0fPiM2IEpFbA6GXb22dckWqLq8mZRZeY3q7L5gp6dM9ILnR8qH83xPHp1xCe3Os0SK3j-lrAG",
   "20260704OBWO0": "",
   "20260704HHLG0": "",
   "20260704SSSK0": "",
