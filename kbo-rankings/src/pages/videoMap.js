@@ -482,11 +482,11 @@ export const GAME_VIDEO_MAP = {
   "20260705LTKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-22/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.JpPb4lhLM917Q6pd9LKZdM_exggklROShxyDW5xiiafCIn_I4_ak3wNRl7kieezFT24rd-ZbdkDQPirSWBbywU8-shhGe4pkHPXTvG9YGV81WVR5ZNAfkpiwtBMOyacQWRsGmREOYFi59puStqeRFOVGRU0vRTyCjXeW2YRtmeO4XSWj7s9-V37SlbH0jMo40DgvqgcgOmjUAnY1SmPKIA",
 
   // 7월 2주차 주중 시리즈
-  "20260707SKOB0": "",
-  "20260707NCHH0": "",
-  "20260707LGSS0": "",
-  "20260707HTLT0": "",
-  "20260707WOKT0": "",
+  "20260707SKOB0": "https://live-global-cdn-v02.sooplive.com/live-stm-08/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.N06wEVhcjaqnMUN_6ia68q5YWlkCKc5A4AIobB63pui72rFpLQ7xB1tlf-3KpLZW2AwHE4bcr6zZS8tQWo6n0NP4JBghIiAFay4UO8O7nQ5jz0bZNqWdThHrGex6qF8M3YEHIgd60nwnAtt1EAwyvp1WkTyV3Pw_d3YJeKYGzBVnBrZz_k7QJFhypkejQTjr",
+  "20260707NCHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-08/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.N06wEVhcjaqnMUN_6ia68tXRo9txrbbpZhXFYhHZ2wwcAy4n7Wks0QHESU81VQnC7yvyzhh48ktk5LHju_aNh-2r-Pm_952KE2e6j5h6n15mZNkyhgNHOfG3-QZoJ2Oy3G4VGZzdyG6PlkejJ0ag_D1gX_t-CR3O0hIqtw9Vqf7dxPgok3yHRX8yTHTtHKe5",
+  "20260707LGSS0": "https://live-global-cdn-v02.sooplive.com/live-stm-08/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.N06wEVhcjaqnMUN_6ia68hE-NmIIp2XScpxKVTygNbFlaGsm9OfH8Kz3_JdGWWDTQWKcLxKy4dph4Q-_sgTAbjNCRbYARSd4eQoJuRNVvuhr9nGSSb1HLUB3DYIofJu05veoMKcPxYeI9CLefHpD7I08c2-oSPpZaayfIXk8RF2QcDWFlBxFWIvqXkdsBvoE",
+  "20260707HTLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-08/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.N06wEVhcjaqnMUN_6ia68r8-bnRQu7pDDtY3K8iAM-2c-LkDoWAWccqSy8z8DtkKEAMfYkGLCBF33zI9TMcJKd7Q8YUwtdv1_fuF1fmyh3f1JaQTDfyJf790q1b68IDoYJyOD2q8jqyEWBykhYnG9pjtbQMPUDHtsDAzguuu3rWJIvneXioia430UZ9cgdgB",
+  "20260707WOKT0": "https://live-global-cdn-v02.sooplive.com/live-stm-08/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.N06wEVhcjaqnMUN_6ia68sPEnNQ80aAAzT4d_vKZLYchpP6gtRMMJ73BUR597FRZyVdZPIXIVZ-et2NtXhWrPBT-Xjx8U9dInAerzHXeWJSzJDSGZJbM0fY77Rxveyyofus0SNWBS15DLZ7TZVcmxh_tCeWYpI3MOAB8wTSE5MwzhhMDlP3dL1N9kD73U14Q",
   "20260708SKOB0": "",
   "20260708NCHH0": "",
   "20260708LGSS0": "",
