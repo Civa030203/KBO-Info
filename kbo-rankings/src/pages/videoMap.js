@@ -499,6 +499,6 @@ export const GAME_VIDEO_MAP = {
   // 전반기 종료
 
   // 2026 올스타전
-  "20260710FNFS0": "",
+  "20260710FNFS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-39/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.9FLvG92nctDisBNCWp5St4J1ZyTEdmJdotCzO57cwdmomlPvBM5UyPjSoCk8EGEywNVej-ncy_HxlnRp01Zns4AUKXNjsscZGefzdTeL5Xs72nEcDVtA8fyKrEcyRnxEPPLVylRBS-9Rxg-77nxnQU26YGFg4CXVj_H-LYwmTBkkWo_TgyrV3-gZttLOsKcp",
   "20260711WEEA0": "",
 };
