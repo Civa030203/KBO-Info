@@ -491,13 +491,14 @@ export const GAME_VIDEO_MAP = {
   "20260708LGSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260708/117/295417117/REGL_2E5681C6_295417117_1.mp4/manifest.m3u8",
   "20260708HTLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260708/343/295417343/REGL_16E9F994_295417343_1.mp4/manifest.m3u8",
   "20260708WOKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260708/345/295417345/REGL_5A3092E4_295417345_1.mp4/manifest.m3u8",
-  "20260709SKOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-24/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.P8jLNf8GGNEXZ8D6UfzjNRpMrcNQ3F27yC4E-8Fvghvn6oWsFnrzLmDVLCluVyVPuIgEAfCCIxGUm-TAA8zDUccZD8VUDS2EBaSJpVGAyqJliyWCGwoeosmbCx5F2xtkU9Dtpobu2q0UIj7wW44ikbp6EKAAG-qC1-jzOgJqYZgqdEbfBRtVARH44pBmWfGY",
-  "20260709NCHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-24/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.P8jLNf8GGNEXZ8D6UfzjNULeZRZelavQbXcmXiDIkM7-1ikNs_SqkG-452imzcxQZP3zSfXwwN6mK_tzuWtu1-6RwR1f4J6HjhKyTNRrvyeFeLj4WYji56DWdmewUUyqxw7Cax1MWBtqkZzbse0kjyl4nWU_zfAFqY2CZCXZw096yx2ZSn4G7CzaqDhCb3Za",
-  "20260709LGSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-24/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.P8jLNf8GGNEXZ8D6UfzjNSg34p0N8kjdPxipOa__2QrurwGa9HVgQaT-8yFRM-thXCJYejxCGZ4U5Aa2qmqSRvD1aB-eQZzx5_Rr5qZawHVSIjem5J5lDOhL4y8smGyExTOYYUmhoWPEWTri8xGza9JyugUCHwv0GVLiWhotk3ZMoClFj_nauYoqLpk6o0Jo",
-  "20260709HTLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-05/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.P8jLNf8GGNEXZ8D6UfzjNYapoQWUX5tpTg8y1O09y3xKAPebrLKSqggqqL_nGebiwylQZBXUkbdrT37jFb34Ub-gcYMgDqUD3k02w6fn3rfgChO3BQ7FBdtn7nYCYQAwiEkRaASi-5BAgrOdF22m7XI-wbBYFT3QUvEqV431aPEDS4LJRP4EFrZ8HfIe0DT_",
-  "20260709WOKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-24/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.P8jLNf8GGNEXZ8D6UfzjNW08E7Bqsl_sOu2AIfbVo0iNI7SVtX86eTGHdmLMQkwHdd0HWD0bY0mAU7ymwwD7pxe2F2n4EZnZB1lOQ_udrUo84lpl38vlYaF_JqaV3KPioHhDme278Fmpidv972iTH-r9osaAFBcyYBODtrBZcgeKl5FHTMl8LiQjtcerTwRp",
+  "20260709SKOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260709/589/295441589/REGL_0E715096_295441589_1.mp4/manifest.m3u8",
+  "20260709NCHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260709/587/295441587/REGL_7E8059E2_295441587_1.mp4/manifest.m3u8",
+  "20260709LGSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260709/583/295441583/REGL_95B6B5B4_295441583_1.mp4/manifest.m3u8",
+  "20260709HTLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260709/591/295441591/REGL_EF16787D_295441591_1.mp4/manifest.m3u8",
+  "20260709WOKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260709/585/295441585/REGL_0A51EFBC_295441585_1.mp4/manifest.m3u8",
   // 전반기 종료
 
   // 2026 올스타전
+  "20260710FNFS0": "",
   "20260711WEEA0": "",
 };
