@@ -212,7 +212,7 @@ export default function LiveTextPage() {
         let apiGameId = "";
         const year = gameId.substring(0, 4);
 
-        if (['3', '4', '5', '7'].includes(String(seriesId))) {
+        if (['3', '4', '5', '7', '9'].includes(String(seriesId))) {
           const prefix = String(seriesId).repeat(4);
           apiGameId = `${prefix}${gameId.substring(4)}${year}`;
         } else {
