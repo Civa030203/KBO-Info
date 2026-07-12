@@ -36,7 +36,10 @@ export const teamData = {
 
   "KT": { icon: `https://statiz.co.kr/data/team/ci/2026/12001.svg`, mainColor: "[#000000]", subColor: "[#EB1C24]" },
 
-  "상무": { icon: `https:////6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblemF_SM.png`, mainColor: "[#eab146]", subColor: "[#2c292a]" },
-  "경찰": { icon: `https:////6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2018/emblemF_PL.png`, mainColor: "[#10298e]", subColor: "[#fed632]" },
-  "울산": { icon: `https:////6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblemF_UL.png`, mainColor: "[#c70000]", subColor: "[#060202]" }
+  "상무": { icon: `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblemF_SM.png`, mainColor: "[#eab146]", subColor: "[#2c292a]" },
+  "경찰": { icon: `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2018/emblemF_PL.png`, mainColor: "[#10298e]", subColor: "[#fed632]" },
+  "울산": { icon: `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblemF_UL.png`, mainColor: "[#c70000]", subColor: "[#060202]" },
+
+  "나눔": { icon: '', mainColor: "[#00253a]", subColor: "[#95c4e3]" },
+  "드림": { icon: '', mainColor: "[#95c4e3]", subColor: "[#00253a]" },
 };
