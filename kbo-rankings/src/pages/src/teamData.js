@@ -40,6 +40,6 @@ export const teamData = {
   "경찰": { icon: `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2018/emblemF_PL.png`, mainColor: "[#10298e]", subColor: "[#fed632]" },
   "울산": { icon: `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblemF_UL.png`, mainColor: "[#c70000]", subColor: "[#060202]" },
 
-  "나눔": { icon: '', mainColor: "[#00253a]", subColor: "[#95c4e3]" },
-  "드림": { icon: '', mainColor: "[#95c4e3]", subColor: "[#00253a]" },
+  "나눔": { icon: 'https://kbo-info.vercel.app/nanumallstar.webp', mainColor: "[#00253a]", subColor: "[#95c4e3]" },
+  "드림": { icon: 'https://kbo-info.vercel.app/dreamallstar.webp', mainColor: "[#95c4e3]", subColor: "[#00253a]" },
 };

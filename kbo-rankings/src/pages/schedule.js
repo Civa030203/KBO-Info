@@ -154,7 +154,7 @@ export default function Schedule() {
     if (teamName.includes("상무")) return "/sangmu.svg";
     if (teamName.includes("고양")) return "/goyang.svg";
     if (teamName.includes("울산")) return "/ulsan.svg";
-    if (teamName.includes("나눔")) return "/nanumallstar.svg";
+    if (teamName.includes("나눔")) return "/nanumallstar.webp";
     if (teamName.includes("드림")) return "/dreamallstar.webp";
 
     const iconID = getTeamIcon(year, teamName);
