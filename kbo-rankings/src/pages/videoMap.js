@@ -499,6 +499,6 @@ export const GAME_VIDEO_MAP = {
   // 전반기 종료
 
   // 2026 올스타전
-  "20260710FNFS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260710/591/295465591/REGL_9D640D92_295465591_1.mp4.manifest.m3u8",
-  "20260711WEEA0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260711/961/295492961/REGL_1014E325_295492961_1.mp4.manifest.m3u8",
+  "20260710FNFS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260710/591/295465591/REGL_9D640D92_295465591_1.mp4/manifest.m3u8",
+  "20260711WEEA0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260711/961/295492961/REGL_1014E325_295492961_1.mp4/manifest.m3u8",
 };
