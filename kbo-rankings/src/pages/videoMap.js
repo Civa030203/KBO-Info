@@ -499,6 +499,6 @@ export const GAME_VIDEO_MAP = {
   // 전반기 종료
 
   // 2026 올스타전
-  "20260710FNFS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-39/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.9FLvG92nctDisBNCWp5St4J1ZyTEdmJdotCzO57cwdmomlPvBM5UyPjSoCk8EGEywNVej-ncy_HxlnRp01Zns4AUKXNjsscZGefzdTeL5Xs72nEcDVtA8fyKrEcyRnxEPPLVylRBS-9Rxg-77nxnQU26YGFg4CXVj_H-LYwmTBkkWo_TgyrV3-gZttLOsKcp",
-  "20260711WEEA0": "https://live-global-cdn-v02.sooplive.com/live-stmc-28/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1._HGnDXzLjofgWsdvcd29twlLbeaXKMX9dGjNv8ZBlXlVofik5O80UyEDzRYTjhxo3loRsGEHcIOWs6wQtn2VzDBERoQIJ6ZMK8Vp5SEMlAXa2cOPh_lbiE8jNbV0lUSiIJrDo5NLjwIV6cuLSgF6PMOXE-usfluofPCzuxM1ZOyWc9TxOITX6a5EC7HvYouZ",
+  "20260710FNFS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260710/591/295465591/REGL_9D640D92_295465591_1.mp4.manifest.m3u8",
+  "20260711WEEA0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260711/961/295492961/REGL_1014E325_295492961_1.mp4.manifest.m3u8",
 };

@@ -52,7 +52,7 @@ router.get("/", async (req, res) => {
             lostPitcher: gameInfo.L_PIT_P_NM,
             isCanceled: gameInfo.CANCEL_SC_ID,
             gameState: gameInfo.GAME_STATE_SC,
-            gameType: gameInfo.GAME_SC_NM,
+            gameType: null,
             gameNumber: gameInfo.VS_GAME_CN,
             seriesId: response.srId,
             gameMaxInn: gameInfo.GAME_INN_NO,
@@ -62,18 +62,21 @@ router.get("/", async (req, res) => {
           };
 
           if (newGame.gameType !== undefined) {
-            switch (newGame.gameType.slice(0, 2)) {
-              case 'WC':
+            switch (currentSrId) {
+              case 4:
                 newGame.gameType = '와일드카드 결정전 ' + String(newGame.gameNumber) + "차전";
                 break;
-              case '준P':
+              case 3:
                 newGame.gameType = '준플레이오프 ' + String(newGame.gameNumber) + "차전";
                 break;
-              case 'PO':
+              case 5:
                 newGame.gameType = '플레이오프 ' + String(newGame.gameNumber) + "차전";
                 break;
-              case 'KS':
+              case 7:
                 newGame.gameType = '한국시리즈 ' + String(newGame.gameNumber) + "차전";
+                break;
+              case 9:
+                newGame.gameType = '올스타전';
                 break;
               default:
                 break;
