@@ -62,7 +62,7 @@ router.get("/", async (req, res) => {
           };
 
           if (newGame.gameType !== undefined) {
-            switch (currentSrId) {
+            switch (newGame.seriesId) {
               case 4:
                 newGame.gameType = '와일드카드 결정전 ' + String(newGame.gameNumber) + "차전";
                 break;
