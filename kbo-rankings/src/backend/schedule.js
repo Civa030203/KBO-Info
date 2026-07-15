@@ -96,4 +96,69 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/weekly", async (req, res) => {
+  try {
+    const { date, leId } = req.query; // YYYYMMDD 형식
+    if (!date) {
+      return res.status(400).json({ error: "날짜를 입력해주세요 (YYYYMMDD)" });
+    }
+
+    const year = parseInt(date.substring(0, 4), 10);
+    const month = parseInt(date.substring(4, 6), 10) - 1;
+    const day = parseInt(date.substring(6, 8), 10);
+    
+    const startDate = new Date(year, month, day);
+    const dates = [];
+    for(let i = 0; i < 7; i++) {
+      const d = new Date(startDate);
+      d.setDate(d.getDate() + i);
+      const dYear = d.getFullYear();
+      const dMonth = String(d.getMonth() + 1).padStart(2, '0');
+      const dDay = String(d.getDate()).padStart(2, '0');
+      dates.push(`${dYear}${dMonth}${dDay}`);
+    }
+
+    const requests = [];
+    for (const d of dates) {
+      for (let currentSrId = 0; currentSrId <= 10; currentSrId++) {
+        const url = `https://m.koreabaseball.com/ws/Kbo.asmx/GetKboGameList?leId=${leId || 1}&srId=${currentSrId}&date=${d}`;
+        requests.push(
+          axios.get(url, {
+            headers: {
+              "User-Agent":
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+            },
+          }).then(res => ({ srId: currentSrId, targetDate: d, data: res.data }))
+        );
+      }
+    }
+
+    const responses = await Promise.all(requests);
+    const gameData = [];
+
+    for (const response of responses) {
+      if (response.data && response.data.game && response.data.game.length > 0) {
+        for (let i = 0; i < response.data.game.length; i++) {
+          const gameInfo = response.data.game[i];
+          const newGame = {
+            date: gameInfo.G_DT_TXT,
+            gameID: gameInfo.G_ID,
+            stadium: gameInfo.S_NM,
+            awayTeamName: gameInfo.AWAY_NM,
+            homeTeamName: gameInfo.HOME_NM,
+            isCanceled: gameInfo.CANCEL_SC_ID,
+            gameState: gameInfo.GAME_STATE_SC,
+          };
+          gameData.push(newGame);
+        }
+      }
+    }
+
+    res.json(gameData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch weekly schedule" });
+  }
+});
+
 module.exports = router;
