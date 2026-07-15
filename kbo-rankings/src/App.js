@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Ranking from "./pages/ranking.js";
 import Schedule from "./pages/schedule.js";
@@ -41,6 +41,29 @@ const DUMMY_RANKING = {
 function Home() {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [scheduleData, setScheduleData] = useState([]);
+  const [rankingData, setRankingData] = useState({});
+
+  useEffect(() => {
+    if (!selectedTeam) return;
+
+    // TODO: 백엔드 API 호출을 통해 실제 데이터를 가져오는 로직 구현부
+    // const fetchTeamData = async () => {
+    //   try {
+    //     // 예: const scheduleRes = await axios.get(`/api/schedule?team=${selectedTeam}`);
+    //     // 예: const rankingRes = await axios.get(`/api/ranking?team=${selectedTeam}`);
+    //     // setScheduleData(scheduleRes.data);
+    //     // setRankingData(rankingRes.data);
+    //   } catch (error) {
+    //     console.error("데이터 연동 중 오류 발생:", error);
+    //   }
+    // };
+    // fetchTeamData();
+
+    // 현재는 디자인을 위해 더미 데이터로 세팅
+    setScheduleData(DUMMY_SCHEDULE);
+    setRankingData(DUMMY_RANKING);
+  }, [selectedTeam]);
 
   const renderDropdown = () => (
     <div className="relative z-50">
@@ -144,18 +167,25 @@ function Home() {
             <div className="relative z-10 flex flex-col md:flex-row h-full justify-between w-full">
               {/* Left Side */}
               <div className="flex flex-col justify-between mb-4 md:mb-0">
-                <div>
+                <div className="flex items-center gap-4 md:gap-6">
                   <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">NEXT<br/>GAME</h2>
+                  {scheduleData.length > 0 && !scheduleData[0].noGame && teamData[scheduleData[0].opponent] && (
+                    <img 
+                      src={teamData[scheduleData[0].opponent]?.icon} 
+                      alt={scheduleData[0].opponent} 
+                      className="w-16 h-16 md:w-24 md:h-24 object-contain drop-shadow-lg" 
+                    />
+                  )}
                 </div>
                 <div className="text-white/90 text-lg md:text-2xl font-medium drop-shadow mt-4 md:mt-0">
-                  2026년 7월 16일, 창원
+                  {scheduleData.length > 0 ? `${scheduleData[0].date}, ${scheduleData[0].stadium || "창원"}` : "일정 없음"}
                 </div>
               </div>
               
               {/* Right Side */}
               <div className="flex justify-end items-center">
                 <div className="grid grid-cols-2 gap-x-6 md:gap-x-12 gap-y-3 md:gap-y-6 bg-black/20 p-4 md:p-6 rounded-2xl backdrop-blur-sm border border-white/10">
-                  {DUMMY_SCHEDULE.map((game, idx) => (
+                  {scheduleData.map((game, idx) => (
                     <div key={idx} className="flex items-center gap-3 md:gap-5">
                       <span className="text-white text-lg md:text-2xl font-medium">{game.date}</span>
                       {game.noGame ? (
@@ -176,23 +206,23 @@ function Home() {
             <Link
               to="/ranking"
               className="h-full rounded-3xl shadow-xl p-6 md:p-8 flex flex-col justify-between group hover:brightness-110 transition-all relative overflow-hidden border border-gray-800"
-              style={{ backgroundColor: '#18181b' }} // Dark neutral background
+              style={{ backgroundColor: teamData[selectedTeam]?.mainColor?.replace(/[[\]]/g, '') || '#18181b' }}
             >
               {/* Slight tint based on team subcolor */}
-              <div className="absolute inset-0 opacity-10" style={{ backgroundColor: teamData[selectedTeam]?.subColor?.replace(/[[\]]/g, '') || '#ffffff' }}></div>
+              <div className="absolute inset-0 opacity-20" style={{ backgroundColor: teamData[selectedTeam]?.subColor?.replace(/[[\]]/g, '') || '#000000' }}></div>
               <div className="relative z-10 flex flex-col h-full">
                 <h2 className="text-white text-4xl md:text-5xl font-extrabold uppercase tracking-widest mb-2 drop-shadow-md">
                   {TEAM_NAMES_ENG[selectedTeam] || selectedTeam}
                 </h2>
                 <div className="flex items-end justify-between mt-auto w-full">
                   <div className="text-white font-bold flex items-baseline drop-shadow-md">
-                    <span className="text-7xl md:text-8xl leading-none">{DUMMY_RANKING.rank}</span>
+                    <span className="text-7xl md:text-8xl leading-none">{rankingData.rank || '-'}</span>
                     <span className="text-3xl md:text-4xl ml-2">위</span>
                   </div>
                   <div className="text-right text-white/90 text-xl md:text-3xl font-medium leading-snug tracking-wide space-y-1">
-                    <div>{DUMMY_RANKING.win}승</div>
-                    <div>{DUMMY_RANKING.lose}패</div>
-                    <div>{DUMMY_RANKING.draw}무</div>
+                    <div>{rankingData.win || 0}승</div>
+                    <div>{rankingData.lose || 0}패</div>
+                    <div>{rankingData.draw || 0}무</div>
                   </div>
                 </div>
               </div>
