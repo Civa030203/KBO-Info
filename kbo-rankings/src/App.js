@@ -68,38 +68,38 @@ function Home() {
         }
 
         const newScheduleData = next7Days.map(d => {
-           const m = d.getMonth() + 1;
-           const day = d.getDate();
-           const dateQuery = `${m}월 ${day}일`; // KBO API에서 반환하는 "2026년 7월 16일" 문자열의 일부
-           
-           const gamesForDay = allGames.filter(g => g.date && g.date.includes(dateQuery));
-           const game = gamesForDay.find(g => g.awayTeamName === selectedTeam || g.homeTeamName === selectedTeam);
-           
-           const shortDate = `${m}/${day}`;
+          const m = d.getMonth() + 1;
+          const day = d.getDate();
+          const dateQuery = `${m}월 ${day}일`; // KBO API에서 반환하는 "2026년 7월 16일" 문자열의 일부
 
-           if (game) {
-              const isCanceled = game.gameState >= 4 || game.isCanceled === "1"; 
-              const opponent = game.awayTeamName === selectedTeam ? game.homeTeamName : game.awayTeamName;
-              return {
-                 date: shortDate,
-                 opponent: opponent,
-                 stadium: game.stadium,
-                 noGame: isCanceled
-              };
-           } else {
-              return {
-                 date: shortDate,
-                 opponent: "NO GAME",
-                 noGame: true
-              };
-           }
+          const gamesForDay = allGames.filter(g => g.date && g.date.includes(dateQuery));
+          const game = gamesForDay.find(g => g.awayTeamName === selectedTeam || g.homeTeamName === selectedTeam);
+
+          const shortDate = `${m}/${day}`;
+
+          if (game) {
+            const isCanceled = game.gameState >= 4 || game.isCanceled === "1";
+            const opponent = game.awayTeamName === selectedTeam ? game.homeTeamName : game.awayTeamName;
+            return {
+              date: shortDate,
+              opponent: opponent,
+              stadium: game.stadium,
+              noGame: isCanceled
+            };
+          } else {
+            return {
+              date: shortDate,
+              opponent: "NO GAME",
+              noGame: true
+            };
+          }
         });
         setScheduleData(newScheduleData);
 
         // 2. 순위 데이터 가져오기
         const rankingRes = await fetch(`http://localhost:5001/api/rankings`);
         const rankings = await rankingRes.json();
-        
+
         const teamRank = rankings.find(r => r.team === selectedTeam);
         if (teamRank) {
           setRankingData({
@@ -234,7 +234,11 @@ function Home() {
                   )}
                 </div>
                 <div className="text-white/90 text-lg md:text-2xl font-medium drop-shadow mt-4 md:mt-0">
-                  {scheduleData.length > 0 ? `${scheduleData[0].date}, ${scheduleData[0].stadium || "창원"}` : "일정 없음"}
+                  {scheduleData.length > 0
+                    ? scheduleData[0].noGame
+                      ? "오늘 경기 없음"
+                      : `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}`
+                    : "일정 없음"}
                 </div>
               </div>
 
