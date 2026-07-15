@@ -61,7 +61,7 @@ function Home() {
         const allGames = await scheduleRes.json();
 
         const next7Days = [];
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 6; i++) {
           const d = new Date(today);
           d.setDate(d.getDate() + i);
           next7Days.push(d);
