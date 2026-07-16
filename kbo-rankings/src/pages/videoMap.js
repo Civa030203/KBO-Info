@@ -504,11 +504,11 @@ export const GAME_VIDEO_MAP = {
 
   // 후반기 시작
   // 7월 3주차 주말 시리즈
-  "20260716OBNC0": "",
-  "20260716KTLG0": "",
-  "20260716HTSK0": "",
-  "20260716WOHH0": "",
-  "20260716LTSS0": "",
+  "20260716OBNC0": "https://live-global-cdn-v02.sooplive.com/live-stm-17/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RJHVvhwW47AnCBw3wTVm4q6FLAShGbXHBuzdlxU2wMQr_3HxUkKDGcVmCDICsrFuU4mTSYzEd-FpmkKjdI46kDIDyQoHLH22ULYyaqrR1JOlrNm5sroq-K-Vh7z9H3MfaSR1X2BzfkSk43V-VV8hvfYLOHK6iMYiBqGNNcyBjNCtDPru9tL14UYHUKLpGq2H",
+  "20260716KTLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-05/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RJHVvhwW47AnCBw3wTVm4vL4-XfItx5oP5lbgfXbT1PsdOuKxjvwDzqlvt5KM2hWkqJj3K1a1Chu90D2FZvOdrn4Lu2-qq4G0aTMei5XPzdj8NQwa80ZNHRVv9MtgfjEk3JSit-vL5ZQL_VWiNwYUMzpHkgvHg9O72hKXFeJKejQUksywyGW6IMG_pOr9sJb",
+  "20260716HTSK0": "https://live-global-cdn-v02.sooplive.com/live-stm-06/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.cd-XHHbDGtYmCIjqHnMmGel7NCeDEb1fTBmEM269GKD_THN9kF2uaQi6Dg-curd6Hpyc32GTkzzvg5VwqdfSRirk8AvYddiA6RTSQXTzbY_G5PN-T9fxfFlfF35l2DR-68-l6i3nHMM9YvG97Eg2HosH1b6kErDVnz6qj-ljLBlJXS48rxXSutjoUdn8CUOD",
+  "20260716WOHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-36/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RJHVvhwW47AnCBw3wTVm4gmCjca3JZHDsy3TvHdpfwWykXWw-WeyJOu-H8-y1i79Tfwlvmm1qtApblSYC5KKqWQlYhII5VCs-MEnOGLIYdQEkrI5oC__Fwd71F4zipGnMKl_U4k0RS_HHcsn2qiDBg5Aa-AyyfNuyrE0Xmae_6sdDtK2d12l0XUOVNxgwMi3",
+  "20260716LTSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-39/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.cd-XHHbDGtYmCIjqHnMmGeLYmXNbTUujOJz3HIZHq-jXK16PN92zNhIARuPHgnXPlfaAIFzjEehXO4v16nEO6fydMbjnVjsJfkJpKen_gzmy5GxHJQ3rEAn4Ba9vCaM3JZUvGBwNy3UlreRYhRunMoQ7i0mjptcZxwIBHfdMGZvlfrbIbImd-I2z_4xk2w_J",
   "20260717OBNC0": "",
   "20260717KTLG0": "",
   "20260717HTSK0": "",
