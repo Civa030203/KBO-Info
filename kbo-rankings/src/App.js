@@ -97,7 +97,7 @@ function Home() {
         setScheduleData(newScheduleData);
 
         // 2. 순위 데이터 가져오기
-        const rankingRes = await fetch(`http://localhost:5001/api/rankings`);
+        const rankingRes = await fetch(`https://kbo-info.onrender.com/api/rankings`);
         const rankings = await rankingRes.json();
 
         const teamRank = rankings.find(r => r.team === selectedTeam);
