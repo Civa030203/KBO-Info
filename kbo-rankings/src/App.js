@@ -57,7 +57,7 @@ function Home() {
         const formattedDate = `${yyyy}${mm}${dd}`;
 
         // 1. 일정 데이터 가져오기
-        const scheduleRes = await fetch(`http://localhost:5001/api/schedule/weekly?date=${formattedDate}&leId=1`);
+        const scheduleRes = await fetch(`http://kbo-info.onrender.com/api/schedule/weekly?date=${formattedDate}&leId=1`);
         const allGames = await scheduleRes.json();
 
         const next7Days = [];
