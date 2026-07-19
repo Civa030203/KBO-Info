@@ -80,11 +80,19 @@ function Home() {
           if (game) {
             const isCanceled = game.gameState >= 4 || game.isCanceled === "1";
             const opponent = game.awayTeamName === selectedTeam ? game.homeTeamName : game.awayTeamName;
+            const myScore = game.awayTeamName === selectedTeam ? game.awayScore : game.homeScore;
+            const opponentScore = game.awayTeamName === selectedTeam ? game.homeScore : game.awayScore;
+
             return {
               date: shortDate,
               opponent: opponent,
               stadium: game.stadium,
-              noGame: isCanceled
+              noGame: isCanceled,
+              gameState: game.gameState,
+              myScore: myScore,
+              opponentScore: opponentScore,
+              inning: game.gameMaxInn,
+              topOrBottom: game.isTopOrBottom
             };
           } else {
             return {
@@ -226,18 +234,27 @@ function Home() {
                 <div className="flex items-center gap-4 md:gap-6">
                   <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">NEXT<br />GAME</h2>
                   {scheduleData.length > 0 && !scheduleData[0].noGame && teamData[scheduleData[0].opponent] && (
-                    <img
-                      src={teamData[scheduleData[0].opponent]?.icon}
-                      alt={scheduleData[0].opponent}
-                      className="w-16 h-16 md:w-48 md:h-48 object-contain drop-shadow-lg"
-                    />
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={teamData[scheduleData[0].opponent]?.icon}
+                        alt={scheduleData[0].opponent}
+                        className="w-16 h-16 md:w-48 md:h-48 object-contain drop-shadow-lg"
+                      />
+                      {(scheduleData[0].gameState === "3" || scheduleData[0].gameState === "33") && (
+                        <span className="text-white text-5xl md:text-7xl font-bold drop-shadow-lg ml-2 md:ml-4 tracking-tighter">
+                          {scheduleData[0].myScore} : {scheduleData[0].opponentScore}
+                        </span>
+                      )}
+                    </div>
                   )}
                 </div>
                 <div className="text-white/90 text-lg md:text-2xl font-medium drop-shadow mt-4 md:mt-0">
                   {scheduleData.length > 0
                     ? scheduleData[0].noGame
                       ? "오늘 경기 없음"
-                      : `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}`
+                      : (scheduleData[0].gameState === "3" || scheduleData[0].gameState === "33")
+                        ? `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}, 현재 ${scheduleData[0].inning}회${scheduleData[0].topOrBottom} 진행 중`
+                        : `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}`
                     : "일정 없음"}
                 </div>
               </div>

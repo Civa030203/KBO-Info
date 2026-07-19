@@ -146,8 +146,13 @@ router.get("/weekly", async (req, res) => {
             stadium: gameInfo.S_NM,
             awayTeamName: gameInfo.AWAY_NM,
             homeTeamName: gameInfo.HOME_NM,
+            awayScore: gameInfo.T_SCORE_CN,
+            homeScore: gameInfo.B_SCORE_CN,
+            gameScore: `${gameInfo.T_SCORE_CN} : ${gameInfo.B_SCORE_CN}`,
             isCanceled: gameInfo.CANCEL_SC_ID,
             gameState: gameInfo.GAME_STATE_SC,
+            gameMaxInn: gameInfo.GAME_INN_NO,
+            isTopOrBottom: gameInfo.GAME_TB_SC_NM,
           };
           gameData.push(newGame);
         }
