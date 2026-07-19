@@ -381,7 +381,6 @@ export default function Schedule() {
                         <Link
                           to={`/relay/${searchParams.league}/${game.seriesId}/${game.gameID}`}
                           className="inline-block px-2 py-1 md:px-4 md:py-2 bg-blue-600/90 text-white text-xs md:text-sm rounded-lg shadow hover:bg-blue-500 transition whitespace-nowrap"
-                          target="_blank"
                         >
                           문자 중계
                         </Link>
