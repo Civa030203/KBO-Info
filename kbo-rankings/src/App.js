@@ -89,7 +89,7 @@ function Home() {
               stadium: game.stadium,
               noGame: isCanceled,
               gameState: game.gameState,
-              myScore: game.gameScore,
+              myScore: myScore,
               opponentScore: opponentScore,
               inning: game.gameMaxInn,
               topOrBottom: game.isTopOrBottom,
@@ -243,7 +243,7 @@ function Home() {
                       />
                       {(scheduleData[0].gameState === "2" || scheduleData[0].gameState === "33") && (
                         <span className="text-white text-5xl md:text-7xl font-bold drop-shadow-lg ml-2 md:ml-4 tracking-tighter">
-                          {scheduleData[0].gameScore}
+                          {scheduleData[0].myScore}
                         </span>
                       )}
                     </div>
