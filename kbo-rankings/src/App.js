@@ -89,7 +89,7 @@ function Home() {
               stadium: game.stadium,
               noGame: isCanceled,
               gameState: game.gameState,
-              myScore: myScore,
+              myScore: game.gameScore,
               opponentScore: opponentScore,
               inning: game.gameMaxInn,
               topOrBottom: game.isTopOrBottom,
@@ -241,9 +241,9 @@ function Home() {
                         alt={scheduleData[0].opponent}
                         className="w-16 h-16 md:w-48 md:h-48 object-contain drop-shadow-lg"
                       />
-                      {(scheduleData[0].gameState === "3" || scheduleData[0].gameState === "33") && (
+                      {(scheduleData[0].gameState === "2" || scheduleData[0].gameState === "33") && (
                         <span className="text-white text-5xl md:text-7xl font-bold drop-shadow-lg ml-2 md:ml-4 tracking-tighter">
-                          {scheduleData[0].myScore} : {scheduleData[0].opponentScore}
+                          {scheduleData[0].gameScore}
                         </span>
                       )}
                     </div>
