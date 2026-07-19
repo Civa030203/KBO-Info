@@ -253,7 +253,7 @@ function Home() {
                   {scheduleData.length > 0
                     ? scheduleData[0].noGame
                       ? "오늘 경기 없음"
-                      : (scheduleData[0].gameState === "3" || scheduleData[0].gameState === "33")
+                      : (scheduleData[0].gameState === "2" || scheduleData[0].gameState === "33")
                         ? `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}, 현재 ${scheduleData[0].inning}회${scheduleData[0].topOrBottom} 진행 중`
                         : `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}`
                     : "일정 없음"}
