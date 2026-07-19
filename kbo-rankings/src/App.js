@@ -92,7 +92,8 @@ function Home() {
               myScore: myScore,
               opponentScore: opponentScore,
               inning: game.gameMaxInn,
-              topOrBottom: game.isTopOrBottom
+              topOrBottom: game.isTopOrBottom,
+              gameID: game.gameID
             };
           } else {
             return {
