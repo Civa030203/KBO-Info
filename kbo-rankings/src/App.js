@@ -239,7 +239,7 @@ function Home() {
           {/* Top Half: Schedule Banner */}
           <Link
             to={
-              scheduleData.length > 0 && (scheduleData[0].gameState === "2" || scheduleData[0].gameState === "33")
+              scheduleData.length > 0 && (scheduleData[0].gameState === "2")
                 ? `/relay/1/0/${scheduleData[0].gameID}`
                 : "/schedule"
             }
@@ -259,31 +259,45 @@ function Home() {
               {/* Left Side */}
               <div className="flex flex-col justify-between mb-4 md:mb-0">
                 <div className="flex items-center gap-4 md:gap-6">
-                  {(scheduleData[0].gameState === "2")
-                    ? <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">CURRENT<br />GAME</h2> :
-                    <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">NEXT<br />GAME</h2>
-                  }
-                  {scheduleData.length > 0 && !scheduleData[0].noGame && teamData[scheduleData[0].opponent] && (
-                    <div className="flex items-center gap-4">
-                      <img
-                        src={teamData[scheduleData[0].opponent]?.icon}
-                        alt={scheduleData[0].opponent}
-                        className="w-16 h-16 md:w-48 md:h-48 object-contain drop-shadow-lg"
-                      />
-                      {(scheduleData[0].gameState === "2" || scheduleData[0].gameState === "33") && (
-                        <span className="text-white text-5xl md:text-7xl font-bold drop-shadow-lg ml-2 md:ml-4 tracking-tighter">
-                          {scheduleData[0].myScore} : {scheduleData[0].opponentScore}
-                        </span>
-                      )}
-                    </div>
+                  {/* ⚠️ 이 부분을 안전하게 수정했습니다 */}
+                  {scheduleData.length > 0 && scheduleData[0].gameState === "2" ? (
+                    <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">
+                      CURRENT
+                      <br />
+                      GAME
+                    </h2>
+                  ) : (
+                    <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">
+                      NEXT
+                      <br />
+                      GAME
+                    </h2>
                   )}
+                  {scheduleData.length > 0 &&
+                    !scheduleData[0].noGame &&
+                    teamData[scheduleData[0].opponent] && (
+                      <div className="flex items-center gap-4">
+                        <img
+                          src={teamData[scheduleData[0].opponent]?.icon}
+                          alt={scheduleData[0].opponent}
+                          className="w-16 h-16 md:w-48 md:h-48 object-contain drop-shadow-lg"
+                        />
+                        {scheduleData[0].gameState === "2" && (
+                          <span className="text-white text-5xl md:text-7xl font-bold drop-shadow-lg ml-2 md:ml-4 tracking-tighter">
+                            {scheduleData[0].myScore} : {scheduleData[0].opponentScore}
+                          </span>
+                        )}
+                      </div>
+                    )}
                 </div>
                 <div className="text-white/90 text-lg md:text-2xl font-medium drop-shadow mt-4 md:mt-0">
                   {scheduleData.length > 0
                     ? scheduleData[0].noGame
                       ? "오늘 경기 없음"
-                      : (scheduleData[0].gameState === "2" || scheduleData[0].gameState === "33")
-                        ? `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}, 현재 ${scheduleData[0].inning}회${scheduleData[0].topOrBottom} 진행 중`
+                      : scheduleData[0].gameState === "2"
+                        ? `${scheduleData[0].date}, ${scheduleData[0].stadium || ""
+                        }, 현재 ${scheduleData[0].inning}회${scheduleData[0].topOrBottom
+                        } 진행 중`
                         : `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}`
                     : "일정 없음"}
                 </div>
@@ -294,11 +308,19 @@ function Home() {
                 <div className="grid grid-cols-2 gap-x-6 md:gap-x-12 gap-y-3 md:gap-y-6 bg-black/20 p-4 md:p-6 rounded-2xl backdrop-blur-sm border border-white/10">
                   {scheduleData.map((game, idx) => (
                     <div key={idx} className="flex items-center gap-3 md:gap-5">
-                      <span className="text-white text-lg md:text-2xl font-medium">{game.date}</span>
+                      <span className="text-white text-lg md:text-2xl font-medium">
+                        {game.date}
+                      </span>
                       {game.noGame ? (
-                        <span className="text-white/80 text-base md:text-xl font-medium tracking-wider">NO GAME</span>
+                        <span className="text-white/80 text-base md:text-xl font-medium tracking-wider">
+                          NO GAME
+                        </span>
                       ) : (
-                        <img src={teamData[game.opponent]?.icon} alt={game.opponent} className="w-10 h-10 md:w-14 md:h-14 object-contain drop-shadow-md" />
+                        <img
+                          src={teamData[game.opponent]?.icon}
+                          alt={game.opponent}
+                          className="w-10 h-10 md:w-14 md:h-14 object-contain drop-shadow-md"
+                        />
                       )}
                     </div>
                   ))}
