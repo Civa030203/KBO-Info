@@ -22,6 +22,19 @@ const TEAM_NAMES_ENG = {
   "키움": "KIWOOM HEROES"
 };
 
+const TEAM_CODE = {
+  "LG": "LG",
+  "한화": "HH",
+  "SSG": "SK",
+  "삼성": "SS",
+  "NC": "NC",
+  "KT": "KT",
+  "롯데": "LT",
+  "KIA": "HT",
+  "두산": "OB",
+  "키움": "WO"
+}
+
 const DUMMY_SCHEDULE = [
   { date: "7/16", opponent: "NC", stadium: "창원" },
   { date: "7/17", opponent: "NC", stadium: "창원" },
@@ -40,10 +53,18 @@ const DUMMY_RANKING = {
 };
 
 function Home() {
-  const [selectedTeam, setSelectedTeam] = useState(null);
+  const [selectedTeam, setSelectedTeam] = useState(() => localStorage.getItem("selectedTeam") || null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [scheduleData, setScheduleData] = useState([]);
   const [rankingData, setRankingData] = useState({});
+
+  useEffect(() => {
+    if (selectedTeam) {
+      localStorage.setItem("selectedTeam", selectedTeam);
+    } else {
+      localStorage.removeItem("selectedTeam");
+    }
+  }, [selectedTeam]);
 
   useEffect(() => {
     if (!selectedTeam) return;
@@ -82,6 +103,7 @@ function Home() {
             const opponent = game.awayTeamName === selectedTeam ? game.homeTeamName : game.awayTeamName;
             const myScore = game.awayTeamName === selectedTeam ? game.awayScore : game.homeScore;
             const opponentScore = game.awayTeamName === selectedTeam ? game.homeScore : game.awayScore;
+            const gameID = game.gameID
 
             return {
               date: shortDate,
@@ -216,7 +238,11 @@ function Home() {
         <div className="flex-1 flex flex-col gap-4 sm:gap-6 pb-4 sm:pb-8 h-full">
           {/* Top Half: Schedule Banner */}
           <Link
-            to="/schedule"
+            to={
+              scheduleData.length > 0 && (scheduleData[0].gameState === "2" || scheduleData[0].gameState === "33")
+                ? `/relay/1/0/${scheduleData[0].gameID}`
+                : "/schedule"
+            }
             className="flex-1 relative rounded-3xl shadow-xl overflow-hidden group hover:brightness-110 transition-all flex flex-col p-6 md:p-10 border border-gray-800"
             style={{
               background: `linear-gradient(135deg, ${teamData[selectedTeam]?.mainColor?.replace(/[[\]]/g, '') || '#1a1748'}, ${teamData[selectedTeam]?.subColor?.replace(/[[\]]/g, '') || '#0a0a0a'})`
@@ -233,7 +259,10 @@ function Home() {
               {/* Left Side */}
               <div className="flex flex-col justify-between mb-4 md:mb-0">
                 <div className="flex items-center gap-4 md:gap-6">
-                  <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">NEXT<br />GAME</h2>
+                  {(scheduleData[0].gameState === "2")
+                    ? <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">CURRENT<br />GAME</h2> :
+                    <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">NEXT<br />GAME</h2>
+                  }
                   {scheduleData.length > 0 && !scheduleData[0].noGame && teamData[scheduleData[0].opponent] && (
                     <div className="flex items-center gap-4">
                       <img
