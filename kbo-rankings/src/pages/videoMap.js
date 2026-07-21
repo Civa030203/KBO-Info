@@ -525,11 +525,11 @@ export const GAME_VIDEO_MAP = {
   "20260719LTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260719/821/295693821/REGL_748B84E3_295693821_1.mp4/manifest.m3u8",
 
   // 7월 4주차 주중 시리즈
-  "20260721SSWO0": "",
-  "20260721NCLG0": "",
-  "20260721HHHT0": "",
-  "20260721SKLT0": "",
-  "20260721OBKT0": "",
+  "20260721SSWO0": "https://live-global-cdn-v02.sooplive.com/live-stm-12/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.yZvb_6uKoj-DGuiiaWtkOeBzSaXxLrhsCWKIqVjOO_QaJ9lkB9TaJCgoWvfBngDSHmIsrweBTaD2BIW5hmuImopiMM0syvL_PA5UVOZh0iPB2k5OF13gdTFIedqzEFuA_rsZMUWivI-w_e_yLkxQX91AycsW1r3zaG5t9QWKlXuUjkTWp_u9nOnF88LzY65F6TMehJa9JaDMwkekzFxDOA",
+  "20260721NCLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-12/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.yZvb_6uKoj-DGuiiaWtkOZPY6QGO1rHpsthc8_-JAY07DAfDb4q2msI3uKgi9pAZTUyLt1YNuE8efZ_SS7ldK9bM3V1K5bQ8vsWH9Figy4UOuIELytDdLkNy9ANWKnOXWZtkMUxrkC_rYIRiY2VmaIX1y3GkHAF3Zoi5JEAU2i82vQOI2hoCyaHjQ9J9SeIMcX3uoeWxAn8Ds88Gkx8TfQ",
+  "20260721HHHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-12/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.yZvb_6uKoj-DGuiiaWtkOd4kMjiEju_R7YbliHMn7ShZu4rKcMm2Z4IuI6KQD5_PjFqqIyYxTc9GiyelOSeg7GK-dqxZDfdxyYofXN-PeN_VTHu1ZNJIET53W3Q0mGIsSNnMLoFowoKnZaaZszhEo6gkZ7lwW7UM-hvgiroOeHIwFimDsmRGR2dn4LwunwFq_n3U9C1nb-RrwLkyA5NO7g",
+  "20260721SKLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-12/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.yZvb_6uKoj-DGuiiaWtkOWkobih-qlphnA5iu-FH0vfET8FP0jRQx4ZveSlZ0HPl2zfQfSHVXzPK8VLRkirRAQbJgHClbSyZMFjGv52rD1FHwV70qWPptkI1Nhxr0HyUGTcqMWlD5STE9jvuUgHX1hjsLrgxD6jKhO-IGm7nI85TDPomFeqBVLOGE_eOeCoi6-jaHZyA3NvQdyMVsNPa_A",
+  "20260721OBKT0": "https://live-global-cdn-v02.sooplive.com/live-stm-12/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.yZvb_6uKoj-DGuiiaWtkOaMJ5jyhl5Rmuquy913ncjHESCC60aQICNXxZ6QrRmTHu8eHXzlWTWDmXiaJuBY1jhUvIvci3JWvdQhHVtVV3YSAzGTiPORB_vmoqGCIThPf2txsxH9qLWnjNyznAx7mYH_SfokYanwD684R9tkFJto_OYEBY1iG22TlRvm4ZvL3fJAP60OeRJEVeTIziW1YVQ",
   "20260722SSWO0": "",
   "20260722NCLG0": "",
   "20260722HHHT0": "",
