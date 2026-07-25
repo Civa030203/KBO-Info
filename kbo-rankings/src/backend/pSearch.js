@@ -27,6 +27,7 @@ router.get("/", async (req, res) => {
                 backNo: response.data.now[index].BACK_NO,
                 position: response.data.now[index].POS_NO,
                 team: response.data.now[index].T_NM,
+                teamID: response.data.now[index].T_ID,
                 hand: response.data.now[index].P_TYPE,
                 link: "https://koreabaseball.com/" + response.data.now[index].P_LINK
             });
@@ -39,6 +40,7 @@ router.get("/", async (req, res) => {
                 backNo: response.data.retire[index].BACK_NO,
                 position: response.data.retire[index].POS_NO,
                 team: response.data.retire[index].T_NM,
+                teamID: response.data.retire[index].T_ID,
                 hand: response.data.retire[index].P_TYPE,
                 link: "https://koreabaseball.com/" + response.data.retire[index].P_LINK
             });
