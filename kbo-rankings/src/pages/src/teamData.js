@@ -41,5 +41,5 @@ export const teamData = {
   "울산": { icon: `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblemF_UL.png`, mainColor: "[#c70000]", subColor: "[#060202]" },
 
   "나눔": { icon: 'https://kbo-info.vercel.app/nanumallstar.webp', mainColor: "[#00253a]", subColor: "[#95c4e3]" },
-  "드림": { icon: 'https://kbo-info.vercel.app/dreamallstar.webp', mainColor: "[#95c4e3]", subColor: "[#00253a]" },
+  "드림": { icon: 'https://kbo-info.vercel.app/dreamallstar.webp', mainColor: "[#95c4e3]", subColor: "[#00253a]" }
 };
