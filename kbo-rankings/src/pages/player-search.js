@@ -20,7 +20,12 @@ export default function PlayerSearch() {
     };
 
     function getTeamName(teamName, teamID) {
-        switch (teamName, teamID) {
+        if (teamName == "고양") {
+            if (teamID == "NC") return "고양 다이노스";
+            else if (teamID == "WO") return "고양 히어로즈";
+        }
+
+        switch (teamName) {
             case "삼성": return "삼성 라이온즈";
             case "해태": return "해태 타이거즈";
             case "KIA": return "KIA 타이거즈";
@@ -47,7 +52,6 @@ export default function PlayerSearch() {
             case "울산": return "울산 웨일즈";
             case "상무": return "상무 피닉스";
             case "경찰": return "경찰 야구단";
-            case "고양": if (teamID == "WO") return "고양 히어로즈"; else if (teamID == "NC") return "고양 다이노스";
             default: return teamID;
         }
     }
