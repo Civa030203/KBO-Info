@@ -550,11 +550,11 @@ export const GAME_VIDEO_MAP = {
   "20260725LGHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260725/199/295845199/REGL_0AEBDAE1_295845199_1.mp4/manifest.m3u8",
   "20260725WOHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260725/201/295845201/REGL_D9065130_295845201_1.mp4/manifest.m3u8",
   "20260725KTLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260725/193/295845193/REGL_73E9ACA4_295845193_1.mp4/manifest.m3u8",
-  "20260726SSOB0": "",
-  "20260726NCSK0": "",
-  "20260726LGHH0": "",
-  "20260726WOHT0": "",
-  "20260726KTLT0": "",
+  "20260726SSOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-25/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.k3M3xXS795FjkvxpIlFUfzD2jWUzUY_Xw5ox_wgN-UbjIqv_TYqeLiiIDNYKS2WDwwfXgSzrhnvQl8TWLKMH4pDGPqRlDD-BFIxQVgCawIoJ3B-_1ZwnV3mipnkI-38VLwlXTwGx_Mgo11jbdB7V2LkGOYWqlTOxNvyUyX9IaCoXqNrvlzPzxKBMn6jFx0NH",
+  "20260726NCSK0": "https://live-global-cdn-v02.sooplive.com/live-stm-04/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.dUE-ro0bTBlMHqSuc2Um4LH5oGIRsw1y6ugkvJgKQTikq_35mMGSTT6M2j1hY3SweMdsO54Rnjd4uVQmH1Ou77LZuOHULWGD8XI6rg6TPoEYYQVOAeFqr1nehf-w83sYeBg9V3j5fVncekKrPEVq9JPy7Y1e2mCfHyfa2l6rIK4WKIdMR2VY_HCGsHTz_nD-",
+  "20260726LGHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-04/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.36tcDk2WAm-l1r0b0ctjKldSQSWLTrfEXz0xvAS6Pp-y9mVmHWeoop9pyxLLHKotWDg6YbjutKhRBEbk0fj9XESEvWTi9CwV8jXEAcXJ4ZWiP1y-UgEpScX7KPueSew8dShieOqo5XF6DgaoDUbFyySw8eod_1OxNO7YzMDBPlpGW8Bvrs9ElxDeR_SS0j6d",
+  "20260726WOHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-04/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.dUE-ro0bTBlMHqSuc2Um4OWziXSKRilzYqJDqtfbkqDL_8t-J0em3fFldM3Rb9STBzp4jT_9lbAjf_KGvFOT3Kl7p0wgmxAqMfql9JR7ZoC24Kt1g9YXKVVS0COFdvLK3ggcdsmia9_tHPVo3PK6qbRDbxXp8Ey6TUO6XSzsuYVGH06v5it9vE1DPg7J9CfY",
+  "20260726KTLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-09/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.kG7FG3RxByT3JTl5n31erXsk8fneFzbwoa0rke8o-tAiqc86ky61yGx8nv0xMyNlIkMS31RLsB43n5JowOW4k4asllbed52jTUeqg5NNKDrngRWYRPDzOrzD6xyUUGGGZ-5LnveoXks7qrB8oXsUALN1a5n6uhjlXFd6Lxt5UtNLsEJjGZH7GnSTYnKPPcF-",
 
   // 7월 5주차 주중 시리즈
   "20260728KTNC0": "",
