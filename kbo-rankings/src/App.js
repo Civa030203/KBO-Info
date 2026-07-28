@@ -111,6 +111,7 @@ function Home() {
               stadium: game.stadium,
               noGame: isCanceled,
               gameState: game.gameState,
+              gameScore: `${game.awayScore} : ${game.homeScore}`,
               myScore: myScore,
               opponentScore: opponentScore,
               inning: game.gameMaxInn,
@@ -197,7 +198,7 @@ function Home() {
     <div className="flex flex-col h-screen bg-[#0a0a0a] p-4 sm:p-8 font-sans">
       <div className="flex items-center justify-between mb-6">
         {renderDropdown()}
-        <h1 className="text-2xl sm:text-4xl font-bold text-center flex-1 text-white drop-shadow-md">
+        <h1 className="md:text-4xl text-xl font-bold md:text-center text-right flex-1 text-white drop-shadow-md">
           ⚾ 프로야구 정보 서비스
         </h1>
         <div className="w-20 md:w-24"></div> {/* Spacer to keep title centered */}
@@ -259,15 +260,21 @@ function Home() {
               {/* Left Side */}
               <div className="flex flex-col justify-between mb-4 md:mb-0">
                 <div className="flex items-center gap-4 md:gap-6">
-                  {/* ⚠️ 이 부분을 안전하게 수정했습니다 */}
-                  {scheduleData.length > 0 && scheduleData[0].gameState === "2" ? (
-                    <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">
+                  {/* scheduleData[0]이 없을 경우 안전하게 undefined를 반환하여 에러 방지 */}
+                  {scheduleData[0]?.gameState === "2" ? (
+                    <h2 className="text-white md:text-6xl text-4xl font-bold tracking-tight leading-none drop-shadow-lg">
                       CURRENT
                       <br />
                       GAME
                     </h2>
+                  ) : scheduleData[0]?.gameState === "3" ? (
+                    <h2 className="text-white md:text-6xl text-4xl font-bold tracking-tight leading-none drop-shadow-lg">
+                      TODAY'S
+                      <br />
+                      GAME
+                    </h2>
                   ) : (
-                    <h2 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none drop-shadow-lg">
+                    <h2 className="text-white md:text-6xl text-4xl font-bold tracking-tight leading-none drop-shadow-lg">
                       NEXT
                       <br />
                       GAME
@@ -277,14 +284,15 @@ function Home() {
                     !scheduleData[0].noGame &&
                     teamData[scheduleData[0].opponent] && (
                       <div className="flex items-center gap-4">
+                        <div className="text-white text-xl">VS</div>
                         <img
                           src={teamData[scheduleData[0].opponent]?.icon}
                           alt={scheduleData[0].opponent}
                           className="w-16 h-16 md:w-48 md:h-48 object-contain drop-shadow-lg"
                         />
-                        {scheduleData[0].gameState === "2" && (
-                          <span className="text-white text-5xl md:text-7xl font-bold drop-shadow-lg ml-2 md:ml-4 tracking-tighter">
-                            {scheduleData[0].myScore} : {scheduleData[0].opponentScore}
+                        {["2", "3"].includes(scheduleData[0].gameState) && (
+                          <span className="text-white text-xl md:text-7xl font-bold drop-shadow-lg ml-2 md:ml-4 tracking-tighter">
+                            {scheduleData[0].gameScore}
                           </span>
                         )}
                       </div>
@@ -298,7 +306,9 @@ function Home() {
                         ? `${scheduleData[0].date}, ${scheduleData[0].stadium || ""
                         }, 현재 ${scheduleData[0].inning}회${scheduleData[0].topOrBottom
                         } 진행 중`
-                        : `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}`
+                        : scheduleData[0].gameState === "3"
+                          ? `${scheduleData[0].date}, ${scheduleData[0].stadium}, 종료`
+                          : `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}`
                     : "일정 없음"}
                 </div>
               </div>
@@ -340,7 +350,7 @@ function Home() {
               {/* Slight tint based on team subcolor */}
               <div className="absolute inset-0 opacity-20" style={{ backgroundColor: teamData[selectedTeam]?.subColor?.replace(/[[\]]/g, '') || '#000000' }}></div>
               <div className="relative z-10 flex flex-col h-full">
-                <h2 className="text-white text-4xl md:text-5xl font-extrabold uppercase tracking-widest mb-2 drop-shadow-md">
+                <h2 className="text-white text-4xl md:text-6xl font-extrabold uppercase tracking-widest mb-2 drop-shadow-md">
                   {TEAM_NAMES_ENG[selectedTeam] || selectedTeam}
                 </h2>
                 <div className="flex items-end justify-between mt-auto w-full">
