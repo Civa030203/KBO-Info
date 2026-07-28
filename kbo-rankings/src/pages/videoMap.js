@@ -557,7 +557,7 @@ export const GAME_VIDEO_MAP = {
   "20260726KTLT0": "",
 
   // 7월 5주차 주중 시리즈
-  "20260728KTNC0": "",
+  "20260728KTNC0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.GJ5JG99UWRIjgTeEar3tJeUR10UAdI1gZHvCTZTGxqKm9wJE5cHV7gVWK24T4kw8hCwvzqayIPDxen1S-xiVYeS0KSi5CmoqHOy2gtwHLgdx9ZKGet1glcYCMkpcGkQUSuyhE3B23vgu5otVfMoY1ApTjvTGeYCQlny8Ii52G3zihpYzm4mLTVkWHAx1SRiudUS0qfXo0Nwtf5a-HLnHvw",
   "20260728WOLG0": "https://live-global-cdn-v02.sooplive.com/live-stmc-27/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.5e_OLrk1jerhaK4Qqr_Se-x9hq8hhTuoCUk3CX0x9NuQWYRo2w4UmWx6gmURq4AM_k6JIN3pZyiEEQC5nEtEN3_WF0vdqKUW9ILv516QNowIJN3JdAsFv64v5kbyV0LHBtRia6ECSbJahy7cC2qc1PAj0ALFN1SQBIoMvuCSqVztWOsdMP6wS1KsJlHkSgNC1AmYI4LDtj-DIdyORdbJTQ",
   "20260728OBSK0": "https://live-global-cdn-v02.sooplive.com/live-stm-13/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.FzVu48YaVSdz9Qsotr57_lhJl14HCLOeN1BgTN0CXHiE0YbEAfDyZjKCQRIbsR_o-LqaboCxI0nu_q7aSLt34bqdwAFLLUVjsFIuQYFLLQuMJiX2MaBC0UCWkqymKwHWot-rcHRWvfvsjtVzqhD1HZkLjvUFb2Sg0FnWJ-u7YOILPiCaRp8LovphL2wq4D9l1y0j11IZypvhhJ-oqVEHKw",
   "20260728LTHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-13/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.FzVu48YaVSdz9Qsotr57_gz7dOvCgyh4z32zt_wN6DcE_8vfjVl_TpizmDcoWFmdKqaUKBKdQf8JT07X_aTQ4J-mqNQu2kCvlfN99M0lgSK_Ch2n7YB6jsMigJtSr8HpYYhPi4BCdnJx4WOroRjr92Qdk7huseIXf5PY4r6QvWwCdGWIMlQ-5vALX59TzUi2OWgG8e1Ee1Qqmszf34rQ1w",
