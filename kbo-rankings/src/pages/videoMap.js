@@ -567,11 +567,11 @@ export const GAME_VIDEO_MAP = {
   "20260729OBSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260729/397/295946397/REGL_6DA52F3F_295946397_1.mp4/manifest.m3u8",
   "20260729LTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260729/399/295946399/REGL_345F9FEB_295946399_1_mp4/manifest.m3u8",
   "20260729HTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260729/395/295946395/REGL_D2DA5B80_295946395_1_mp4/manifest.m3u8",
-  "20260730KTNC0": "",
-  "20260730WOLG0": "",
-  "20260730OBSK0": "",
-  "20260730LTHH0": "",
-  "20260730HTSS0": "",
+  "20260730KTNC0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.E9XC3iIbwyy8fqlhfpy-uJeqjFQ_fIksv4dwxGdWSOItVIkrbMdeSjSkUhgyCXXshmAmkJAm84shwNzdhrkNbJqQZ4zBZMrINJQxy0_XZZsRvpKFEOl38BSYQmhadbSfweNiQs5HGRMSsnxzmiMUt6LI_AfIWTNaUaMFEe-PU6TZwEOu79h173S8ulKVSagGz3E3KD1yVMzn48gtdpYwjg",
+  "20260730WOLG0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.E9XC3iIbwyy8fqlhfpy-uHzkq1jvJ6WCbYVCe3jjdCT2yOPpMp9pcXS3n8fujltneuBxDm_J4-wP6f0bo-cR0LAiBaugWW9XJoyLen2pZn1Uxy6xxDKWuIi3bSSk-tz0_l8Zvc6IcemWWZtAqjLfqY7Vs7U5-A3w_cG6HhzFXNeMHTx8mHMblwm7YvzNbPYIVpuyQaSMomjRCWqOxSKFAQ",
+  "20260730OBSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.E9XC3iIbwyy8fqlhfpy-uMtrZHlVkI4xfOjgZN0ar43BcekYBZeWN-emeYYHkUTypS0wDGyYwdezFV2-o2MwwxLdGWQpeE8vIvrQoUT04GxHY7UCxiPNvS0HC0VDN5Lp5SulkTuojZTRInMbn2b4ecuHyGcHn-Jw48GtX2g4QVlv_jox6QZgmaYWla_y1kfpF3kU_xSZv8ERU4NpBgGSqA",
+  "20260730LTHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.E9XC3iIbwyy8fqlhfpy-uPGWiRfdLSHoAK_p7rVKnDCH633UI3R7oAjiUg0rHVaD4h8dlMluZfVMw-Ya6w9lqYvW50qd5V8gosgdzCbSmP0fFjSXUVgnuESt7DppdPuO_TiQv5V-a6iwSzt6cc8LGq17WPrDOlPMcEdtth9djbTqwGHrpOdapyDPFeM5G0iR3QavxNoc0Amm3BqwBSzaNw",
+  "20260730HTSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.E9XC3iIbwyy8fqlhfpy-uKlWihiK_ga5CuEvK5I9TPKMNpOYEtQLQ4Q05_jwiVk2JGgTc71DzyWw5qSvdYKGvQJN1AUXebUCO6imgmtulbLwKMIxs2To3wwBYVvxt96oeWI_0zgXnhL1YiXLMdVZTgV_nvEjVXDfHTOrnmfyKsdjcNsRgmEodsp2j2VGm2GLzvFq2s-TSnPU1TwUjD6Ugw",
 
   // 8월 1주차 주말 시리즈
   "20260731HTNC0": "",
