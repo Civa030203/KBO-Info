@@ -574,11 +574,11 @@ export const GAME_VIDEO_MAP = {
   "20260730HTSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.E9XC3iIbwyy8fqlhfpy-uKlWihiK_ga5CuEvK5I9TPKMNpOYEtQLQ4Q05_jwiVk2JGgTc71DzyWw5qSvdYKGvQJN1AUXebUCO6imgmtulbLwKMIxs2To3wwBYVvxt96oeWI_0zgXnhL1YiXLMdVZTgV_nvEjVXDfHTOrnmfyKsdjcNsRgmEodsp2j2VGm2GLzvFq2s-TSnPU1TwUjD6Ugw",
 
   // 8월 1주차 주말 시리즈
-  "20260731HTNC0": "",
-  "20260731SKWO0": "",
-  "20260731LGOB0": "",
-  "20260731SSLT0": "",
-  "20260731HHKT0": "",
+  "20260731HTNC0": "https://live-global-cdn-v02.sooplive.com/live-stmc-30/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BenOluggbGHS_ZQbK4jcsZ8OnHQmkDmUuEyQ2WMZhOh-oP2Oj4Tv3QXIGyYhqjZZWVzjs79Em1oTol4CFt8S7bVoc7BjiTL8Hm-h7BQqGPIUJccZo-MDL1Ng_jFgaxW3i64vP-OXfZdznJ6XBsLFltPBWT2Nv-I3fn4lyaBWZQmg8P9j1BnnISGELbjtbqto",
+  "20260731SKWO0": "https://live-global-cdn-v02.sooplive.com/live-stmc-30/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BenOluggbGHS_ZQbK4jcsc4BzyU0cohFErFQrrRximU6mDKbxSIdNsQSsNtomBWAbex8Ulez-HpObhhXy3_fHjxNR9vrPlT8NKLP3e55O2zJayskud03ZBK3oCyQRuPvUitKOr-IYbkbuclmR2G1YOhnZ2gk_RRaA07XaJDS_zO1S9EdxARyHAYpVNg6-sVs",
+  "20260731LGOB0": "https://live-global-cdn-v02.sooplive.com/live-stmc-30/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BenOluggbGHS_ZQbK4jcsa_nAKxaSCVDG2onwi-xO92i8smUHKU1zU2gagKSDm3AlWJFWjkGFxBOD9U5bG08CCpmB7pRYlr9yGxEspanzKmY_HtZK65j32m9QC_WKm5QeLkrEhSQowy8biM92i5zmxVe3jNiFOd-nDRkQW9KXaMrK6OHH0E-7x0_oop1tmE8",
+  "20260731SSLT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-30/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BenOluggbGHS_ZQbK4jcsRs96h_9T0XpN5ddLCAaC6VLj1vAQgRzgGombeMeEn2a2Tq12Ps89j-AjDkQsFd-cC0h4Q0GaJPUMfWLQh6PxoozpQYm3uRYI_qvy3jMss2rnk4qGHKLkZHQeF2bG3A99r7ndGcaKcBvygMD-G_tXzuhrsvZvQXmH2TYUR1Rb3M3",
+  "20260731HHKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-30/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.BenOluggbGHS_ZQbK4jcsdJzBde-oKoMZckwl0SIaApUgtqMP8VA6iY3epSNmMKMrbCo8RKzZgzBuRIoMjOnxktLuPT9yKwB7dKrfCwuazb1XCifbSvgJKZDVoeoqrKLyf1vNKkf1piYFeoOqKjz7Vdht8I35LzeuWifxhzdTVdY7EtRUa_7G-XOmkB3jn0q",
 
   // 2026년 8월
   "20260801HTNC0": "",
