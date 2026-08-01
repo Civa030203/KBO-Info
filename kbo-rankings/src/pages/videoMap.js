@@ -582,10 +582,10 @@ export const GAME_VIDEO_MAP = {
 
   // 2026년 8월
   "20260801HTNC0": "",
-  "20260801SKWO0": "",
-  "20260801LGOB0": "",
+  "20260801SKWO0": "https://live-global-cdn-v02.sooplive.com/live-stmc-35/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.R_XFyuSmY0w2lmtvhFnFHIxy9u3ORF0xILjb66G2rkjN7eFZJbc9yWD3ehOw7ly8wVJPi_frJsRkOL6QRPqhSlgMzZBFq3kCk2s_A3cx36X_jUUvALQHzUzW4MgqlAnWzvLpH93cOMDsGSaF8O0AvscrJCzT9E8E_JP9RvvhWU5MwC0NmBRwsvv93fSci11v",
+  "20260801LGOB0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.R_XFyuSmY0w2lmtvhFnFHMxlbGU6AMkQTqHYNatV0CETd7qqSr-etXKjoMCrTMQoVjHOd7V_LMeikepRP2E1QNeFUDPKm6aJ_THBGQO8my5SG1F-DnR_mDxZg0Wn8PTeTe8oolLvmt2PS6GQa8Sj1Bm-7gA2ezZ7SCrRAJMZjaKDRYI8pRDWwk-i0sBo4fF3",
   "20260801SSLT0": "",
-  "20260801HHKT0": "",
+  "20260801HHKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-25/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.R_XFyuSmY0w2lmtvhFnFHE7NHjw5t_40J7U81ttqSuWcGtK3mZsqsu42zzZGRlA0SYAeuSvMlk_H5pk4GMXgN9GQIZWgCElvwBp4ElNvZLN1SkiGUUfBSJpnJc9ZrsForNuReBEec9AgNgIkiVAUCOdN_tTvfixlkuzJMBHpKPCBe_G0YAaElAGjjO6EhYFS",
   "20260802HTNC0": "",
   "20260802SKWO0": "",
   "20260802LGOB0": "",
