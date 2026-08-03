@@ -1,6 +1,7 @@
 ﻿// KBO 경기 SOOP(구 아프리카TV) 중계 다시보기 링크 매핑
 export const GAME_VIDEO_MAP = {
   // gameId를 키로 사용 (예 "20260329OBNC0")
+  "20141017SKWO0": "https://b01-kr-naver-vod.pstatic.net/sports/c/read/v2/VOD_ALPHA/sports_2014_10_17_3/33E09433B10D31E94139C71_muploader_h_480P_854_1024_128.mp4?_lsu_sa_=6725b3fd2150628617d7054c621553b9ee6638e8a002cfc336773dc2371a32351d2b9a5d6d85700b305a31c2623abb051c65cb64356240f636a54e2c51e4b6da6dfd3b3db4151efd2954e4a6e5890fb3",
   // 2026년 3월 
   // 개막 시리즈
   "20260328KTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260328/821/292760821/REGL_A4DD0338_292760821_1.mp4/manifest.m3u8",
