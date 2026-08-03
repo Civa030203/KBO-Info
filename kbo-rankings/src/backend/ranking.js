@@ -1,13 +1,14 @@
 const express = require("express");
 const axios = require("axios");
-const cheerio = require("cheerio");
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  // 기본값으로 2026년 지정 (쿼리가 없거나 이상할 때 대비)
+  const year = req.query.year || new Date().getFullYear();
+
   try {
-    const url =
-      "https://www.koreabaseball.com/Record/TeamRank/TeamRankDaily.aspx";
+    const url = `https://m.koreabaseball.com/ws/Kbo.asmx/GetTeamRankKboLeague?season_id=${year}&sr_id=0`;
 
     const { data } = await axios.get(url, {
       headers: {
@@ -16,29 +17,34 @@ router.get("/", async (req, res) => {
       },
     });
 
-    const $ = cheerio.load(data);
-    const rows = $("#cphContents_cphContents_cphContents_udpRecord > table > tbody > tr");
-    const result = [];
+    // 1. listKbo (순위 & 팀명)
+    const listKbo = data.listKbo || [];
 
-    rows.each((_, row) => {
-      const cols = $(row).find("td");
-      if (cols.length > 0) {
-        result.push({
-          rank: $(cols[0]).text().trim(),
-          team: $(cols[1]).text().trim(),
-          games: $(cols[2]).text().trim(),
-          win: $(cols[3]).text().trim(),
-          lose: $(cols[4]).text().trim(),
-          draw: $(cols[5]).text().trim(),
-          winRate: $(cols[6]).text().trim(),
-          gamesBehind: $(cols[7]).text().trim()
-        });
-      }
+    // 2. tableKbo (문자열 형태의 JSON 파싱)
+    const tableKboParsed = data.tableKbo ? JSON.parse(data.tableKbo) : { rows: [] };
+    const rows = tableKboParsed.rows || [];
+
+    // 3. 두 데이터를 인덱스(index) 기준으로 조합하여 유의미한 데이터만 정제
+    const result = listKbo.map((teamInfo, index) => {
+      // 해당 팀의 세부 성적 행(row) 가져오기
+      const rowData = rows[index]?.row || [];
+      const textValues = rowData.map((item) => item.Text);
+
+      return {
+        rank: teamInfo.RANK_NO ? String(teamInfo.RANK_NO).trim() : "",
+        team: teamInfo.T_NM ? teamInfo.T_NM.trim() : "", // 공백 제거 (예: "OB    " -> "OB")
+        games: textValues[0] || "0",       // 경기수
+        win: textValues[1] || "0",         // 승
+        lose: textValues[2] || "0",        // 패
+        draw: textValues[3] || "0",        // 무
+        winRate: textValues[4] || "0.000", // 승률
+        gamesBehind: textValues[5] === "-" ? "0" : (textValues[5] || "0"), // 게임차 ('-' 표시는 0으로 변환)
+      };
     });
 
     res.json(result);
   } catch (err) {
-    console.error("크롤링 에러:", err.message);
+    console.error("KBO 순위 API 데이터 처리 에러:", err.message);
     res.status(500).json({ error: "Failed to fetch KBO Rankings" });
   }
 });
