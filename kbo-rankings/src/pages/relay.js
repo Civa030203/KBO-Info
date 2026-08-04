@@ -328,58 +328,73 @@ export default function LiveTextPage() {
 
       {/* 메인 중계 컨텐츠 */}
       <div className="w-full max-w-2xl flex flex-col">
-        {/* 메인으로 돌아가기 */}
-        <div className="mb-4">
-          <Link
-            to="/schedule"
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
-          >
-            ⬅ 메인 화면으로
-          </Link>
-        </div>
 
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-xl font-bold text-white">KBO 문자중계</h1>
-          {videoUrl && (
-            <button
-              onClick={() => setVideoVisible(!videoVisible)}
-              className="text-xs font-medium px-3 py-1 bg-gray-700 text-gray-200 rounded-full hover:bg-gray-600 transition flex items-center gap-1"
+        {/* 📌 [상단 고정 영역] 버튼, 타이틀, 비디오 전체 묶음 */}
+        <div className="sticky top-0 z-50 bg-[#0a0a0a] pt-2 pb-2">
+          {/* 메인으로 돌아가기 & 비디오 숨기기 버튼 영역 */}
+          <div className="flex justify-between items-center mb-3">
+            <Link
+              to="/schedule"
+              className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-blue-500 transition"
             >
-              {videoVisible ? "📺 비디오 숨기기" : "📺 비디오 보기"}
-            </button>
+              ⬅ 메인 화면으로
+            </Link>
+
+            <h1 className="text-xl font-bold text-white">KBO 문자중계</h1>
+            <label className="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={autoScroll}
+                onChange={(e) => setAutoScroll(e.target.checked)}
+                className="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
+              />
+              자동 스크롤
+            </label>
+
+            {videoUrl ? (
+              <button
+                onClick={() => setVideoVisible(!videoVisible)}
+                className="text-xs font-medium px-3 py-2 bg-gray-700 text-gray-200 rounded-full hover:bg-gray-600 transition flex items-center gap-1"
+              >
+                {videoVisible ? "📺 비디오 숨기기" : "📺 비디오 보기"}
+              </button>
+            ) : (
+              /* 우측 레이아웃 균형을 위한 빈 공간 유지용 */
+              <div className="w-20" />
+            )}
+          </div>
+
+          {/* ✅ SOOP 비디오 컨테이너 */}
+          {videoUrl && videoVisible && (
+            <div className="overflow-hidden rounded-2xl border border-gray-700 shadow-xl bg-black aspect-video relative group">
+              {videoUrl.includes(".m3u8") ? (
+                <video
+                  src={videoUrl}
+                  className="w-full h-full"
+                  controls
+                  autoPlay
+                  muted
+                  playsInline
+                >
+                  해당 브라우저는 비디오 재생을 지원하지 않습니다.
+                </video>
+              ) : (
+                <iframe
+                  src={videoUrl}
+                  className="w-full h-full"
+                  allowFullScreen
+                  title="KBO Live Broadcast"
+                ></iframe>
+              )}
+
+              <div className="absolute top-4 left-4 pointer-events-none">
+                <span className="bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider shadow-lg animate-pulse">
+                  {live?.postGame?.listResult?.length > 0 ? "REPLAY" : "LIVE"}
+                </span>
+              </div>
+            </div>
           )}
         </div>
-
-        {/* ✅ SOOP 비디오 컨테이너 */}
-        {videoUrl && videoVisible && (
-          <div className="mb-6 overflow-hidden rounded-2xl border border-gray-700 shadow-xl bg-black aspect-video relative group sticky top-4 z-50">
-            {videoUrl.includes(".m3u8") ? (
-              <video
-                src={videoUrl}
-                className="w-full h-full"
-                controls
-                autoPlay
-                muted
-                playsInline
-              >
-                해당 브라우저는 비디오 재생을 지원하지 않습니다.
-              </video>
-            ) : (
-              <iframe
-                src={videoUrl}
-                className="w-full h-full"
-                allowFullScreen
-                title="KBO Live Broadcast"
-              ></iframe>
-            )}
-
-            <div className="absolute top-4 left-4 pointer-events-none">
-              <span className="bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider shadow-lg animate-pulse">
-                {live?.postGame?.listResult?.length > 0 ? "REPLAY" : "LIVE"}
-              </span>
-            </div>
-          </div>
-        )}
 
         {/* ✅ 스코어보드 */}
         <div className="overflow-x-auto mb-6 rounded-lg shadow border border-gray-700">
@@ -437,16 +452,6 @@ export default function LiveTextPage() {
                 </option>
               ))}
             </select>
-
-            <label className="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={autoScroll}
-                onChange={(e) => setAutoScroll(e.target.checked)}
-                className="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
-              />
-              자동 스크롤
-            </label>
           </div>
 
           <button
