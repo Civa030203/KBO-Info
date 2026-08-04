@@ -591,11 +591,9 @@ export const GAME_VIDEO_MAP = {
   "20260802HHKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260802/983/296046983/REGL_93A1D37E_296046983_1.mp4/manifest.m3u8",
 
   // 8월 1주차 주중 시리즈
-  "20260804NCOB0": "",
-  "20260804LGSK0": "",
-  "20260804HHSS0": "",
-  "20260804KTHT0": "",
-  "20260804WOLT0": "",
+  "20260804LGSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-34/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Sc71YrOMpWXXc1TLTtfJ6X55ZqX4AQl9u1Y7cY9ugA2Brom-x2fzb1fVjr892pJBEARJCGXv2b41ruWIOi51mdXToOfKLja5Dr3PPxLDIQGvTtsQi-c0w3df3Zr8hOnntG1baslPZhx2_1z2_ZehpuHlBfZf01EuFk_cth8Gt1dzDnCuSVzSckCHg9ugAomLSAjy1yuqpvcq4YHhh8XNiA",
+  "20260804HHSS0": "https://live-global-cdn-v02.sooplive.com/live-stmc-34/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Sc71YrOMpWXXc1TLTtfJ6T3j_DGW2rjzbNG7WwaCh0MnLoiZT3jlL48SnDbTp8YrevLjos9wCG54yNSuAo1vcws26rI-SVT1mFap8MaRFirfjSq8t8K8K5cbnkN3M2_qcBIJoQl9iEMLGlYShZY6rj5YfF7KcVP2hNivG9cHPaV6Cj2WRnnfRhw6llnTKlNZXc1Wy3QiYuK-_4ldBcaW5g",
+  "20260804WOLT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-38/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Sc71YrOMpWXXc1TLTtfJ6Yy0SCxHKysEHADmkwiJ_87S64tSnOFDRIHfiBfhFb0z1ZCX_CGeAHKQnwbtnpx8zTsUHRE4bfGD5iPetIe1E_B8crerQK9bhB5Zrf-BXBDmxJLr1kcKN1ja-Fpz_ckwbHXxRiyHB7TeS2jQvNLlIumW7tYE4crwtG228U-f91JNIQ9cXgqEoeeQZOdrqzSvEg",
   "20260805NCOB0": "",
   "20260805LGSK0": "",
   "20260805HHSS0": "",
