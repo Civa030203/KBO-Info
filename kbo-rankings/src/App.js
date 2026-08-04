@@ -291,7 +291,7 @@ function Home() {
                           className="w-16 h-16 md:w-48 md:h-48 object-contain drop-shadow-lg"
                         />
                         {["2", "3"].includes(scheduleData[0].gameState) && (
-                          <span className="text-white text-xl md:text-7xl font-bold drop-shadow-lg ml-2 md:ml-4 tracking-tighter">
+                          <span className="hidden md:inline-block text-white md:text-7xl font-bold drop-shadow-lg ml-2 md:ml-4 tracking-tighter">
                             {scheduleData[0].gameScore}
                           </span>
                         )}

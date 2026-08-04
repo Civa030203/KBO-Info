@@ -340,7 +340,7 @@ export default function LiveTextPage() {
               ⬅ 메인 화면으로
             </Link>
 
-            <h1 className="text-xl font-bold text-white">KBO 문자중계</h1>
+            <h1 className="hidden md:inline-block md:text-xl text-sm font-bold text-white">KBO 문자중계</h1>
             <label className="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
               <input
                 type="checkbox"
