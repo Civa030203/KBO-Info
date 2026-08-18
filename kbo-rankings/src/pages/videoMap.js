@@ -1,7 +1,6 @@
 ﻿// KBO 경기 SOOP(구 아프리카TV) 중계 다시보기 링크 매핑
 export const GAME_VIDEO_MAP = {
   // gameId를 키로 사용 (예 "20260329OBNC0")
-  "20141017SKWO0": "https://b01-kr-naver-vod.pstatic.net/sports/c/read/v2/VOD_ALPHA/sports_2014_10_17_3/33E09433B10D31E94139C71_muploader_h_480P_854_1024_128.mp4?_lsu_sa_=6725b3fd2150628617d7054c621553b9ee6638e8a002cfc336773dc2371a32351d2b9a5d6d85700b305a31c2623abb051c65cb64356240f636a54e2c51e4b6da6dfd3b3db4151efd2954e4a6e5890fb3",
   // 2026년 3월 
   // 개막 시리즈
   "20260328KTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260328/821/292760821/REGL_A4DD0338_292760821_1.mp4/manifest.m3u8",
@@ -628,11 +627,11 @@ export const GAME_VIDEO_MAP = {
   "20260816WOKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260816/111/296405111/REGL_7C7A6F9C_296405111_1.mp4/manifest.m3u8",
 
   // 8월 3주차 주중 시리즈
-  "20260818OBNC0": "",
-  "20260818KTLG0": "",
-  "20260818HTHH0": "",
-  "20260818SKSS0": "",
-  "20260818WOLT0": "",
+  "20260818OBNC0": "https://live-global-cdn-v02.sooplive.com/live-stm-09/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.sczDYsgigRaptzyGdkE9M2sh2yPLEz2xAChhb-K2bB9GbqtrMvtJ0Vy_vL-hYEPczSdP36wt6xlzxpsPnSwcgh4HCiVXAnqKsieaKuKAN1CWeoXAGiG8uGgmwOoYqZAtXrnuBV5cNohS60BcQSyQ90jQtXahdhz2iPflitwHkcfC3VXi4brujIKo2lMKioVdVDlHeO7tb6PTeC9Xl7DxIg",
+  "20260818KTLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-09/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.sczDYsgigRaptzyGdkE9M8bVTzEoLK4HGr19L3_3Gkolt9aXXmUoQkPIkfZAEQCFBZQ_8vqKmgFj1G6WathlrHQULKTEVegq-6e2qZORwSVa88o-1D6ZogzyqkiSzIEkEolY7pU-qCqdt0MgH-3DqBwedpxWg6RkjOcRKeAeNxIcBtSMVLiOaVcVQ1dzxuLUIj_7_iO_C1lj5aE27_PX8Q",
+  "20260818HTHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-09/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.sczDYsgigRaptzyGdkE9Myr-cI_EFDLP-oLdjMIpc5j8AA4zHfNLBgEzLCdcz-UjVMy7pK0LI6D_Dgfyci_kUSK44G7E_V5XEP2MrHXgaUiy9eDQKOmRcWdXXN0DGJUwwstEaItea_nCOe39B0K6uhc_wbUJDDubueTnHJzfxG5bNg4yswQ2XNiLMYR2DLBRfTSIwFO-0fyoqlTAWBra5w",
+  "20260818SKSS0": "https://live-global-cdn-v02.sooplive.com/live-stm-09/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.sczDYsgigRaptzyGdkE9M2c1VdZa7v_2dlq7UaCkq5-Esp_GruOOVHxWzZfermmXYs_QsdMD5emFZkVPXD2YTm68sFb9Z8jqKXQAhWaD2Uz7QBnCa48udICsJb3BXvWD0OGJpNdUXejH5ZmuMWIppWD7LDdQJRZTQRWYTkcV6iLmokV8mqvDIMlmmH8Bhjo64kNnIejm_VARMA-MHiZD-g",
+  "20260818WOLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-09/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.sczDYsgigRaptzyGdkE9M_vilqL9MLf44xT0Nj8CBs0EkzODqIHMfrSsjERHZpH_S-aeND3ab3qYzARJeI71ij_LTeRVaDHBEe6RW69tPfPkaDdFRiK6xdEPxWFzV6so0qBtZbwOKV7Y00FCeoZTTvDDn0oXMfoEyGuG4TRIl_lKWFUBnj7U5vhGFdlUCcqKNuRL_WSChNf5qS_f9jr_3Q",
   "20260819OBNC0": "",
   "20260819KTLG0": "",
   "20260819HTHH0": "",
