@@ -15,7 +15,8 @@ export default function Ranking() {
   useEffect(() => {
     // selectedYear가 변경될 때마다 해당 연도의 데이터를 호출
     axios
-      .get(`https://kbo-info.onrender.com/api/rankings?year=${selectedYear}`)
+      .get(`https://results-move-glenn-anatomy.trycloudflare.com/api/rankings?year=${selectedYear}`)
+      // .get(`https://kbo-info.onrender.com/api/rankings?year=${selectedYear}`)
       .then((res) => setRankings(res.data))
       .catch((err) => console.error(err));
   }, [selectedYear]); // 의존성 배열에 selectedYear 추가!

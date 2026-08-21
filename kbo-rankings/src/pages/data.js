@@ -17,7 +17,8 @@ export default function Data() {
         if (!pId) return;
 
         axios
-            .get(`https://kbo-info.onrender.com/api/playerData?pId=${pId}`)
+            // .get(`https://kbo-info.onrender.com/api/playerData?pId=${pId}`)
+            .get(`https://results-move-glenn-anatomy.trycloudflare.com/api/playerData?pId=${pId}`)
             .then((res) => {
                 setPlayer(res.data);
                 if (res.data.records && res.data.records.length > 0) {

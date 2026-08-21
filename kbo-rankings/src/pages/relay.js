@@ -116,7 +116,8 @@ export default function LiveTextPage() {
     const fetchLive = async () => {
       try {
         const gData = await axios.get(
-          `https://kbo-info.onrender.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
+          // `https://kbo-info.onrender.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
+          `https://results-move-glenn-anatomy.trycloudflare.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
         );
 
         gData.data.forEach((dt) => {
@@ -127,7 +128,8 @@ export default function LiveTextPage() {
 
         if (!inn) return;
 
-        const res = await axios.get(`https://kbo-info.onrender.com/api/relay`, {
+        // const res = await axios.get(`https://kbo-info.onrender.com/api/relay`, {
+        const res = await axios.get(`https://results-move-glenn-anatomy.trycloudflare.com/api/relay`, {
           params: {
             le_id: leagueId,
             sr_id: seriesId,
@@ -158,7 +160,8 @@ export default function LiveTextPage() {
     const fetchScore = async () => {
       try {
         const resScore = await axios.get(
-          `https://kbo-info.onrender.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
+          // `https://kbo-info.onrender.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
+          `https://results-move-glenn-anatomy.trycloudflare.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
         );
         setScoreData(resScore.data);
 
@@ -220,7 +223,8 @@ export default function LiveTextPage() {
         }
 
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const baseUrl = isLocalhost ? "http://localhost:5001" : "https://kbo-info.onrender.com";
+        // const baseUrl = isLocalhost ? "http://localhost:5001" : "https://kbo-info.onrender.com";
+        const baseUrl = isLocalhost ? "http://localhost:5001" : "https://results-move-glenn-anatomy.trycloudflare.com";
         const targetUrl = `${baseUrl}/api/relay/preview?gameId=${apiGameId}`;
 
         const res = await axios.get(targetUrl);
