@@ -78,7 +78,8 @@ function Home() {
         const formattedDate = `${yyyy}${mm}${dd}`;
 
         // 1. 일정 데이터 가져오기
-        const scheduleRes = await fetch(`https://kbo-info.onrender.com/api/schedule/weekly?date=${formattedDate}&leId=1`);
+        // const scheduleRes = await fetch(`https://kbo-info.onrender.com/api/schedule/weekly?date=${formattedDate}&leId=1`);
+        const scheduleRes = await fetch(`https://salad-assurance-hosted-theta.trycloudflare.com/api/schedule/weekly?date=${formattedDate}&leId=1`);
         const allGames = await scheduleRes.json();
 
         const next7Days = [];
@@ -129,7 +130,8 @@ function Home() {
         setScheduleData(newScheduleData);
 
         // 2. 순위 데이터 가져오기
-        const rankingRes = await fetch(`https://kbo-info.onrender.com/api/rankings`);
+        // const rankingRes = await fetch(`https://kbo-info.onrender.com/api/rankings`);
+        const rankingRes = await fetch(`https://salad-assurance-hosted-theta.trycloudflare.com/api/rankings`);
         const rankings = await rankingRes.json();
 
         const teamRank = rankings.find(r => r.team === selectedTeam);
