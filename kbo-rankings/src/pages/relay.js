@@ -117,7 +117,7 @@ export default function LiveTextPage() {
       try {
         const gData = await axios.get(
           // `https://kbo-info.onrender.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
-          `https://salad-assurance-hosted-theta.trycloudflare.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
+          `https://phi-graham-fees-moisture.trycloudflare.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
         );
 
         gData.data.forEach((dt) => {
@@ -129,7 +129,7 @@ export default function LiveTextPage() {
         if (!inn) return;
 
         // const res = await axios.get(`https://kbo-info.onrender.com/api/relay`, {
-        const res = await axios.get(`https://salad-assurance-hosted-theta.trycloudflare.com/api/relay`, {
+        const res = await axios.get(`https://phi-graham-fees-moisture.trycloudflare.com/api/relay`, {
           params: {
             le_id: leagueId,
             sr_id: seriesId,
@@ -161,7 +161,7 @@ export default function LiveTextPage() {
       try {
         const resScore = await axios.get(
           // `https://kbo-info.onrender.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
-          `https://salad-assurance-hosted-theta.trycloudflare.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
+          `https://phi-graham-fees-moisture.trycloudflare.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
         );
         setScoreData(resScore.data);
 
@@ -224,7 +224,7 @@ export default function LiveTextPage() {
 
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         // const baseUrl = isLocalhost ? "http://localhost:5001" : "https://kbo-info.onrender.com";
-        const baseUrl = isLocalhost ? "http://localhost:5001" : "https://salad-assurance-hosted-theta.trycloudflare.com";
+        const baseUrl = isLocalhost ? "http://localhost:5001" : "https://phi-graham-fees-moisture.trycloudflare.com";
         const targetUrl = `${baseUrl}/api/relay/preview?gameId=${apiGameId}`;
 
         const res = await axios.get(targetUrl);
