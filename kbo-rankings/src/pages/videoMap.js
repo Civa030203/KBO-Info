@@ -658,11 +658,11 @@ export const GAME_VIDEO_MAP = {
   "20260823LGHH0": "https://live-global-cdn-v02.sooplive.com/live-stmc-36/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.ZxR2YBT8gGoEu-a1wyaoMQXGTXaXjPxfFwIcP6DbtPvOQGx81xmmDqwoNezUglrq9JIAeHE0KMDLugOsheivRPfhPuO6dsdBl4C53ji41MYMXzLydW8lVZmbZcAhgvkA3j2eDHL6a14tEdiIUrgh899nJp2Y-p-DMp9l5k2Hu8fsN-kE9ls4y4CJltPe6hVG",
 
   // 8월 4주차 주중 시리즈
-  "20260825SSWO0": "",
-  "20260825NCLG0": "",
-  "20260825HHSK0": "",
-  "20260825LTHT0": "",
-  "20260825OBKT0": "",
+  "20260825SSWO0": "https://live-global-cdn-v02.sooplive.com/live-stm-17/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.FkEpdOiKlrkhFzv2qF90m6be6XGAo6IaRlOWtsWvOx2PwT6jk-Ub7rN794fpo3SHToiUjl5ud9Re8FagfMnhN_fg7hd20Hs26EqaqP9-65gBwz7wH5abM4oz3YxYTHPTEO6pI-0mvZxf882Y4GPLKYOgvuv8RbxXq0TqTyMIU8Dv4GAqJ6-OkpWSAdAsuaB84fJRHMolRZuxb6pprq5_dQ",
+  "20260825NCLG0": "https://live-global-cdn-v02.sooplive.com/live-stmc-24/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.FkEpdOiKlrkhFzv2qF90m445nbDWkxIrFmHXYQFBnJj7s2e51-8495x7yOTPPjF624I7DMBk9cNgSSI-GpOz8hqkyp7C7tjTh-ujEBOxX5cti-pkmrIuMTEy-X2U9QaM71fH2ZtoT-ZzJXNCNVzj0TiWmst9GmWJIKK4Z7unt9Ev_YosjVOZXGXh76SSYAnjqt9vuhSKPFkcQ7psK5qLYA",
+  "20260825HHSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-34/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.FkEpdOiKlrkhFzv2qF90m-oyIpLeWtlS8COgvptEJWuWqW4_kv4k7yMO55FLZ-uHwBEONLjkwLbDKEdDxHuZI6yh4tZZg5K-PWub4Htfrz5dB-a3mZna9fPVyD9VwPLya5ryBq-imdWIpd_Tu9OqZnn9rq6mwYqn6m43Gd_TRvk8AAhYNciQejpqq7hcVCQBdug-AJcG2Yh0PGSl2lfCXQ",
+  "20260825LTHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-15/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.FkEpdOiKlrkhFzv2qF90m5k6lgEhKqF3sPnw7eRfb9LX9X6LLg6braNqBtm_q9ZlDB0CnX8bx0pfA2QpBb4jjREHgTK1tpEiIX3-MPgB_2Z6uqMyfuNbf9mLasn2AM_UxdGvvM3TKEUe3ibU-bCHYKrEy0dMSCC45_OAgPmQhV4iSSdScb7N4krABdondj8QsTsLxbi98lSoHRg6AaQq2Q",
+  "20260825OBKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-34/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.FkEpdOiKlrkhFzv2qF90mwXj90nxudCvTjsBJDNtaVBcnzQKN3eZH0zzIAvilAMV8GAY_2HQnAby0KPcGgPA3Ae7OhAtlcX0VmLWETESMqMmUQUCmOZWFmI43qaXdCFeLrtggr6nj3eoWmz9VNQeY9hS52SYeulteY9p_dR-TeT-U6cNX4c4tuxXIZ6TEki7ybZgBUkay5kHTJJRmcxzRg",
   "20260826SSWO0": "",
   "20260826NCLG0": "",
   "20260826HHSK0": "",
