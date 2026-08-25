@@ -129,7 +129,7 @@ export default function LiveTextPage() {
         if (!inn) return;
 
         // const res = await axios.get(`https://kbo-info.onrender.com/api/relay`, {
-        const res = await axios.get(`https:/trees-dans-collectible-strategy.trycloudflare.com/api/relay`, {
+        const res = await axios.get(`https://trees-dans-collectible-strategy.trycloudflare.com/api/relay`, {
           params: {
             le_id: leagueId,
             sr_id: seriesId,
