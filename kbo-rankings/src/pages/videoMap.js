@@ -668,11 +668,10 @@ export const GAME_VIDEO_MAP = {
   "20260826HHSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7Ntk8mwwFJ3JOTuGL1bnwtfQKVXa1-pEtTpGdFAiAWKvsfFzkBjpgr4299Chc93RRCT1uZHmfESneqJKaXanmlpYAF5RavLLc5Rg9Z4MhEXn-pYS1OzBC922rQx1PpZiphaEW32S0_nAdPDZBczMWG7eNgnpj4QVGRAyrVZNUByqpljg8XlmHCT6MbeE3xDRb5B57KPmezMmbrBReL6ENg",
   "20260826LTHT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7Ntk8mwwFJ3JOTuGL1bnwtQxdBTQTCRx35LXNVbdzxv6fzW9gdt0iKSBiy3AteSI38tZ_VlN-iFNWQYNzGmz0izpyaj7KQevHBmFVa-uEJ9hOgzeUUQYgL4e5oWmSnkJTu4nPNl7OcNtOT1gosVF2SvKaZ4DhqMhjKR6lukB-O46qDGIwZ77QRy2nsqmR5pzVtsuyFXyumKLioKJ_WhwMw",
   "20260826OBKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7Ntk8mwwFJ3JOTuGL1bnwi_uP2cEz9eqgdEdAvVWvn7BTRJBcqELYc3wcjHknNfoDl8hNun75TJHPheLw1YlSStYzEVhU9GQ2OmruIAO-C5Y13JVCPF4jj-RM9eWYWlTCLF3I-NxklkNg0FzzuKavnRTRGjMDPf29tKKbgcjiKSYStRyoDl1acsvu6LOu_H6daXjRswCOpyVZqHfFVaXrg",
-  "20260827SSWO0": "",
-  "20260827NCLG0": "",
-  "20260827HHSK0": "",
-  "20260827LTHT0": "",
-  "20260827OBKT0": "",
+  "20260827SSWO0": "https://live-global-cdn-v02.sooplive.com/live-stmc-35/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.qucktrp69Ej98WcEm07KdHwUAyB5siCNHwg87pgKdM-iJ8mYAfYNcCrWghApq6ggtlZ6Wzf9Li2geN09ByVZE-XhM-p5_cLPDXf4a1b4-VY2L709VH8-ihIFnt7DpgiF5QvlvsW9r6wTz_wrzwjOOIKl3A_--aZITd02YzcOlp6uRVCaqdub95VCzflB9Azw6fw5IAYIMkyMbzlAX-KA_A",
+  "20260827NCLG0": "https://live-global-cdn-v02.sooplive.com/live-stmc-21/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.qucktrp69Ej98WcEm07KdI5TAOm0Web9ac5d3QUDrBfS4c6qM7VzoCAvmVg7MrTT2iu4bqmyogtPNSDM_dyIBK-jI8xZNdDo1Mau4MWMnCFtKBN6wJvjPGFoB2YD-7vBo86LZmzxpiWylWfr2__YwpHkDhqynNskXs-DZNwwXPItsPpLHSPWQBL6Qx97N3ONHiUYbnf8sgSP09ylkgNHew",
+  "20260827HHSK0": "https://live-global-cdn-v02.sooplive.com/live-stmc-23/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.qucktrp69Ej98WcEm07KdOnFljMmNHdSnDGnM3FfV9GCiBSSGzvOI_n5fmeAYDmXSBwtNTxs62xq3idh0ObDxj4mehkNp1vZKfC-OFZIM-WLdX-dAvr4L8emy78H-58kkjKVedob8zAPI8fYbcO4fwJ-XbCL0W4MCqBMUXlfLg3YZ5OjTXo8leEzO6BM3LUHfV3aXVqpK9w9bLp5IymT4g",
+  "20260827OBKT0": "https://live-global-cdn-v02.sooplive.com/live-stm-14/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.qucktrp69Ej98WcEm07KdIDwIi65q8rvzlQUGLoLKUc3rZI3hCHzhmK1ogeMNATJzcNxz4tRPR_TSHULzRIzeWT7EAAkkom4Y5_m27pyBjdXef4c89oVyYfm9K4o9O1siwn0EyphEVW0SLpVvH70FjkRA83PrassXRJstjUBn0xZ-1mAkIleRs6Ku21sVNxXamN4TeexzrJRphpn86rw7A",
 
   // 8월 4주차 주말 시리즈
   "20260828WOOB0": "",
