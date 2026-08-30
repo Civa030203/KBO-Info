@@ -1,23 +1,107 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // 1. teamData.js 파일 임포트
 import { teamData } from "./src/teamData";
 
+// 타자 및 투수 부문별 메타데이터 정의
+const HITTER_CATEGORIES = [
+    { key: "hitterHra", label: "타율", unit: "", isDecimal: true, digits: 3 },
+    { key: "hitterHr", label: "홈런", unit: "개", isDecimal: false },
+    { key: "hitterRbi", label: "타점", unit: "점", isDecimal: false },
+    { key: "hitterOps", label: "OPS", unit: "", isDecimal: true, digits: 3 },
+    { key: "hitterSb", label: "도루", unit: "개", isDecimal: false },
+    { key: "hitterWar", label: "WAR", unit: "", isDecimal: true, digits: 2 },
+];
+
+const PITCHER_CATEGORIES = [
+    { key: "pitcherEra", label: "평균자책점", unit: "", isDecimal: true, digits: 2 },
+    { key: "pitcherWin", label: "다승", unit: "승", isDecimal: false },
+    { key: "pitcherKk", label: "탈삼진", unit: "개", isDecimal: false },
+    { key: "pitcherSave", label: "세이브", unit: "세이브", isDecimal: false },
+    { key: "pitcherHold", label: "홀드", unit: "홀드", isDecimal: false },
+    { key: "pitcherWhip", label: "WHIP", unit: "", isDecimal: true, digits: 2 },
+    { key: "pitcherWar", label: "WAR", unit: "", isDecimal: true, digits: 2 },
+];
+
 export default function PlayerSearch() {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
+    const [hasSearched, setHasSearched] = useState(false);
+    const [isSearching, setIsSearching] = useState(false);
+
+    // 순위 데이터 상태
+    const [rankingData, setRankingData] = useState({ hitters: [], pitchers: [] });
+    const [isRankingLoading, setIsRankingLoading] = useState(true);
+    const [rankingType, setRankingType] = useState("HITTER"); // "HITTER" | "PITCHER"
+    const [selectedStat, setSelectedStat] = useState("hitterHra");
+
+    // 컴포넌트 마운트 시 순위 데이터 조회
+    useEffect(() => {
+        setIsRankingLoading(true);
+        // const apiUrl = "https://trees-dans-collectible-strategy.trycloudflare.com/api/playerRankings";
+        const apiUrl = "http://localhost:5001/api/playerRankings";
+        axios
+            .get(apiUrl)
+            .then((res) => {
+                if (res.data?.result) {
+                    setRankingData({
+                        hitters: res.data.result.hitters || [],
+                        pitchers: res.data.result.pitchers || [],
+                    });
+                }
+            })
+            .catch((err) => {
+                console.error("순위 데이터 호출 실패:", err);
+            })
+            .finally(() => {
+                setIsRankingLoading(false);
+            });
+    }, []);
+
+    // 타자/투수 탭 변경 시 기본 스탯 선택
+    const handleRankingTypeChange = (type) => {
+        setRankingType(type);
+        if (type === "HITTER") {
+            setSelectedStat("hitterHra");
+        } else {
+            setSelectedStat("pitcherEra");
+        }
+    };
 
     const clickSearchBtn = () => {
+        const trimmed = query.trim();
+        if (!trimmed) {
+            setHasSearched(false);
+            setData([]);
+            return;
+        }
+        setIsSearching(true);
+        setHasSearched(true);
         axios
-            .get(`https://trees-dans-collectible-strategy.trycloudflare.com/api/playerSearch?query=${query}`)
-            // .get(`https://kbo-info.onrender.com/api/playerSearch?query=${query}`)
+            .get(`https://trees-dans-collectible-strategy.trycloudflare.com/api/playerSearch?query=${encodeURIComponent(trimmed)}`)
             .then((res) => {
-                setData(res.data);
+                setData(res.data || []);
             })
             .catch((err) => {
                 console.error(err);
+                setData([]);
+            })
+            .finally(() => {
+                setIsSearching(false);
             });
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            clickSearchBtn();
+        }
+    };
+
+    const handleClearQuery = () => {
+        setQuery("");
+        setHasSearched(false);
+        setData([]);
     };
 
     function getTeamName(teamName, teamID) {
@@ -49,118 +133,191 @@ export default function PlayerSearch() {
             case "상무": return "상무 피닉스";
             case "경찰": return "경찰 야구단";
             case "고양": return "고양 원더스";
-            default: return teamID;
+            default: return teamName || teamID || "";
         }
     }
 
     // 이미지 로드 실패 시 연도를 변경해 재시도하거나 기본 이미지를 띄워주는 함수
     const handleImgError = (e, pId) => {
-        // 현재 이미지 주소 추출
         const currentSrc = e.target.src;
-
-        // 1단계: 만약 2026년 주소로 시도했다가 깨진 경우, 올드 선수일 수 있으므로 과거 활약 연도(예: 2020년)로 재시도
         if (currentSrc.includes("/2026/")) {
             e.target.src = `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/${pId}.jpg`;
-        }
-        // 2단계: 2020년 주소마저 깨졌거나 다른 연도도 없는 완전 과거 레전드/신인 선수는 안전한 KBO 공식 실루엣으로 대체
-        else {
+        } else {
             e.target.src = "https://www.koreabaseball.com/file/image/bg/no_buddy.png";
         }
     };
 
+    // 현재 선택된 부문의 상위 선수 목록 추출
+    const getCurrentRankingList = () => {
+        const currentGroup = rankingType === "HITTER" ? rankingData.hitters : rankingData.pitchers;
+        const found = currentGroup.find((item) => item.type === selectedStat);
+        return found?.rankings || [];
+    };
+
+    // 주요 지표 수치 포맷터
+    const formatStatValue = (val, statKey) => {
+        if (val === undefined || val === null || val === "") return "-";
+        const num = Number(val);
+        if (isNaN(num)) return val;
+
+        const allCats = [...HITTER_CATEGORIES, ...PITCHER_CATEGORIES];
+        const config = allCats.find((c) => c.key === statKey);
+
+        if (config?.isDecimal) {
+            return num.toFixed(config.digits);
+        }
+        return config?.unit ? `${num}${config.unit}` : `${num}`;
+    };
+
+    const currentRankingList = getCurrentRankingList();
+    const activeCategories = rankingType === "HITTER" ? HITTER_CATEGORIES : PITCHER_CATEGORIES;
+    const currentCategoryInfo = activeCategories.find((c) => c.key === selectedStat);
+
     return (
-        <>
-            <div className="min-h-screen bg-[#0a0a0a] text-gray-100">
-                <div className="m-4 pt-4">
-                    <Link
-                        to="/"
-                        className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
-                    >
-                        ⬅ 메인 화면으로
-                    </Link>
+        <div className="min-h-screen bg-[#0a0a0a] text-gray-100 pb-16">
+            {/* 상단 네비게이션 */}
+            <div className="max-w-6xl mx-auto px-4 pt-6 flex items-center justify-between">
+                <Link
+                    to="/"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/90 text-white rounded-xl shadow-lg hover:bg-blue-500 transition duration-200 font-medium text-sm border border-blue-400/20"
+                >
+                    <span>⬅</span> 메인 화면으로
+                </Link>
+                <div className="text-xs text-gray-400 font-medium">
+                    KBO 리그 실시간 선수 정보
                 </div>
-                <div className="flex justify-center mt-10">
-                    <div className="flex items-center border border-gray-600 rounded-lg overflow-hidden">
-                        <input
-                            className="px-3 py-2 outline-none bg-gray-800 text-white placeholder-gray-400"
-                            placeholder="선수를 검색하세요"
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                        />
-                        <button
-                            className="bg-blue-600 text-white px-4 py-2 hover:bg-blue-500 transition"
-                            onClick={clickSearchBtn}
-                        >
-                            검색
-                        </button>
-                    </div>
+            </div>
+
+            {/* 검색 헤더 영역 */}
+            <div className="max-w-4xl mx-auto px-4 mt-8">
+                <div className="text-center mb-6">
+                    <h1 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
+                        🔍 KBO 선수 검색
+                    </h1>
+                    <p className="mt-2 text-sm text-gray-400">
+                        선수 이름을 검색하거나 시즌 주요 부문별 순위를 확인하세요.
+                    </p>
                 </div>
 
-                {/* 검색 결과 카드 영역 */}
-                <div className="flex justify-center mt-10">
-                    <div className="w-full max-w-4xl px-4">
-                        {data.length === 0 ? (
-                            <p className="text-center text-gray-400">검색 결과가 없습니다.</p>
+                {/* 검색창 */}
+                <div className="relative flex items-center bg-gray-900/90 border border-gray-700/80 rounded-2xl p-1.5 shadow-2xl focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all backdrop-blur-sm">
+                    <input
+                        className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-500 outline-none text-base font-normal"
+                        placeholder="선수 이름을 입력하세요 (예: 레이예스, 곽빈, 구자욱...)"
+                        value={query}
+                        onChange={(e) => {
+                            setQuery(e.target.value);
+                            if (e.target.value === "") {
+                                setHasSearched(false);
+                                setData([]);
+                            }
+                        }}
+                        onKeyDown={handleKeyDown}
+                    />
+                    {query && (
+                        <button
+                            onClick={handleClearQuery}
+                            className="mr-2 text-gray-400 hover:text-white p-1 rounded-full hover:bg-gray-800 transition"
+                            title="검색어 지우기"
+                        >
+                            ✕
+                        </button>
+                    )}
+                    <button
+                        className="bg-blue-600 hover:bg-blue-500 active:scale-95 text-white px-6 py-3 rounded-xl font-semibold transition shadow-md flex items-center gap-2 flex-shrink-0"
+                        onClick={clickSearchBtn}
+                        disabled={isSearching}
+                    >
+                        {isSearching ? (
+                            <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
                         ) : (
-                            <div className="flex flex-col gap-4">
+                            "검색"
+                        )}
+                    </button>
+                </div>
+            </div>
+
+            {/* 메인 컨텐츠 영역 */}
+            <div className="max-w-5xl mx-auto px-4 mt-10">
+                {/* 1. 검색어가 있고 검색을 실행한 경우: 검색 결과 리스트 */}
+                {hasSearched ? (
+                    <div>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                                <span>🎯</span> 검색 결과 <span className="text-blue-400">({data.length})</span>
+                            </h2>
+                            <button
+                                onClick={handleClearQuery}
+                                className="text-xs text-gray-400 hover:text-blue-400 underline transition"
+                            >
+                                순위 표로 돌아가기
+                            </button>
+                        </div>
+
+                        {data.length === 0 ? (
+                            <div className="text-center py-16 bg-gray-900/40 rounded-2xl border border-gray-800">
+                                <p className="text-lg text-gray-400">"{query}"에 대한 검색 결과가 없습니다.</p>
+                                <p className="text-sm text-gray-500 mt-1">선수 이름이 올바른지 다시 확인해주세요.</p>
+                            </div>
+                        ) : (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {data.map((player, idx) => {
-                                    // 기본적으로 2026년 이미지로 첫 로딩을 시도합니다.
-                                    // 만약 백엔드 검색 결과에 activeYear 데이터가 포함되도록 커스텀하셨다면 player.activeYear를 넣으시면 됩니다.
                                     const activeYear = player.activeYear || "2026";
                                     const profileImgUrl = `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${activeYear}/${player.pId}.jpg`;
 
                                     const teamKey = player.team;
                                     const teamStyle = teamData[teamKey] || { mainColor: "[#1f2937]", subColor: "[#4b5563]" };
 
-                                    const pureMainColor = teamStyle.mainColor.replace(/[\[\]]/g, "");
-                                    const pureSubColor = teamStyle.subColor.replace(/[\[\]]/g, "");
+                                    const pureMainColor = teamStyle.mainColor.replace(/[[\]]/g, "");
+                                    const pureSubColor = teamStyle.subColor.replace(/[[\]]/g, "");
 
                                     return (
                                         <Link
                                             to={`/playerData/${player.pId}`}
                                             key={idx}
-                                            className="block overflow-hidden rounded-xl border p-6 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl"
+                                            className="group block overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl relative"
                                             style={{
-                                                background: `linear-gradient(135deg, ${pureMainColor}dd, #0b0f19)`,
-                                                borderColor: pureSubColor
+                                                background: `linear-gradient(135deg, ${pureMainColor}cc, #0c1017)`,
+                                                borderColor: pureSubColor,
                                             }}
                                         >
-                                            <div className="flex items-center justify-between gap-6">
-                                                <div className="flex items-center gap-6">
+                                            <div className="flex items-center justify-between gap-4">
+                                                <div className="flex items-center gap-4">
                                                     {/* 프로필 이미지 */}
-                                                    <div className="w-24 h-24 rounded-full overflow-hidden border-2 bg-slate-900/50 flex-shrink-0 shadow-md"
-                                                        style={{ borderColor: pureSubColor }}>
+                                                    <div
+                                                        className="w-20 h-20 rounded-2xl overflow-hidden border-2 bg-slate-900/60 flex-shrink-0 shadow-md group-hover:border-blue-400 transition"
+                                                        style={{ borderColor: pureSubColor }}
+                                                    >
                                                         <img
                                                             src={profileImgUrl}
                                                             alt={player.name}
                                                             className="w-full h-full object-cover"
-                                                            // 객체(e)와 선수의 고유 pId를 핸들러에 같이 넘겨주어 유연하게 대처합니다.
                                                             onError={(e) => handleImgError(e, player.pId)}
                                                         />
                                                     </div>
 
-                                                    {/* 선수 스펙 정보 */}
+                                                    {/* 선수 정보 */}
                                                     <div className="flex flex-col gap-1">
                                                         <div className="flex items-baseline gap-2">
-                                                            <span className="text-2xl font-bold text-white">
+                                                            <span className="text-xl font-bold text-white group-hover:text-blue-300 transition">
                                                                 {player.name}
                                                             </span>
                                                             {player.backNo && (
-                                                                <span className="text-sm font-semibold text-gray-300">
+                                                                <span className="text-xs font-semibold text-gray-300 px-1.5 py-0.5 rounded bg-black/40">
                                                                     No.{player.backNo}
                                                                 </span>
                                                             )}
                                                         </div>
 
-                                                        <span className="text-sm text-gray-300 font-medium">
-                                                            {player.position}
+                                                        <span className="text-xs text-gray-300 font-medium">
+                                                            {player.position} {player.hand ? `(${player.hand})` : ""}
                                                         </span>
 
                                                         {/* 소속팀 뱃지 */}
-                                                        <div className="mt-1.5">
-                                                            <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-white rounded-full bg-black/40 border border-white/10">
+                                                        <div className="mt-1">
+                                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-white rounded-full bg-black/50 border border-white/10">
                                                                 {teamStyle.icon && (
-                                                                    <img src={teamStyle.icon} alt="" className="w-4 h-4 object-contain" />
+                                                                    <img src={teamStyle.icon} alt="" className="w-3.5 h-3.5 object-contain" />
                                                                 )}
                                                                 {getTeamName(player.team, player.teamID)}
                                                             </span>
@@ -170,7 +327,7 @@ export default function PlayerSearch() {
 
                                                 {/* 우측 배경 디자인 요소 */}
                                                 {teamStyle.icon && (
-                                                    <div className="w-24 h-24 opacity-15 pointer-events-none select-none hidden sm:block">
+                                                    <div className="w-16 h-16 opacity-10 pointer-events-none select-none hidden sm:block group-hover:opacity-20 transition">
                                                         <img src={teamStyle.icon} alt="" className="w-full h-full object-contain filter grayscale invert" />
                                                     </div>
                                                 )}
@@ -181,8 +338,277 @@ export default function PlayerSearch() {
                             </div>
                         )}
                     </div>
-                </div>
+                ) : (
+                    /* 2. 검색창이 비어있을 때: 타자 및 투수 부문별 순위 표 */
+                    <div className="space-y-6">
+                        {/* 상단 순위 대분류 탭 (타자 / 투수) */}
+                        <div className="flex items-center justify-between flex-wrap gap-4 border-b border-gray-800 pb-4">
+                            <div>
+                                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                                    <span>🏆</span> KBO 부문별 선수 순위
+                                </h2>
+                                <p className="text-xs text-gray-400 mt-0.5">
+                                    선수명을 클릭하면 상세 기록 페이지로 이동합니다.
+                                </p>
+                            </div>
+
+                            <div className="flex p-1 bg-gray-900 border border-gray-800 rounded-xl">
+                                <button
+                                    onClick={() => handleRankingTypeChange("HITTER")}
+                                    className={`px-5 py-2 rounded-lg text-sm font-bold transition duration-200 flex items-center gap-2 ${rankingType === "HITTER"
+                                            ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
+                                            : "text-gray-400 hover:text-white"
+                                        }`}
+                                >
+                                    <span>🏏</span> 타자 순위
+                                </button>
+                                <button
+                                    onClick={() => handleRankingTypeChange("PITCHER")}
+                                    className={`px-5 py-2 rounded-lg text-sm font-bold transition duration-200 flex items-center gap-2 ${rankingType === "PITCHER"
+                                            ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/30"
+                                            : "text-gray-400 hover:text-white"
+                                        }`}
+                                >
+                                    <span>⚾</span> 투수 순위
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* 서브 부문 선택 뱃지 탭 */}
+                        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
+                            {activeCategories.map((cat) => {
+                                const isSelected = selectedStat === cat.key;
+                                return (
+                                    <button
+                                        key={cat.key}
+                                        onClick={() => setSelectedStat(cat.key)}
+                                        className={`px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-200 border ${isSelected
+                                                ? rankingType === "HITTER"
+                                                    ? "bg-blue-600/20 text-blue-400 border-blue-500 shadow-sm"
+                                                    : "bg-emerald-600/20 text-emerald-400 border-emerald-500 shadow-sm"
+                                                : "bg-gray-900/60 text-gray-400 border-gray-800 hover:border-gray-700 hover:text-gray-200"
+                                            }`}
+                                    >
+                                        {cat.label}
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* 순위 테이블 카드 */}
+                        <div className="bg-gray-900/60 border border-gray-800/80 rounded-2xl overflow-hidden shadow-xl backdrop-blur-sm">
+                            {isRankingLoading ? (
+                                <div className="text-center py-20">
+                                    <div className="inline-block w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+                                    <p className="text-gray-400 text-sm">최신 선수 순위를 불러오는 중입니다...</p>
+                                </div>
+                            ) : currentRankingList.length === 0 ? (
+                                <div className="text-center py-16 text-gray-400">
+                                    해당 부문의 순위 데이터가 없습니다.
+                                </div>
+                            ) : (
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left border-collapse">
+                                        <thead>
+                                            <tr className="border-b border-gray-800 bg-gray-900/90 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                                                <th className="py-4 px-4 text-center w-16">순위</th>
+                                                <th className="py-4 px-4">선수</th>
+                                                <th className="py-4 px-4 text-center">팀</th>
+                                                <th className="py-4 px-4 text-right">
+                                                    <span className={`px-2 py-1 rounded font-bold ${rankingType === "HITTER"
+                                                            ? "bg-blue-500/20 text-blue-300"
+                                                            : "bg-emerald-500/20 text-emerald-300"
+                                                        }`}>
+                                                        {currentCategoryInfo?.label || "기록"}
+                                                    </span>
+                                                </th>
+                                                {rankingType === "HITTER" ? (
+                                                    <>
+                                                        <th className="py-4 px-4 text-center hidden sm:table-cell">경기</th>
+                                                        <th className="py-4 px-4 text-center hidden sm:table-cell">안타</th>
+                                                        <th className="py-4 px-4 text-center hidden md:table-cell">홈런</th>
+                                                        <th className="py-4 px-4 text-center hidden md:table-cell">타점</th>
+                                                        <th className="py-4 px-4 text-center hidden lg:table-cell">OPS</th>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <th className="py-4 px-4 text-center hidden sm:table-cell">경기</th>
+                                                        <th className="py-4 px-4 text-center hidden sm:table-cell">이닝</th>
+                                                        <th className="py-4 px-4 text-center hidden md:table-cell">승/패</th>
+                                                        <th className="py-4 px-4 text-center hidden md:table-cell">탈삼진</th>
+                                                        <th className="py-4 px-4 text-center hidden lg:table-cell">ERA</th>
+                                                    </>
+                                                )}
+                                                <th className="py-4 px-4 text-center w-20">상세</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-gray-800/60 text-sm">
+                                            {currentRankingList.map((player, idx) => {
+                                                const rankNum = player.ranking || idx + 1;
+                                                const teamKey = player.teamShortName || player.teamName;
+                                                const teamStyle = teamData[teamKey] || {
+                                                    mainColor: "[#1f2937]",
+                                                    subColor: "[#4b5563]",
+                                                };
+
+                                                const pureSubColor = teamStyle.subColor.replace(/[[\]]/g, "");
+
+                                                // 1, 2, 3위 메달 뱃지 스타일
+                                                let rankBadge = (
+                                                    <span className="text-gray-400 font-semibold text-sm">
+                                                        {rankNum}
+                                                    </span>
+                                                );
+                                                if (rankNum === 1) {
+                                                    rankBadge = (
+                                                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-tr from-amber-600 to-yellow-300 text-black font-black text-xs shadow-md shadow-yellow-500/30">
+                                                            1
+                                                        </span>
+                                                    );
+                                                } else if (rankNum === 2) {
+                                                    rankBadge = (
+                                                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-tr from-slate-400 to-gray-200 text-black font-black text-xs shadow-md shadow-gray-400/30">
+                                                            2
+                                                        </span>
+                                                    );
+                                                } else if (rankNum === 3) {
+                                                    rankBadge = (
+                                                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-tr from-amber-800 to-amber-600 text-white font-black text-xs shadow-md shadow-amber-700/30">
+                                                            3
+                                                        </span>
+                                                    );
+                                                }
+
+                                                const mainStatValue = player[selectedStat];
+                                                const profileImg =
+                                                    player.playerImageUrl ||
+                                                    `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/${player.playerId}.jpg`;
+
+                                                return (
+                                                    <tr
+                                                        key={player.playerId || idx}
+                                                        className="hover:bg-gray-800/50 transition duration-150 group"
+                                                    >
+                                                        {/* 순위 */}
+                                                        <td className="py-3.5 px-4 text-center">
+                                                            {rankBadge}
+                                                        </td>
+
+                                                        {/* 선수 프로필 + 이름 */}
+                                                        <td className="py-3.5 px-4">
+                                                            <Link
+                                                                to={`/playerData/${player.playerId}`}
+                                                                className="flex items-center gap-3 group-hover:text-blue-400 transition"
+                                                            >
+                                                                <div
+                                                                    className="w-11 h-11 rounded-full overflow-hidden border bg-slate-900 flex-shrink-0 shadow-sm"
+                                                                    style={{ borderColor: pureSubColor }}
+                                                                >
+                                                                    <img
+                                                                        src={profileImg}
+                                                                        alt={player.playerName}
+                                                                        className="w-full h-full object-cover"
+                                                                        onError={(e) => handleImgError(e, player.playerId)}
+                                                                    />
+                                                                </div>
+                                                                <div>
+                                                                    <div className="font-bold text-white group-hover:text-blue-300 transition flex items-center gap-1.5">
+                                                                        <span>{player.playerName}</span>
+                                                                        {player.backNumber && (
+                                                                            <span className="text-xs text-gray-400 font-normal">
+                                                                                #{player.backNumber}
+                                                                            </span>
+                                                                        )}
+                                                                    </div>
+                                                                    <div className="text-xs text-gray-400">
+                                                                        {player.position || (rankingType === "HITTER" ? "타자" : "투수")}
+                                                                    </div>
+                                                                </div>
+                                                            </Link>
+                                                        </td>
+
+                                                        {/* 팀 */}
+                                                        <td className="py-3.5 px-4 text-center">
+                                                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-800/90 text-gray-200 border border-gray-700/60">
+                                                                {teamStyle.icon && (
+                                                                    <img
+                                                                        src={teamStyle.icon}
+                                                                        alt=""
+                                                                        className="w-3.5 h-3.5 object-contain"
+                                                                    />
+                                                                )}
+                                                                {player.teamShortName || player.teamName}
+                                                            </span>
+                                                        </td>
+
+                                                        {/* 주요 기록 수치 */}
+                                                        <td className="py-3.5 px-4 text-right">
+                                                            <span className={`text-base font-extrabold ${rankingType === "HITTER" ? "text-blue-400" : "text-emerald-400"
+                                                                }`}>
+                                                                {formatStatValue(mainStatValue, selectedStat)}
+                                                            </span>
+                                                        </td>
+
+                                                        {/* 보조 기록 컬럼 */}
+                                                        {rankingType === "HITTER" ? (
+                                                            <>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden sm:table-cell">
+                                                                    {player.hitterGameCount ?? "-"}
+                                                                </td>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden sm:table-cell">
+                                                                    {player.hitterHit ?? "-"}
+                                                                </td>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden md:table-cell">
+                                                                    {player.hitterHr ?? "-"}
+                                                                </td>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden md:table-cell">
+                                                                    {player.hitterRbi ?? "-"}
+                                                                </td>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden lg:table-cell">
+                                                                    {player.hitterOps !== undefined ? Number(player.hitterOps).toFixed(3) : "-"}
+                                                                </td>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden sm:table-cell">
+                                                                    {player.pitcherGameCount ?? "-"}
+                                                                </td>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden sm:table-cell">
+                                                                    {player.pitcherInning ?? "-"}
+                                                                </td>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden md:table-cell">
+                                                                    {player.pitcherWin ?? 0}승 {player.pitcherLose ?? 0}패
+                                                                </td>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden md:table-cell">
+                                                                    {player.pitcherKk ?? "-"}
+                                                                </td>
+                                                                <td className="py-3.5 px-4 text-center text-gray-300 hidden lg:table-cell">
+                                                                    {player.pitcherEra !== undefined ? Number(player.pitcherEra).toFixed(2) : "-"}
+                                                                </td>
+                                                            </>
+                                                        )}
+
+                                                        {/* 상세 이동 버튼 */}
+                                                        <td className="py-3.5 px-4 text-center">
+                                                            <Link
+                                                                to={`/playerData/${player.playerId}`}
+                                                                className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-gray-800 hover:bg-blue-600 text-gray-400 hover:text-white transition duration-150 text-xs font-semibold"
+                                                                title="상세 기록 보기"
+                                                            >
+                                                                ➔
+                                                            </Link>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
             </div>
-        </>
+        </div>
     );
 }
