@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     const playerType = req.query.playerType ? req.query.playerType.toUpperCase() : null; // HITTER | PITCHER | null
 
     const fetchRankings = async (type) => {
-      const url = `https://api-gw.sports.naver.com/statistics/categories/kbo/seasons/${season}/top-players?playerType=${type}&limit=${limit}`;
+      const url = `https://api-gw.sports.naver.com/statistics/categories/kbo/seasons/${season}/top-players?limit=${limit}&playerType=${type}`;
       const response = await axios.get(url, {
         headers: {
           "User-Agent":

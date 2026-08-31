@@ -6,7 +6,7 @@ import { teamData } from "./src/teamData";
 
 // 연도 목록 생성 (1982년부터 현재 연도까지)
 const currentYear = new Date().getFullYear();
-const YEARS = Array.from({ length: currentYear - 1982 + 1 }, (_, i) => currentYear - i);
+const YEARS = Array.from({ length: currentYear - 2008 + 1 }, (_, i) => currentYear - i);
 const LIMIT_OPTIONS = [30, 50, 100, 300];
 const PAGE_SIZE = 50;
 
@@ -173,6 +173,23 @@ export default function PlayerSearch() {
         return `https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${targetYear}/${playerId}.jpg`;
     };
 
+    // 연도별 팀 로고 URL 생성 (teamData의 /ci/YYYY/ 부분을 선택한 연도로 치환)
+    const getTeamIconUrl = (teamKey, year) => {
+        const style = teamData[teamKey];
+        if (!style?.icon) return "";
+        return style.icon.replace(/\/ci\/\d{4}\//, `/ci/${year}/`);
+    };
+
+    // 팀 로고 로드 실패 시 원본 teamData.icon으로 fallback
+    const handleTeamIconError = (e, teamKey) => {
+        const fallbackSrc = teamData[teamKey]?.icon;
+        if (fallbackSrc && e.target.src !== fallbackSrc) {
+            e.target.src = fallbackSrc;
+        } else {
+            e.target.style.display = "none";
+        }
+    };
+
     // 이미지 로드 실패 시 fallback 처리
     const handleImgError = (e, pId, year) => {
         const currentSrc = e.target.src;
@@ -313,6 +330,7 @@ export default function PlayerSearch() {
 
                                     const pureMainColor = teamStyle.mainColor.replace(/[[\]]/g, "");
                                     const pureSubColor = teamStyle.subColor.replace(/[[\]]/g, "");
+                                    const teamIcon = getTeamIconUrl(teamKey, activeYear);
 
                                     return (
                                         <Link
@@ -358,9 +376,20 @@ export default function PlayerSearch() {
 
                                                         {/* 소속팀 뱃지 */}
                                                         <div className="mt-1">
-                                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-white rounded-full bg-black/50 border border-white/10">
-                                                                {teamStyle.icon && (
-                                                                    <img src={teamStyle.icon} alt="" className="w-3.5 h-3.5 object-contain" />
+                                                            <span
+                                                                className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-white rounded-full border shadow-sm"
+                                                                style={{
+                                                                    backgroundColor: `${pureMainColor}dd`,
+                                                                    borderColor: pureSubColor || "rgba(255,255,255,0.15)",
+                                                                }}
+                                                            >
+                                                                {teamIcon && (
+                                                                    <img
+                                                                        src={teamIcon}
+                                                                        alt=""
+                                                                        className="w-3.5 h-3.5 object-contain"
+                                                                        onError={(e) => handleTeamIconError(e, teamKey)}
+                                                                    />
                                                                 )}
                                                                 {getTeamName(player.team, player.teamID)}
                                                             </span>
@@ -369,9 +398,9 @@ export default function PlayerSearch() {
                                                 </div>
 
                                                 {/* 우측 배경 디자인 요소 */}
-                                                {teamStyle.icon && (
+                                                {teamIcon && (
                                                     <div className="w-16 h-16 opacity-10 pointer-events-none select-none hidden sm:block group-hover:opacity-20 transition">
-                                                        <img src={teamStyle.icon} alt="" className="w-full h-full object-contain filter grayscale invert" />
+                                                        <img src={teamIcon} alt="" className="w-full h-full object-contain filter grayscale invert" />
                                                     </div>
                                                 )}
                                             </div>
@@ -488,14 +517,21 @@ export default function PlayerSearch() {
                                 </div>
                             ) : (
                                 <>
+                                    {/* 모바일 스크롤 안내 힌트 바 */}
+                                    <div className="sm:hidden px-4 py-2 bg-gray-800/40 border-b border-gray-800 text-[11px] text-gray-400 flex items-center justify-between">
+                                        <span>👈 표를 좌우로 스크롤하여 전체 기록 확인</span>
+                                        <span className="text-gray-500">전체 {currentRankingList.length}명</span>
+                                    </div>
+
+                                    {/* 가로 스크롤 테이블 (모바일 줄바꿈 방지: min-w 설정 및 whitespace-nowrap) */}
                                     <div className="overflow-x-auto">
-                                        <table className="w-full text-left border-collapse">
+                                        <table className="w-full text-left border-collapse min-w-[700px]">
                                             <thead>
                                                 <tr className="border-b border-gray-800 bg-gray-900/90 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                                                    <th className="py-4 px-4 text-center w-16">순위</th>
-                                                    <th className="py-4 px-4">선수</th>
-                                                    <th className="py-4 px-4 text-center">팀</th>
-                                                    <th className="py-4 px-4 text-right">
+                                                    <th className="py-4 px-4 text-center w-16 whitespace-nowrap">순위</th>
+                                                    <th className="py-4 px-4 min-w-[160px] whitespace-nowrap">선수</th>
+                                                    <th className="py-4 px-4 text-center min-w-[110px] whitespace-nowrap">팀</th>
+                                                    <th className="py-4 px-4 text-right min-w-[90px] whitespace-nowrap">
                                                         <span className={`px-2 py-1 rounded font-bold ${rankingType === "HITTER"
                                                             ? "bg-blue-500/20 text-blue-300"
                                                             : "bg-emerald-500/20 text-emerald-300"
@@ -505,22 +541,22 @@ export default function PlayerSearch() {
                                                     </th>
                                                     {rankingType === "HITTER" ? (
                                                         <>
-                                                            <th className="py-4 px-4 text-center hidden sm:table-cell">경기</th>
-                                                            <th className="py-4 px-4 text-center hidden sm:table-cell">안타</th>
-                                                            <th className="py-4 px-4 text-center hidden md:table-cell">홈런</th>
-                                                            <th className="py-4 px-4 text-center hidden md:table-cell">타점</th>
-                                                            <th className="py-4 px-4 text-center hidden lg:table-cell">OPS</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">경기</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">안타</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">홈런</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">타점</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">OPS</th>
                                                         </>
                                                     ) : (
                                                         <>
-                                                            <th className="py-4 px-4 text-center hidden sm:table-cell">경기</th>
-                                                            <th className="py-4 px-4 text-center hidden sm:table-cell">이닝</th>
-                                                            <th className="py-4 px-4 text-center hidden md:table-cell">승/패</th>
-                                                            <th className="py-4 px-4 text-center hidden md:table-cell">탈삼진</th>
-                                                            <th className="py-4 px-4 text-center hidden lg:table-cell">ERA</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">경기</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">이닝</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">승/패</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">탈삼진</th>
+                                                            <th className="py-4 px-4 text-center whitespace-nowrap">ERA</th>
                                                         </>
                                                     )}
-                                                    <th className="py-4 px-4 text-center w-20">상세</th>
+                                                    <th className="py-4 px-4 text-center w-20 whitespace-nowrap">상세</th>
                                                 </tr>
                                             </thead>
                                             <tbody className="divide-y divide-gray-800/60 text-sm">
@@ -533,7 +569,9 @@ export default function PlayerSearch() {
                                                         subColor: "[#4b5563]",
                                                     };
 
+                                                    const pureMainColor = teamStyle.mainColor.replace(/[[\]]/g, "");
                                                     const pureSubColor = teamStyle.subColor.replace(/[[\]]/g, "");
+                                                    const teamIcon = getTeamIconUrl(teamKey, selectedYear);
 
                                                     // 1, 2, 3위 메달 뱃지 스타일
                                                     let rankBadge = (
@@ -571,12 +609,12 @@ export default function PlayerSearch() {
                                                             className="hover:bg-gray-800/50 transition duration-150 group"
                                                         >
                                                             {/* 순위 */}
-                                                            <td className="py-3.5 px-4 text-center">
+                                                            <td className="py-3.5 px-4 text-center whitespace-nowrap">
                                                                 {rankBadge}
                                                             </td>
 
                                                             {/* 선수 프로필 + 이름 */}
-                                                            <td className="py-3.5 px-4">
+                                                            <td className="py-3.5 px-4 whitespace-nowrap">
                                                                 <Link
                                                                     to={`/playerData/${player.playerId}`}
                                                                     className="flex items-center gap-3 group-hover:text-blue-400 transition"
@@ -608,14 +646,21 @@ export default function PlayerSearch() {
                                                                 </Link>
                                                             </td>
 
-                                                            {/* 팀 */}
-                                                            <td className="py-3.5 px-4 text-center">
-                                                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-800/90 text-gray-200 border border-gray-700/60">
-                                                                    {teamStyle.icon && (
+                                                            {/* 팀 (상징색 배경 및 연도별 로고) */}
+                                                            <td className="py-3.5 px-4 text-center whitespace-nowrap">
+                                                                <span
+                                                                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold text-white shadow-sm border"
+                                                                    style={{
+                                                                        backgroundColor: `${pureMainColor}dd`,
+                                                                        borderColor: pureSubColor || "rgba(255,255,255,0.2)",
+                                                                    }}
+                                                                >
+                                                                    {teamIcon && (
                                                                         <img
-                                                                            src={teamStyle.icon}
+                                                                            src={teamIcon}
                                                                             alt=""
-                                                                            className="w-3.5 h-3.5 object-contain"
+                                                                            className="w-3.5 h-3.5 object-contain filter drop-shadow"
+                                                                            onError={(e) => handleTeamIconError(e, teamKey)}
                                                                         />
                                                                     )}
                                                                     {player.teamShortName || player.teamName}
@@ -623,7 +668,7 @@ export default function PlayerSearch() {
                                                             </td>
 
                                                             {/* 주요 기록 수치 */}
-                                                            <td className="py-3.5 px-4 text-right">
+                                                            <td className="py-3.5 px-4 text-right whitespace-nowrap">
                                                                 <span className={`text-base font-extrabold ${rankingType === "HITTER" ? "text-blue-400" : "text-emerald-400"
                                                                     }`}>
                                                                     {formatStatValue(mainStatValue, selectedStat)}
@@ -633,44 +678,44 @@ export default function PlayerSearch() {
                                                             {/* 보조 기록 컬럼 */}
                                                             {rankingType === "HITTER" ? (
                                                                 <>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden sm:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.hitterGameCount ?? "-"}
                                                                     </td>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden sm:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.hitterHit ?? "-"}
                                                                     </td>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden md:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.hitterHr ?? "-"}
                                                                     </td>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden md:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.hitterRbi ?? "-"}
                                                                     </td>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden lg:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.hitterOps !== undefined ? Number(player.hitterOps).toFixed(3) : "-"}
                                                                     </td>
                                                                 </>
                                                             ) : (
                                                                 <>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden sm:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.pitcherGameCount ?? "-"}
                                                                     </td>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden sm:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.pitcherInning ?? "-"}
                                                                     </td>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden md:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.pitcherWin ?? 0}승 {player.pitcherLose ?? 0}패
                                                                     </td>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden md:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.pitcherKk ?? "-"}
                                                                     </td>
-                                                                    <td className="py-3.5 px-4 text-center text-gray-300 hidden lg:table-cell">
+                                                                    <td className="py-3.5 px-4 text-center text-gray-300 whitespace-nowrap">
                                                                         {player.pitcherEra !== undefined ? Number(player.pitcherEra).toFixed(2) : "-"}
                                                                     </td>
                                                                 </>
                                                             )}
 
                                                             {/* 상세 이동 버튼 */}
-                                                            <td className="py-3.5 px-4 text-center">
+                                                            <td className="py-3.5 px-4 text-center whitespace-nowrap">
                                                                 <Link
                                                                     to={`/playerData/${player.playerId}`}
                                                                     className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-gray-800 hover:bg-blue-600 text-gray-400 hover:text-white transition duration-150 text-xs font-semibold"

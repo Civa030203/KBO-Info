@@ -1,4 +1,4 @@
-﻿// KBO 경기 SOOP(구 아프리카TV) 중계 다시보기 링크 매핑
+// KBO 경기 SOOP(구 아프리카TV) 중계 다시보기 링크 매핑
 export const GAME_VIDEO_MAP = {
   // gameId를 키로 사용 (예 "20260329OBNC0")
   // 2026년 3월 
@@ -663,26 +663,27 @@ export const GAME_VIDEO_MAP = {
   "20260825HHSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260825/659/296626659/REGL_43BF1AD5_296626659_1.mp4/manifest_m3u8",
   "20260825LTHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260825/673/296626673/REGL_4FADA04F_296626673_1.mp4/manifest_m3u8",
   "20260825OBKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260825/677/296626677/REGL_0802C0C2_296626677_1.mp4/manifest_m3u8",
-  "20260826SSWO0": "",
-  "20260826NCLG0": "",
-  "20260826HHSK0": "",
-  "20260826LTHT0": "",
-  "20260826OBKT0": "",
-  "20260827SSWO0": "",
-  "20260827NCLG0": "",
-  "20260827HHSK0": "",
-  "20260827OBKT0": "",
+  "20260826SSWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260826/333/296652333/REGL_F7A79E78_296652333_1.mp4/manifest.m3u8",
+  "20260826NCLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260826/329/296652329/REGL_63DC0268_296652329_1.mp4/manifest.m3u8",
+  "20260826HHSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260826/325/296652325/REGL_2A90F712_296652325_1.mp4/manifest.m3u8",
+  "20260826LTHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260826/331/296652331/REGL_B379A302_296652331_1.mp4/manifest.m3u8",
+  "20260826OBKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260826/327/296652327/REGL_CD205D8A_296652327_1.mp4/manifest.m3u8",
+  "20260827SSWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260827/849/296676849/REGL_A21D2E85_296676849_1.mp4/manifest.m3u8",
+  "20260827NCLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260827/835/296676835/REGL_68E82844_296676835_1.mp4/manifest.m3u8",
+  "20260827HHSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260827/837/296676837/REGL_D506CD22_296676837_1.mp4/manifest.m3u8",
+  "20260827OBKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260827/843/296676843/REGL_2C2ABFBD_296676843_1.mp4/manifest.m3u8",
 
   // 8월 4주차 주말 시리즈
-  "20260829WOOB0": "",
-  "20260829NCHH0": "",
-  "20260829KTSS0": "",
-  "20260829SKHT0": "",
-  "20260829LGLT0": "",
-  "20260830WOOB0": "https://live-global-cdn-v02.sooplive.com/live-stm-15/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.HwVpjxwxRgfzvuKXWzTKbak1K6DsccADPBxfKU7UzqRTTwS1c02nulFwLR5ZDNiR3qTba0kRYZRJ0IT8TxlycQ9QV8WMciF8P8UJYvUqm33-6UqkjERpsaDkaB_lR4c2FSq0K4CV6NvUIKlpnnxQZeXAwDR7xtRUqxwLLJgt5d8iYCUALX52AcUa8Gqh3Cq2Befv94xIqcOplz-0OQt1FQ",
-  "20260830NCHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-15/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.HwVpjxwxRgfzvuKXWzTKbbcK81RdThrC5lpnhKmSApU9x-i0Z-OM2yIcKngqcmRKeqdSIuxTCZ2Z78wzjCP9efwYMddS-zKT0JdPG6aBMvqPswCQ5Tk73kvi9QOpKjUS6iaPQBHCcg1ZpPLU2BtYqfoz1g43fPwv1ifXRRVpsn2WavFikTF8pFsGWyw6hNSfyAZXQUy9MgNhv_kp6NbOQA",
-  "20260830LGLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-15/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.HwVpjxwxRgfzvuKXWzTKbRFJUPCYlecLrISZIJzMad9AVmHxV0UQD15pGRJdJZj7oUiDscrIAV8iCcj-ugVJh3UVll1bwcsERn3l7WwQ-_fHvTUf6C22DLA1lxt59vK8UfO39J2Yn3vFGrAwVKw5pAfZEQrP4DqImOHJbBVQ2aLeS06q5TnyFB6HKsZ2P0YOb8Hfx5fXcxPtTiqASSFuyw",
+  "20260829WOOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260829/381/296727381/REGL_F3FA3184_296727381_1.mp4/manifest.m3u8",
+  "20260829NCHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260829/241/296727241/REGL_F347561A_296727241_1.mp4/manifest.m3u8",
+  "20260829KTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260829/385/296727385/REGL_CF362C89_296727385_1.mp4/manifest.m3u8",
+  "20260829SKHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260829/379/296727379/REGL_74305667_296727379_1.mp4/manifest.m3u8",
+  "20260829LGLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260829/383/296727383/REGL_C17DB9A9_296727383_1.mp4/manifest.m3u8",
+  "20260830WOOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260830/841/296752841/REGL_D196BC4B_296752841_1.mp4/manifest.m3u8",
+  "20260830NCHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260830/843/296752843/REGL_D192EE72_296752843_1.mp4/manifest.m3u8",
+  "20260830LGLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260830/839/296752839/REGL_92FEFF31_296752839_1.mp4/manifest.m3u8",
 
+  // 2026년 9월
   // 9월 1주차 주중 시리즈
   "20260901HTNC0": "",
   "20260901SKWO0": "",
@@ -718,5 +719,162 @@ export const GAME_VIDEO_MAP = {
   "20260906HHLT0": "",
 
   // 3연전 시리즈 종료, 잔여경기 시작
+  "20260908LTNC0": "",
+  "20260908WOLG0": "",
+  "20260908OBHH0": "",
+  "20260908HTSS0": "",
+  "20260908SKKT0": "",
 
+  "20260909SKOB0": "",
+  "20260909LGHH0": "",
+  "20260909KTSS0": "",
+  "20260909NCHT0": "",
+
+  "20260910WOOB0": "",
+  "20260910HHSK0": "",
+  "20260910NCHT0": "",
+  "20260910KTLT0": "",
+
+  "20260911NCHH0": "",
+  "20260911WOSS0": "",
+  "20260911SKHT0": "",
+  "20260911KTLT0": "",
+
+  "20260912LTWO0": "",
+  "20260912NCOB0": "",
+  "20260912LGSS0": "",
+  "20260912HTKT0": "",
+
+  "20260913NCOB0": "",
+  "20260913LGSS0": "",
+  "20260913HHHT0": "",
+  "20260913LTKT0": "",
+
+  "20260915LGNC0": "",
+  "20260915HTSK0": "",
+  "20260915KTHH0": "",
+  "20260915LTSS0": "",
+
+  "20260916LGNC0": "",
+  "20260916SSOB0": "",
+  "20260916KTHH0": "",
+  "20260916SKLT0": "",
+
+  "20260917SKNC0": "",
+  "20260917WOHT0": "",
+
+  "20260918WOOB0": "",
+  "20260918SSHH0": "",
+  "20260918NCLT0": "",
+  "20260918LGKT0": "",
+
+  "20260919HTNC0": "",
+  "20260919HHLG0": "",
+  "20260919SSLT0": "",
+  "20260919OBKT0": "",
+
+  "20260920HTNC0": "",
+  "20260920HHLG0": "",
+  "20260920WOSK0": "",
+  "20260920SSLT0": "",
+  "20260920OBKT0": "",
+
+  "20260922OBWO0": "",
+  "20260922KTSK0": "",
+  "20260922LTHH0": "",
+  "20260922NCSS0": "",
+
+  "20260923HTOB0": "",
+  "20260923LTHH0": "",
+  "20260923NCKT0": "",
+
+  "20260924LTLG0": "",
+  "20260924SSSK0": "",
+  "20260924NCKT0": "",
+
+  "20260925HHNC0": "",
+  "20260925LTOB0": "",
+  "20260925SSSK0": "",
+
+  "20260926HHNC0": "",
+  "20260926LGHT0": "",
+  "20260926WOKT0": "",
+
+  "20260927WONC0": "",
+  "20260927KTOB0": "",
+  "20260927LGHT0": "",
+  "20260927HHLT0": "",
+
+  "20260929NCOB0": "",
+  "20260929LGSK0": "",
+  "20260929HHSS0": "",
+  "20260929KTHT0": "",
+  "20260929WOLT0": "",
+  "20260930NCOB0": "",
+  "20260930LGSK0": "",
+  "20260930HHSS0": "",
+  "20260930KTHT0": "",
+  "20260930WOLT0": "",
+
+  //2026년 10월
+  "20261001NCOB0": "",
+  "20261001LGSK0": "",
+  "20261001HHSS0": "",
+  "20261001KTHT0": "",
+
+  "20261003SKNC0": "",
+  "20261003HTLG0": "",
+  "20261003WOHH0": "",
+  "20261003OBSS0": "",
+  "20261003LTKT0": "",
+  "20261004SKNC0": "",
+  "20261004HTLG0": "",
+  "20261004WOHH0": "",
+  "20261004OBSS0": "",
+  "20261004LTKT0": "",
+  "20261005SKNC0": "",
+  "20261005HTLG0": "",
+  "20261005WOHH0": "",
+  "20261005OBSS0": "",
+  "20261005LTKT0": "",
+
+  "20261006KTWO0": "",
+  "20261006NCLG0": "",
+  "20261006SKHH0": "",
+  "20261006SSHT0": "",
+  "20261006OBLT0": "",
+
+  "20261007HHWO0": "",
+  "20261007OBLG0": "",
+  "20261007NCSK0": "",
+  "20261007HTLT0": "",
+  "20261007SSKT0": "",
+
+  // 잔여경기 일정 종료, 포스트시즌 시작
+  "202610090": "", // 와일드카드 결정전 1차전
+  "202610100": "", // 와일드카드 결정전 최종전
+
+  "202610120": "", // 준플레이오프 1차전
+  "202610130": "", // 준플레이오프 2차전
+  "202610150": "", // 준플레이오프 3차전
+  "202610160": "", // 준플레이오프 4차전
+  "202610180": "", // 준플레이오프 5차전
+
+  "202610200": "", // 플레이오프 1차전
+  "202610210": "", // 플레이오프 2차전
+  "202610230": "", // 플레이오프 3차전
+  "202610240": "", // 플레이오프 4차전
+  "202610260": "", // 플레이오프 5차전
+
+  "202610280": "", // 한국시리즈 1차전
+  "202610290": "", // 한국시리즈 2차전
+  "202610310": "", // 한국시리즈 3차전
+
+  // 2026년 11월
+  "202611010": "", // 한국시리즈 4차전
+  "202611020": "", // 한국시리즈 5차전
+  "202611040": "", // 한국시리즈 6차전
+  "202611050": ""  // 한국시리즈 7차전
+
+  // 2026 시즌 종료 수고하셨습니다.
 };
