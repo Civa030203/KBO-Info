@@ -39,8 +39,8 @@ export default function Schedule() {
     setLoading(true);
 
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const baseUrl = isLocalhost ? "http://localhost:5001" : "https://trees-dans-collectible-strategy.trycloudflare.com";
-    // const baseUrl = isLocalhost ? "http://localhost:5001" : "https://kbo-info.onrender.com";
+    // const baseUrl = isLocalhost ? "http://localhost:5001" : "https://trees-dans-collectible-strategy.trycloudflare.com";
+    const baseUrl = isLocalhost ? "http://localhost:5001" : "https://kbo-info.onrender.com";
 
     axios
       .get(`${baseUrl}/api/schedule?&date=${searchParams.date}&leId=${searchParams.league}`)

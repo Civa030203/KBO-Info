@@ -50,8 +50,8 @@ export default function PlayerSearch() {
     // 연도 또는 조회 인원 수 변경 시 순위 데이터 조회
     useEffect(() => {
         setIsRankingLoading(true);
-        const apiUrl = `https://trees-dans-collectible-strategy.trycloudflare.com/api/playerRankings?season=${selectedYear}&limit=${selectedLimit}`;
-        // const apiUrl = `http://localhost:5001/api/playerRankings?season=${selectedYear}&limit=${selectedLimit}`;
+        // const apiUrl = `https://trees-dans-collectible-strategy.trycloudflare.com/api/playerRankings?season=${selectedYear}&limit=${selectedLimit}`;
+        const apiUrl = `http://localhost:5001/api/playerRankings?season=${selectedYear}&limit=${selectedLimit}`;
         axios
             .get(apiUrl)
             .then((res) => {
@@ -109,7 +109,8 @@ export default function PlayerSearch() {
         setIsSearching(true);
         setHasSearched(true);
         axios
-            .get(`https://trees-dans-collectible-strategy.trycloudflare.com/api/playerSearch?query=${encodeURIComponent(trimmed)}`)
+            .get(`https://kbo-info.onrender.com/api/playerSearch?query=${encodeURIComponent(trimmed)}`)
+            // .get(`https://trees-dans-collectible-strategy.trycloudflare.com/api/playerSearch?query=${encodeURIComponent(trimmed)}`)
             .then((res) => {
                 setData(res.data || []);
             })
