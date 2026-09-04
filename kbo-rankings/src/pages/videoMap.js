@@ -701,11 +701,11 @@ export const GAME_VIDEO_MAP = {
   "20260903HHKT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-22/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.YWn2-pyHHuGCoBsHZFLk4j6XJ5oVyP8OAUt3zUHlOgKlWgf7bPz-PsJNv8u2HjHys0U390vDGu4fExuYnmPjtmWGMK2cyirThbPHf9Gb2B1G1KcaMwpvR3as2VqlzUtO-QlcziorUDwR_HpifawemBtJOtw3pcdEEPuu5nmJNc-YGR1alVjU-dH17HRvKfUVlK3mDEjUFEnRz4pLDuzPug",
 
   // 9월 1주차 주말 시리즈
-  "20260904NCWO0": "",
-  "20260904SSLG0": "",
-  "20260904OBSK0": "",
-  "20260904KTHT0": "",
-  "20260904HHLT0": "",
+  "20260904NCWO0": "https://live-global-cdn-v02.sooplive.com/live-stm-14/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Zc5ECE6oJ2Ftwqx-lU1lz8XTx253KhCiEIzgmahTp3Gb5sPpel_HLIyCzGR9znv0cNHmMwYQtnY1eWGNW4ZkMKTmgYK5Gs8Dv7xkFj3lkmqtt4ki69ztO6ovz0yhHj5OmJm-l2vRZXRm5rXJOGgXD7uGFTwbewM8Tee4MaNXae8msbaXrAdE0u_WNWVak6Vm6kCA1m3szYtXnSNK-HRWHA",
+  "20260904SSLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-16/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Zc5ECE6oJ2Ftwqx-lU1lz1XZ7-LA_xpmLMIXc5HFgZprKUw9-Nj54r40tjEuz4Kaua6pV8fXlFQgv51bdf8wCDCCQkrNf1HCV1wAaKA08fqDQjyBTUV-dFHYnnMydgk9fmIC07R-G1lWjqSFuDEmRim4VF65iSJgxn8LlNiXejxVjTB1H-toanirgDF_lx2GlWBT8ZVJY4syQ7e4Ry0fzw",
+  "20260904OBSK0": "https://live-global-cdn-v02.sooplive.com/live-stm-15/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Zc5ECE6oJ2Ftwqx-lU1lzxYfDfkQ8o2pB0F72JTt9kPPb21Wu_i0l3JJzRO2Xe9SopBZggMyYFQ3kSyAsT0CDxfDM7llzvXMGXwPBxNFgXsUhPqr8FyYab5dpIscND38EaXoimgfP2EKM5NBeFgejBKQqfF-rEclyJcRbl67orgfVN7OLUt_t0SYPbyPw5RY9c8aBNtZfxZipviFza4FcA",
+  "20260904KTHT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-26/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Zc5ECE6oJ2Ftwqx-lU1lz1V9vm5JBMLiT0BIvvZVr1mEZ_-m_WETY5VXuoyitOuzfMAHy7VVN_iHq4QilozDEkWFFBWVr8CY7QbVGskYx93GDe1a2bnYNuEdodeYcpre8U7OS3f-CHYNwnSx6WEc63RUVI1AMcrRu-yb3Q0caQBUjY3K7Xkvqt-i5gqzQCtradC_ueF67O12tHPD4aKYWA",
+  "20260904HHLT0": "https://live-global-cdn-v02.sooplive.com/live-stmc-33/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.Zc5ECE6oJ2Ftwqx-lU1lz6JGNz8XbknlJBc69X7YAXgFb_Sg1lezYhBIr1kA92T907VZeU0AFA7pQydpS09LmXzszjcz3YNOYsXG6ofLqTtmXKAs8VKWwlZ7I140-4EEy8zGD4kPCTLFZ5e4atfl9TNr2OkMJRyw4HB6RitTv9DaEzFf-ze5FVHsqe6kth1U8iMkGoJyYuadDq6Bynl54A",
   "20260905NCWO0": "",
   "20260905SSLG0": "",
   "20260905OBSK0": "",
