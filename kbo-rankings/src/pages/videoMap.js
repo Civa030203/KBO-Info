@@ -711,11 +711,11 @@ export const GAME_VIDEO_MAP = {
   "20260905OBSK0": "",
   "20260905KTHT0": "",
   "20260905HHLT0": "",
-  "20260906NCWO0": "https://live-global-cdn-v02.sooplive.com/live-stm-15/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.c7fIeET2J-t8PuTNKfP4SNgVwcZJSlMvZkPnQtEnNc0JaRT4Ce0TRNFmk7LLRKlULwutTuTzEQfa42bNYh3hY79YOqT5haGEWf8ks7-TSjAawvU9YhS1C71MLVMuPqy0ZSTHbQQPC8AOnz_KAKqqYUC7yp3lvacj6cLY7yxTQgqW_gStsnyPZ8yHgNmxkIQWFYYLB31kIM2L97DyuAEl4Q",
-  "20260906SSLG0": "",
-  "20260906OBSK0": "",
-  "20260906KTHT0": "",
-  "20260906HHLT0": "",
+  "20260906NCWO0": "",
+  "20260906SSLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoPfLziG9BxhxLCjfMvPbrj7sF19ldm1wZtKcHHhU2hXQDEUUcP393o2a7qP2USgP925Xaykxfj6TJXucgBOL_0nNZvUK50A_V8mXTmMZfEVhuuyJFdDkTNqF2khTJi63ix-UDhpr4NtXNcYZ1RlYl8rwh13MNQhC5bO0UWbl3Mr3",
+  "20260906HHLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoKlDmCKsKdmlHMWexXy9Z5i_FcbUZ-ufJ1Z535uktuaws5LFpal5vEUjv5azXogwdFKRYncfsrvnnUHsK5Jp0LKPWcLZgLNbr--0OhrOy_r-2UCcXro0i2UTzWpAWqzsVeh3uOuij8PKrt0KB0wdKEi3sheresknTpboMXgoOeug",
+  "20260906KTHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoLYaX07lj-PhA0TCJaskG-TFmUZiv5bMNu7MQgWuHSLqFO4KRr-odKyNlET34slSnZcV_5GHb8iE2vzZoGGAv24UA2pg8OgEzo2zFVCetJf1ckiwHah5nw3U92u-xbyBGHarN8rbKV9JfVwNoxuYH4xT9FUHrNYfMIJ4NPPyzDUC",
+  "20260906OBSK0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoA4G9lc7FJXPAyvQ1E4XPqVAIAfcjKJ325p-LgNkkSp-DZJLllKSFKKQZSdlJ31wF0UxoqUqXhht_g0-CKitjxlOwSr6nLgJP4nOZJhTzoRkOraZ_BaXjjr6FbsDcGMDDEg-3lfa1GDMKWHw2Bm70ZKD0XRON3DB2fpPqL",
 
   // 3연전 시리즈 종료, 잔여경기 시작
   "20260908LTNC0": "",
