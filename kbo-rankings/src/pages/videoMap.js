@@ -712,10 +712,10 @@ export const GAME_VIDEO_MAP = {
   "20260905KTHT0": "",
   "20260905HHLT0": "",
   "20260906NCWO0": "",
-  "20260906SSLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoPfLziG9BxhxLCjfMvPbrj7sF19ldm1wZtKcHHhU2hXQDEUUcP393o2a7qP2USgP925Xaykxfj6TJXucgBOL_0nNZvUK50A_V8mXTmMZfEVhuuyJFdDkTNqF2khTJi63ix-UDhpr4NtXNcYZ1RlYl8rwh13MNQhC5bO0UWbl3Mr3",
-  "20260906HHLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoKlDmCKsKdmlHMWexXy9Z5i_FcbUZ-ufJ1Z535uktuaws5LFpal5vEUjv5azXogwdFKRYncfsrvnnUHsK5Jp0LKPWcLZgLNbr--0OhrOy_r-2UCcXro0i2UTzWpAWqzsVeh3uOuij8PKrt0KB0wdKEi3sheresknTpboMXgoOeug",
-  "20260906KTHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoLYaX07lj-PhA0TCJaskG-TFmUZiv5bMNu7MQgWuHSLqFO4KRr-odKyNlET34slSnZcV_5GHb8iE2vzZoGGAv24UA2pg8OgEzo2zFVCetJf1ckiwHah5nw3U92u-xbyBGHarN8rbKV9JfVwNoxuYH4xT9FUHrNYfMIJ4NPPyzDUC",
-  "20260906OBSK0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoA4G9lc7FJXPAyvQ1E4XPqVAIAfcjKJ325p-LgNkkSp-DZJLllKSFKKQZSdlJ31wF0UxoqUqXhht_g0-CKitjxlOwSr6nLgJP4nOZJhTzoRkOraZ_BaXjjr6FbsDcGMDDEg-3lfa1GDMKWHw2Bm70ZKD0XRON3DB2fpPqL",
+  "20260906SSLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoPfLziG9BxhxLCjfMvPbrj7sF19ldm1wZtKcHHhU2hXQDEUUcP393o2a7qP2USgP925Xaykxfj6TJXucgBOL_0lPOfmq7XUTwsPe0QCiJ19Cgq0jCOrJM96kv_FeHQeYOCyd5gSyq3OsYaLNA7siAvx4HMb4BenvR3BzlDcuVpf49AYdMMqnqyW03XCVuAqiLg",
+  "20260906HHLT0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoKlDmCKsKdmlHMWexXy9Z5i_FcbUZ-ufJ1Z535uktuaws5LFpal5vEUjv5azXogwdFKRYncfsrvnnUHsK5Jp0LLAu9_Ae2YH5M0Hfm82mhlz4UH_o8IO8QE2F2dwYoel_El6_GEaZRCTMsOjpdQaAVK76I-zbUhAhSND_6Ivn7_WRhvkXPAK-jYrXfFAFODgtQ",
+  "20260906KTHT0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoLYaX07lj-PhA0TCJaskG-TFmUZiv5bMNu7MQgWuHSLqFO4KRr-odKyNlET34slSnZcV_5GHb8iE2vzZoGGAv25n5cVCmVs0qMGVaoF0I-R8emQ-4Jh_bq-qu0frGcVTtgmLScvEV5q8hOqhEcP4Ss30f_OAANHz-a7B6a58rx7xLdnAQp8P-2kGjL5wQCtx8Q",
+  "20260906OBSK0": "https://live-global-cdn-v02.sooplive.com/live-stm-11/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.RMlD4Qm0bQfkAii61vaZoA4G9lc7FJXPAyvQ1E4XPqVAIAfcjKJ325p-LgNkkSp-DZJLllKSFKKQZSdlJ31wF0UxoqUqXhht_g0-CKitjxlSuIZjyZ9JE0ZC6RrrRgf4IklDuitdX3f2dMGgkCy1aoONc73uzzCyO_eZtkm0ZZGpAbhW2xDIiYf73RZayu674tiNY9FSBs0pa-Dcqh20Hg",
 
   // 3연전 시리즈 종료, 잔여경기 시작
   "20260908LTNC0": "",
