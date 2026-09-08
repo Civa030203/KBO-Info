@@ -718,11 +718,11 @@ export const GAME_VIDEO_MAP = {
   "20260906OBSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260906/027/296922027/REGL_0B861E2C_296922027_1.mp4/manifest.m3u8",
 
   // 3연전 시리즈 종료, 잔여경기 시작
-  "20260908LTNC0": "",
-  "20260908WOLG0": "",
-  "20260908OBHH0": "",
-  "20260908HTSS0": "",
-  "20260908SKKT0": "",
+  "20260908LTNC0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyIkSVORAoEqo2xgFmvwvrGd38cloldhhNO-z1hj232-xBCv2aKXi1qvDUi1bS_nKm2CfvJdF78Lay0UMTCwdc0mu9OFc1ZqSULeTApcm33u8mYN-uC1qcjkT0mFzjo_da2rm7r9mOsegaFcZUfbm98MpHeWlJaRV_sRSiqV86w7zzlik-tD73ZL_pZTqLL2cAQ",
+  "20260908WOLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyFsK5LFOFaUrcdbDoTlE3OG5AlH04it4qdM6pWTIS5NggiVsDFfgoC31GCZlk8MNegXLSJk768QMDDad0EYVLcHw1cY5e3BYg8iMKj5yabeOlRRpr9X2mlIYm4MnaTw1P7cSbpOE0x6qa7SWnyVCn4xePyMRb5jeeYVsEPi28wzs2Jmbp-biv4VUx5FnzU5COw",
+  "20260908OBHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyLKvi20KuIk2aI942M1rOeCjCBXE2epd3-QXiMuNpJ3paAnbBneoIMzPfF0WKHubBrxxG9mmJy05ts6zXTt8jYLnaH7GY3gmKlV7xbGdrE8IJ8-8QMnEBHmMVPF28WvWA3B2YrilhY-Dgf6xeIgg98eTSTVRGJG41fDI00IATINwnxjL1RuOUJxvNfkdSWyXpA",
+  "20260908HTSS0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyBszAo_A2XvmeACASVPZuc9w5eFmYkXDoDXxTmwKFMroCakgCCW7krlTgUS_c7rnxvdAQ6OzxwqgtczmHDoZ3N8uZqzkmu14Tf5URM4di9Em7VJH944LXJpWRKobnlR-6mPS1BgT6tfJ0KSJPEYq2-Fttox7A_Ufy78Qz_s3IDpR7Our1UnqDqJ5T1aqnwdCgw",
+  "20260908SKKT0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyNQVHlF83jJNfNvO-dphD6PTaASQxLWsxQwrqd6pzYc-vSg7E6az2pLMeOtkIUdoRI1fPP4N8gOq4Pv_d_JOypedzMrSZZjSTGbpvbLRIBatvz7N24laKhhNUQN3CyO-2Vte3u7BVaz7CnPhJoZxi9Xx6fCRbtN1E3mBgpg90Wp9ucFR7ZiK3juxwVMLk6LsGw",
 
   "20260909SKOB0": "",
   "20260909LGHH0": "",
