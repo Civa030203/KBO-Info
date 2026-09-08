@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { teamData } from "./src/teamData";
 import { GAME_VIDEO_MAP } from "./videoMap";
+import { API_BASE_URL } from "../config/api";
 
 export default function Schedule() {
   const [games, setGames] = useState([]);
@@ -38,12 +39,8 @@ export default function Schedule() {
     let ignore = false;
     setLoading(true);
 
-    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    // const baseUrl = isLocalhost ? "http://localhost:5001" : "https://trees-dans-collectible-strategy.trycloudflare.com";
-    const baseUrl = isLocalhost ? "http://localhost:5001" : "https://kbo-info.onrender.com";
-
     axios
-      .get(`${baseUrl}/api/schedule?&date=${searchParams.date}&leId=${searchParams.league}`)
+      .get(`${API_BASE_URL}/api/schedule?&date=${searchParams.date}&leId=${searchParams.league}`)
       .then((res) => {
         if (!ignore) {
           setGames(res.data);
@@ -196,7 +193,7 @@ export default function Schedule() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-100 p-6">
+    <div className="flex-1 text-gray-100 p-4 sm:p-6">
       {/* 메인 화면 버튼 */}
       <div className="mb-4">
         <Link

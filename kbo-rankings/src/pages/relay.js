@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { GAME_VIDEO_MAP } from "./videoMap";
 import { teamData } from "./src/teamData";
+import { API_BASE_URL } from "../config/api";
 
 // 국가대표 경기 등에서 변경되는 선수 ID를 원본 KBO 선수 ID로 매핑하는 객체
 const playerIdMap = {
@@ -116,8 +117,7 @@ export default function LiveTextPage() {
     const fetchLive = async () => {
       try {
         const gData = await axios.get(
-          `https://kbo-info.onrender.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
-          // `https://trees-dans-collectible-strategy.trycloudflare.com/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
+          `${API_BASE_URL}/api/schedule?&date=${gameId.slice(0, 8)}&leId=${leagueId}`
         );
 
         gData.data.forEach((dt) => {
@@ -128,8 +128,7 @@ export default function LiveTextPage() {
 
         if (!inn) return;
 
-        const res = await axios.get(`https://kbo-info.onrender.com/api/relay`, {
-          // const res = await axios.get(`https://trees-dans-collectible-strategy.trycloudflare.com/api/relay`, {
+        const res = await axios.get(`${API_BASE_URL}/api/relay`, {
           params: {
             le_id: leagueId,
             sr_id: seriesId,
@@ -160,8 +159,7 @@ export default function LiveTextPage() {
     const fetchScore = async () => {
       try {
         const resScore = await axios.get(
-          `https://kbo-info.onrender.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
-          // `https://trees-dans-collectible-strategy.trycloudflare.com/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
+          `${API_BASE_URL}/api/scoreBoardData?le_id=${leagueId}&sr_id=${seriesId}&g_id=${gameId}`
         );
         setScoreData(resScore.data);
 
@@ -222,10 +220,7 @@ export default function LiveTextPage() {
           apiGameId = `${gameId}${year}`;
         }
 
-        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const baseUrl = isLocalhost ? "http://localhost:5001" : "https://kbo-info.onrender.com";
-        // const baseUrl = isLocalhost ? "http://localhost:5001" : "https://trees-dans-collectible-strategy.trycloudflare.com";
-        const targetUrl = `${baseUrl}/api/relay/preview?gameId=${apiGameId}`;
+        const targetUrl = `${API_BASE_URL}/api/relay/preview?gameId=${apiGameId}`;
 
         const res = await axios.get(targetUrl);
         const previewData = res.data?.result?.previewData;
@@ -324,7 +319,7 @@ export default function LiveTextPage() {
 
 
   return (
-    <div className="flex justify-center gap-6 p-4 w-full max-w-7xl mx-auto min-h-screen bg-[#0a0a0a] text-gray-100">
+    <div className="flex justify-center gap-6 p-4 w-full max-w-7xl mx-auto flex-1 text-gray-100">
       {/* 원정팀 라인업 (PC 전용) */}
       <div className="hidden xl:block w-72 shrink-0">
         {renderLineup(lineupData.away, scoreData?.teamData?.[0])}
@@ -334,7 +329,7 @@ export default function LiveTextPage() {
       <div className="w-full max-w-2xl flex flex-col">
 
         {/* 📌 [상단 고정 영역] 버튼, 타이틀, 비디오 전체 묶음 */}
-        <div className="sticky top-0 z-50 bg-[#0a0a0a] pt-2 pb-2">
+        <div className="sticky top-[env(safe-area-inset-top,0px)] z-50 bg-[#0a0a0a] pt-2 pb-2">
           {/* 메인으로 돌아가기 & 비디오 숨기기 버튼 영역 */}
           <div className="flex justify-between items-center mb-3">
             <Link

@@ -6,6 +6,8 @@ import Relay from "./pages/relay.js";
 import PlayerSearch from "./pages/player-search.js";
 import Data from "./pages/data.js";
 import { teamData } from "./pages/src/teamData.js";
+import Layout from "./components/Layout.js";
+import { API_BASE_URL } from "./config/api.js";
 
 const TEAM_LIST = ["LG", "한화", "SSG", "삼성", "NC", "KT", "롯데", "KIA", "두산", "키움"];
 
@@ -78,8 +80,7 @@ function Home() {
         const formattedDate = `${yyyy}${mm}${dd}`;
 
         // 1. 일정 데이터 가져오기
-        const scheduleRes = await fetch(`https://kbo-info.onrender.com/api/schedule/weekly?date=${formattedDate}&leId=1`);
-        // const scheduleRes = await fetch(`https://trees-dans-collectible-strategy.trycloudflare.com/api/schedule/weekly?date=${formattedDate}&leId=1`);
+        const scheduleRes = await fetch(`${API_BASE_URL}/api/schedule/weekly?date=${formattedDate}&leId=1`);
         const allGames = await scheduleRes.json();
 
         const next7Days = [];
@@ -130,8 +131,7 @@ function Home() {
         setScheduleData(newScheduleData);
 
         // 2. 순위 데이터 가져오기
-        const rankingRes = await fetch(`https://kbo-info.onrender.com/api/rankings`);
-        // const rankingRes = await fetch(`https://trees-dans-collectible-strategy.trycloudflare.com/api/rankings`);
+        const rankingRes = await fetch(`${API_BASE_URL}/api/rankings`);
         const rankings = await rankingRes.json();
 
         const teamRank = rankings.find(r => r.team === selectedTeam);
@@ -197,7 +197,7 @@ function Home() {
   );
 
   return (
-    <div className="flex flex-col h-screen bg-[#0a0a0a] p-4 sm:p-8 font-sans">
+    <div className="flex-1 flex flex-col p-4 sm:p-8 font-sans">
       <div className="flex items-center justify-between mb-6">
         {renderDropdown()}
         <h1 className="md:text-4xl text-xl font-bold md:text-center text-right flex-1 text-white drop-shadow-md">
@@ -397,12 +397,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/ranking" element={<Ranking />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/relay/:leagueId/:seriesId/:gameID" element={<Relay />} />
-        <Route path="/playerData" element={<PlayerSearch />} />
-        <Route path="/playerData/:pId" element={<Data />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/ranking" element={<Ranking />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/relay/:leagueId/:seriesId/:gameID" element={<Relay />} />
+          <Route path="/playerData" element={<PlayerSearch />} />
+          <Route path="/playerData/:pId" element={<Data />} />
+        </Route>
       </Routes>
     </Router>
   );

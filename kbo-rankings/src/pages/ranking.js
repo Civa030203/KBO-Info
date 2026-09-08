@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { teamData } from "./src/teamData";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 
 // 1982년(KBO 출범)부터 올해까지 연도 배열 생성
 const currentYear = new Date().getFullYear();
@@ -15,8 +16,7 @@ export default function Ranking() {
   useEffect(() => {
     // selectedYear가 변경될 때마다 해당 연도의 데이터를 호출
     axios
-      // .get(`https://trees-dans-collectible-strategy.trycloudflare.com/api/rankings?year=${selectedYear}`)
-      .get(`https://kbo-info.onrender.com/api/rankings?year=${selectedYear}`)
+      .get(`${API_BASE_URL}/api/rankings?year=${selectedYear}`)
       .then((res) => setRankings(res.data))
       .catch((err) => console.error(err));
   }, [selectedYear]); // 의존성 배열에 selectedYear 추가!
@@ -27,7 +27,7 @@ export default function Ranking() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-100 p-2 sm:p-6">
+    <div className="flex-1 text-gray-100 p-2 sm:p-6">
       {/* 메인 화면 버튼 */}
       <div className="mb-4">
         <Link

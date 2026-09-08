@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { teamData } from "./src/teamData";
+import { API_BASE_URL } from "../config/api";
 
 export default function Data() {
     const { pId } = useParams();   // ← URL에서 바로 pId 가져오는 부분!
@@ -17,8 +17,7 @@ export default function Data() {
         if (!pId) return;
 
         axios
-            .get(`https://kbo-info.onrender.com/api/playerData?pId=${pId}`)
-            // .get(`https://trees-dans-collectible-strategy.trycloudflare.com/api/playerData?pId=${pId}`)
+            .get(`${API_BASE_URL}/api/playerData?pId=${pId}`)
             .then((res) => {
                 setPlayer(res.data);
                 if (res.data.records && res.data.records.length > 0) {
@@ -209,14 +208,15 @@ export default function Data() {
         return <div className="text-center mt-10 text-lg text-gray-300">불러오는 중...</div>;
     } else {
         return (
-            <><div className="m-4">
-                <Link
-                    to="/playerData"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
-                >
-                    ⬅ 이전 화면으로
-                </Link>
-            </div>
+            <div className="flex-1 text-gray-100 p-2 sm:p-4 pb-12">
+                <div className="mb-4">
+                    <Link
+                        to="/playerData"
+                        className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition inline-block"
+                    >
+                        ⬅ 이전 화면으로
+                    </Link>
+                </div>
                 <div className="max-w-2xl mx-auto bg-gray-900 shadow-lg rounded-2xl overflow-hidden border border-gray-700">
 
                     {/* 상단 배너 + 프로필 */}
@@ -340,7 +340,8 @@ export default function Data() {
                             KBO 공식 선수 정보 보기 →
                         </Link>
                     </div>
-                </div></>
+                </div>
+            </div>
         );
     }
 }

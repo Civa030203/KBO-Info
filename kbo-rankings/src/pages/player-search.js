@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // 1. teamData.js 파일 임포트
 import { teamData } from "./src/teamData";
+import { API_BASE_URL } from "../config/api";
 
 // 연도 목록 생성 (1982년부터 현재 연도까지)
 const currentYear = new Date().getFullYear();
@@ -50,8 +51,7 @@ export default function PlayerSearch() {
     // 연도 또는 조회 인원 수 변경 시 순위 데이터 조회
     useEffect(() => {
         setIsRankingLoading(true);
-        // const apiUrl = `https://trees-dans-collectible-strategy.trycloudflare.com/api/playerRankings?season=${selectedYear}&limit=${selectedLimit}`;
-        const apiUrl = `http://localhost:5001/api/playerRankings?season=${selectedYear}&limit=${selectedLimit}`;
+        const apiUrl = `${API_BASE_URL}/api/playerRankings?season=${selectedYear}&limit=${selectedLimit}`;
         axios
             .get(apiUrl)
             .then((res) => {
@@ -109,8 +109,7 @@ export default function PlayerSearch() {
         setIsSearching(true);
         setHasSearched(true);
         axios
-            .get(`https://kbo-info.onrender.com/api/playerSearch?query=${encodeURIComponent(trimmed)}`)
-            // .get(`https://trees-dans-collectible-strategy.trycloudflare.com/api/playerSearch?query=${encodeURIComponent(trimmed)}`)
+            .get(`${API_BASE_URL}/api/playerSearch?query=${encodeURIComponent(trimmed)}`)
             .then((res) => {
                 setData(res.data || []);
             })
@@ -235,7 +234,7 @@ export default function PlayerSearch() {
     const displayedPlayers = currentRankingList.slice(startIndex, endIndex);
 
     return (
-        <div className="min-h-screen bg-[#0a0a0a] text-gray-100 pb-16">
+        <div className="flex-1 text-gray-100 pb-16">
             {/* 상단 네비게이션 */}
             <div className="max-w-6xl mx-auto px-4 pt-6 flex items-center justify-between">
                 <Link
