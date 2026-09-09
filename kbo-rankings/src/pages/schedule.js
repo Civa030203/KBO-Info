@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { teamData } from "./src/teamData";
-import { GAME_VIDEO_MAP } from "./videoMap";
 import { API_BASE_URL } from "../config/api";
+import { fetchVideoMap, getVideoUrlSync } from "../utils/videoMapService";
 
 export default function Schedule() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [videoMap, setVideoMap] = useState({});
+
+  useEffect(() => {
+    fetchVideoMap().then(setVideoMap);
+  }, []);
 
   const today = new Date();
   const todayForDefault = today.toISOString().slice(0, 10);
@@ -168,7 +173,7 @@ export default function Schedule() {
     // 4 이상: 취소 등
     if (game.gameState >= 4) {
       // 노게임(우천 취소) 경기 중 영상이 남아있는 경우 문자 중계 진입 허용
-      if (GAME_VIDEO_MAP[game.gameID]) return true;
+      if (getVideoUrlSync(game.gameID) || videoMap[game.gameID]) return true;
       return false;
     }
 

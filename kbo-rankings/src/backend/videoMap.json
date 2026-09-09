@@ -1,8 +1,4 @@
-// KBO 경기 SOOP(구 아프리카TV) 중계 다시보기 링크 매핑
-export const GAME_VIDEO_MAP = {
-  // gameId를 키로 사용 (예 "20260329OBNC0")
-  // 2026년 3월 
-  // 개막 시리즈
+{
   "20260328KTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260328/821/292760821/REGL_A4DD0338_292760821_1.mp4/manifest.m3u8",
   "20260328WOHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260328/683/292760683/REGL_E10F8093_292760683_1.mp4/manifest.m3u8",
   "20260328HTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260328/819/292760819/REGL_56359CA9_292760819_1.mp4/manifest.m3u8",
@@ -13,15 +9,11 @@ export const GAME_VIDEO_MAP = {
   "20260329HTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260329/781/292787781/REGL_26C81106_292787781_1.mp4/manifest.m3u8",
   "20260329LTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260329/785/292787785/REGL_44EC7D47_292787785_1.mp4/manifest.m3u8",
   "20260329OBNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260329/649/292787649/REGL_C8B12F68_292787649_1.mp4/manifest.m3u8",
-
-  // 4월 1주차 주중 시리즈
   "20260331HTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/027/292845027/REGL_9CA26991_292845027_1.mp4/manifest.m3u8",
   "20260331WOSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/237/292845237/REGL_9CDE9A43_292845237_1.mp4/manifest.m3u8",
   "20260331OBSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/239/292845239/REGL_42585825_292845239_1.mp4/manifest.m3u8",
   "20260331LTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/367/292845367/REGL_36C182C5_292845367_1.mp4/manifest.m3u8",
   "20260331KTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260331/247/292845247/REGL_8B45A884_292845247_1.mp4/manifest.m3u8",
-
-  // 2026년 4월 
   "20260401HTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260401/979/292871979/REGL_338AFC60_292871979_1.mp4/manifest.m3u8",
   "20260401WOSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260401/253/292872253/REGL_647478C9_292872253_1.mp4/manifest.m3u8",
   "20260401OBSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260401/261/292872261/REGL_36BE314A_292872261_1.mp4/manifest.m3u8",
@@ -32,8 +24,6 @@ export const GAME_VIDEO_MAP = {
   "20260402OBSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260402/043/292900043/REGL_56C9B02E_292900043_1.mp4/manifest.m3u8",
   "20260402LTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260402/045/292900045/REGL_AB295C91_292900045_1.mp4/manifest.m3u8",
   "20260402KTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260402/049/292900049/REGL_29FE06B3_292900049_1.mp4/manifest.m3u8",
-
-  // 4월 1주차 주말 시리즈
   "20260403HHOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260403/445/292926445/REGL_62573AE8_292926445_1.mp4/manifest.m3u8",
   "20260403SKLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260403/439/292926439/REGL_EBE51C3B_292926439_1.mp4/manifest.m3u8",
   "20260403SSKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260403/437/292926437/REGL_5E48E1C3_292926437_1.mp4/manifest.m3u8",
@@ -49,8 +39,6 @@ export const GAME_VIDEO_MAP = {
   "20260405SSKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260405/357/292975357/REGL_6B9D80BB_292975357_1.mp4/manifest.m3u8",
   "20260405NCHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260405/361/292975361/REGL_B41B7D54_292975361_1.mp4/manifest.m3u8",
   "20260405LGWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260405/363/292975363/REGL_72A20D96_292975363_1.mp4/manifest.m3u8",
-
-  // 4월 2주차 주중 시리즈
   "20260407WOOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260407/487/293032487/REGL_017E9ECF_293032487_1.mp4/manifest.m3u8",
   "20260407HHSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260407/491/293032491/REGL_5CCB9525_293032491_1.mp4/manifest.m3u8",
   "20260407KTLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260407/493/293032493/REGL_A41FD057_293032493_1.mp4/manifest.m3u8",
@@ -61,8 +49,6 @@ export const GAME_VIDEO_MAP = {
   "20260408KTLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260408/557/293058557/REGL_6740C631_293058557_1.mp4/manifest.m3u8",
   "20260408LGNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260408/725/293058725/REGL_F46BBD2E_293058725_1.mp4/manifest.m3u8",
   "20260408SSHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260408/769/293058769/REGL_0783D3EE_293058769_1.mp4/manifest.m3u8",
-
-  // 4월 2주차 주말 시리즈
   "20260410SKLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260410/889/293112889/REGL_79DA8D9E_293112889_1.mp4/manifest.m3u8",
   "20260410NCSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260410/887/293112887/REGL_9171DBE9_293112887_1.mp4/manifest.m3u8",
   "20260410OBKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260410/025/293113025/REGL_5E90F949_293113025_1.mp4/manifest.m3u8",
@@ -78,8 +64,6 @@ export const GAME_VIDEO_MAP = {
   "20260412OBKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260412/617/293162617/REGL_FACDA27F_293162617_1.mp4/manifest.m3u8",
   "20260412LTWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260412/629/293162629/REGL_13E97D99_293162629_1.mp4/manifest.m3u8",
   "20260412HTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260412/633/293162633/REGL_B06DCA93_293162633_1.mp4/manifest.m3u8",
-
-  // 4월 3주차 주중 시리즈
   "20260414LTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260414/461/293219461/REGL_1537BCB3_293219461_1.mp4/manifest.m3u8",
   "20260414OBSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260414/465/293219465/REGL_E897F2B9_293219465_1.mp4/manifest.m3u8",
   "20260414KTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260414/471/293219471/REGL_27E3FBF5_293219471_1.mp4/manifest.m3u8",
@@ -95,8 +79,6 @@ export const GAME_VIDEO_MAP = {
   "20260416KTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260416/855/293271855/REGL_742EC5B8_293271855_1.mp4/manifest.m3u8",
   "20260416WOHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260416/847/293271847/REGL_10E71D13_293271847_1.mp4/manifest.m3u8",
   "20260416SSHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260416/853/293271853/REGL_31AF60E7_293271853_1.mp4/manifest.m3u8",
-
-  // 4월 3주차 주말 시리즈
   "20260417HTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260417/747/293297747/REGL_55DAB105_293297747_1.mp4/manifest.m3u8",
   "20260417WOKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260417/771/293297771/REGL_C0BDB255_293297771_1.mp4/manifest.m3u8",
   "20260418HTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260418/211/293323211/REGL_CA5DDDB0_293323211_1.mp4/manifest.m3u8",
@@ -109,8 +91,6 @@ export const GAME_VIDEO_MAP = {
   "20260419SKNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260419/581/293345581/REGL_6B22750B_293345581_1.mp4/manifest.m3u8",
   "20260419HHLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260419/591/293345591/REGL_F2794280_293345591_1.mp4/manifest.m3u8",
   "20260419WOKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260419/155/293350155/REGL_480C0E9F_293350155_1.mp4/manifest.m3u8",
-
-  // 4월 4주차 주중 시리즈
   "20260421HHLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260421/109/293401109/REGL_C26AF34C_293401109_1.mp4/manifest.m3u8",
   "20260421OBLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260421/757/293400757/REGL_BA646906_293400757_1.mp4/manifest.m3u8",
   "20260421SKSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260421/115/293401115/REGL_F7D30AAA_293401115_1.mp4/manifest.m3u8",
@@ -126,8 +106,6 @@ export const GAME_VIDEO_MAP = {
   "20260423SKSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260423/429/293453429/REGL_26640B68_293453429_1.mp4/manifest.m3u8",
   "20260423HTKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260423/435/293453435/REGL_22B636D6_293453435_1.mp4/manifest.m3u8",
   "20260423NCWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260423/437/293453437/REGL_F21CC546_293453437_1.mp4/manifest.m3u8",
-
-  // 4월 4주차 주말 시리즈
   "20260424LGOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260424/687/293479687/REGL_D836D5E3_293479687_1.mp4/manifest.m3u8",
   "20260424KTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260424/699/293479699/REGL_5E492491_293479699_1.mp4/manifest.m3u8",
   "20260424LTHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260424/707/293479707/REGL_4CF397C2_293479707_1.mp4/manifest.m3u8",
@@ -143,8 +121,6 @@ export const GAME_VIDEO_MAP = {
   "20260426LTHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260426/663/293528663/REGL_C7AA7799_293528663_1.mp4/manifest.m3u8",
   "20260426SSWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260426/193/293528193/REGL_0DBE1997_293528193_1.mp4/manifest.m3u8",
   "20260426NCHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260426/665/293528665/REGL_B5859F4F_293528665_1.mp4/manifest.m3u8",
-
-  // 4월 5주차 주중 시리즈
   "20260428SSOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260428/859/293584859/REGL_67F7A2A4_293584859_1.mp4/manifest.m3u8",
   "20260428WOLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260428/473/293584473/REGL_DC1271FE_293584473_1.mp4/manifest.m3u8",
   "20260428HTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260428/861/293584861/REGL_60DC3374_293584861_1.mp4/manifest.m3u8",
@@ -160,10 +136,6 @@ export const GAME_VIDEO_MAP = {
   "20260430HTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260430/433/293636433/REGL_B8C05711_293636433_1.mp4/manifest.m3u8",
   "20260430LGKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260430/439/293636439/REGL_01A6F2E6_293636439_1.mp4/manifest.m3u8",
   "20260430SKHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260430/449/293636449/REGL_2365F55E_293636449_1.mp4/manifest.m3u8",
-
-
-  // 2026년 5월 
-  // 4월 5주차 주말 시리즈
   "20260501NCLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260501/433/293662433/REGL_CDBF8627_293662433_1.mp4/manifest.m3u8",
   "20260501LTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260501/453/293662453/REGL_B86B60A5_293662453_1.mp4/manifest.m3u8",
   "20260501HHSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260501/471/293662471/REGL_59FBCE48_293662471_1.mp4/manifest.m3u8",
@@ -179,8 +151,6 @@ export const GAME_VIDEO_MAP = {
   "20260503HHSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260503/549/293711549/REGL_43A237D8_293711549_1.mp4/manifest.m3u8",
   "20260503KTHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260503/551/293711551/REGL_C2DC0EE5_293711551_1.mp4/manifest.m3u8",
   "20260503OBWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260503/553/293711553/REGL_B834EA65_293711553_1.mp4/manifest.m3u8",
-
-  // 5월 1주차 주중 시리즈
   "20260505OBLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260505/967/293764967/REGL_76319469_293764967_1.mp4/manifest.m3u8",
   "20260505NCSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260505/971/293764971/REGL_EE81A495_293764971_1.mp4/manifest.m3u8",
   "20260505WOSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260505/975/293764975/REGL_E91EF89F_293764975_1.mp4/manifest.m3u8",
@@ -195,8 +165,6 @@ export const GAME_VIDEO_MAP = {
   "20260507NCSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260507/005/293823005/REGL_7EA676A6_293823005_1.mp4/manifest.m3u8",
   "20260507WOSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260507/009/293823009/REGL_073FBFA3_293823009_1.mp4/manifest.m3u8",
   "20260507HHHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260507/011/293823011/REGL_B89C89F3_293823011_1.mp4/manifest.m3u8",
-
-  // 5월 1주차 주말 시리즈
   "20260508SKOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260508/073/293849073/REGL_F4A01EEC_293849073_1.mp4/manifest.m3u8",
   "20260508HTLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260508/381/293849381/REGL_E89271FC_293849381_1.mp4/manifest.m3u8",
   "20260508SSNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260508/311/293849311/REGL_2EFF2F67_293849311_1.mp4/manifest.m3u8",
@@ -212,8 +180,6 @@ export const GAME_VIDEO_MAP = {
   "20260510SSNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260510/715/293896715/REGL_F2281217_293896715_1.mp4/manifest.m3u8",
   "20260510KTWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260510/723/293896723/REGL_8A78B899_293896723_1.mp4/manifest.m3u8",
   "20260510LGHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260510/593/293896593/REGL_294B3AF3_293896593_1.mp4/manifest.m3u8",
-
-  // 5월 2주차 주중 시리즈
   "20260512SSLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260512/117/293952117/REGL_BAD4EAB3_293952117_1.mp4/manifest.m3u8",
   "20260512NCLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260512/115/293952115/REGL_B3541529_293952115_1.mp4/manifest.m3u8",
   "20260512SKKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260512/121/293952121/REGL_CE8C4E11_293952121_1.mp4/manifest.m3u8",
@@ -229,8 +195,6 @@ export const GAME_VIDEO_MAP = {
   "20260514SKKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260514/155/294004155/REGL_363B23B5_294004155_1.mp4/manifest.m3u8",
   "20260514OBHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260514/163/294004163/REGL_9B88592C_294004163_1.mp4/manifest.m3u8",
   "20260514HHWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260514/169/294004169/REGL_D4C4F505_294004169_1.mp4/manifest.m3u8",
-
-  // 5월 2주차 주말 시리즈
   "20260515LTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260515/281/294030281/REGL_A9CC5F3F_294030281_1.mp4/manifest.m3u8",
   "20260515LGSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260515/279/294030279/REGL_D3CA04CF_294030279_1.mp4/manifest.m3u8",
   "20260515HTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260515/309/294030309/REGL_BECD6930_294030309_1.mp4/manifest.m3u8",
@@ -246,8 +210,6 @@ export const GAME_VIDEO_MAP = {
   "20260517HTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260517/557/294079557/REGL_8B6F3A78_294079557_1.mp4/manifest.m3u8",
   "20260517WONC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260517/531/294079531/REGL_22AC8D78_294079531_1.mp4/manifest.m3u8",
   "20260517HHKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260517/559/294079559/REGL_59FBF62B_294079559_1.mp4/manifest.m3u8",
-
-  // 5월 3주차 주중 시리즈
   "20260519NCOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260519/929/294134929/REGL_7E07C32F_294134929_1.mp4/manifest.m3u8",
   "20260519LGHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260519/943/294134943/REGL_2B8DB2B5_294134943_1.mp4/manifest.m3u8",
   "20260519SKWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260519/961/294134961/REGL_C61506A0_294134961_1.mp4/manifest.m3u8",
@@ -259,8 +221,6 @@ export const GAME_VIDEO_MAP = {
   "20260521SKWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260521/967/294185967/REGL_9B7EE23C_294185967_1.mp4/manifest.m3u8",
   "20260521LTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260521/965/294185965/REGL_8F1BBF0B_294185965_1.mp4/manifest.m3u8",
   "20260521KTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260521/971/294185971/REGL_BA46DF5F_294185971_1.mp4/manifest.m3u8",
-
-  // 5월 3주차 주말 시리즈
   "20260522WOLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260522/859/294211859/REGL_31D9B876_294211859_1.mp4/manifest.m3u8",
   "20260522SSLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260522/867/294211867/REGL_681FD285_294211867_1.mp4/manifest.m3u8",
   "20260522NCKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260522/875/294211875/REGL_7BF3BA14_294211875_1.mp4/manifest.m3u8",
@@ -276,8 +236,6 @@ export const GAME_VIDEO_MAP = {
   "20260524SKHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260524/175/294259175/REGL_3286C46C_294259175_1.mp4/manifest.m3u8",
   "20260524SSLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260524/169/294259169/REGL_96171460_294259169_1.mp4/manifest.m3u8",
   "20260524NCKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260524/181/294259181/REGL_0F1F74A9_294259181_1.mp4/manifest.m3u8",
-
-  // 5월 4주차 주중 시리즈
   "20260526HHNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260526/515/294314515/REGL_A891FAF1_294314515_1.mp4/manifest.m3u8",
   "20260526HTWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260526/519/294314519/REGL_B67A75BD_294314519_1.mp4/manifest.m3u8",
   "20260526KTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260526/505/294314505/REGL_62CBA1F7_294314505_1.mp4/manifest.m3u8",
@@ -292,8 +250,6 @@ export const GAME_VIDEO_MAP = {
   "20260528KTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260528/111/294367111/REGL_725A7AA1_294367111_1.mp4/manifest.m3u8",
   "20260528SSSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260528/143/294367143/REGL_9F69E313_294367143_1.mp4/manifest.m3u8",
   "20260528LGLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260528/121/294367121/REGL_34A7C8AD_294367121_1.mp4/manifest.m3u8",
-
-  // 5월 4주차 주말 시리즈
   "20260529KTWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260529/841/294392841/REGL_74C15DD1_294392841_1.mp4/manifest.m3u8",
   "20260529LTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260529/833/294392833/REGL_B62774B7_294392833_1.mp4/manifest.m3u8",
   "20260529HTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260529/829/294392829/REGL_D2720F06_294392829_1.mp4/manifest.m3u8",
@@ -309,9 +265,6 @@ export const GAME_VIDEO_MAP = {
   "20260531HTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260531/371/294440371/REGL_ADD74700_294440371_1.mp4/manifest.m3u8",
   "20260531SKHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260531/379/294440379/REGL_BBF2267A_294440379_1.mp4/manifest.m3u8",
   "20260531OBSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260531/373/294440373/REGL_5D54626B_294440373_1.mp4/manifest.m3u8",
-
-  //2026년 6월
-  //6월 1주차 주중 시리즈
   "20260602HHOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260602/535/294496535/REGL_7A91AC7C_294496535_1.mp4/manifest.m3u8",
   "20260602WOSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260602/545/294496545/REGL_3EF7CCA3_294496545_1.mp4/manifest.m3u8",
   "20260602NCSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260602/541/294496541/REGL_82DE4C20_294496541_1.mp4/manifest.m3u8",
@@ -327,8 +280,6 @@ export const GAME_VIDEO_MAP = {
   "20260604NCSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260604/537/294553537/REGL_EB49ED97_294553537_1.mp4/manifest.m3u8",
   "20260604LTHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260604/555/294553555/REGL_61BDB0E7_294553555_1.mp4/manifest.m3u8",
   "20260604LGKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260604/559/294553559/REGL_EF206B4B_294553559_1.mp4/manifest.m3u8",
-
-  // 6월 1주차 주말 시리즈
   "20260605LGNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260605/081/294580081/REGL_B2D8B504_294580081_1.mp4/manifest.m3u8",
   "20260605WOOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260605/039/294580039/REGL_563F8635_294580039_1.mp4/manifest.m3u8",
   "20260605KTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260605/067/294580067/REGL_754FBA5D_294580067_1.mp4/manifest.m3u8",
@@ -344,8 +295,6 @@ export const GAME_VIDEO_MAP = {
   "20260607KTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260607/937/294631937/REGL_BF6DB795_294631937_1.mp4/manifest.m3u8",
   "20260607SSHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260607/939/294631939/REGL_795976AB_294631939_1.mp4/manifest.m3u8",
   "20260607HHLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260607/929/294631929/REGL_7781923B_294631929_1.mp4/manifest.m3u8",
-
-  //6월 2주차 주중 시리즈
   "20260609NCWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260609/807/294682807/REGL_0BF0CA7E_294682807_1.mp4/manifest.m3u8",
   "20260609SKLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260609/791/294682791/REGL_96389544_294682791_1.mp4/manifest.m3u8",
   "20260609HTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260609/805/294682805/REGL_18736846_294682805_1.mp4/manifest.m3u8",
@@ -361,8 +310,6 @@ export const GAME_VIDEO_MAP = {
   "20260611HTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260611/595/294733595/REGL_D306F580_294733595_1.mp4/manifest.m3u8",
   "20260611OBLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260611/597/294733597/REGL_9DF5E616_294733597_1.mp4/manifest.m3u8",
   "20260611SSKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260611/591/294733591/REGL_505C7CAD_294733591_1.mp4/manifest.m3u8",
-
-  //6월 2주차 주말 시리즈
   "20260612HHWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260612/899/294758899/REGL_D6C6EA75_294758899_1.mp4/manifest.m3u8",
   "20260612LTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260611/593/294733593/REGL_B8A2153E_294733593_1.mp4/manifest.m3u8",
   "20260612SKSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260612/903/294758903/REGL_6A94AC6F_294758903_1.mp4/manifest.m3u8",
@@ -377,8 +324,6 @@ export const GAME_VIDEO_MAP = {
   "20260614LTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260614/273/294810273/REGL_E20B9268_294810273_1.mp4/manifest.m3u8",
   "20260614SKSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260614/271/294810271/REGL_3E808C92_294810271_1.mp4/manifest.m3u8",
   "20260614OBHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260614/269/294810269/REGL_A8C99783_294810269_1.mp4/manifest.m3u8",
-
-  //6월 3주차 주중 시리즈
   "20260616HHNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260616/793/294862793/REGL_A97087CF_294862793_1.mp4/manifest.m3u8",
   "20260616KTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260616/039/294863039/REGL_E6CC9EE7_294863039_1.mp4/manifest.m3u8",
   "20260616LTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260616/037/294863037/REGL_C588EB9E_294863037_1.mp4/manifest.m3u8",
@@ -394,8 +339,6 @@ export const GAME_VIDEO_MAP = {
   "20260618LTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260618/145/294913145/REGL_BE99EA6A_294913145_1.mp4/manifest.m3u8",
   "20260618WOSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260618/149/294913149/REGL_0E3A11BA_294913149_1.mp4/manifest.m3u8",
   "20260618LGHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260618/147/294913147/REGL_B0B98A48_294913147_1.mp4/manifest.m3u8",
-
-  //6월 3주차 주말 시리즈
   "20260619LTWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260619/767/294938767/REGL_D2344D7E_294938767_1.mp4/manifest.m3u8",
   "20260619SKNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260619/769/294938769/REGL_489DF1BC_294938769_1.mp4/manifest.m3u8",
   "20260619OBLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260619/773/294938773/199113367_1781870387_1.mp4/manifest.m3u8",
@@ -411,8 +354,6 @@ export const GAME_VIDEO_MAP = {
   "20260621OBLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260621/045/294989045/REGL_20091AA0_294989045_1.mp4/manifest.m3u8",
   "20260621SSHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260621/043/294989043/REGL_052ACAA7_294989043_1.mp4/manifest.m3u8",
   "20260621HTKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260621/291/294989291/REGL_1EEAC42F_294989291_1.mp4/manifest.m3u8",
-
-  // 6월 4주차 주중 시리즈
   "20260623HTWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260623/687/295042687/REGL_A6D3396C_295042687_1.mp4/manifest.m3u8",
   "20260623SSLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260623/697/295042697/REGL_FC36BE3A_295042697_1.mp4/manifest.m3u8",
   "20260623OBHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260623/689/295042689/REGL_DFF52E0F_295042689_1.mp4/manifest.m3u8",
@@ -428,8 +369,6 @@ export const GAME_VIDEO_MAP = {
   "20260625OBHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260625/541/295093541/REGL_49CB346E_295093541_1.mp4/manifest.m3u8",
   "20260625NCLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260625/537/295093537/REGL_D15EE518_295093537_1.mp4/manifest.m3u8",
   "20260625SKKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260625/543/295093543/REGL_B8C0F901_295093543_1.mp4/manifest.m3u8",
-
-  // 6월 4주차 주말 시리즈
   "20260626WONC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260626/429/295118429/REGL_617EF042_295118429_1.mp4/manifest.m3u8",
   "20260626HTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260626/437/295118437/REGL_967E4C8F_295118437_1.mp4/manifest.m3u8",
   "20260626HHSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260626/435/295118435/REGL_7A566AB7_295118435_1.mp4/manifest.m3u8",
@@ -445,14 +384,11 @@ export const GAME_VIDEO_MAP = {
   "20260628HHSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260628/485/295168485/REGL_DF0636E1_295168485_1.mp4/manifest.m3u8",
   "20260628KTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260628/479/295168479/REGL_44D6576F_295168479_1.mp4/manifest.m3u8",
   "20260628LGLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260628/483/295168483/REGL_DA24AF7C_295168483_1.mp4/manifest.m3u8",
-
-  // 7월 1주차 주중 시리즈
   "20260630LGWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/965/295216965/REGL_88A52E97_295216965_1.mp4/manifest.m3u8",
   "20260630SSNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/973/295216973/REGL_AB3D016F_295216973_1.mp4/manifest.m3u8",
   "20260630LTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/971/295216971/REGL_BCB8ED22_295216971_1.mp4/manifest.m3u8",
   "20260630KTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/969/295216969/REGL_86EA0994_295216969_1.mp4/manifest.m3u8",
   "20260630SKHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260630/967/295216967/REGL_B6FBDA69_295216967_1.mp4/manifest.m3u8",
-  // 2026년 7월
   "20260701LGWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260701/713/295242713/REGL_7EB21E7F_295242713_1.mp4/manifest.m3u8",
   "20260701SSNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260701/717/295242717/REGL_EFC827FF_295242717_1.mp4/manifest.m3u8",
   "20260701LTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260701/715/295242715/REGL_FEB67014_295242715_1.mp4/manifest.m3u8",
@@ -463,8 +399,6 @@ export const GAME_VIDEO_MAP = {
   "20260702LTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260702/161/295268161/REGL_E618E7B6_295268161_1.mp4/manifest.m3u8",
   "20260702KTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260702/159/295268159/REGL_E5F8B3E8_295268159_1.mp4/manifest.m3u8",
   "20260702SKHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260702/157/295268157/REGL_04BF148C_295268157_1.mp4/manifest.m3u8",
-
-  // 7월 1주차 주말 시리즈
   "20260703OBWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260703/257/295293257/REGL_6612D6D0_295293257_1.mp4/manifest.m3u8",
   "20260703HHLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260703/261/295293261/REGL_4850FAE0_295293261_1.mp4/manifest.m3u8",
   "20260703SSSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260703/263/295293263/REGL_1642089D_295293263_1.mp4/manifest.m3u8",
@@ -480,8 +414,6 @@ export const GAME_VIDEO_MAP = {
   "20260705SSSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260705/627/295344627/REGL_287B7ED7_295344627_1.mp4/manifest.m3u8",
   "20260705NCHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260705/633/295344633/REGL_F7709E36_295344633_1.mp4/manifest.m3u8",
   "20260705LTKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260705/637/295344637/REGL_089E4FD9_295344637_1.mp4/manifest.m3u8",
-
-  // 7월 2주차 주중 시리즈
   "20260707SKOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260707/403/295392403/REGL_031B01CB_295392403_1.mp4/manifest.m3u8",
   "20260707NCHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260707/401/295392401/REGL_A886B750_295392401_1.mp4/manifest.m3u8",
   "20260707LGSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260707/405/295392405/REGL_A98A9550_295392405_1.mp4/manifest.m3u8",
@@ -496,14 +428,8 @@ export const GAME_VIDEO_MAP = {
   "20260709LGSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260709/583/295441583/REGL_95B6B5B4_295441583_1.mp4/manifest.m3u8",
   "20260709HTLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260709/591/295441591/REGL_EF16787D_295441591_1.mp4/manifest.m3u8",
   "20260709WOKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260709/585/295441585/REGL_0A51EFBC_295441585_1.mp4/manifest.m3u8",
-  // 전반기 종료
-
-  // 2026 올스타전
   "20260710FNFS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260710/591/295465591/REGL_9D640D92_295465591_1.mp4/manifest.m3u8",
   "20260711WEEA0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260711/961/295492961/REGL_1014E325_295492961_1.mp4/manifest.m3u8",
-
-  // 후반기 시작
-  // 7월 3주차 주말 시리즈
   "20260716OBNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260716/533/295616533/REGL_91D15402_295616533_1.mp4/manifest.m3u8",
   "20260716KTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260716/507/295616507/REGL_7D87A4A1_295616507_1.mp4/manifest.m3u8",
   "20260716HTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260716/485/295616485/REGL_3830199F_295616485_1.mp4/manifest.m3u8",
@@ -523,8 +449,6 @@ export const GAME_VIDEO_MAP = {
   "20260719HTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260719/815/295693815/REGL_6E9F895C_295693815_1.mp4/manifest.m3u8",
   "20260719WOHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260719/823/295693823/REGL_A68CEB2D_295693823_1.mp4/manifest.m3u8",
   "20260719LTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260719/821/295693821/REGL_748B84E3_295693821_1.mp4/manifest.m3u8",
-
-  // 7월 4주차 주중 시리즈
   "20260721SSWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260721/635/295742635/REGL_2ED1CE36_295742635_1.mp4/manifest.m3u8",
   "20260721NCLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260721/633/295742633/REGL_D70693A9_295742633_1.mp4/manifest.m3u8",
   "20260721HHHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260721/639/295742639/REGL_8C12CE03_295742639_1.mp4/manifest.m3u8",
@@ -538,8 +462,6 @@ export const GAME_VIDEO_MAP = {
   "20260723NCLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260723/695/295793695/REGL_ADAE85D6_295793695_1.mp4/manifest.m3u8",
   "20260723HHHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260723/693/295793693/REGL_A70EAA69_295793693_1.mp4/manifest.m3u8",
   "20260723SKLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260723/699/295793699/REGL_7EEEBFE5_295793699_1.mp4/manifest.m3u8",
-
-  // 7월 4주차 주말 시리즈
   "20260724SSOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260724/215/295819215/REGL_2C38003C_295819215_1.mp4/manifest.m3u8",
   "20260724NCSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260724/213/295819213/REGL_0A7F8912_295819213_1.mp4/manifest.m3u8",
   "20260724LGHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260724/217/295819217/REGL_4E7FBB96_295819217_1.mp4/manifest.m3u8",
@@ -555,8 +477,6 @@ export const GAME_VIDEO_MAP = {
   "20260726LGHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260726/199/295872199/REGL_70D1B7FC_295872199_1.mp4/manifest.m3u8",
   "20260726WOHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260726/203/295872203/REGL_46D98D03_295872203_1.mp4/manifest.m3u8",
   "20260726KTLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260726/341/295872341/REGL_6EA60C63_295872341_1.mp4/manifest.m3u8",
-
-  // 7월 5주차 주중 시리즈
   "20260728KTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260728/505/295921505/REGL_73F08D01_295921505_1.mp4/manifest.m3u8",
   "20260728WOLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260728/109/295921109/REGL_DA55F0BE_295921109_1.mp4/manifest.m3u8",
   "20260728OBSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260728/351/295921351/REGL_E39CE2C6_295921351_1.mp4/manifest.m3u8",
@@ -572,15 +492,11 @@ export const GAME_VIDEO_MAP = {
   "20260730OBSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260730/139/295971139/REGL_75AF7A0D_295971139_1.mp4/manifest.m3u8",
   "20260730LTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260730/137/295971137/REGL_2149C673_295971137_1.mp4/manifest.m3u8",
   "20260730HTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260730/145/295971145/REGL_6E5CAF08_295971145_1.mp4/manifest.m3u8",
-
-  // 7월 5주차 주말 시리즈
   "20260731HTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260731/449/295996449/REGL_0E902ACE_295996449_1.mp4/manifest.m3u8",
   "20260731SKWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260731/445/295996445/203010609_1785502670_1.mp4/manifest.m3u8",
   "20260731LGOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260731/451/295996451/REGL_16EAF979_295996451_1.mp4/manifest.m3u8",
   "20260731SSLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260731/443/295996443/REGL_E83B1164_295996443_1.mp4/manifest.m3u8",
   "20260731HHKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260731/447/295996447/REGL_13F7A030_295996447_1.mp4/manifest.m3u8",
-
-  // 2026년 8월
   "20260801SKWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260801/643/296021643/REGL_DDABC541_296021643_1.mp4/manifest.m3u8",
   "20260801LGOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260801/631/296021631/REGL_F3BD5FDF_296021631_1.mp4/manifest.m3u8",
   "20260801HHKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260801/633/296021633/REGL_6E28410D_296021633_1.mp4/manifest.m3u8",
@@ -588,13 +504,9 @@ export const GAME_VIDEO_MAP = {
   "20260802LGOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260802/123/296047123/REGL_A9315248_296047123_1.mp4/manifest.m3u8",
   "20260802SSLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260802/125/296047125/REGL_D46279D6_296047125_1.mp4/manifest.m3u8",
   "20260802HHKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260802/983/296046983/REGL_93A1D37E_296046983_1.mp4/manifest.m3u8",
-
-  // 8월 1주차 주중 시리즈
   "20260804LGSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260804/473/296096473/REGL_9D72C6D9_296096473_1.mp4/manifest.m3u8",
   "20260804HHSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260804/471/296096471/REGL_6653C538_296096471_1.mp4/manifest.m3u8",
   "20260804WOLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260804/469/296096469/REGL_75A22032_296096469_1.mp4/manifest.m3u8",
-
-  // 8월 2주차 주중 시리즈
   "20260811KTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260811/389/296277389/REGL_230B45C1_296277389_1.mp4/manifest.m3u8",
   "20260811LGWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260811/391/296277391/REGL_5C6D39C6_296277391_1.mp4/manifest.m3u8",
   "20260811HHOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260811/395/296277395/REGL_6ACF2307_296277395_1.mp4/manifest.m3u8",
@@ -610,8 +522,6 @@ export const GAME_VIDEO_MAP = {
   "20260813HHOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260813/697/296327697/REGL_1BDFC4B1_296327697_1.mp4/manifest.m3u8",
   "20260813LTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260813/701/296327701/REGL_44982267_296327701_1.mp4/manifest.m3u8",
   "20260813SSHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260813/705/296327705/REGL_B65DE3BD_296327705_1.mp4/manifest.m3u8",
-
-  // 8월 2주차 주말 시리즈
   "20260814SKLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260814/155/296353155/REGL_87C1ED57_296353155_1.mp4/manifest.m3u8",
   "20260814HHSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260814/153/296353153/REGL_71C9C929_296353153_1.mp4/manifest.m3u8",
   "20260814OBHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260814/157/296353157/REGL_6DD93F8F_296353157_1.mp4/manifest.m3u8",
@@ -625,8 +535,6 @@ export const GAME_VIDEO_MAP = {
   "20260816SKLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260816/071/296405071/REGL_FC909C4D_296405071_1.mp4/manifest.m3u8",
   "20260816OBHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260816/107/296405107/REGL_35BF9DE6_296405107_1.mp4/manifest.m3u8",
   "20260816WOKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260816/111/296405111/REGL_7C7A6F9C_296405111_1.mp4/manifest.m3u8",
-
-  // 8월 3주차 주중 시리즈
   "20260818OBNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260818/381/296453381/REGL_7E57E9DF_296453381_1.mp4/manifest.m3u8",
   "20260818KTLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260818/377/296453377/REGL_394C9BCA_296453377_1.mp4/manifest.m3u8",
   "20260818HTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260818/379/296453379/REGL_5A80A7F1_296453379_1.mp4/manifest.m3u8",
@@ -642,8 +550,6 @@ export const GAME_VIDEO_MAP = {
   "20260820HTHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260820/147/296502147/REGL_43672264_296502147_1.mp4/manifest.m3u8",
   "20260820SKSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260820/997/296501997/REGL_A88D19ED_296501997_1.mp4/manifest.m3u8",
   "20260820WOLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260820/299/296502299/REGL_809C0A51_296502299_1.mp4/manifest.m3u8",
-
-  // 8월 3주차 주말 시리즈
   "20260821HTWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260821/735/296526735/REGL_ADF8BC48_296526735_1.mp4/manifest.m3u8",
   "20260821SSNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260821/733/296526733/REGL_4DF4DF45_296526733_1.mp4/manifest.m3u8",
   "20260821LTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260821/737/296526737/REGL_B3E81938_296526737_1.mp4/manifest.m3u8",
@@ -656,8 +562,6 @@ export const GAME_VIDEO_MAP = {
   "20260823LTOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260823/435/296580435/REGL_55C4D4CF_296580435_1.mp4/manifest.m3u8",
   "20260823KTSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260823/433/296580433/REGL_F49277C1_296580433_1.mp4/manifest.m3u8",
   "20260823LGHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260823/437/296580437/REGL_03C5A64F_296580437_1.mp4/manifest.m3u8",
-
-  // 8월 4주차 주중 시리즈
   "20260825SSWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260825/681/296626681/REGL_B83B690C_296626681_1.mp4/manifest_m3u8",
   "20260825NCLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260825/645/296626645/REGL_3436BBF4_296626645_1.mp4/manifest_m3u8",
   "20260825HHSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260825/659/296626659/REGL_43BF1AD5_296626659_1.mp4/manifest_m3u8",
@@ -672,8 +576,6 @@ export const GAME_VIDEO_MAP = {
   "20260827NCLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260827/835/296676835/REGL_68E82844_296676835_1.mp4/manifest.m3u8",
   "20260827HHSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260827/837/296676837/REGL_D506CD22_296676837_1.mp4/manifest.m3u8",
   "20260827OBKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260827/843/296676843/REGL_2C2ABFBD_296676843_1.mp4/manifest.m3u8",
-
-  // 8월 4주차 주말 시리즈
   "20260829WOOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260829/381/296727381/REGL_F3FA3184_296727381_1.mp4/manifest.m3u8",
   "20260829NCHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260829/241/296727241/REGL_F347561A_296727241_1.mp4/manifest.m3u8",
   "20260829KTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260829/385/296727385/REGL_CF362C89_296727385_1.mp4/manifest.m3u8",
@@ -682,9 +584,6 @@ export const GAME_VIDEO_MAP = {
   "20260830WOOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260830/841/296752841/REGL_D196BC4B_296752841_1.mp4/manifest.m3u8",
   "20260830NCHH0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260830/843/296752843/REGL_D192EE72_296752843_1.mp4/manifest.m3u8",
   "20260830LGLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260830/839/296752839/REGL_92FEFF31_296752839_1.mp4/manifest.m3u8",
-
-  // 2026년 9월
-  // 9월 1주차 주중 시리즈
   "20260901HTNC0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260901/665/296799665/REGL_8C726287_296799665_1.mp4/manifest.m3u8",
   "20260901SKWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260901/675/296799675/REGL_686B4B04_296799675_1.mp4/manifest.m3u8",
   "20260901LGOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260901/637/296799637/REGL_17DD03EA_296799637_1.mp4/manifest.m3u8",
@@ -699,8 +598,6 @@ export const GAME_VIDEO_MAP = {
   "20260903LGOB0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260903/107/296848107/REGL_BB086F19_296848107_1.mp4/manifest.m3u8",
   "20260903LTSS0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260903/103/296848103/REGL_7BC06AC6_296848103_1.mp4/manifest.m3u8",
   "20260903HHKT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260903/105/296848105/REGL_326B3D22_296848105_1.mp4/manifest.m3u8",
-
-  // 9월 1주차 주말 시리즈
   "20260904NCWO0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260904/069/296872069/REGL_9BF596DE_296872069_1.mp4/manifest.m3u8",
   "20260904SSLG0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260904/047/296872047/REGL_AA6C6C4D_296872047_1.mp4/manifest.m3u8",
   "20260904OBSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260904/059/296872059/REGL_D2651C80_296872059_1.mp4/manifest.m3u8",
@@ -716,94 +613,74 @@ export const GAME_VIDEO_MAP = {
   "20260906HHLT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260906/025/296922025/REGL_ED0AECE4_296922025_1.mp4/manifest.m3u8",
   "20260906KTHT0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260906/031/296922031/REGL_0D3C1E58_296922031_1.mp4/manifest.m3u8",
   "20260906OBSK0": "https://vod-archive-global-cdn-z02.sooplive.com/spkt/vod/20260906/027/296922027/REGL_0B861E2C_296922027_1.mp4/manifest.m3u8",
-
-  // 3연전 시리즈 종료, 잔여경기 시작
-  "20260908LTNC0": "",
-  "20260908WOLG0": "",
-  "20260908OBHH0": "",
-  "20260908HTSS0": "",
-  "20260908SKKT0": "",
-
+  "20260908LTNC0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyIkSVORAoEqo2xgFmvwvrGd38cloldhhNO-z1hj232-xBCv2aKXi1qvDUi1bS_nKm2CfvJdF78Lay0UMTCwdc0mu9OFc1ZqSULeTApcm33u8mYN-uC1qcjkT0mFzjo_da2rm7r9mOsegaFcZUfbm98MpHeWlJaRV_sRSiqV86w7zzlik-tD73ZL_pZTqLL2cAQ",
+  "20260908WOLG0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyFsK5LFOFaUrcdbDoTlE3OG5AlH04it4qdM6pWTIS5NggiVsDFfgoC31GCZlk8MNegXLSJk768QMDDad0EYVLcHw1cY5e3BYg8iMKj5yabeOlRRpr9X2mlIYm4MnaTw1P7cSbpOE0x6qa7SWnyVCn4xePyMRb5jeeYVsEPi28wzs2Jmbp-biv4VUx5FnzU5COw",
+  "20260908OBHH0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyLKvi20KuIk2aI942M1rOeCjCBXE2epd3-QXiMuNpJ3paAnbBneoIMzPfF0WKHubBrxxG9mmJy05ts6zXTt8jYLnaH7GY3gmKlV7xbGdrE8IJ8-8QMnEBHmMVPF28WvWA3B2YrilhY-Dgf6xeIgg98eTSTVRGJG41fDI00IATINwnxjL1RuOUJxvNfkdSWyXpA",
+  "20260908HTSS0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyBszAo_A2XvmeACASVPZuc9w5eFmYkXDoDXxTmwKFMroCakgCCW7krlTgUS_c7rnxvdAQ6OzxwqgtczmHDoZ3N8uZqzkmu14Tf5URM4di9Em7VJH944LXJpWRKobnlR-6mPS1BgT6tfJ0KSJPEYq2-Fttox7A_Ufy78Qz_s3IDpR7Our1UnqDqJ5T1aqnwdCgw",
+  "20260908SKKT0": "https://live-global-cdn-v02.sooplive.com/live-stm-07/auth_master_playlist.m3u8?aid=.A32.pxqRXFPZNcY9Qg1.7-o39hJfCZIq84GZMfaPyNQVHlF83jJNfNvO-dphD6PTaASQxLWsxQwrqd6pzYc-vSg7E6az2pLMeOtkIUdoRI1fPP4N8gOq4Pv_d_JOypedzMrSZZjSTGbpvbLRIBatvz7N24laKhhNUQN3CyO-2Vte3u7BVaz7CnPhJoZxi9Xx6fCRbtN1E3mBgpg90Wp9ucFR7ZiK3juxwVMLk6LsGw",
   "20260909SKOB0": "",
   "20260909LGHH0": "",
   "20260909KTSS0": "",
   "20260909NCHT0": "",
-
   "20260910WOOB0": "",
   "20260910HHSK0": "",
   "20260910NCHT0": "",
   "20260910KTLT0": "",
-
   "20260911NCHH0": "",
   "20260911WOSS0": "",
   "20260911SKHT0": "",
   "20260911KTLT0": "",
-
   "20260912LTWO0": "",
   "20260912NCOB0": "",
   "20260912LGSS0": "",
   "20260912HTKT0": "",
-
   "20260913NCOB0": "",
   "20260913LGSS0": "",
   "20260913HHHT0": "",
   "20260913LTKT0": "",
-
   "20260915LGNC0": "",
   "20260915HTSK0": "",
   "20260915KTHH0": "",
   "20260915LTSS0": "",
-
   "20260916LGNC0": "",
   "20260916SSOB0": "",
   "20260916KTHH0": "",
   "20260916SKLT0": "",
-
   "20260917SKNC0": "",
   "20260917WOHT0": "",
-
   "20260918WOOB0": "",
   "20260918SSHH0": "",
   "20260918NCLT0": "",
   "20260918LGKT0": "",
-
   "20260919HTNC0": "",
   "20260919HHLG0": "",
   "20260919SSLT0": "",
   "20260919OBKT0": "",
-
   "20260920HTNC0": "",
   "20260920HHLG0": "",
   "20260920WOSK0": "",
   "20260920SSLT0": "",
   "20260920OBKT0": "",
-
   "20260922OBWO0": "",
   "20260922KTSK0": "",
   "20260922LTHH0": "",
   "20260922NCSS0": "",
-
   "20260923HTOB0": "",
   "20260923LTHH0": "",
   "20260923NCKT0": "",
-
   "20260924LTLG0": "",
   "20260924SSSK0": "",
   "20260924NCKT0": "",
-
   "20260925HHNC0": "",
   "20260925LTOB0": "",
   "20260925SSSK0": "",
-
   "20260926HHNC0": "",
   "20260926LGHT0": "",
   "20260926WOKT0": "",
-
   "20260927WONC0": "",
   "20260927KTOB0": "",
   "20260927LGHT0": "",
   "20260927HHLT0": "",
-
   "20260929NCOB0": "",
   "20260929LGSK0": "",
   "20260929HHSS0": "",
@@ -814,13 +691,10 @@ export const GAME_VIDEO_MAP = {
   "20260930HHSS0": "",
   "20260930KTHT0": "",
   "20260930WOLT0": "",
-
-  //2026년 10월
   "20261001NCOB0": "",
   "20261001LGSK0": "",
   "20261001HHSS0": "",
   "20261001KTHT0": "",
-
   "20261003SKNC0": "",
   "20261003HTLG0": "",
   "20261003WOHH0": "",
@@ -836,44 +710,33 @@ export const GAME_VIDEO_MAP = {
   "20261005WOHH0": "",
   "20261005OBSS0": "",
   "20261005LTKT0": "",
-
   "20261006KTWO0": "",
   "20261006NCLG0": "",
   "20261006SKHH0": "",
   "20261006SSHT0": "",
   "20261006OBLT0": "",
-
   "20261007HHWO0": "",
   "20261007OBLG0": "",
   "20261007NCSK0": "",
   "20261007HTLT0": "",
   "20261007SSKT0": "",
-
-  // 잔여경기 일정 종료, 포스트시즌 시작
-  "202610090": "", // 와일드카드 결정전 1차전
-  "202610100": "", // 와일드카드 결정전 최종전
-
-  "202610120": "", // 준플레이오프 1차전
-  "202610130": "", // 준플레이오프 2차전
-  "202610150": "", // 준플레이오프 3차전
-  "202610160": "", // 준플레이오프 4차전
-  "202610180": "", // 준플레이오프 5차전
-
-  "202610200": "", // 플레이오프 1차전
-  "202610210": "", // 플레이오프 2차전
-  "202610230": "", // 플레이오프 3차전
-  "202610240": "", // 플레이오프 4차전
-  "202610260": "", // 플레이오프 5차전
-
-  "202610280": "", // 한국시리즈 1차전
-  "202610290": "", // 한국시리즈 2차전
-  "202610310": "", // 한국시리즈 3차전
-
-  // 2026년 11월
-  "202611010": "", // 한국시리즈 4차전
-  "202611020": "", // 한국시리즈 5차전
-  "202611040": "", // 한국시리즈 6차전
-  "202611050": ""  // 한국시리즈 7차전
-
-  // 2026 시즌 종료 수고하셨습니다.
-};
+  "202610090": "",
+  "202610100": "",
+  "202610120": "",
+  "202610130": "",
+  "202610150": "",
+  "202610160": "",
+  "202610180": "",
+  "202610200": "",
+  "202610210": "",
+  "202610230": "",
+  "202610240": "",
+  "202610260": "",
+  "202610280": "",
+  "202610290": "",
+  "202610310": "",
+  "202611010": "",
+  "202611020": "",
+  "202611040": "",
+  "202611050": ""
+}

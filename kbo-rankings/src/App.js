@@ -8,6 +8,8 @@ import Data from "./pages/data.js";
 import { teamData } from "./pages/src/teamData.js";
 import Layout from "./components/Layout.js";
 import { API_BASE_URL } from "./config/api.js";
+import { isNotificationEnabled, setNotificationEnabled, requestNotificationPermission } from "./services/notificationService";
+import { useGameNotification } from "./hooks/useGameNotification";
 
 const TEAM_LIST = ["LG", "한화", "SSG", "삼성", "NC", "KT", "롯데", "KIA", "두산", "키움"];
 
@@ -59,6 +61,25 @@ function Home() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [scheduleData, setScheduleData] = useState([]);
   const [rankingData, setRankingData] = useState({});
+  const [notiEnabled, setNotiEnabled] = useState(() => isNotificationEnabled());
+
+  // 💡 Favorite 팀 경기 알림 훅 (경기 시작 1회 예약 및 진행 중일 때만 최소 주기 감지)
+  useGameNotification(selectedTeam, scheduleData[0]);
+
+  const toggleNotification = async () => {
+    if (!notiEnabled) {
+      const granted = await requestNotificationPermission();
+      if (granted) {
+        setNotiEnabled(true);
+        setNotificationEnabled(true);
+      } else {
+        alert("알림 권한이 허용되지 않았습니다. 기기 설정에서 알림 권한을 확인해 주세요.");
+      }
+    } else {
+      setNotiEnabled(false);
+      setNotificationEnabled(false);
+    }
+  };
 
   useEffect(() => {
     if (selectedTeam) {
@@ -118,7 +139,8 @@ function Home() {
               opponentScore: opponentScore,
               inning: game.gameMaxInn,
               topOrBottom: game.isTopOrBottom,
-              gameID: game.gameID
+              gameID: game.gameID,
+              gameTime: game.gameTime
             };
           } else {
             return {
@@ -199,11 +221,27 @@ function Home() {
   return (
     <div className="flex-1 flex flex-col p-4 sm:p-8 font-sans">
       <div className="flex items-center justify-between mb-6">
-        {renderDropdown()}
+        <div className="flex items-center gap-2">
+          {renderDropdown()}
+          {selectedTeam && (
+            <button
+              onClick={toggleNotification}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border transition-all shadow-md ${
+                notiEnabled
+                  ? "bg-amber-500/20 text-amber-300 border-amber-500/50 hover:bg-amber-500/30"
+                  : "bg-gray-800/80 text-gray-400 border-gray-700 hover:bg-gray-700"
+              }`}
+              title={notiEnabled ? "경기 알림 켜짐 (탭하여 끄기)" : "경기 알림 꺼짐 (탭하여 켜기)"}
+            >
+              <span className="text-base">{notiEnabled ? "🔔" : "🔕"}</span>
+              <span className="hidden sm:inline">{notiEnabled ? "알림 켜짐" : "알림 끄기"}</span>
+            </button>
+          )}
+        </div>
         <h1 className="md:text-4xl text-xl font-bold md:text-center text-right flex-1 text-white drop-shadow-md">
           ⚾ 프로야구 정보 서비스
         </h1>
-        <div className="w-20 md:w-24"></div> {/* Spacer to keep title centered */}
+        <div className="w-12 md:w-24"></div> {/* Spacer to keep title centered */}
       </div>
 
       {!selectedTeam ? (

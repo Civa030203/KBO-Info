@@ -7,6 +7,7 @@ const scoreBoardDataRoute = require("./scoreBoard");
 const playerSearchRoute = require("./pSearch");
 const pDataRoute = require("./pData");
 const playerRankingsRoute = require("./pRanking");
+const videoMapRoute = require("./videoMap");
 
 console.log("서버 시작 시도 중...");
 
@@ -21,6 +22,7 @@ app.use("/api/scoreBoardData", scoreBoardDataRoute);
 app.use("/api/playerSearch", playerSearchRoute);
 app.use("/api/playerData", pDataRoute);
 app.use("/api/playerRankings", playerRankingsRoute);
+app.use("/api/videoMap", videoMapRoute);
 
 app.get("/", (req, res) => {
   res.send("✅ KBO Ranking API 서버가 정상적으로 실행 중입니다!");

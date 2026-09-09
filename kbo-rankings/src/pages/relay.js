@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import { GAME_VIDEO_MAP } from "./videoMap";
 import { teamData } from "./src/teamData";
 import { API_BASE_URL } from "../config/api";
+import { fetchVideoMap, getVideoUrlSync } from "../utils/videoMapService";
 
 // 국가대표 경기 등에서 변경되는 선수 ID를 원본 KBO 선수 ID로 매핑하는 객체
 const playerIdMap = {
@@ -102,8 +102,16 @@ export default function LiveTextPage() {
     }
   }, [live, autoScroll, inn]);
 
-  // 현재 경기의 비디오 링크 가져오기
-  const videoUrl = GAME_VIDEO_MAP[gameId];
+  // 현재 경기의 비디오 링크 가져오기 (동기 캐시 + 비동기 갱신)
+  const [videoUrl, setVideoUrl] = useState(() => getVideoUrlSync(gameId));
+
+  useEffect(() => {
+    fetchVideoMap().then((map) => {
+      if (map && map[gameId]) {
+        setVideoUrl(map[gameId]);
+      }
+    });
+  }, [gameId]);
 
   useEffect(() => {
     if (maxInn) {
