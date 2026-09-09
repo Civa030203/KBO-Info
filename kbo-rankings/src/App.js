@@ -178,7 +178,8 @@ function Home() {
   }, [selectedTeam]);
 
   const renderDropdown = () => (
-    <div className="relative z-50">
+    <div className="relative z-50 flex flex-col items-center gap-1.5">
+      {/* 1. 팀 선택 드롭다운 버튼 */}
       <button
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         className="flex flex-col items-center justify-center bg-white rounded-lg shadow-md px-2 py-2 border border-gray-200 w-20 md:w-24 transition-transform hover:scale-105"
@@ -196,6 +197,7 @@ function Home() {
         )}
       </button>
 
+      {/* 2. 팀 선택 드롭다운 리스트 */}
       {isDropdownOpen && (
         <div className="absolute top-full left-0 mt-2 w-20 md:w-24 bg-white rounded-lg shadow-xl border border-gray-200 py-2 flex flex-col items-center max-h-96 overflow-y-auto z-50">
           <button
@@ -215,33 +217,40 @@ function Home() {
           ))}
         </div>
       )}
+
+      {/* 3. 팀 선택 버튼 바로 아래 배치되는 알림 버튼 */}
+      {selectedTeam && (
+        <button
+          onClick={toggleNotification}
+          className={`flex items-center justify-center gap-1 w-20 md:w-24 py-1.5 rounded-lg text-[10px] md:text-xs font-medium border transition-all shadow-sm ${notiEnabled
+              ? "bg-amber-500/20 text-amber-300 border-amber-500/50 hover:bg-amber-500/30"
+              : "bg-gray-800/80 text-gray-400 border-gray-700 hover:bg-gray-700"
+            }`}
+          title={notiEnabled ? "경기 알림 켜짐 (탭하여 끄기)" : "경기 알림 꺼짐 (탭하여 켜기)"}
+        >
+          <span>{notiEnabled ? "🔔" : "🔕"}</span>
+          <span>{notiEnabled ? "알림 켜짐" : "알림 꺼짐"}</span>
+        </button>
+      )}
     </div>
   );
 
   return (
     <div className="flex-1 flex flex-col p-4 sm:p-8 font-sans">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
+      {/* Header 영역 - 타이틀 침범 없이 정렬 */}
+      <div className="flex items-start justify-between mb-6">
+        {/* 드롭다운 + 알림버튼 묶음 */}
+        <div className="flex-none">
           {renderDropdown()}
-          {selectedTeam && (
-            <button
-              onClick={toggleNotification}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border transition-all shadow-md ${
-                notiEnabled
-                  ? "bg-amber-500/20 text-amber-300 border-amber-500/50 hover:bg-amber-500/30"
-                  : "bg-gray-800/80 text-gray-400 border-gray-700 hover:bg-gray-700"
-              }`}
-              title={notiEnabled ? "경기 알림 켜짐 (탭하여 끄기)" : "경기 알림 꺼짐 (탭하여 켜기)"}
-            >
-              <span className="text-base">{notiEnabled ? "🔔" : "🔕"}</span>
-              <span className="hidden sm:inline">{notiEnabled ? "알림 켜짐" : "알림 끄기"}</span>
-            </button>
-          )}
         </div>
-        <h1 className="md:text-4xl text-xl font-bold md:text-center text-right flex-1 text-white drop-shadow-md">
+
+        {/* 타이틀 영역 */}
+        <h1 className="md:text-4xl text-xl font-bold text-center flex-1 text-white drop-shadow-md pt-2 px-2">
           ⚾ 프로야구 정보 서비스
         </h1>
-        <div className="w-12 md:w-24"></div> {/* Spacer to keep title centered */}
+
+        {/* 좌우 대칭을 위한 여백 Spacer (필요 시 우측 새로고침 버튼 위치) */}
+        <div className="w-20 md:w-24 flex-none"></div>
       </div>
 
       {!selectedTeam ? (
