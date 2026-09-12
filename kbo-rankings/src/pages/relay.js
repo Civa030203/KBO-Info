@@ -334,10 +334,10 @@ export default function LiveTextPage() {
       </div>
 
       {/* 메인 중계 컨텐츠 */}
-      <div className="w-full max-w-2xl flex flex-col">
+      <div className="w-full min-w-0 max-w-2xl flex flex-col">
 
-        {/* 📌 [상단 고정 영역] 버튼, 타이틀, 비디오 전체 묶음 */}
-        <div className="sticky top-[env(safe-area-inset-top,0px)] z-50 bg-[#0a0a0a] pt-2 pb-2">
+        {/* 버튼, 타이틀, 비디오와 스코어보드를 함께 고정해 점수판이 가려지지 않도록 한다. */}
+        <div className="sticky top-[env(safe-area-inset-top,0px)] z-50 bg-[#0a0a0a] pt-2 pb-2 mb-6 shrink-0">
           {/* 메인으로 돌아가기 & 비디오 숨기기 버튼 영역 */}
           <div className="flex justify-between items-center mb-3">
             <Link
@@ -401,48 +401,48 @@ export default function LiveTextPage() {
               </div>
             </div>
           )}
-        </div>
 
-        {/* ✅ 스코어보드 */}
-        <div className="overflow-x-auto mb-6 rounded-lg shadow border border-gray-700">
-          <table className="border-collapse text-center text-xs bg-gray-900 text-gray-200 w-full">
-            <thead className="bg-gray-800 text-gray-400">
-              <tr>
-                <th className="border border-gray-700 px-3 py-2 text-left sticky left-0 z-10 bg-gray-800 font-semibold min-w-[4rem]">팀</th>
-                {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                  <th key={i} className="border border-gray-700 px-2 py-2 min-w-[1.75rem]">
-                    {i + 1}
-                  </th>
-                ))}
-                <th className="border border-gray-700 px-2 py-2 font-bold text-blue-400 bg-gray-800 min-w-[2rem]">R</th>
-                <th className="border border-gray-700 px-2 py-2 min-w-[2rem]">H</th>
-                <th className="border border-gray-700 px-2 py-2 min-w-[2rem]">E</th>
-                <th className="border border-gray-700 px-2 py-2 min-w-[2rem]">B</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="bg-gray-900">
-                <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-900">{scoreData.teamData[0]}</td>
-                {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                  <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[0][i]}</td>
-                ))}
-                <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[0][0]}</td>
-                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][1]}</td>
-                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][2]}</td>
-                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][3]}</td>
-              </tr>
-              <tr className="bg-gray-800/50">
-                <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-800/50">{scoreData.teamData[1]}</td>
-                {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                  <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[1][i]}</td>
-                ))}
-                <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[1][0]}</td>
-                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][1]}</td>
-                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][2]}</td>
-                <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][3]}</td>
-              </tr>
-            </tbody>
-          </table>
+          {/* ✅ 스코어보드 */}
+          <div className="overflow-x-auto mt-2 rounded-lg shadow border border-gray-700">
+            <table className="border-collapse text-center text-xs bg-gray-900 text-gray-200 w-full">
+              <thead className="bg-gray-800 text-gray-400">
+                <tr>
+                  <th className="border border-gray-700 px-3 py-2 text-left sticky left-0 z-10 bg-gray-800 font-semibold min-w-[4rem]">팀</th>
+                  {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
+                    <th key={i} className="border border-gray-700 px-2 py-2 min-w-[1.75rem]">
+                      {i + 1}
+                    </th>
+                  ))}
+                  <th className="border border-gray-700 px-2 py-2 font-bold text-blue-400 bg-gray-800 min-w-[2rem]">R</th>
+                  <th className="border border-gray-700 px-2 py-2 min-w-[2rem]">H</th>
+                  <th className="border border-gray-700 px-2 py-2 min-w-[2rem]">E</th>
+                  <th className="border border-gray-700 px-2 py-2 min-w-[2rem]">B</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-gray-900">
+                  <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-900">{scoreData.teamData[0]}</td>
+                  {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
+                    <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[0][i]}</td>
+                  ))}
+                  <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[0][0]}</td>
+                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][1]}</td>
+                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][2]}</td>
+                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][3]}</td>
+                </tr>
+                <tr className="bg-gray-800/50">
+                  <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-800/50">{scoreData.teamData[1]}</td>
+                  {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
+                    <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[1][i]}</td>
+                  ))}
+                  <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[1][0]}</td>
+                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][1]}</td>
+                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][2]}</td>
+                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][3]}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* 회차 선택 및 모바일 라인업 보기 버튼 */}
