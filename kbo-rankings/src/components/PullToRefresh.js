@@ -95,7 +95,8 @@ export default function PullToRefresh({ children, onRefresh }) {
   const isReadyToTrigger = pullDistance >= TRIGGER_DISTANCE;
 
   return (
-    <div ref={containerRef} className="relative min-h-screen flex flex-col w-full overflow-x-hidden">
+    // hidden은 세로축도 스크롤 컨테이너로 만들어 자식의 sticky 고정을 깨뜨린다.
+    <div ref={containerRef} className="relative min-h-screen flex flex-col w-full overflow-x-clip">
       {/* 📌 상단 인디케이터 영역 */}
       <div
         className="w-full flex items-center justify-center pointer-events-none transition-all duration-200 overflow-hidden"
