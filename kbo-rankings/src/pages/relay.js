@@ -215,7 +215,7 @@ export default function LiveTextPage() {
   useEffect(() => {
     const fetchLineup = async () => {
       // 1이 아니거나 8인 경우 호출 패스
-      if (Number(leagueId) !== 1 || Number(seriesId) === 8) return;
+      if (Number(leagueId) !== 1) return;
 
       try {
         let apiGameId = "";
