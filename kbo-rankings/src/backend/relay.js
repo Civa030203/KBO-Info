@@ -53,6 +53,7 @@ router.get("/preview", async (req, res) => {
 
   const targetUrl = `https://api-gw.sports.naver.com/schedule/games/${gameId}/preview`;
 
+
   try {
     const response = await axios.get(targetUrl, {
       headers: {

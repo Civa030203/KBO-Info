@@ -255,7 +255,13 @@ export default function LiveTextPage() {
 
         if (['3', '4', '5', '7', '8', '9'].includes(String(seriesId))) {
           const prefix = String(seriesId).repeat(4);
-          apiGameId = `${prefix}${gameId.substring(4)}${year}`;
+          if (gameId === "20260925KRJP0") {
+            apiGameId = '88880925S2S402026'
+          } else if (gameId === "20260926CNKR0") {
+            apiGameId = '88880926S2S302026'
+          } else {
+            apiGameId = `${prefix}${gameId.substring(4)}${year}`;
+          }
         } else {
           apiGameId = `${gameId}${year}`;
         }
