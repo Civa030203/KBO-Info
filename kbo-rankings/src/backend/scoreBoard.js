@@ -20,39 +20,44 @@ router.get("/", async (req, res) => {
         },
       }),
     ]);
-    
+
 
     // 문자열인 경우 JSON 파싱
     const teamDataTable = []; // 팀명 파싱
-      if (typeof scoreBoardData[0].data.teamTable === "string") {
-        for (let i = 0; i < JSON.parse(scoreBoardData[0].data.teamTable).rows.length; i++) {
-          const rawHTML = (JSON.parse(scoreBoardData[0].data.teamTable).rows[i].row[0].Text);
-          const teamText = rawHTML.replace(/<[^>]*>/g, "").trim();
-          teamDataTable.push(teamText);
-        }
+    if (typeof scoreBoardData[0].data.teamTable === "string") {
+      for (let i = 0; i < JSON.parse(scoreBoardData[0].data.teamTable).rows.length; i++) {
+        const rawHTML = (JSON.parse(scoreBoardData[0].data.teamTable).rows[i].row[0].Text);
+        const teamText = rawHTML.replace(/<[^>]*>/g, "").trim();
+        teamDataTable.push(teamText);
       }
+    }
 
     const scoreDataTable = []; // 이닝 별 스코어 파싱
-      if (typeof scoreBoardData[0].data.scoreTable === "string") {
-        for (let teamIndex = 0; teamIndex < 2; teamIndex++) {
-          let scoreData = [];
-          for (let inningIndex = 0; inningIndex < JSON.parse(scoreBoardData[0].data.scoreTable).rows[teamIndex].row.length; inningIndex++) {
-            scoreData.push(JSON.parse(scoreBoardData[0].data.scoreTable).rows[teamIndex].row[inningIndex].Text);
-          }
-          scoreDataTable.push(scoreData);
+    if (typeof scoreBoardData[0].data.scoreTable === "string") {
+      for (let teamIndex = 0; teamIndex < 2; teamIndex++) {
+        let scoreData = [];
+        for (let inningIndex = 0; inningIndex < JSON.parse(scoreBoardData[0].data.scoreTable).rows[teamIndex].row.length; inningIndex++) {
+          scoreData.push(JSON.parse(scoreBoardData[0].data.scoreTable).rows[teamIndex].row[inningIndex].Text);
         }
+        scoreDataTable.push(scoreData);
       }
+    }
     const resultDataTable = [];
-      if (typeof scoreBoardData[0].data.resultTable === "string") {
-        for (let teamIndex = 0; teamIndex < 2; teamIndex++) {
-          let resultData = [];
-          for (let i = 0; i < 4; i++) {
+
+    if (typeof scoreBoardData[0].data.resultTable === "string") {
+      for (let teamIndex = 0; teamIndex < 2; teamIndex++) {
+        let resultData = [];
+        for (let i = 0; i < 4; i++) {
+          try {
             resultData.push(JSON.parse(scoreBoardData[0].data.resultTable).rows[teamIndex].row[i].Text);
+          } catch (error) {
+            resultData.push("");
           }
-          resultDataTable.push(resultData);
         }
+        resultDataTable.push(resultData);
       }
-      // typeof scoreBoardData[0].data.resultTable === "string" ? JSON.parse(scoreBoardData[0].data.resultTable) : scoreBoardData[0].data.resultTable;
+    }
+    // typeof scoreBoardData[0].data.resultTable === "string" ? JSON.parse(scoreBoardData[0].data.resultTable) : scoreBoardData[0].data.resultTable;
 
     // 두 데이터를 합쳐서 반환
     res.json({
@@ -61,7 +66,7 @@ router.get("/", async (req, res) => {
       resultData: resultDataTable
     });
   } catch (err) {
-    console.error("API 요청 실패:", err.message);
+    console.error("API 요청 실패:", err);
     res.status(500).json({ error: "데이터를 가져오지 못했습니다." });
   }
 });

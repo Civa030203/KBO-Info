@@ -74,4 +74,85 @@ router.get("/preview", async (req, res) => {
   }
 });
 
+const parseTable = (tableStr) => {
+  if (!tableStr) return [];
+  try {
+    const parsed = typeof tableStr === "string" ? JSON.parse(tableStr) : tableStr;
+    if (!parsed || !parsed.rows) return [];
+    return parsed.rows.map((r) => {
+      if (r && Array.isArray(r.row)) {
+        return r.row.map((cell) =>
+          cell && cell.Text !== undefined && cell.Text !== null ? String(cell.Text).trim() : ""
+        );
+      }
+      return [];
+    });
+  } catch (e) {
+    console.error("테이블 파싱 에러:", e.message);
+    return [];
+  }
+};
+
+router.get("/record", async (req, res) => {
+  const { le_id, sr_id, g_id } = req.query;
+
+  // 1. 원정팀 (Away) 기록 요청: tb_sc=T (Top, 초공격)
+  const urlAway = `https://m.koreabaseball.com/ws/Kbo.asmx/GetLiveRecord?le_id=${le_id}&sr_id=${sr_id}&g_id=${g_id}&tb_sc=T`;
+  // 2. 홈팀 (Home) 기록 요청: tb_sc=B (Bottom, 말공격)
+  const urlHome = `https://m.koreabaseball.com/ws/Kbo.asmx/GetLiveRecord?le_id=${le_id}&sr_id=${sr_id}&g_id=${g_id}&tb_sc=B`;
+
+  try {
+    const [awayRes, homeRes] = await Promise.all([
+      axios.get(urlAway, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        },
+      }),
+      axios.get(urlHome, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        },
+      }),
+    ]);
+
+    const formatTeamRecord = (data, defaultTeamName) => {
+      const parsedData = typeof data === "string" ? JSON.parse(data) : data;
+      if (!parsedData) return null;
+
+      const rawHitterTable = parseTable(parsedData.tableHitter);
+      // 타자 기록: [타수, 득점, 안타, 홈런, 타점, 4사구, 삼진, 도루] 총 8개 항목 추출
+      const tableHitter = rawHitterTable.map((row) => row.slice(0, 8));
+
+      // 투수 기록: [이닝, 투구수, 볼, 스트라이크, 피안타, 피홈런, 4사구, 탈삼진, 실점] 총 9개 항목
+      const tablePitcher = parseTable(parsedData.tablePitcher);
+
+      return {
+        teamName: defaultTeamName || parsedData.teamName || "",
+        listHitter: parsedData.listHitter || [],
+        tableHitter,
+        listPitcher: parsedData.listPitcher || [],
+        tablePitcher,
+      };
+    };
+
+    const awayRaw = typeof awayRes.data === "string" ? JSON.parse(awayRes.data) : awayRes.data;
+    const homeRaw = typeof homeRes.data === "string" ? JSON.parse(homeRes.data) : homeRes.data;
+
+    // 원정팀 (tb_sc=T)의 데이터를 away 객체로 매핑
+    const awayData = formatTeamRecord(awayRes.data, awayRaw?.awayTeam);
+    // 홈팀 (tb_sc=B)의 데이터를 home 객체로 매핑
+    const homeData = formatTeamRecord(homeRes.data, homeRaw?.homeTeam);
+
+    res.json({
+      away: awayData,
+      home: homeData,
+    });
+  } catch (err) {
+    console.error("기록지 API 요청 실패:", err.message);
+    res.status(500).json({ error: "기록지 데이터를 가져오지 못했습니다." });
+  }
+});
+
 module.exports = router;

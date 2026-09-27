@@ -123,6 +123,7 @@ export default function Schedule() {
         break;
 
       case "대한민국":
+      case "한국":
         teamID = "KR";
         break;
 
@@ -144,6 +145,38 @@ export default function Schedule() {
 
       case "도미니카":
         teamID = "DO";
+        break;
+
+      case "중국":
+        teamID = "CN";
+        break;
+
+      case "태국":
+        teamID = "TH";
+        break;
+
+      case "홍콩":
+        teamID = "HK";
+        break;
+
+      case "베네수엘라":
+        teamID = "VE";
+        break;
+
+      case "멕시코":
+        teamID = "MX";
+        break;
+
+      case "미국":
+        teamID = "US";
+        break;
+
+      case "쿠바":
+        teamID = "CU";
+        break;
+
+      case "네덜란드":
+        teamID = "NL";
         break;
 
       default:

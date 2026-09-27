@@ -9,67 +9,167 @@ import { fetchVideoMap, getVideoUrlSync } from "../utils/videoMapService";
 const playerIdMap = {
   // "변경된_국대_ID": "원본_KBO_ID" 형식으로 추가해주시면 됩니다.
   // 예: "12345": "67890",
-  "10200": "68220",
-  "10201": "51867",
-  "10202": "53754",
-  "10203": "55167",
-  "10204": "54263",
-  "10205": "52701",
-  "10206": "52060",
-  "10207": "55455",
-  "10208": "54610",
-  "10209": "67143",
-  "10210": "50859",
-  "10211": "69446",
-  "10212": "53892",
-  "10213": "52530",
-  "10214": "53455",
-  "10215": "55743",
-  "10216": "51897",
-  "10217": "50556",
-  "10218": "79365",
-  "10219": "51865",
-  "10220": "78288",
-  "10221": "52430",
-  "10222": "51907",
-  "10223": "69737",
-  "10224": "69102",
-  "10225": "53764",
-  "10226": "67893",
-  "10227": "65357",
-  "10228": "65207",
-  "10229": "68525",
-  "10230": "67449",
-  "10231": "62415",
-  "10232": "52001",
-  "10233": "54657",
-  "10234": "51709",
-  "10235": "51709",
-  "10243": "64001",
-  "10244": "67119",
-  "10245": "68900",
-  "10246": "73211",
-  "10248": "76715",
-  "10249": "50030",
-  "10250": "51111",
-  "10251": "50106",
-  "10252": "68912",
-  "10253": "52605",
-  "10254": "67304",
-  "10256": "62404",
-  "10257": "67341",
-  "10260": "50458",
-  "10261": "51516",
-  "10262": "52415",
-  "10263": "52591",
-  "10264": "53312",
-  "10265": "54812",
-  "10266": "55252",
-  "10267": "55268",
-  "10268": "55636",
-  "13032": "56719",
-  "15121": "56632",
-  "15117": "31012",
+  "10200": "68220", // 곽빈 (두산)
+  "10201": "51867", // 김건우 (SSG)
+  "10202": "53754", // 김서현 (한화)
+  "10203": "55167", // 김영우 (LG)
+  "10204": "54263", // 김택연 (두산)
+  "10205": "52701", // 문동주 (한화)
+  "10206": "52060", // 박영현 (KT)
+  "10207": "55455", // 배찬승 (삼성)
+  "10208": "54610", // 성영탁 (KIA)
+  "10209": "67143", // 손주영 (LG)
+  "10210": "50859", // 오원석 (KT)
+  "10211": "69446", // 원태인 (삼성)
+  "10212": "53892", // 이로운 (SSG)
+  "10213": "52530", // 이민석 (롯데)
+  "10214": "53455", // 이호성 (삼성)
+  "10215": "55743", // 정우주 (한화)
+  "10216": "51897", // 조병현 (SSG)
+  "10217": "50556", // 최준용 (롯데)
+  "10218": "79365", // 박동원 (LG)
+  "10219": "51865", // 조형우 (SSG)
+  "10220": "78288", // 최재훈 (한화)
+  "10221": "52430", // 김영웅 (삼성)
+  "10222": "51907", // 김주원 (NC)
+  "10223": "69737", // 노시환 (한화)
+  "10224": "69102", // 문보경 (LG)
+  "10225": "53764", // 문현빈 (한화)
+  "10226": "67893", // 박성한 (SSG)
+  "10227": "65357", // 송성문 (키움)
+  "10228": "65207", // 신민재 (LG)
+  "10229": "68525", // 한동희 (롯데)
+  "10230": "67449", // 김성윤 (삼성)
+  "10231": "62415", // 박해민 (LG)
+  "10232": "52001", // 안현민 (KT)
+  "10233": "68106", // 이재원 (LG)
+
+  // 2026 WBC
+  "10243": "64001", // 고영표 (KT)
+  "10244": "67119", // 고우석 (LG)
+  "10245": "68900", // 김영규 (NC)
+  "10246": "73211", // 노경은 (SSG)
+  "10247": "", // 데인 더닝 (메이저)
+  "10248": "76715", // 류현진 (한화)
+  "10249": "50030", // 소형준 (KT)
+  "10250": "51111", // 송승기 (LG)
+  "10251": "50106", // 유영찬 (LG)
+  "10252": "68912", // 김형준 (NC)
+  "10253": "52605", // 김도영 (KIA)
+  "10254": "67304", // 김혜성 (키움)
+  "10255": "", // 셰이 위트컴 (메이저)
+  "10256": "62404", // 구자욱 (삼성)
+  "10257": "67341", // 이정후 (키움)
+  "10258": "", // 저마이 존스 (메이저)
+  "15105": "56464", // 호주 잭 오러클린 (삼성)
+  "15107": "55348", // 호주 라클란 웰스 (LG)
+  "15121": "56632", // 호주 제리드 데일 (KIA)
+  "15117": "31012", // 호주 알렉스 홀 (울산)
+
+  // 2026 아시안 게임
+  "10260": "50458", // 김지찬 (삼성)
+  "10261": "51516", // 김진욱 (롯데)
+  "10262": "52415", // 이재현 (삼성)
+  "10263": "52591", // 윤동희 (롯데)
+  "10264": "53312", // 김건희 (키움)
+  "10265": "54812", // 정준재 (SSG)
+  "10266": "55252", // 박준순 (두산)
+  "10267": "55268", // 최민석 (두산)
+  "10268": "55636", // 박재현 (KIA)
+  "13032": "56719", // 대만 왕옌청 (한화)
+
+  // 2013 WBC
+  "11101": "75421", // 오승환 (삼성)
+  "11103": "73211", // 노경은 (두산)
+  "11104": "77591", // 송승준 (롯데)
+  "11105": "75620", // 윤석민 (KIA)
+  "11106": "78640", // 서재응 (KIA)
+  "11107": "75321", // 손승락 (넥센)
+  "11109": "76355", // 장원삼 (삼성)
+  "11110": "76455", // 차우찬 (삼성)
+  "11111": "76858", // 박희수 (SK)
+  "11112": "74513", // 장원준 (롯데)
+  "11113": "71801", // 정대현 (SK)
+  "11114": "97202", // 진갑용 (삼성)
+  "11116": "95436", // 이승엽 (삼성)
+  "11117": "79402", // 김상수 (삼성)
+  "11118": "75808", // 정근우 (SK)
+  "11119": "75847", // 최정 (SK)
+  "11120": "73213", // 손시헌 (두산)
+  "11121": "76325", // 강정호 (넥센)
+  "11127": "74163", // 이용규 (KIA)
+  "11122": "71752", // 김태균 (한화)
+  "11123": "71564", // 이대호 (롯데)
+  "11124": "76290", // 김현수 (두산)
+  "11125": "78513", // 전준우 (롯데)
+  "11115": "74540", // 강민호 (롯데)
+  "11126": "77532", // 손아섭 (롯데)
+  "11128": "99810", // 이진영 (LG)
+  "11323": "67650", // 네덜란드 로저 버나디나 (KIA)
+
+  // 2015 프리미어 12
+  "20001": "74540", // 강민호 (롯데)
+  "20003": "77829", // 김광현 (SK)
+  "20006": "79402", // 김상수 (삼성)
+  "20007": "74206", // 김재호 (두산)
+  "20010": "76290", // 김현수 (두산)
+  "20011": "62947", // 나성범 (NC)
+  "20013": "76249", // 민병헌 (두산)
+  "20014": "75125", // 박병호 (넥센)
+  "20016": "77532", // 손아섭 (롯데)
+  "20018": "61411", // 심창민 (삼성)
+  "20020": "76232", // 양의지 (두산)
+  "20022": "77248", // 오재원 (두산)
+  "20023": "73117", // 우규민 (LG)
+  "20024": "67008", // 이대은 (마이너)
+  "20025": "71564", // 이대호 (NPB)
+  "20026": "74163", // 이용규 (한화)
+  "20027": "61323", // 이태양 (NC)
+  "20028": "76329", // 이현승 (두산)
+  "20029": "78352", // 임창민 (NC)
+  "20030": "74513", // 장원준 (두산)
+  "20031": "75808", // 정근우 (SK)
+  "20032": "71801", // 정대현 (롯데)
+  "20033": "74857", // 정우람 (SK)
+  "20034": "65067", // 조무근 (KT)
+  "20035": "63342", // 조상우 (넥센)
+  "20036": "76455", // 차우찬 (삼성)
+  "20038": "79240", // 허경민 (두산)
+  "20040": "76313", // 황재균 (롯데)
+  "20069": "74540", // 강민호 (롯데)
+  "20103": "63737", // 미국 대나 이브랜드 (한화)
+  "20111": "66628", // 미국 지크 스프루일 (KIA)
+  "20117": "65052", // 미국 댄 블랙 (KT)
+  "20172": "64553", // 베네수엘라 루이스 히메네스 (롯데)
+
+  // 2017 APBC
+  "21000": "62404", // 구자욱 (삼성)
+  "21001": "65933", // 구창모 (NC)
+  "21002": "66145", // 김대현 (LG)
+  "21003": "67246", // 김명신 (두산)
+  "21004": "62934", // 김성욱 (NC)
+  "21005": "62648", // 김윤동 (KIA)
+  "21006": "64300", // 김하성 (넥센)
+  "21007": "66508", // 나경민 (롯데)
+  "21008": "62234", // 류지혁 (두산)
+  "21009": "62907", // 박민우 (NC)
+  "21010": "64021", // 박세웅 (롯데)
+  "21011": "63512", // 박진형 (롯데)
+  "21012": "64017", // 심재민 (KT)
+  "21013": "65115", // 안익훈 (LG)
+  "21014": "62929", // 이민호 (NC)
+  "21015": "67341", // 이정후 (넥센)
+  "21016": "62754", // 임기영 (KIA)
+  "21017": "63202", // 장승현 (두산)
+  "21018": "77927", // 장필준 (삼성)
+  "21019": "63950", // 장현식 (NC)
+  "21020": "63450", // 정현 (KT)
+  "21021": "66606", // 최원준 (KIA)
+  "21022": "62700", // 하주석 (한화)
+  "21023": "63722", // 한승택 (KIA)
+  "21024": "63248", // 함덕주 (두산)
+
+  // 2019 프리미어 12 
 };
 
 // 매핑된 ID가 있으면 반환하고, 없으면 원래 ID를 반환하는 함수
@@ -286,6 +386,34 @@ export default function LiveTextPage() {
     }
   }, [gameId, leagueId, seriesId]);
 
+  // 당일 경기 기록지 상태 및 API 요청
+  const [recordOpen, setRecordOpen] = useState(false);
+  const [recordTab, setRecordTab] = useState("home"); // "away" | "home"
+  const [recordData, setRecordData] = useState(null);
+
+  useEffect(() => {
+    const fetchRecord = async () => {
+      try {
+        const res = await axios.get(`${API_BASE_URL}/api/relay/record`, {
+          params: {
+            le_id: leagueId,
+            sr_id: seriesId,
+            g_id: gameId,
+          },
+        });
+        setRecordData(res.data);
+      } catch (err) {
+        console.error("기록지 API 실패:", err);
+      }
+    };
+
+    if (gameId) {
+      fetchRecord();
+      const recordInterval = setInterval(fetchRecord, 10000);
+      return () => clearInterval(recordInterval);
+    }
+  }, [leagueId, seriesId, gameId]);
+
   const renderLineup = (lineup, teamName) => {
     if (!lineup || lineup.length === 0 || !teamName) return null;
     const teamStyle = teamData[teamName] || {};
@@ -347,22 +475,285 @@ export default function LiveTextPage() {
     );
   };
 
+  const renderRecordModal = () => {
+    if (!recordOpen) return null;
 
+    const awayTeamName = recordData?.away?.teamName || scoreData?.teamData?.[0] || "원정팀";
+    const homeTeamName = recordData?.home?.teamName || scoreData?.teamData?.[1] || "홈팀";
+
+    const currentData = recordTab === "away" ? recordData?.away : recordData?.home;
+    const listHitter = currentData?.listHitter || [];
+    const tableHitter = currentData?.tableHitter || [];
+    const listPitcher = currentData?.listPitcher || [];
+    const tablePitcher = currentData?.tablePitcher || [];
+
+    const gameYear = parseInt(gameId.slice(0, 4)) || new Date().getFullYear();
+
+    // 팀 상징색 추출 헬퍼
+    const getTeamRawColor = (teamName) => {
+      if (!teamName) return "#1f2937";
+      const style = teamData[teamName];
+      if (style && style.mainColor) {
+        return style.mainColor.replace(/[[\]]/g, "");
+      }
+      return "#1f2937";
+    };
+
+    const awayTeamColor = getTeamRawColor(awayTeamName);
+    const homeTeamColor = getTeamRawColor(homeTeamName);
+    const currentContainerColor = recordTab === "away" ? awayTeamColor : homeTeamColor;
+
+    // 야수(타자) 타순별 인원 카운트 (동일 타순 2명 이상 & CHANGE === 1인 교체 아웃 선수 판별용)
+    const rankCountMap = {};
+    listHitter.forEach((hitter) => {
+      const rank = String(hitter.RANK);
+      rankCountMap[rank] = (rankCountMap[rank] || 0) + 1;
+    });
+
+    const hitterHeaders = ["타수", "득점", "안타", "홈런", "타점", "4사구", "삼진", "도루"];
+    const pitcherHeaders = ["이닝", "투구수", "볼", "스트라이크", "피안타", "피홈런", "4사구", "탈삼진", "실점"];
+
+    return (
+      <div
+        className="mb-6 rounded-2xl border border-white/15 shadow-2xl transition-all duration-300 overflow-hidden"
+        style={{ backgroundColor: currentContainerColor }}
+      >
+        <div className="bg-black/60 backdrop-blur-md p-4 sm:p-6">
+          {/* 상단 타이틀 및 닫기 버튼 */}
+          <div className="relative flex items-center justify-center mb-6">
+            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-widest text-center drop-shadow-md">
+              오늘의 기록
+            </h2>
+            <button
+              onClick={() => setRecordOpen(false)}
+              className="absolute right-0 px-5 sm:px-6 py-2 bg-white/20 hover:bg-white/30 text-white font-bold rounded-lg shadow-md transition text-sm sm:text-base cursor-pointer border border-white/25 backdrop-blur-sm"
+            >
+              닫기
+            </button>
+          </div>
+
+          {/* 팀 선택 탭 (각 팀 상징색 적용) */}
+          <div className="grid grid-cols-2 rounded-xl overflow-hidden border border-white/20 bg-black/40 mb-6 shadow-lg">
+            <button
+              onClick={() => setRecordTab("away")}
+              style={recordTab === "away" ? { backgroundColor: awayTeamColor } : {}}
+              className={`py-3 text-base sm:text-xl font-bold transition-all duration-200 flex items-center justify-center cursor-pointer border-r border-white/10 ${recordTab === "away"
+                ? "text-white shadow-inner font-extrabold"
+                : "bg-black/30 text-gray-300 hover:bg-black/50 hover:text-white"
+                }`}
+            >
+              {awayTeamName}
+            </button>
+            <button
+              onClick={() => setRecordTab("home")}
+              style={recordTab === "home" ? { backgroundColor: homeTeamColor } : {}}
+              className={`py-3 text-base sm:text-xl font-bold transition-all duration-200 flex items-center justify-center cursor-pointer ${recordTab === "home"
+                ? "text-white shadow-inner font-extrabold"
+                : "bg-black/30 text-gray-300 hover:bg-black/50 hover:text-white"
+                }`}
+            >
+              {homeTeamName}
+            </button>
+          </div>
+
+          {/* 타자 목록 */}
+          <div className="space-y-3">
+            {listHitter.length === 0 ? (
+              <p className="text-center py-6 text-gray-400">타자 기록이 없습니다.</p>
+            ) : (
+              listHitter.map((hitter, idx) => {
+                const realId = getRealPlayerId(hitter.P_ID);
+                const imageYear = getPlayerImageYear(gameYear, hitter.P_ID, seriesId);
+                const stats = tableHitter[idx] || [];
+
+                // 교체 아웃 판별: 동일한 RANK가 2명 이상 존재하고, CHANGE가 1인 경우
+                const isSubOut = (rankCountMap[String(hitter.RANK)] >= 2) && (Number(hitter.CHANGE) === 1);
+
+                return (
+                  <div
+                    key={idx}
+                    className={`rounded-xl border p-3 sm:p-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-md transition ${isSubOut
+                      ? "border-gray-800/80 bg-black/40 opacity-70"
+                      : "border-white/10 bg-gray-900/80 hover:bg-gray-900"
+                      }`}
+                  >
+                    {/* 선수 기본 정보 */}
+                    <div className="flex items-center gap-3 w-full md:w-auto shrink-0">
+                      <span
+                        className={`w-16 font-bold text-center rounded py-1.5 text-xs shadow-inner shrink-0 border ${isSubOut
+                          ? "bg-black/40 text-gray-500 border-gray-800"
+                          : "bg-black/60 text-gray-200 border-white/10"
+                          }`}
+                      >
+                        {hitter.SPAN || "타자"}
+                      </span>
+                      <Link
+                        to={`https://kbo-info.vercel.app/playerData/${realId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="shrink-0"
+                      >
+                        <img
+                          src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${imageYear}/${realId}.jpg`}
+                          alt={hitter.NAME}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = "https://statiz.co.kr/images/none.png";
+                          }}
+                          className={`w-12 h-12 rounded-full object-cover border bg-white/10 cursor-pointer hover:opacity-80 transition-opacity ${isSubOut ? "border-gray-700/40 grayscale opacity-60" : "border-white/20"
+                            }`}
+                          loading="lazy"
+                        />
+                      </Link>
+                      <div className="flex items-center gap-2">
+                        <Link
+                          to={`https://kbo-info.vercel.app/playerData/${realId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`font-bold text-base sm:text-lg transition ${isSubOut
+                            ? "text-gray-500 hover:text-gray-400"
+                            : "text-white hover:text-blue-300"
+                            }`}
+                        >
+                          {hitter.NAME}
+                        </Link>
+                        {isSubOut ? (
+                          <span className="text-[10px] text-gray-400 bg-gray-800/80 border border-gray-700/60 px-1.5 py-0.5 rounded font-medium">
+                            교체아웃
+                          </span>
+                        ) : (
+                          hitter.CHANGE === 1 && (
+                            <span className="text-[10px] text-amber-400 bg-amber-950/60 border border-amber-600/40 px-1.5 py-0.5 rounded font-medium">
+                              교체
+                            </span>
+                          )
+                        )}
+                      </div>
+                    </div>
+
+                    {/* 타격 기록 테이블 */}
+                    <div className="w-full md:w-[480px] bg-black/50 rounded-lg border border-white/5 p-2 overflow-x-auto shadow-inner">
+                      <div className="grid grid-cols-8 min-w-[360px] text-center">
+                        {hitterHeaders.map((header, hIdx) => (
+                          <div
+                            key={hIdx}
+                            className={`text-xs font-semibold border-b pb-1.5 ${isSubOut
+                              ? "text-gray-600 border-gray-800"
+                              : "text-gray-400 border-white/10"
+                              }`}
+                          >
+                            {header}
+                          </div>
+                        ))}
+                        {hitterHeaders.map((_, sIdx) => (
+                          <div
+                            key={sIdx}
+                            className={`text-base sm:text-lg pt-1 ${isSubOut
+                              ? "text-gray-500 font-medium"
+                              : "text-white font-bold"
+                              }`}
+                          >
+                            {stats[sIdx] !== undefined && stats[sIdx] !== "" ? stats[sIdx] : "-"}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+
+          {/* 투수 구분 헤더 */}
+          <div className="mt-8 mb-4 flex items-center gap-2 border-t border-white/15 pt-6">
+            <span className="w-2.5 h-5 bg-white/70 rounded-full inline-block"></span>
+            <h3 className="text-lg sm:text-xl font-bold text-white">투수 기록</h3>
+          </div>
+
+          {/* 투수 목록 */}
+          <div className="space-y-3">
+            {listPitcher.length === 0 ? (
+              <p className="text-center py-6 text-gray-400">투수 기록이 없습니다.</p>
+            ) : (
+              listPitcher.map((pitcher, idx) => {
+                const realId = getRealPlayerId(pitcher.P_ID);
+                const imageYear = getPlayerImageYear(gameYear, pitcher.P_ID, seriesId);
+                const stats = tablePitcher[idx] || [];
+
+                return (
+                  <div
+                    key={idx}
+                    className="rounded-xl border border-white/10 bg-gray-900/80 hover:bg-gray-900 p-3 sm:p-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-md transition"
+                  >
+                    {/* 선수 기본 정보 */}
+                    <div className="flex items-center gap-3 w-full md:w-auto shrink-0">
+                      <span className="w-16 font-bold text-center bg-black/60 text-gray-200 border border-white/10 rounded py-1.5 text-xs shadow-inner shrink-0">
+                        {pitcher.SPAN || "투수"}
+                      </span>
+                      <Link
+                        to={`https://kbo-info.vercel.app/playerData/${realId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="shrink-0"
+                      >
+                        <img
+                          src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${imageYear}/${realId}.jpg`}
+                          alt={pitcher.NAME}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = "https://statiz.co.kr/images/none.png";
+                          }}
+                          className="w-12 h-12 rounded-full object-cover border bg-white/10"
+                          loading="lazy"
+                        />
+                      </Link>
+                      <Link
+                        to={`https://kbo-info.vercel.app/playerData/${realId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-base sm:text-lg text-white hover:text-blue-300 transition"
+                      >
+                        {pitcher.NAME}
+                      </Link>
+                    </div>
+
+                    {/* 투구 기록 테이블 */}
+                    <div className="w-full md:w-[540px] bg-black/50 rounded-lg border border-white/5 p-2 overflow-x-auto shadow-inner">
+                      <div className="grid grid-cols-9 min-w-[440px] text-center">
+                        {pitcherHeaders.map((header, hIdx) => (
+                          <div key={hIdx} className="text-xs font-semibold text-gray-400 border-b border-white/10 pb-1.5">
+                            {header}
+                          </div>
+                        ))}
+                        {pitcherHeaders.map((_, sIdx) => (
+                          <div key={sIdx} className="text-base sm:text-lg font-bold text-white pt-1">
+                            {stats[sIdx] !== undefined && stats[sIdx] !== "" ? stats[sIdx] : "-"}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   // 팀 컬러 헬퍼: 공격 팀 이름에서 mainColor 조회
   const getTeamColor = (teamName) => {
     if (!teamName) return '#3b82f6';
     const style = teamData[teamName];
     if (style && style.mainColor) {
-      return style.mainColor.replace(/[\[\]]/g, '');
+      return style.mainColor.replace(/[[\]]/g, '');
     }
     return '#3b82f6';
   };
 
   if (loading) return <p className="text-center p-4 text-gray-300">불러오는 중...</p>;
   if (!live) return <p className="text-center p-4 text-gray-300">데이터가 없습니다.</p>;
-
-
 
   return (
     <div className="flex justify-center gap-6 p-4 w-full max-w-7xl mx-auto flex-1 text-gray-100">
@@ -483,12 +874,12 @@ export default function LiveTextPage() {
           </div>
         </div>
 
-        {/* 회차 선택 및 모바일 라인업 보기 버튼 */}
+        {/* 회차 선택 및 기록지 / 라인업 보기 버튼 */}
         <div className="flex items-center justify-between gap-2 mb-4">
           <div className="flex items-center gap-4">
             <select
               onChange={(e) => setInn(Number(e.target.value))}
-              className="border border-gray-600 p-2 rounded flex-none w-32 bg-gray-800 text-white"
+              className="border border-gray-600 p-2 rounded flex-none w-32 bg-gray-800 text-white cursor-pointer"
               value={inn ?? "1"}
             >
               {[...Array(maxInn)].map((_, i) => (
@@ -499,13 +890,25 @@ export default function LiveTextPage() {
             </select>
           </div>
 
-          <button
-            onClick={() => setMobileLineupOpen(!mobileLineupOpen)}
-            className="xl:hidden px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition"
-          >
-            {mobileLineupOpen ? "라인업 닫기" : "라인업 보기"}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setRecordOpen(!recordOpen)}
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition font-semibold text-sm cursor-pointer"
+            >
+              {recordOpen ? "기록지 닫기" : "기록지 보기"}
+            </button>
+
+            <button
+              onClick={() => setMobileLineupOpen(!mobileLineupOpen)}
+              className="xl:hidden px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500 transition font-semibold text-sm cursor-pointer"
+            >
+              {mobileLineupOpen ? "라인업 닫기" : "라인업 보기"}
+            </button>
+          </div>
         </div>
+
+        {/* 오늘의 경기 기록 */}
+        {renderRecordModal()}
 
         {/* 모바일 환경 라인업 */}
         {mobileLineupOpen && (
