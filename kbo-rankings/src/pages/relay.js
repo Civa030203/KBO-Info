@@ -359,6 +359,8 @@ export default function LiveTextPage() {
             apiGameId = '88880925S2S402026'
           } else if (gameId === "20260926CNKR0") {
             apiGameId = '88880926S2S302026'
+          } else if (gameId === "20260927KRJP0") {
+            apiGameId = '88880927F1F202026'
           } else {
             apiGameId = `${prefix}${gameId.substring(4)}${year}`;
           }
