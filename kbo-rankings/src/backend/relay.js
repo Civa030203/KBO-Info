@@ -8,7 +8,8 @@ router.use(cors());
 router.get("/", async (req, res) => {
   const { le_id, sr_id, g_id, inning, order } = req.query;
 
-  const url = `https://m.koreabaseball.com/ws/Kbo.asmx/GetLiveText?&le_id=${le_id}&sr_id=${sr_id}&g_id=${g_id}&inning=${inning}&order=${order}`;
+  const url = `https://api-gw.sports.naver.com/schedule/games/20250930OBLG02025/relay?inning=6`;
+  // const url = `https://m.koreabaseball.com/ws/Kbo.asmx/GetLiveText?&le_id=${le_id}&sr_id=${sr_id}&g_id=${g_id}&inning=${inning}&order=${order}`;
   const postGameUrl = `https://m.koreabaseball.com/ws/Kbo.asmx/GetLiveTextResult?le_id=${le_id}&sr_id=${sr_id}&g_id=${g_id}`;
 
   try {
