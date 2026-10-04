@@ -925,106 +925,69 @@ export default function LiveTextPage() {
         )}
 
         {/* 문자중계 */}
-        {(() => {
-          const relayData = live?.live?.result?.textRelayData;
-          if (!relayData) return null;
-
-          // textRelays: 타석(타자) 목록 배열
-          const textRelaysList = relayData.textRelays || [];
-
+        {live.live.listInnTb.map((inning, inningIdx) => {
+          const attackTeamColor = getTeamColor(inning.T_NM);
           return (
-            <div className="mb-6">
-              {/* 회차 및 이닝 정보 헤더 */}
-              <h4 className="text-s font-bold mb-4 text-gray-200">
-                {relayData.inn}회{relayData.homeOrAway === "1" || relayData.homeOrAway === 1 ? "말" : "초"} 공격
+            <div key={inningIdx} className="mb-6">
+              <h4 className="text-s font-bold mb-2 text-gray-200">
+                {inn}회{inning.TB_NM} {inning.T_NM} 공격
               </h4>
 
-              <div className="space-y-4">
-                {textRelaysList.map((atBat, atBatIdx) => {
-                  // atBat: 타석 단위 (예: 3번타자 오스틴)
-                  const attackTeamColor = getTeamColor(atBat.T_NM);
-                  const textOptions = atBat.textOptions || [];
-
-                  // 첫 번째 textOption이나 atBat 자체에서 선수 정보 가져오기
-                  const batterInfo = textOptions[0]?.batterRecord || atBat.batterRecord;
-                  const pcode = batterInfo?.pcode;
-                  const realPcode = pcode ? getRealPlayerId(pcode) : null;
-
-                  return (
-                    <div key={atBatIdx} className="border border-gray-700 rounded-lg p-4 bg-gray-900 shadow">
-                      {/* 타자 프로필 카드 */}
-                      <div
-                        className="flex items-center gap-4 p-4 border-l-4 bg-gray-800 shadow-sm rounded-md mb-3"
-                        style={{ borderLeftColor: attackTeamColor }}
-                      >
-                        {realPcode ? (
-                          <Link to={`https://kbo-info.vercel.app/playerData/${realPcode}`}>
-                            <img
-                              src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${getPlayerImageYear(
-                                parseInt(gameId.slice(0, 4)),
-                                pcode
-                              )}/${realPcode}.jpg`}
-                              alt={batterInfo?.name || atBat.title}
-                              className="w-12 h-16 rounded-full object-cover"
-                              onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = "https://statiz.co.kr/images/none.png";
-                              }}
-                            />
-                          </Link>
-                        ) : (
-                          <div className="w-12 h-16 rounded-full bg-gray-700 flex items-center justify-center text-xs text-gray-400">
-                            No Image
-                          </div>
-                        )}
-
-                        <div>
-                          {realPcode ? (
-                            <Link
-                              to={`https://kbo-info.vercel.app/playerData/${realPcode}`}
-                              className="font-semibold text-gray-100 hover:text-blue-400 hover:underline transition-colors"
-                            >
-                              {batterInfo?.name || atBat.title}
-                            </Link>
-                          ) : (
-                            <span className="font-semibold text-gray-100">{atBat.title}</span>
-                          )}
-                          <h2 className="text-gray-400 text-sm">
-                            {batterInfo?.batOrder ? `${batterInfo.batOrder}번타자` : atBat.title}
-                          </h2>
-                        </div>
+              <div className="border border-gray-700 rounded-lg p-4 bg-gray-900 shadow">
+                {inning.listBatOrder.map((bat, batIdx) => (
+                  <div key={batIdx} className="mb-4">
+                    <div
+                      className="flex items-center gap-4 p-4 border-l-4 bg-gray-800 shadow-sm rounded-md"
+                      style={{ borderLeftColor: attackTeamColor }}
+                    >
+                      <img
+                        src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${getPlayerImageYear(parseInt(gameId.slice(0, 4)), bat.BAT_P_ID)}/${getRealPlayerId(bat.BAT_P_ID)}.jpg`}
+                        alt={bat.BAT_P_NM}
+                        className="w-12 h-16 rounded-full"
+                      />
+                      <div>
+                        <Link to={`https://kbo-info.vercel.app/playerData/${getRealPlayerId(bat.BAT_P_ID)}`} className="font-semibold text-gray-100 hover:text-blue-400 hover:underline transition-colors">{bat.BAT_P_NM}</Link>
+                        <h2 className="text-gray-400 text-sm">{bat.BAT_ORDER_NO}번타자</h2>
                       </div>
-
-                      {/* 해당 타석의 투구별 문자중계 리스트 (textOptions) */}
-                      <ul className="space-y-2">
-                        {textOptions.map((play, playIdx) => (
-                          <li
-                            key={playIdx}
-                            className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300"
-                          >
-                            <span
-                              className={
-                                play.type === "2" || play.type === 2
-                                  ? "italic text-gray-500"
-                                  : play.type === "13" || play.type === "14" || play.type === 13 || play.type === 14
-                                    ? "font-bold text-gray-100"
-                                    : play.type === "23" || play.type === "24" || play.type === 23 || play.type === 24
-                                      ? "font-bold text-blue-400"
-                                      : ""
-                              }
-                            >
-                              {play.text || play.LIVETEXT_IF}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
-                  );
-                })}
+                    <ul className="mt-2 space-y-2">
+                      {bat.listData.map((play, playIdx) => (
+                        <li key={playIdx} className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300">
+                          <span
+                            className={
+                              play.TEXTSTYLE_SC === "2"
+                                ? "italic text-gray-500"
+                                : play.TEXTSTYLE_SC === "13" || play.TEXTSTYLE_SC === "14"
+                                  ? "font-bold text-gray-100"
+                                  : play.TEXTSTYLE_SC === "23" || play.TEXTSTYLE_SC === "24"
+                                    ? "font-bold text-blue-400"
+                                    : ""
+                            }
+                          >
+                            {play.LIVETEXT_IF}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                {inn === maxInn &&
+                  live.postGame.listResult.map((res, resIdx) => (
+                    <ul className="mt-2 space-y-2" key={resIdx}>
+                      <li className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300">
+                        {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ?
+                          <span>{res.LIVETEXT_IF}</span> :
+                          parseInt(scoreData.resultData[0][0]) < parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'T' ?
+                            <span>{res.LIVETEXT_IF}</span> : <span></span>
+                        }
+                      </li>
+                    </ul>
+                  ))
+                }
               </div>
             </div>
-          );
-        })()}
+          )
+        })}
         <div ref={bottomRef} />
       </div>
 
