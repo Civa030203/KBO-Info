@@ -387,7 +387,7 @@ export default function Schedule() {
                     style={getRowStyle(game)}
                     className="border-b border-gray-700/50 hover:brightness-125 transition text-gray-100"
                   >
-                    <td className="py-2 px-1 md:py-3 md:px-4 whitespace-nowrap text-left text-xs md:text-sm font-medium">
+                    <td className="py-2 px-1 md:py-3 md:px-4 hidden md:table-cell whitespace-nowrap text-left text-xs md:text-sm font-medium">
                       {game.date}
                     </td>
 
