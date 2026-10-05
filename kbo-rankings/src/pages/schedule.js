@@ -29,8 +29,8 @@ export default function Schedule() {
   // ----------------------------------------------------
   // 1. 맞대결 상태 추가
   // ----------------------------------------------------
-  const [matchupTeam1, setMatchupTeam1] = useState("키움");
-  const [matchupTeam2, setMatchupTeam2] = useState("한화");
+  const [matchupTeam1, setMatchupTeam1] = useState("");
+  const [matchupTeam2, setMatchupTeam2] = useState("");
   const [matchupData, setMatchupData] = useState(null);
   const [matchupLoading, setMatchupLoading] = useState(false);
   const [isMatchupMode, setIsMatchupMode] = useState(false); // 맞대결 모드 활성화 여부
@@ -329,7 +329,7 @@ export default function Schedule() {
           <table className="min-w-full bg-[#18181b] shadow-md rounded-lg overflow-hidden text-center md:text-sm table-fixed border border-gray-700">
             <thead className="bg-gray-900 text-gray-300 text-xs md:text-sm border-b border-gray-700">
               <tr>
-                <th className="py-2 px-1 md:py-3 md:px-4 text-left">날짜</th>
+                <th className="py-2 px-1 md:py-3 md:px-4 hidden md:table-cell text-left">날짜</th>
                 <th className="py-2 px-1 md:py-3 md:px-4">시간</th>
                 <th className="py-2 px-1 md:py-3 md:px-4 hidden md:table-cell">구장</th>
                 <th className="py-2 px-1 md:py-3 md:px-4 whitespace-nowrap">원정팀</th>
@@ -399,14 +399,25 @@ export default function Schedule() {
                       <div className="flex flex-col items-center justify-center gap-1">
                         <div className="flex items-center justify-center gap-1 md:gap-2">
                           <span className="text-sm md:text-base hidden md:table-cell font-semibold drop-shadow-md">
-                            {awayName}
+                            {game.awayTeamName === ""
+                              ? "히어로즈"
+                              : game.awayTeamName}
                           </span>
                           <img
-                            src={getTeamLogoUrl(gameYear, awayName)}
-                            alt={awayName}
+                            src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.awayTeamName)}
+                            alt={game.awayTeamName}
                             className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0 drop-shadow-md"
                           />
                         </div>
+                        {game.gameState < 2 && game.awaySPitcherName && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.awaySPitcherName}</span>
+                        )}
+                        {String(game.gameState) === "2" && game.awayTeamCurrentPlayer && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">
+                            {game.isTopOrBottom === "초" ? "타 - " : "투 - "}
+                            {game.awayTeamCurrentPlayer}
+                          </span>
+                        )}
                         {String(game.gameState) === "3" && awayOutcome === "W" && game.winPitcher && (
                           <span className="text-[10px] md:text-xs text-gray-300 font-medium">승 - {game.winPitcher}</span>
                         )}
@@ -440,14 +451,25 @@ export default function Schedule() {
                       <div className="flex flex-col items-center justify-center gap-1">
                         <div className="flex items-center justify-center gap-1 md:gap-2">
                           <span className="text-sm md:text-base hidden md:table-cell font-semibold drop-shadow-md">
-                            {homeName}
+                            {game.homeTeamName === ""
+                              ? "히어로즈"
+                              : game.homeTeamName}
                           </span>
                           <img
-                            src={getTeamLogoUrl(gameYear, homeName)}
-                            alt={homeName}
+                            src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.homeTeamName)}
+                            alt={game.homeTeamName}
                             className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0 drop-shadow-md"
                           />
                         </div>
+                        {game.gameState < 2 && game.homeSPitcherName && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.homeSPitcherName}</span>
+                        )}
+                        {String(game.gameState) === "2" && game.homeTeamCurrentPlayer && (
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">
+                            {game.isTopOrBottom === "초" ? "투 - " : "타 - "}
+                            {game.homeTeamCurrentPlayer}
+                          </span>
+                        )}
                         {String(game.gameState) === "3" && homeOutcome === "W" && game.winPitcher && (
                           <span className="text-[10px] md:text-xs text-gray-300 font-medium">승 - {game.winPitcher}</span>
                         )}
