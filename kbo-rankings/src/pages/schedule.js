@@ -72,7 +72,11 @@ export default function Schedule() {
     else if (teamName.includes("대한민국") || teamName.includes("한국")) teamID = "KR";
     else if (teamName.includes("체코")) teamID = "CZ";
     else if (teamName.includes("일본")) teamID = "JP";
-    else if (teamName.includes("대만")) teamID = "TW";
+    else if (
+      teamName.includes("대만") ||
+      teamName.includes("차이니즈 타이베이")
+    )
+      teamID = "TW";
     else if (teamName.includes("호주")) teamID = "AU";
     else if (teamName.includes("도미니카")) teamID = "DO";
     else if (teamName.includes("중국")) teamID = "CN";
@@ -240,7 +244,7 @@ export default function Schedule() {
             onChange={(e) => setMatchupTeam1(e.target.value)}
             className="bg-gray-900 border border-gray-600 text-white p-2 rounded"
           >
-            {["두산", "LG", "KIA", "삼성", "SSG", "KT", "NC", "롯데", "한화", "키움"].map((t) => (
+            {["팀 선택", "두산", "LG", "KIA", "삼성", "SSG", "KT", "NC", "롯데", "한화", "키움"].map((t) => (
               <option key={t} value={t}>{t}</option>
             ))}
           </select>
@@ -252,7 +256,7 @@ export default function Schedule() {
             onChange={(e) => setMatchupTeam2(e.target.value)}
             className="bg-gray-900 border border-gray-600 text-white p-2 rounded"
           >
-            {["두산", "LG", "KIA", "삼성", "SSG", "KT", "NC", "롯데", "한화", "키움"].map((t) => (
+            {["팀 선택", "두산", "LG", "KIA", "삼성", "SSG", "KT", "NC", "롯데", "한화", "키움"].map((t) => (
               <option key={t} value={t}>{t}</option>
             ))}
           </select>
