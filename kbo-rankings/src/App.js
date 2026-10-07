@@ -37,7 +37,22 @@ const TEAM_CODE = {
   "KIA": "HT",
   "두산": "OB",
   "키움": "WO"
-}
+};
+
+// 💡 각 팀별 시즌 종료일 설정 (YYYY-MM-DD 형식)
+// PS 탈락팀 및 PS 진출팀의 최종 종료일에 맞춰 날짜를 다르게 설정할 수 있습니다.
+const SEASON_END_DATES = {
+  "키움": "2026-10-07",
+  "한화": "2026-10-11",
+  "롯데": "2026-10-13",
+  "NC": "2026-10-11",
+  "SSG": "2026-10-11",
+  "두산": "2026-11-10",
+  "KT": "2026-11-10",
+  "삼성": "2026-11-10",
+  "LG": "2026-11-10",
+  "KIA": "2026-11-10"
+};
 
 const DUMMY_SCHEDULE = [
   { date: "7/16", opponent: "NC", stadium: "창원" },
@@ -126,7 +141,6 @@ function Home() {
             const opponent = game.awayTeamName === selectedTeam ? game.homeTeamName : game.awayTeamName;
             const myScore = game.awayTeamName === selectedTeam ? game.awayScore : game.homeScore;
             const opponentScore = game.awayTeamName === selectedTeam ? game.homeScore : game.awayScore;
-            const gameID = game.gameID
 
             return {
               date: shortDate,
@@ -177,6 +191,16 @@ function Home() {
     fetchTeamData();
   }, [selectedTeam]);
 
+  // 💡 시즌 종료 여부 판단 로직
+  const isSeasonOver = () => {
+    if (!selectedTeam) return false;
+    const endDateStr = SEASON_END_DATES[selectedTeam];
+    if (!endDateStr) return false;
+
+    const todayStr = new Date().toISOString().slice(0, 10);
+    return todayStr >= endDateStr;
+  };
+
   const renderDropdown = () => (
     <div className="relative z-50 flex flex-col items-center gap-1.5">
       {/* 1. 팀 선택 드롭다운 버튼 */}
@@ -223,8 +247,8 @@ function Home() {
         <button
           onClick={toggleNotification}
           className={`flex items-center justify-center gap-1 w-20 md:w-24 py-1.5 rounded-lg text-[10px] md:text-xs font-medium border transition-all shadow-sm ${notiEnabled
-              ? "bg-amber-500/20 text-amber-300 border-amber-500/50 hover:bg-amber-500/30"
-              : "bg-gray-800/80 text-gray-400 border-gray-700 hover:bg-gray-700"
+            ? "bg-amber-500/20 text-amber-300 border-amber-500/50 hover:bg-amber-500/30"
+            : "bg-gray-800/80 text-gray-400 border-gray-700 hover:bg-gray-700"
             }`}
           title={notiEnabled ? "경기 알림 켜짐 (탭하여 끄기)" : "경기 알림 꺼짐 (탭하여 켜기)"}
         >
@@ -234,6 +258,8 @@ function Home() {
       )}
     </div>
   );
+
+  const seasonEnded = isSeasonOver();
 
   return (
     <div className="flex-1 flex flex-col p-4 sm:p-8 font-sans">
@@ -289,7 +315,7 @@ function Home() {
           {/* Top Half: Schedule Banner */}
           <Link
             to={
-              scheduleData.length > 0 && (scheduleData[0].gameState === "2")
+              !seasonEnded && scheduleData.length > 0 && (scheduleData[0].gameState === "2")
                 ? `/relay/1/0/${scheduleData[0].gameID}`
                 : "/schedule"
             }
@@ -309,8 +335,13 @@ function Home() {
               {/* Left Side */}
               <div className="flex flex-col justify-between mb-4 md:mb-0">
                 <div className="flex items-center gap-4 md:gap-6">
-                  {/* scheduleData[0]이 없을 경우 안전하게 undefined를 반환하여 에러 방지 */}
-                  {scheduleData[0]?.gameState === "2" ? (
+                  {seasonEnded ? (
+                    <h2 className="text-white md:text-6xl text-4xl font-bold tracking-tight leading-none drop-shadow-lg">
+                      SEASON
+                      <br />
+                      OFF
+                    </h2>
+                  ) : scheduleData[0]?.gameState === "2" ? (
                     <h2 className="text-white md:text-6xl text-4xl font-bold tracking-tight leading-none drop-shadow-lg">
                       CURRENT
                       <br />
@@ -329,7 +360,7 @@ function Home() {
                       GAME
                     </h2>
                   )}
-                  {scheduleData.length > 0 &&
+                  {!seasonEnded && scheduleData.length > 0 &&
                     !scheduleData[0].noGame &&
                     teamData[scheduleData[0].opponent] && (
                       <div className="flex items-center gap-4">
@@ -348,43 +379,47 @@ function Home() {
                     )}
                 </div>
                 <div className="text-white/90 text-lg md:text-2xl font-medium drop-shadow mt-4 md:mt-0">
-                  {scheduleData.length > 0
-                    ? scheduleData[0].noGame
-                      ? "오늘 경기 없음"
-                      : scheduleData[0].gameState === "2"
-                        ? `${scheduleData[0].date}, ${scheduleData[0].stadium || ""
-                        }, 현재 ${scheduleData[0].inning}회${scheduleData[0].topOrBottom
-                        } 진행 중`
-                        : scheduleData[0].gameState === "3"
-                          ? `${scheduleData[0].date}, ${scheduleData[0].stadium}, 종료`
-                          : `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}`
-                    : "일정 없음"}
+                  {seasonEnded
+                    ? "2026 시즌 종료"
+                    : scheduleData.length > 0
+                      ? scheduleData[0].noGame
+                        ? "오늘 경기 없음"
+                        : scheduleData[0].gameState === "2"
+                          ? `${scheduleData[0].date}, ${scheduleData[0].stadium || ""
+                          }, 현재 ${scheduleData[0].inning}회${scheduleData[0].topOrBottom
+                          } 진행 중`
+                          : scheduleData[0].gameState === "3"
+                            ? `${scheduleData[0].date}, ${scheduleData[0].stadium}, 종료`
+                            : `${scheduleData[0].date}, ${scheduleData[0].stadium || ""}`
+                      : "일정 없음"}
                 </div>
               </div>
 
               {/* Right Side */}
-              <div className="flex justify-end items-center">
-                <div className="grid grid-cols-2 gap-x-6 md:gap-x-12 gap-y-3 md:gap-y-6 bg-black/20 p-4 md:p-6 rounded-2xl backdrop-blur-sm border border-white/10">
-                  {scheduleData.map((game, idx) => (
-                    <div key={idx} className="flex items-center gap-3 md:gap-5">
-                      <span className="text-white text-lg md:text-2xl font-medium">
-                        {game.date}
-                      </span>
-                      {game.noGame ? (
-                        <span className="text-white/80 text-base md:text-xl font-medium tracking-wider">
-                          NO GAME
+              {seasonEnded ? null : (
+                <div className="flex justify-end items-center">
+                  <div className="grid grid-cols-2 gap-x-6 md:gap-x-12 gap-y-3 md:gap-y-6 bg-black/20 p-4 md:p-6 rounded-2xl backdrop-blur-sm border border-white/10">
+                    {scheduleData.map((game, idx) => (
+                      <div key={idx} className="flex items-center gap-3 md:gap-5">
+                        <span className="text-white text-lg md:text-2xl font-medium">
+                          {game.date}
                         </span>
-                      ) : (
-                        <img
-                          src={teamData[game.opponent]?.icon}
-                          alt={game.opponent}
-                          className="w-10 h-10 md:w-14 md:h-14 object-contain drop-shadow-md"
-                        />
-                      )}
-                    </div>
-                  ))}
+                        {seasonEnded || game.noGame ? (
+                          <span className="text-white/80 text-base md:text-xl font-medium tracking-wider">
+                            NO GAME
+                          </span>
+                        ) : (
+                          <img
+                            src={teamData[game.opponent]?.icon}
+                            alt={game.opponent}
+                            className="w-10 h-10 md:w-14 md:h-14 object-contain drop-shadow-md"
+                          />
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </Link>
 

@@ -34,6 +34,7 @@ export default function Schedule() {
   const [matchupData, setMatchupData] = useState(null);
   const [matchupLoading, setMatchupLoading] = useState(false);
   const [isMatchupMode, setIsMatchupMode] = useState(false); // 맞대결 모드 활성화 여부
+  const [matchupYear, setMatchUpYear] = useState(0);
 
   const handleChange = (e) => {
     const selected = e.target.value.replace(/-/g, "");
@@ -182,14 +183,18 @@ export default function Schedule() {
       alert("서로 다른 팀을 선택해 주세요.");
       return;
     }
+
+    // 1. 요청 시작 시점에 맞대결 모드 활성화 및 로딩 시작
+    setIsMatchupMode(true);
     setMatchupLoading(true);
+
     const searchYear = searchParams.date ? searchParams.date.slice(0, 4) : String(year);
 
     axios
-      .get(`${API_BASE_URL}/api/schedule/head-to-head?year=${searchYear}&team1=${matchupTeam1}&team2=${matchupTeam2}`)
+      .get(`${API_BASE_URL}/api/schedule/head-to-head?year=${matchupYear}&team1=${matchupTeam1}&team2=${matchupTeam2}`)
       .then((res) => {
         setMatchupData(res.data);
-        setIsMatchupMode(true); // 맞대결 모드 전환
+        // setIsMatchupMode(true); // <- 여기서 제거
         setMatchupLoading(false);
       })
       .catch((err) => {
@@ -202,6 +207,38 @@ export default function Schedule() {
     setIsMatchupMode(false);
     setMatchupData(null);
   };
+
+  const teamsByYear = {
+    2001: ["팀 선택", "현대", "두산", "삼성", "LG", "롯데", "KIA", "한화", "SK"],
+    2002: ["팀 선택", "두산", "삼성", "현대", "한화", "KIA", "LG", "SK", "롯데"],
+    2003: ["팀 선택", "샴셩", "LG", "KIA", "현대", "두산", "SK", "한화", "롯데"],
+    2004: ["팀 선택", "현대", "SK", "KIA", "삼성", "한화", "LG", "두산", "롯데"],
+    2005: ["팀 선택", "현대", "삼성", "두산", "KIA", "SK", "LG", "한화", "롯데"],
+    2006: ["팀 선택", "삼성", "두산", "SK", "한화", "롯데", "LG", "현대", "KIA"],
+    2007: ["팀 선택", "삼성", "한화", "현대", "KIA", "두산", "SK", "롯데", "KIA"],
+    2008: ["팀 선택", "SK", "두산", "한화", "삼성", "LG", "우리", "롯데", "KIA"],
+    2009: ["팀 선택", "SK", "두산", "롯데", "삼성", "한화", "KIA", "히어로즈", "LG"],
+    2010: ["팀 선택", "KIA", "SK", "두산", "롯데", "삼성", "넥센", "LG", "한화"],
+    2011: ["팀 선택", "SK", "삼성", "두산", "롯데", "KIA", "LG", "넥센", "한화"],
+    2012: ["팀 선택", "삼성", "SK", "롯데", "KIA", "두산", "LG", "한화", "넥센"],
+    2013: ["팀 선택", "삼성", "SK", "두산", "롯데", "KIA", "넥센", "LG", "한화", "NC"],
+    2014: ["팀 선택", "삼성", "두산", "LG", "넥센", "롯데", "SK", "NC", "KIA", "한화"],
+    2015: ["팀 선택", "삼성", "넥센", "NC", "LG", "SK", "두산", "롯데", "KIA", "한화", "KT"],
+    2016: ["팀 선택", "두산", "삼성", "NC", "넥센", "SK", "한화", "KIA", "롯데", "LG", "KT"],
+    2017: ["팀 선택", "두산", "NC", "넥센", "LG", "KIA", "SK", "한화", "롯데", "삼성", "KT"],
+    2018: ["팀 선택", "KIA", "두산", "롯데", "NC", "SK", "LG", "넥센", "한화", "삼성", "KT"],
+    2019: ["팀 선택", "SK", "두산", "한화", "키움", "KIA", "삼성", "롯데", "LG", "KT", "NC"],
+    2020: ["팀 선택", "두산", "키움", "SK", "LG", "NC", "KT", "KIA", "삼성", "한화", "롯데"],
+    2021: ["팀 선택", "NC", "두산", "KT", "LG", "키움", "KIA", "롯데", "삼성", "SSG", "한화"],
+    2022: ["팀 선택", "KT", "두산", "삼성", "LG", "키움", "SSG", "NC", "롯데", "KIA", "한화"],
+    2023: ["팀 선택", "SSG", "키움", "LG", "KT", "KIA", "NC", "삼성", "롯데", "두산", "한화"],
+    2024: ["팀 선택", "LG", "KT", "SSG", "NC", "두산", "KIA", "롯데", "삼성", "한화", "키움"],
+    2025: ["팀 선택", "KIA", "삼성", "LG", "두산", "KT", "SSG", "롯데", "한화", "NC", "키움"],
+    2026: ["팀 선택", "LG", "한화", "SSG", "삼성", "NC", "KT", "롯데", "KIA", "두산", "키움"]
+  };
+
+  // 변수에 해당하는 연도가 없으면 기본 2026 목록 사용
+  const currentTeamList = teamsByYear[matchupYear] || teamsByYear[2026];
 
   // ----------------------------------------------------
   // 3. 테이블에 바인딩할 데이터 및 로딩 상태 정제
@@ -244,8 +281,10 @@ export default function Schedule() {
             onChange={(e) => setMatchupTeam1(e.target.value)}
             className="bg-gray-900 border border-gray-600 text-white p-2 rounded"
           >
-            {["팀 선택", "두산", "LG", "KIA", "삼성", "SSG", "KT", "NC", "롯데", "한화", "키움"].map((t) => (
-              <option key={t} value={t}>{t}</option>
+            {currentTeamList.map((t) => (
+              <option key={t} value={t === "팀 선택" ? "" : t}>
+                {t}
+              </option>
             ))}
           </select>
 
@@ -256,8 +295,20 @@ export default function Schedule() {
             onChange={(e) => setMatchupTeam2(e.target.value)}
             className="bg-gray-900 border border-gray-600 text-white p-2 rounded"
           >
-            {["팀 선택", "두산", "LG", "KIA", "삼성", "SSG", "KT", "NC", "롯데", "한화", "키움"].map((t) => (
-              <option key={t} value={t}>{t}</option>
+            {currentTeamList.map((t) => (
+              <option key={t} value={t === "팀 선택" ? "" : t}>
+                {t}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={matchupYear}
+            onChange={(e) => setMatchUpYear(e.target.value)}
+            className="bg-gray-900 border border-gray-600 text-white p-2 rounded"
+          >
+            {Array.from({ length: 26 }, (_, i) => 2001 + i).map((y) => (
+              <option key={y} value={y}>{y}</option>
             ))}
           </select>
 
@@ -267,6 +318,7 @@ export default function Schedule() {
           >
             전적 조회
           </button>
+
         </div>
 
         {/* 요약 승무패 정보 */}
@@ -408,7 +460,7 @@ export default function Schedule() {
                               : game.awayTeamName}
                           </span>
                           <img
-                            src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.awayTeamName)}
+                            src={isMatchupMode ? getTeamLogoUrl(matchupYear, game.awayTeamName) : getTeamLogoUrl(searchParams.date.slice(0, 4), game.awayTeamName)}
                             alt={game.awayTeamName}
                             className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0 drop-shadow-md"
                           />
@@ -449,6 +501,7 @@ export default function Schedule() {
                           <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">종료</span>
                         </div>
                       )}
+                      {game.gameState < 4 ? (<span className="text-[10px]">{game.gameType}</span>) : (<span></span>)}
                     </td>
 
                     {/* 홈팀 */}
@@ -461,7 +514,7 @@ export default function Schedule() {
                               : game.homeTeamName}
                           </span>
                           <img
-                            src={getTeamLogoUrl(searchParams.date.slice(0, 4), game.homeTeamName)}
+                            src={isMatchupMode ? getTeamLogoUrl(matchupYear, game.homeTeamName) : getTeamLogoUrl(searchParams.date.slice(0, 4), game.homeTeamName)}
                             alt={game.homeTeamName}
                             className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0 drop-shadow-md"
                           />
