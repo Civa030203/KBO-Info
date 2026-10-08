@@ -7,8 +7,6 @@ import { fetchVideoMap, getVideoUrlSync } from "../utils/videoMapService";
 
 // 국가대표 경기 등에서 변경되는 선수 ID를 원본 KBO 선수 ID로 매핑하는 객체
 const playerIdMap = {
-  // "변경된_국대_ID": "원본_KBO_ID" 형식으로 추가해주시면 됩니다.
-  // 예: "12345": "67890",
   "10200": "68220", // 곽빈 (두산)
   "10201": "51867", // 김건우 (SSG)
   "10202": "53754", // 김서현 (한화)
@@ -135,8 +133,6 @@ const playerIdMap = {
   "21023": "63722", // 한승택 (KIA)
   "21024": "63248", // 함덕주 (두산)
 
-  // 2019 프리미어 12
-
   // 2022 항저우 아시안 게임
   "31301": "67119", // 고우석 (LG)
   "31303": "68900", // 김영규 (NC)
@@ -232,45 +228,14 @@ const getRealPlayerId = (id) => playerIdMap[id] || id;
 
 // KBO 활동 이력 및 해외진출/복귀 선수 관리 맵
 const kboPlayerCareerMap = {
-  // 김하성
-  "64300": {
-    periods: [
-      { start: 2014, end: 2020 }
-    ]
-  },
-  // 송성문
-  "65357": {
-    periods: [
-      { start: 2015, end: 2025 }
-    ]
-  },
-  // 고우석: 2017~2023 1차 활동 후, 2026 복귀
-  "67119": {
-    periods: [
-      { start: 2017, end: 2023 },
-      { start: 2026, end: Infinity } // 또는 복귀 후 현역이면 end: Infinity 처리 가능
-    ]
-  },
-  // 김혜성: 2017~2024 (해외 진출)
-  "67304": {
-    periods: [{ start: 2017, end: 2024 }]
-  },
-  // 이정후: 2017~2023 (해외 진출)
-  "67341": {
-    periods: [{ start: 2017, end: 2023 }]
-  },
-  // 코엔 윈
-  "55138": {
-    periods: [{ start: 2025, end: 2025 }]
-  },
-  // 알렉스 홀
-  "31012": {
-    periods: [{ start: 2026, end: 2026 }]
-  },
-  // 왕옌청
-  "56719": {
-    periods: [{ start: 2026, end: 2026 }]
-  }
+  "64300": { periods: [{ start: 2014, end: 2020 }] },
+  "65357": { periods: [{ start: 2015, end: 2025 }] },
+  "67119": { periods: [{ start: 2017, end: 2023 }, { start: 2026, end: Infinity }] },
+  "67304": { periods: [{ start: 2017, end: 2024 }] },
+  "67341": { periods: [{ start: 2017, end: 2023 }] },
+  "55138": { periods: [{ start: 2025, end: 2025 }] },
+  "31012": { periods: [{ start: 2026, end: 2026 }] },
+  "56719": { periods: [{ start: 2026, end: 2026 }] }
 };
 
 // 프로필 이미지의 연도를 구하는 헬퍼 함수
@@ -278,25 +243,20 @@ const getPlayerImageYear = (gameYear, playerId, seriesId) => {
   const realId = getRealPlayerId(playerId);
   const targetGameYear = Number(gameYear);
 
-  // 특수 케이스 예외 처리가 필요한 선수(해외 진출, 해외 복귀, 입단 전 국대 등)
   if (kboPlayerCareerMap[realId]) {
     const { periods } = kboPlayerCareerMap[realId];
 
-    // 1. KBO 첫 입단 전 연도의 경기를 볼 때 (예: 2023 APBC 왕옌청)
     const firstStartYear = periods[0].start;
     if (targetGameYear < firstStartYear) {
       return null;
     }
 
-    // 2. KBO에서 실제로 뛰어 프로필이 존재하는 구간(period)에 속하는지 확인
     for (const period of periods) {
       if (targetGameYear >= period.start && targetGameYear <= period.end) {
         return targetGameYear > 2016 ? targetGameYear : 2016;
       }
     }
 
-    // 3. 특정 공백기(해외 리그 재적 기간)에 열린 국가대표 경기를 볼 때 (예: 2024~2025 고우석/이정후)
-    // -> 해당 시점 직전의 가장 최근 KBO 마지막 시즌 프로필을 찾아 반환
     let mostRecentKboYear = null;
     for (const period of periods) {
       if (period.end < targetGameYear) {
@@ -309,7 +269,6 @@ const getPlayerImageYear = (gameYear, playerId, seriesId) => {
     }
   }
 
-  // 일반 선수의 KBO 정규/포스트시즌 및 기본 경기 처리 (2016년 이전 데이터는 2016 고정)
   return targetGameYear > 2016 ? targetGameYear : 2016;
 };
 
@@ -331,18 +290,157 @@ const getTeamIdFromName = (teamName) => {
   return "";
 };
 
-// SOOP(아프리카TV) 등 외부 중계/리플레이 링크 매핑 객체는 videoMap.js에서 관리합니다.
-
 export default function LiveTextPage() {
   const { leagueId, seriesId, gameID: gameId } = useParams();
   const [live, setLive] = useState(null);
   const [loading, setLoading] = useState(true);
   const [maxInn, setMaxInn] = useState(1);
+  const [gameStatus, setGameStatus] = useState(null);
   const [inn, setInn] = useState(null);
   const [videoVisible, setVideoVisible] = useState(true);
   const [mobileLineupOpen, setMobileLineupOpen] = useState(false);
   const [autoScroll, setAutoScroll] = useState(false);
   const bottomRef = useRef(null);
+  const pitcherDragRef = useRef({ active: false, moved: false, startX: 0, scrollLeft: 0 });
+  const [isPitcherDragging, setIsPitcherDragging] = useState(false);
+  const [gameResultPitchers, setGameResultPitchers] = useState(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setGameResultPitchers(null);
+
+    const fetchPitcherResult = async () => {
+      try {
+        const { data } = await axios.get(`${API_BASE_URL}/api/relay/pitching-result`, {
+          params: { g_id: gameId, sr_id: seriesId },
+          signal: controller.signal,
+        });
+        if (!controller.signal.aborted) {
+          setGameResultPitchers(Array.isArray(data.pitchingResult) ? data.pitchingResult : []);
+        }
+      } catch (err) {
+        if (!controller.signal.aborted) {
+          console.error("경기 결과 투수 데이터 로드 실패:", err);
+        }
+      }
+    };
+
+    if (!gameId || Number(leagueId) !== 1) return;
+    fetchPitcherResult();
+    const interval = setInterval(fetchPitcherResult, 10000);
+    return () => {
+      controller.abort();
+      clearInterval(interval);
+    };
+  }, [gameId, seriesId, leagueId]);
+
+  // 경기 결과 투수 UI 카드 렌더링 함수
+  const renderPitcherResultCards = () => {
+    if (!Array.isArray(gameResultPitchers) || gameResultPitchers.length === 0) return null;
+
+    const gameYear = parseInt(gameId.slice(0, 4)) || new Date().getFullYear();
+    const pitcherResultLabels = {
+      W: "승리투수",
+      L: "패전투수",
+      H: "홀드투수",
+      S: "세이브투수",
+    };
+
+    const getPitcherCardBg = (teamName) => {
+      if (!teamName) return "#1f2937";
+      const style = teamData[teamName];
+      console.log(style);
+
+      return style?.mainColor ? style.mainColor.replace(/[[\]]/g, "") : "#1f2937";
+    };
+
+    return (
+      <div className="mt-8 pt-6 border-t border-gray-700/80 w-full">
+        <h3 className="text-2xl font-black text-white mb-6 tracking-tight">
+          경기 종료
+        </h3>
+
+        <div
+          className={`flex gap-4 overflow-x-auto overscroll-x-contain pb-4 select-none ${isPitcherDragging ? "cursor-grabbing" : "cursor-grab"}`}
+          tabIndex={0}
+          role="region"
+          aria-label="경기 결과 투수 카드, 좌우로 스크롤"
+          onMouseDown={(e) => {
+            if (e.button !== 0) return;
+            pitcherDragRef.current = {
+              active: true,
+              moved: false,
+              startX: e.clientX,
+              scrollLeft: e.currentTarget.scrollLeft,
+            };
+          }}
+          onMouseMove={(e) => {
+            const drag = pitcherDragRef.current;
+            if (!drag.active) return;
+            const distance = e.clientX - drag.startX;
+            if (!drag.moved && Math.abs(distance) < 5) return;
+            drag.moved = true;
+            setIsPitcherDragging(true);
+            e.preventDefault();
+            e.currentTarget.scrollLeft = drag.scrollLeft - distance;
+          }}
+          onMouseUp={() => {
+            pitcherDragRef.current.active = false;
+            setIsPitcherDragging(false);
+          }}
+          onMouseLeave={() => {
+            pitcherDragRef.current.active = false;
+            setIsPitcherDragging(false);
+          }}
+          onClickCapture={(e) => {
+            if (pitcherDragRef.current.moved && e.detail !== 0) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+            pitcherDragRef.current.moved = false;
+          }}
+          onTouchStart={() => {
+            pitcherDragRef.current.moved = false;
+          }}
+          onDragStart={(e) => e.preventDefault()}
+        >
+          {gameResultPitchers.map((pitcher) => (
+            <div key={`${pitcher.pCode}-${pitcher.wls}`} className="flex w-72 sm:w-80 shrink-0 flex-col items-center">
+              <span className="text-gray-300 font-bold text-lg mb-3">{pitcherResultLabels[pitcher.wls] || "투수"}</span>
+              <div
+                className="w-full p-4 rounded-xl flex items-center justify-start gap-8 shadow-lg border border-white/10"
+                style={{ backgroundColor: getPitcherCardBg(pitcher.teamName) }}
+              >
+
+                <img
+                  src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${getPlayerImageYear(gameYear, pitcher.pCode, seriesId)}/${getRealPlayerId(pitcher.pCode)}.jpg`}
+                  alt={pitcher.name}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://statiz.co.kr/images/none.png";
+                  }}
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-white/20 bg-black/20 shadow-md shrink-0"
+                />
+                <div className="flex flex-col justify-center">
+                  <Link
+                    to={`https://kbo-info.vercel.app/playerData/${getRealPlayerId(pitcher.pCode)}`}
+                    rel="noopener noreferrer"
+                    className="text-white text-2xl sm:text-xl font-extrabold hover:text-blue-300 transition-colors"
+                  >
+                    {pitcher.name}
+                  </Link>
+                  <span className="text-gray-300 text-sm sm:text-base font-medium mt-0.5">
+                    {pitcher.wls === "W" || pitcher.wls === "L" ? `시즌 ${pitcher.w}승 ${pitcher.l}패` :
+                      pitcher.wls === "S" ? `시즌 ${pitcher.s}세이브` : ``}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
 
   // 자동 스크롤 처리
   useEffect(() => {
@@ -351,7 +449,7 @@ export default function LiveTextPage() {
     }
   }, [live, autoScroll, inn]);
 
-  // 현재 경기의 비디오 링크 가져오기 (동기 캐시 + 비동기 갱신)
+  // 비디오 링크
   const [videoUrl, setVideoUrl] = useState(() => getVideoUrlSync(gameId));
 
   useEffect(() => {
@@ -368,13 +466,13 @@ export default function LiveTextPage() {
     }
   }, [maxInn]);
 
-  // 후보 선수 명단 상태 (네이버 API 연동)
+  // 후보 선수 명단 상태
   const [entryData, setEntryData] = useState({
     away: { batter: [], pitcher: [] },
     home: { batter: [], pitcher: [] },
   });
   const [entryOpen, setEntryOpen] = useState(false);
-  const [entryTab, setEntryTab] = useState("home"); // "away" | "home"
+  const [entryTab, setEntryTab] = useState("home");
 
   useEffect(() => {
     let intervalId;
@@ -388,6 +486,7 @@ export default function LiveTextPage() {
         gData.data.forEach((dt) => {
           if (dt.gameID === gameId) {
             setMaxInn((prev) => Math.max(prev || 1, dt.gameMaxInn || 1));
+            setGameStatus({ gameId, isGameOver: String(dt.gameState) === "3" });
           }
         });
 
@@ -403,14 +502,12 @@ export default function LiveTextPage() {
           },
         });
 
-        // 1군(네이버 API)인 경우: 문자중계, 스코어보드, 기록지, 후보 엔트리를 일괄 동기화
         if (res.data?.isNaver) {
           setLive({ live: res.data.live, postGame: res.data.postGame });
           if (res.data.scoreBoard) setScoreData(res.data.scoreBoard);
           if (res.data.record) setRecordData(res.data.record);
           if (res.data.entry) setEntryData(res.data.entry);
         } else {
-          // 2군(KBO API) 또는 네이버 Fallback 데이터
           setLive(res.data);
         }
       } catch (err) {
@@ -425,10 +522,8 @@ export default function LiveTextPage() {
     return () => clearInterval(intervalId);
   }, [inn, seriesId, gameId, leagueId]);
 
-  // state 추가
   const [scoreData, setScoreData] = useState(null);
 
-  // 2군(퓨처스리그)인 경우 별도 스코어보드 API 요청 (1군은 fetchLive에서 일괄 수신)
   useEffect(() => {
     if (Number(leagueId) === 1) return;
 
@@ -450,7 +545,6 @@ export default function LiveTextPage() {
     }
   }, [leagueId, seriesId, gameId]);
 
-  // 노게임(우천 취소) 등으로 스케줄 API에서 maxInn을 정상적으로 받아오지 못했을 때 스코어보드를 기반으로 복구
   useEffect(() => {
     if (scoreData && scoreData.scoreData && scoreData.scoreData.length > 0) {
       let calculatedMaxInn = 0;
@@ -468,7 +562,6 @@ export default function LiveTextPage() {
         }
       });
 
-      // 스케줄 API의 maxInn(기본값 1 포함)보다 진행된 이닝이 크다면 업데이트
       if (calculatedMaxInn > (maxInn || 0)) {
         setMaxInn(calculatedMaxInn);
       }
@@ -477,10 +570,8 @@ export default function LiveTextPage() {
 
   const [lineupData, setLineupData] = useState({ away: [], home: [] });
 
-  // 선발 라인업 데이터 가져오기 (기존 preview 엔드포인트 방식)
   useEffect(() => {
     const fetchLineup = async () => {
-      // 1이 아니거나 8인 경우 호출 패스
       if (Number(leagueId) !== 1) return;
 
       try {
@@ -521,9 +612,8 @@ export default function LiveTextPage() {
     }
   }, [gameId, leagueId, seriesId]);
 
-  // 당일 경기 기록지 상태 및 API 요청 (2군 경기 또는 Fallback 시에만 별도 호출)
   const [recordOpen, setRecordOpen] = useState(false);
-  const [recordTab, setRecordTab] = useState("home"); // "away" | "home"
+  const [recordTab, setRecordTab] = useState("home");
   const [recordData, setRecordData] = useState(null);
 
   useEffect(() => {
@@ -626,7 +716,6 @@ export default function LiveTextPage() {
 
     const gameYear = parseInt(gameId.slice(0, 4)) || new Date().getFullYear();
 
-    // 팀 상징색 추출 헬퍼
     const getTeamRawColor = (teamName) => {
       if (!teamName) return "#1f2937";
       const style = teamData[teamName];
@@ -640,7 +729,6 @@ export default function LiveTextPage() {
     const homeTeamColor = getTeamRawColor(homeTeamName);
     const currentContainerColor = recordTab === "away" ? awayTeamColor : homeTeamColor;
 
-    // 야수(타자) 타순별 인원 카운트 (동일 타순 2명 이상 & CHANGE === 1인 교체 아웃 선수 판별용)
     const rankCountMap = {};
     listHitter.forEach((hitter) => {
       const rank = String(hitter.RANK);
@@ -656,7 +744,6 @@ export default function LiveTextPage() {
         style={{ backgroundColor: currentContainerColor }}
       >
         <div className="bg-black/60 backdrop-blur-md p-4 sm:p-6">
-          {/* 상단 타이틀 및 닫기 버튼 */}
           <div className="relative flex items-center justify-center mb-6">
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-widest text-center drop-shadow-md">
               오늘의 기록
@@ -669,7 +756,6 @@ export default function LiveTextPage() {
             </button>
           </div>
 
-          {/* 팀 선택 탭 (각 팀 상징색 적용) */}
           <div className="grid grid-cols-2 rounded-xl overflow-hidden border border-white/20 bg-black/40 mb-6 shadow-lg">
             <button
               onClick={() => setRecordTab("away")}
@@ -693,7 +779,6 @@ export default function LiveTextPage() {
             </button>
           </div>
 
-          {/* 타자 목록 */}
           <div className="space-y-3">
             {listHitter.length === 0 ? (
               <p className="text-center py-6 text-gray-400">타자 기록이 없습니다.</p>
@@ -703,12 +788,10 @@ export default function LiveTextPage() {
                 const imageYear = getPlayerImageYear(gameYear, hitter.P_ID, seriesId);
                 const stats = tableHitter[idx] || [];
 
-                // 교체 아웃 판별: 백엔드에서 제공하는 isSubOut 우선, 없으면 fallback
                 const isSubOut = hitter.isSubOut !== undefined
                   ? Boolean(hitter.isSubOut)
                   : ((rankCountMap[String(hitter.RANK)] >= 2) && (Number(hitter.CHANGE) === 1));
 
-                // 교체 투입 판별: 백엔드 isSubIn 우선
                 const isSubIn = hitter.isSubIn !== undefined
                   ? Boolean(hitter.isSubIn)
                   : ((rankCountMap[String(hitter.RANK)] >= 2) && !isSubOut);
@@ -724,7 +807,6 @@ export default function LiveTextPage() {
                       : "border-white/10 bg-gray-900/80 hover:bg-gray-900"
                       }`}
                   >
-                    {/* 선수 기본 정보 */}
                     <div className="flex items-center gap-3 w-full md:w-auto shrink-0">
                       <span
                         className={`w-16 font-bold text-center rounded py-1.5 text-xs shadow-inner shrink-0 border ${isSubOut
@@ -792,7 +874,6 @@ export default function LiveTextPage() {
                       </div>
                     </div>
 
-                    {/* 타격 기록 테이블 */}
                     <div className="w-full md:w-[480px] bg-black/50 rounded-lg border border-white/5 p-2 overflow-x-auto shadow-inner">
                       <div className="grid grid-cols-7 min-w-[360px] text-center">
                         {hitterHeaders.map((header, hIdx) => (
@@ -825,13 +906,11 @@ export default function LiveTextPage() {
             )}
           </div>
 
-          {/* 투수 구분 헤더 */}
           <div className="mt-8 mb-4 flex items-center gap-2 border-t border-white/15 pt-6">
             <span className="w-2.5 h-5 bg-white/70 rounded-full inline-block"></span>
             <h3 className="text-lg sm:text-xl font-bold text-white">투수 기록</h3>
           </div>
 
-          {/* 투수 목록 */}
           <div className="space-y-3">
             {listPitcher.length === 0 ? (
               <p className="text-center py-6 text-gray-400">투수 기록이 없습니다.</p>
@@ -846,7 +925,6 @@ export default function LiveTextPage() {
                     key={idx}
                     className="rounded-xl border border-white/10 bg-gray-900/80 hover:bg-gray-900 p-3 sm:p-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-md transition"
                   >
-                    {/* 선수 기본 정보 */}
                     <div className="flex items-center gap-3 w-full md:w-auto shrink-0">
                       <span className="w-16 font-bold text-center bg-black/60 text-gray-200 border border-white/10 rounded py-1.5 text-xs shadow-inner shrink-0">
                         {pitcher.SPAN || "투수"}
@@ -878,7 +956,6 @@ export default function LiveTextPage() {
                       </Link>
                     </div>
 
-                    {/* 투구 기록 테이블 */}
                     <div className="w-full md:w-[540px] bg-black/50 rounded-lg border border-white/5 p-2 overflow-x-auto shadow-inner">
                       <div className="grid grid-cols-7 min-w-[440px] text-center">
                         {pitcherHeaders.map((header, hIdx) => (
@@ -933,7 +1010,6 @@ export default function LiveTextPage() {
         style={{ backgroundColor: currentContainerColor }}
       >
         <div className="bg-black/60 backdrop-blur-md p-4 sm:p-6">
-          {/* 상단 타이틀 및 닫기 버튼 */}
           <div className="relative flex items-center justify-center mb-6">
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-widest text-center drop-shadow-md">
               후보 선수 명단
@@ -946,7 +1022,6 @@ export default function LiveTextPage() {
             </button>
           </div>
 
-          {/* 팀 선택 탭 */}
           <div className="grid grid-cols-2 rounded-xl overflow-hidden border border-white/20 bg-black/40 mb-6 shadow-lg">
             <button
               onClick={() => setEntryTab("away")}
@@ -970,7 +1045,6 @@ export default function LiveTextPage() {
             </button>
           </div>
 
-          {/* 투수 후보 */}
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2.5 h-5 bg-blue-500 rounded-full inline-block"></span>
@@ -1036,7 +1110,6 @@ export default function LiveTextPage() {
             )}
           </div>
 
-          {/* 타자 후보 */}
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2.5 h-5 bg-emerald-500 rounded-full inline-block"></span>
@@ -1103,7 +1176,6 @@ export default function LiveTextPage() {
     );
   };
 
-  // 팀 컬러 헬퍼: 공격 팀 이름에서 mainColor 조회
   const getTeamColor = (teamName) => {
     if (!teamName) return '#3b82f6';
     const style = teamData[teamName];
@@ -1118,17 +1190,12 @@ export default function LiveTextPage() {
 
   return (
     <div className="flex justify-center gap-6 p-4 w-full max-w-7xl mx-auto flex-1 text-gray-100">
-      {/* 원정팀 라인업 (PC 전용) */}
       <div className="hidden xl:block w-72 shrink-0">
         {renderLineup(lineupData.away, scoreData?.teamData?.[0])}
       </div>
 
-      {/* 메인 중계 컨텐츠 */}
       <div className="w-full min-w-0 max-w-2xl flex flex-col">
-
-        {/* 버튼, 타이틀, 비디오와 스코어보드를 함께 고정해 점수판이 가려지지 않도록 한다. */}
         <div className="sticky top-[env(safe-area-inset-top,0px)] z-50 bg-[#0a0a0a] pt-2 pb-2 mb-6 shrink-0">
-          {/* 메인으로 돌아가기 & 비디오 숨기기 버튼 영역 */}
           <div className="flex justify-between items-center mb-3">
             <Link
               to="/schedule"
@@ -1156,12 +1223,10 @@ export default function LiveTextPage() {
                 {videoVisible ? "📺 비디오 숨기기" : "📺 비디오 보기"}
               </button>
             ) : (
-              /* 우측 레이아웃 균형을 위한 빈 공간 유지용 */
               <div className="w-20" />
             )}
           </div>
 
-          {/* ✅ SOOP 비디오 컨테이너 */}
           {videoUrl && videoVisible && (
             <div className="overflow-hidden rounded-2xl border border-gray-700 shadow-xl bg-black aspect-video relative group">
               {videoUrl.includes(".m3u8") ? (
@@ -1192,13 +1257,12 @@ export default function LiveTextPage() {
             </div>
           )}
 
-          {/* ✅ 스코어보드 */}
           <div className="overflow-x-auto mt-2 rounded-lg shadow border border-gray-700">
             <table className="border-collapse text-center text-xs bg-gray-900 text-gray-200 w-full">
               <thead className="bg-gray-800 text-gray-400">
                 <tr>
                   <th className="border border-gray-700 px-3 py-2 text-left sticky left-0 z-10 bg-gray-800 font-semibold min-w-[4rem]">팀</th>
-                  {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
+                  {[...Array(scoreData?.scoreData?.[0]?.length || 0)].map((_, i) => (
                     <th key={i} className="border border-gray-700 px-2 py-2 min-w-[1.75rem]">
                       {i + 1}
                     </th>
@@ -1210,32 +1274,35 @@ export default function LiveTextPage() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="bg-gray-900">
-                  <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-900">{scoreData.teamData[0]}</td>
-                  {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                    <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[0][i]}</td>
-                  ))}
-                  <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[0][0]}</td>
-                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][1]}</td>
-                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][2]}</td>
-                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][3]}</td>
-                </tr>
-                <tr className="bg-gray-800/50">
-                  <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-800/50">{scoreData.teamData[1]}</td>
-                  {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
-                    <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[1][i]}</td>
-                  ))}
-                  <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[1][0]}</td>
-                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][1]}</td>
-                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][2]}</td>
-                  <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][3]}</td>
-                </tr>
+                {scoreData?.teamData && (
+                  <>
+                    <tr className="bg-gray-900">
+                      <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-900">{scoreData.teamData[0]}</td>
+                      {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
+                        <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[0][i]}</td>
+                      ))}
+                      <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[0][0]}</td>
+                      <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][1]}</td>
+                      <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][2]}</td>
+                      <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[0][3]}</td>
+                    </tr>
+                    <tr className="bg-gray-800/50">
+                      <td className="border border-gray-700 px-3 py-2 font-semibold text-left sticky left-0 z-10 bg-gray-800/50">{scoreData.teamData[1]}</td>
+                      {[...Array(scoreData.scoreData[0].length)].map((_, i) => (
+                        <td key={i} className="border border-gray-700 px-2 py-2">{scoreData.scoreData[1][i]}</td>
+                      ))}
+                      <td className="border border-gray-700 px-2 py-2 font-bold text-blue-400">{scoreData.resultData[1][0]}</td>
+                      <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][1]}</td>
+                      <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][2]}</td>
+                      <td className="border border-gray-700 px-2 py-2">{scoreData.resultData[1][3]}</td>
+                    </tr>
+                  </>
+                )}
               </tbody>
             </table>
           </div>
         </div>
 
-        {/* 회차 선택 및 기록지 / 라인업 보기 버튼 */}
         <div className="flex items-center justify-between gap-2 mb-4">
           <div className="flex items-center gap-4">
             <select
@@ -1280,13 +1347,9 @@ export default function LiveTextPage() {
           </div>
         </div>
 
-        {/* 오늘의 경기 기록 */}
         {renderRecordModal()}
-
-        {/* 후보 선수 명단 (네이버 API) */}
         {renderEntryModal()}
 
-        {/* 모바일 환경 라인업 */}
         {mobileLineupOpen && (
           <div className="xl:hidden w-full flex flex-col sm:flex-row gap-4 mb-6">
             <div className="flex-1">
@@ -1298,11 +1361,10 @@ export default function LiveTextPage() {
           </div>
         )}
 
-        {/* 문자중계 */}
-        {live.live.listInnTb.map((inning, inningIdx) => {
+        {live?.live?.listInnTb?.map((inning, inningIdx) => {
           const attackTeamColor = getTeamColor(inning.T_NM);
           const gameYear = parseInt(gameId.slice(0, 4)) || new Date().getFullYear();
-          const attackTeamLogo = `https://statiz.co.kr/data/team/ci/${gameYear}/${getTeamIdFromName(inning.T_NM)}.svg`
+          const attackTeamLogo = `https://statiz.co.kr/data/team/ci/${gameYear}/${getTeamIdFromName(inning.T_NM)}.svg`;
           return (
             <div key={inningIdx} className="mb-6">
               <h4 className="text-s font-bold mb-2 text-gray-200">
@@ -1316,10 +1378,9 @@ export default function LiveTextPage() {
                       className="relative overflow-hidden flex items-center justify-between p-4 border-l-4 bg-gray-800 shadow-sm rounded-md"
                       style={{ borderLeftColor: attackTeamColor }}
                     >
-                      {/* 좌측 선수 정보 (relative z-10으로 로고 위로 올림) */}
                       <div className="relative z-10 flex items-center gap-4">
                         <img
-                          src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${getPlayerImageYear(parseInt(gameId.slice(0, 4)), bat.BAT_P_ID)}/${getRealPlayerId(bat.BAT_P_ID)}.jpg`}
+                          src={`https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/${getPlayerImageYear(parseInt(gameId.slice(0, 4)), bat.BAT_P_ID, seriesId)}/${getRealPlayerId(bat.BAT_P_ID)}.jpg`}
                           alt={bat.BAT_P_NM}
                           className="w-12 h-16 rounded-full object-cover"
                         />
@@ -1336,9 +1397,8 @@ export default function LiveTextPage() {
                         </div>
                       </div>
 
-                      {/* 우측 배경 팀 로고 (반투명 및 절대 위치 배치) */}
                       <img
-                        src={attackTeamLogo} // 팀 로고 이미지 변수/경로
+                        src={attackTeamLogo}
                         alt="team logo"
                         className="absolute right-2 top-1/2 -translate-y-1/2 h-20 opacity-15 pointer-events-none select-none"
                       />
@@ -1370,16 +1430,18 @@ export default function LiveTextPage() {
                         </li>
                       ))}
                     </ul>
-                    <span className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300 font-bold">{inning.T_NM} 승리 확률 : {inning.TB_NM === "초" ? bat.WinPercentage.awayTeamWinRate : bat.WinPercentage.homeTeamWinRate} % {bat.WinPercentage.wpaByPlate >= 0 ? (`(+${bat.WinPercentage.wpaByPlate} %)`) : (`(${bat.WinPercentage.wpaByPlate} %)`)}</span>
+                    <span className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300 font-bold">
+                      {inning.T_NM} 승리 확률 : {inning.TB_NM === "초" ? bat.WinPercentage.awayTeamWinRate : bat.WinPercentage.homeTeamWinRate} % {bat.WinPercentage.wpaByPlate >= 0 ? (`(+${bat.WinPercentage.wpaByPlate} %)`) : (`(${bat.WinPercentage.wpaByPlate} %)`)}
+                    </span>
                   </div>
                 ))}
                 {inn === maxInn &&
-                  live.postGame.listResult.map((res, resIdx) => (
+                  live.postGame?.listResult?.map((res, resIdx) => (
                     <ul className="mt-2 space-y-2" key={resIdx}>
                       <li className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300">
-                        {parseInt(scoreData.resultData[0][0]) > parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'B' ?
+                        {parseInt(scoreData?.resultData?.[0]?.[0]) > parseInt(scoreData?.resultData?.[1]?.[0]) && inning.TB_SC === 'B' ?
                           <span>{res.LIVETEXT_IF}</span> :
-                          parseInt(scoreData.resultData[0][0]) < parseInt(scoreData.resultData[1][0]) && inning.TB_SC === 'T' ?
+                          parseInt(scoreData?.resultData?.[0]?.[0]) < parseInt(scoreData?.resultData?.[1]?.[0]) && inning.TB_SC === 'T' ?
                             <span>{res.LIVETEXT_IF}</span> : <span></span>
                         }
                       </li>
@@ -1388,12 +1450,15 @@ export default function LiveTextPage() {
                 }
               </div>
             </div>
-          )
+          );
         })}
+        {gameStatus?.gameId === gameId &&
+          gameStatus.isGameOver &&
+          Number(inn) === Number(maxInn) &&
+          renderPitcherResultCards()}
         <div ref={bottomRef} />
       </div>
 
-      {/* 홈팀 라인업 (PC 전용) */}
       <div className="hidden xl:block w-72 shrink-0">
         {renderLineup(lineupData.home, scoreData?.teamData?.[1])}
       </div>

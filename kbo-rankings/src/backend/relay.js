@@ -444,9 +444,33 @@ const parseTable = (tableStr) => {
   }
 };
 
+router.get("/pitching-result", async (req, res) => {
+  const { g_id, sr_id } = req.query;
+  if (!g_id) return res.status(400).json({ error: "g_id가 필요합니다." });
+
+  const apiGameId = getNaverGameId(g_id, sr_id);
+  try {
+    const response = await axios.get(
+      `https://api-gw.sports.naver.com/schedule/games/${apiGameId}/record`,
+      {
+        headers: {
+          "User-Agent": "Mozilla/5.0",
+          Referer: "https://sports.naver.com/",
+        },
+        timeout: 8000,
+      }
+    );
+    const data = typeof response.data === "string" ? JSON.parse(response.data) : response.data;
+    const pitchingResult = data?.result?.recordData?.pitchingResult;
+    res.json({ pitchingResult: Array.isArray(pitchingResult) ? pitchingResult : [] });
+  } catch (err) {
+    console.error("경기 결과 투수 API 요청 실패:", err.message);
+    res.status(502).json({ error: "경기 결과 투수 데이터를 가져오지 못했습니다." });
+  }
+});
+
 router.get("/record", async (req, res) => {
   const { le_id, sr_id, g_id } = req.query;
-
   // 1. 원정팀 (Away) 기록 요청: tb_sc=T
   const urlAway = `https://m.koreabaseball.com/ws/Kbo.asmx/GetLiveRecord?le_id=${le_id}&sr_id=${sr_id}&g_id=${g_id}&tb_sc=T`;
   // 2. 홈팀 (Home) 기록 요청: tb_sc=B
@@ -466,6 +490,7 @@ router.get("/record", async (req, res) => {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
         },
       }),
+
     ]);
 
     const formatTeamRecord = (data, defaultTeamName) => {
