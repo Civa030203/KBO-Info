@@ -98,16 +98,17 @@ function mapNaverRelayToLive(textRelayData, defaultAwayName, defaultHomeName) {
       let batName = "";
       let isPinchHitter = false;
       let winPercentage = tr.metricOption;
-      try {
-        if (tr.textOptions[0].type === 8) {
-          if (tr.textOptions[0].batterRecord.posName === '대타') {
+      console.log(tr.textOptions[0]);
+      if (tr.textOptions[0].type === 8) {
+        try {
+          if (tr.textOptions[0].batterRecord.posName === '대타' || tr.textOptions[0].batterRecord.posName === null) {
             isPinchHitter = true;
           }
+        } catch (error) {
+          console.log(error);
+          if (tr.textOptions[0].text.split(" ")[0] === '대타') isPinchHitter = true;
         }
-      } catch (error) {
-        console.log(error);
       }
-
 
       const match = tr.title ? tr.title.match(/(\d+)번타자\s*(.*)/) : null;
 
