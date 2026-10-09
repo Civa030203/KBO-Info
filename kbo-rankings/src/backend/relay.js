@@ -97,12 +97,17 @@ function mapNaverRelayToLive(textRelayData, defaultAwayName, defaultHomeName) {
       let batOrderNo = 0;
       let batName = "";
       let isPinchHitter = false;
-      const winPercentage = tr.metricOption;
-      if (tr.textOptions[0].type === 8) {
-        if (tr.textOptions[0].batterRecord.posName === '대타') {
-          isPinchHitter = true;
+      let winPercentage = tr.metricOption;
+      try {
+        if (tr.textOptions[0].type === 8) {
+          if (tr.textOptions[0].batterRecord.posName === '대타') {
+            isPinchHitter = true;
+          }
         }
+      } catch (error) {
+        console.log(error);
       }
+
 
       const match = tr.title ? tr.title.match(/(\d+)번타자\s*(.*)/) : null;
 
@@ -363,7 +368,7 @@ router.get("/", async (req, res) => {
         });
       }
     } catch (naverErr) {
-      console.warn("네이버 API 호출 실패, KBO 공식 API로 대체 시도:", naverErr.message);
+      console.warn("네이버 API 호출 실패, KBO 공식 API로 대체 시도:", naverErr);
       // 네이버 호출 실패 시 하단의 KBO 공식 API로 자동 Fallback
     }
   }

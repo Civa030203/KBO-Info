@@ -1185,6 +1185,13 @@ export default function LiveTextPage() {
     return '#3b82f6';
   };
 
+  const getWinProbability = (winPercentage, topOrBottom) => {
+    if (winPercentage.awayTeamWinRate === 0 && winPercentage.homeTeamWinRate === 0) return null;
+    else if (topOrBottom === "초") return winPercentage.awayTeamWinRate;
+    else if (topOrBottom === "말") return winPercentage.homeTeamWinRate;
+    else return null;
+  };
+
   if (loading) return <p className="text-center p-4 text-gray-300">불러오는 중...</p>;
   if (!live) return <p className="text-center p-4 text-gray-300">데이터가 없습니다.</p>;
 
@@ -1431,7 +1438,8 @@ export default function LiveTextPage() {
                       ))}
                     </ul>
                     <span className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300 font-bold">
-                      {inning.T_NM} 승리 확률 : {inning.TB_NM === "초" ? bat.WinPercentage.awayTeamWinRate : bat.WinPercentage.homeTeamWinRate} % {bat.WinPercentage.wpaByPlate >= 0 ? (`(+${bat.WinPercentage.wpaByPlate} %)`) : (`(${bat.WinPercentage.wpaByPlate} %)`)}
+                      {getWinProbability(bat.WinPercentage, inning.TB_NM) ? `${inning.T_NM} 승리 확률 : ${getWinProbability(bat.WinPercentage, inning.TB_NM)}% (${Number(bat.WinPercentage.wpaByPlate) > 0 ? `+${bat.WinPercentage.wpaByPlate}` : bat.WinPercentage.wpaByPlate}%p)` : `${inning.T_NM} 승리 확률 : 집계 중`}
+                      {/* {getWinProbability(bat.WinPercentage, inning.TB_NM)} */}
                     </span>
                   </div>
                 ))}
