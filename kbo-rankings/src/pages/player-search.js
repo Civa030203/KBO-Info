@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 // 1. teamData.js 파일 임포트
 import { teamData } from "./src/teamData";
@@ -31,6 +31,9 @@ const PITCHER_CATEGORIES = [
     { key: "pitcherWar", label: "WAR", unit: "", isDecimal: true, digits: 2 },
 ];
 
+// 비율 스탯 (규정 타석 / 규정 이닝 진입 여부 구분이 필요한 부문)
+const RATIO_STATS = ["hitterHra", "hitterOps", "pitcherEra", "pitcherWhip"];
+
 export default function PlayerSearch() {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
@@ -43,32 +46,33 @@ export default function PlayerSearch() {
     const [currentPage, setCurrentPage] = useState(1);
 
     // 순위 데이터 상태
-    const [rankingData, setRankingData] = useState({ hitters: [], pitchers: [] });
+    const [rankingPlayers, setRankingPlayers] = useState([]);
     const [isRankingLoading, setIsRankingLoading] = useState(true);
     const [rankingType, setRankingType] = useState("HITTER"); // "HITTER" | "PITCHER"
     const [selectedStat, setSelectedStat] = useState("hitterHra");
 
-    // 연도 또는 조회 인원 수 변경 시 순위 데이터 조회
+    // 연도, 조회 인원 수, 포지션, 세부 스탯 변경 시 순위 데이터 조회
     useEffect(() => {
         setIsRankingLoading(true);
-        const apiUrl = `${API_BASE_URL}/api/playerRankings?season=${selectedYear}&limit=${selectedLimit}`;
+        const apiUrl = `${API_BASE_URL}/api/playerRankings?season=${selectedYear}&limit=${selectedLimit}&playerType=${rankingType}&stat=${selectedStat}`;
         axios
             .get(apiUrl)
             .then((res) => {
                 if (res.data?.result) {
-                    setRankingData({
-                        hitters: res.data.result.hitters || [],
-                        pitchers: res.data.result.pitchers || [],
-                    });
+                    const list = res.data.result.players || res.data.result.topPlayers || [];
+                    setRankingPlayers(list);
+                } else {
+                    setRankingPlayers([]);
                 }
             })
             .catch((err) => {
                 console.error("순위 데이터 호출 실패:", err);
+                setRankingPlayers([]);
             })
             .finally(() => {
                 setIsRankingLoading(false);
             });
-    }, [selectedYear, selectedLimit]);
+    }, [selectedYear, selectedLimit, rankingType, selectedStat]);
 
     // 타자/투수 탭 변경 시 기본 스탯 선택 및 페이지 초기화
     const handleRankingTypeChange = (type) => {
@@ -203,9 +207,7 @@ export default function PlayerSearch() {
 
     // 현재 선택된 부문의 상위 전체 선수 목록 추출
     const getCurrentRankingList = () => {
-        const currentGroup = rankingType === "HITTER" ? rankingData.hitters : rankingData.pitchers;
-        const found = currentGroup.find((item) => item.type === selectedStat);
-        return found?.rankings || [];
+        return rankingPlayers;
     };
 
     // 주요 지표 수치 포맷터
@@ -226,6 +228,12 @@ export default function PlayerSearch() {
     const currentRankingList = getCurrentRankingList();
     const activeCategories = rankingType === "HITTER" ? HITTER_CATEGORIES : PITCHER_CATEGORIES;
     const currentCategoryInfo = activeCategories.find((c) => c.key === selectedStat);
+
+    // 비율 스탯일 경우 첫 번째 규정 미달(ranking === null) 선수 인덱스 계산
+    const isRatioStat = RATIO_STATS.includes(selectedStat);
+    const firstUnqualifiedIndex = isRatioStat
+        ? currentRankingList.findIndex((p) => p.ranking === null || p.ranking === undefined)
+        : -1;
 
     // 50명 단위 페이지네이션 계산
     const totalPages = Math.ceil(currentRankingList.length / PAGE_SIZE) || 1;
@@ -562,7 +570,9 @@ export default function PlayerSearch() {
                                             <tbody className="divide-y divide-gray-800/60 text-sm">
                                                 {displayedPlayers.map((player, idx) => {
                                                     const absoluteIndex = startIndex + idx;
-                                                    const rankNum = player.ranking || absoluteIndex + 1;
+                                                    const isFirstUnqualified = isRatioStat && absoluteIndex === firstUnqualifiedIndex;
+                                                    const isUnqualified = isRatioStat && (player.ranking === null || player.ranking === undefined);
+                                                    const rankNum = isUnqualified ? "-" : (player.ranking || absoluteIndex + 1);
                                                     const teamKey = player.teamShortName || player.teamName;
                                                     const teamStyle = teamData[teamKey] || {
                                                         mainColor: "[#1f2937]",
@@ -573,7 +583,7 @@ export default function PlayerSearch() {
                                                     const pureSubColor = teamStyle.subColor.replace(/[[\]]/g, "");
                                                     const teamIcon = getTeamIconUrl(teamKey, selectedYear);
 
-                                                    // 1, 2, 3위 메달 뱃지 스타일
+                                                    // 1, 2, 3위 메달 뱃지 스타일 또는 규정 외 '-' 스타일
                                                     let rankBadge = (
                                                         <span className="text-gray-400 font-semibold text-sm">
                                                             {rankNum}
@@ -604,10 +614,23 @@ export default function PlayerSearch() {
                                                     const profileImg = getProfileImgUrl(player.playerId, selectedYear);
 
                                                     return (
-                                                        <tr
-                                                            key={player.playerId || absoluteIndex}
-                                                            className="hover:bg-gray-800/50 transition duration-150 group"
-                                                        >
+                                                        <Fragment key={player.playerId || absoluteIndex}>
+                                                            {/* 규정 이닝 / 규정 타석 외 경계선 표시 */}
+                                                            {isFirstUnqualified && (
+                                                                <tr className="bg-gray-800/40 border-y border-gray-700/80">
+                                                                    <td colSpan={10} className="py-2.5 px-4 text-center">
+                                                                        <div className="flex items-center justify-center gap-3 text-xs font-semibold text-gray-300">
+                                                                            <span className="h-px bg-gray-700/80 flex-1"></span>
+                                                                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-800/90 border border-gray-700 text-gray-300 shadow-sm">
+                                                                                <span>📋</span>
+                                                                                <span>{rankingType === "HITTER" ? "규정 타석 외" : "규정 이닝 외"}</span>
+                                                                            </span>
+                                                                            <span className="h-px bg-gray-700/80 flex-1"></span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            )}
+                                                            <tr className="hover:bg-gray-800/50 transition duration-150 group">
                                                             {/* 순위 */}
                                                             <td className="py-3.5 px-4 text-center whitespace-nowrap">
                                                                 {rankBadge}
@@ -725,8 +748,9 @@ export default function PlayerSearch() {
                                                                 </Link>
                                                             </td>
                                                         </tr>
-                                                    );
-                                                })}
+                                                    </Fragment>
+                                                );
+                                            })}
                                             </tbody>
                                         </table>
                                     </div>

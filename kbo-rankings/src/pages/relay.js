@@ -1442,7 +1442,19 @@ export default function LiveTextPage() {
                       ))}
                     </ul>
                     <span className="p-2 border-b border-gray-700/50 last:border-none text-sm text-gray-300 font-bold">
-                      {getWinProbability(bat.WinPercentage, inning.TB_NM) ? `${inning.T_NM} 승리 확률 : ${getWinProbability(bat.WinPercentage, inning.TB_NM)}% (${Number(bat.WinPercentage.wpaByPlate) > 0 ? `+${bat.WinPercentage.wpaByPlate}` : bat.WinPercentage.wpaByPlate}%p)` : `${inning.T_NM} 승리 확률 : 집계 중`}
+                      {(() => {
+                        const winProb = getWinProbability(bat.WinPercentage, inning.TB_NM);
+                        const hasProb = winProb !== null && winProb !== undefined && !isNaN(winProb);
+
+                        if (!hasProb) {
+                          return `${inning.T_NM} 승리 확률 : 집계 중`;
+                        }
+
+                        const wpa = Number(bat.WinPercentage?.wpaByPlate ?? 0);
+                        const wpaText = wpa > 0 ? `+${wpa}` : `${wpa}`;
+
+                        return `${inning.T_NM} 승리 확률 : ${winProb}% (${wpaText}%p)`;
+                      })()}
                       {/* {getWinProbability(bat.WinPercentage, inning.TB_NM)} */}
                     </span>
                   </div>

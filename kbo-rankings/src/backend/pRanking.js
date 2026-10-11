@@ -7,10 +7,17 @@ router.get("/", async (req, res) => {
   try {
     const season = req.query.season || new Date().getFullYear();
     const limit = req.query.limit || 30;
-    const playerType = req.query.playerType ? req.query.playerType.toUpperCase() : null; // HITTER | PITCHER | null
+    const playerType = req.query.playerType ? req.query.playerType.toUpperCase() : "HITTER"; // HITTER | PITCHER
+    const defaultStat = playerType === "PITCHER" ? "pitcherEra" : "hitterHra";
+    const sortBy = req.query.stat || defaultStat;
 
-    const fetchRankings = async (type) => {
-      const url = `https://api-gw.sports.naver.com/statistics/categories/kbo/seasons/${season}/top-players?limit=${limit}&playerType=${type}`;
+    // 평균자책점(ERA), WHIP 등은 낮을수록 우수하므로 asc 정렬
+    const ascStats = ["pitcherEra", "pitcherWhip"];
+    const sortDirection = ascStats.includes(sortBy) ? "asc" : "desc";
+
+    const fetchRankings = async (type, stat) => {
+      const dir = ascStats.includes(stat) ? "asc" : "desc";
+      const url = `https://api-gw.sports.naver.com/statistics/categories/kbo/seasons/${season}/players?sortField=${stat}&sortDirection=${dir}&playerType=${type}&gameType=REGULAR_SEASON&pageSize=${limit}`;
       const response = await axios.get(url, {
         headers: {
           "User-Agent":
@@ -19,33 +26,18 @@ router.get("/", async (req, res) => {
           Origin: "https://m.sports.naver.com",
         },
       });
-      return response.data?.result?.topPlayers || [];
+      return response.data?.result?.seasonPlayerStats || [];
     };
 
-    if (playerType === "HITTER" || playerType === "PITCHER") {
-      const topPlayers = await fetchRankings(playerType);
-      return res.json({
-        code: 200,
-        success: true,
-        result: {
-          topPlayers,
-        },
-      });
-    }
-
-    // playerType 지정이 없으면 타자와 투수 둘 다 병렬로 조회
-    const [hitterTopPlayers, pitcherTopPlayers] = await Promise.all([
-      fetchRankings("HITTER"),
-      fetchRankings("PITCHER"),
-    ]);
+    const players = await fetchRankings(playerType, sortBy);
 
     return res.json({
       code: 200,
       success: true,
       result: {
-        hitters: hitterTopPlayers,
-        pitchers: pitcherTopPlayers,
-        topPlayers: [...hitterTopPlayers, ...pitcherTopPlayers],
+        players,
+        topPlayers: players, // 이전 호환성 유지
+        [playerType === "HITTER" ? "hitters" : "pitchers"]: players,
       },
     });
   } catch (error) {
