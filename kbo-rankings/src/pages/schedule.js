@@ -485,23 +485,29 @@ export default function Schedule() {
 
                     {/* 스코어 */}
                     <td className="py-2 px-1 md:py-3 md:px-4 whitespace-nowrap text-xs md:text-sm font-semibold">
-                      {game.gameState < 2 ? (
-                        <span className="text-gray-300 drop-shadow-md">경기 전</span>
-                      ) : game.gameState >= 4 ? (
-                        <><span className="hidden sm:inline text-gray-400 drop-shadow-md">취소된 경기입니다.</span>
-                          <span className="sm:hidden text-gray-400 drop-shadow-md">취소</span></>
-                      ) : String(game.gameState) === "2" ? (
-                        <div className="flex flex-col items-center justify-center drop-shadow-md">
-                          <span className="text-red-400 text-base">{game.gameScore}</span>
-                          <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">{game.gameMaxInn}회{game.isTopOrBottom}</span>
-                        </div>
-                      ) : (
-                        <div className="flex flex-col items-center justify-center drop-shadow-md">
-                          <span className="text-white text-base">{game.gameScore}</span>
-                          <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">종료</span>
-                        </div>
-                      )}
-                      {game.gameState < 4 ? (<span className="text-[10px]">{game.gameType}</span>) : (<span></span>)}
+                      <div className="flex flex-col items-center justify-center">
+                        {game.gameState < 2 ? (
+                          <span className="text-gray-300 drop-shadow-md">경기 전</span>
+                        ) : game.gameState >= 4 ? (
+                          <>
+                            <span className="hidden sm:inline text-gray-400 drop-shadow-md">취소된 경기입니다.</span>
+                            <span className="sm:hidden text-gray-400 drop-shadow-md">취소</span>
+                          </>
+                        ) : String(game.gameState) === "2" ? (
+                          <div className="flex flex-col items-center justify-center drop-shadow-md">
+                            <span className="text-red-400 text-base">{game.gameScore}</span>
+                            <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">{game.gameMaxInn}회{game.isTopOrBottom}</span>
+                          </div>
+                        ) : (
+                          <div className="flex flex-col items-center justify-center drop-shadow-md">
+                            <span className="text-white text-base">{game.gameScore}</span>
+                            <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">종료</span>
+                          </div>
+                        )}
+                        {game.gameState < 4 && game.gameType && (
+                          <span className="text-[10px] text-gray-300 mt-0.5">{game.gameType}</span>
+                        )}
+                      </div>
                     </td>
 
                     {/* 홈팀 */}
