@@ -201,7 +201,57 @@ function mapNaverRelayToLive(textRelayData, defaultAwayName, defaultHomeName) {
   };
 }
 
-// 2. 네이버 inningScore & currentGameState -> 스코어보드 매핑 함수
+// 2-1. 네이버 /record API의 scoreBoard -> 스코어보드 매핑 함수
+function mapNaverRecordScoreBoard(scoreBoardData, awayTeamName, homeTeamName) {
+  if (!scoreBoardData) return null;
+
+  const inn = scoreBoardData.inn || {};
+  const rheb = scoreBoardData.rheb || {};
+
+  const awayInn = Array.isArray(inn.away) ? inn.away : [];
+  const homeInn = Array.isArray(inn.home) ? inn.home : [];
+
+  const maxLen = Math.max(awayInn.length, homeInn.length);
+  const awayScores = [];
+  const homeScores = [];
+
+  for (let i = 0; i < maxLen; i++) {
+    awayScores.push(
+      i < awayInn.length && awayInn[i] !== null && awayInn[i] !== undefined
+        ? String(awayInn[i])
+        : "-"
+    );
+    homeScores.push(
+      i < homeInn.length && homeInn[i] !== null && homeInn[i] !== undefined
+        ? String(homeInn[i])
+        : "-"
+    );
+  }
+
+  const awayRheb = rheb.away || {};
+  const homeRheb = rheb.home || {};
+
+  return {
+    teamData: [awayTeamName, homeTeamName],
+    scoreData: [awayScores, homeScores],
+    resultData: [
+      [
+        String(awayRheb.r ?? 0),
+        String(awayRheb.h ?? 0),
+        String(awayRheb.e ?? 0),
+        String(awayRheb.b ?? 0),
+      ],
+      [
+        String(homeRheb.r ?? 0),
+        String(homeRheb.h ?? 0),
+        String(homeRheb.e ?? 0),
+        String(homeRheb.b ?? 0),
+      ],
+    ],
+  };
+}
+
+// 2-2. 네이버 inningScore & currentGameState -> 스코어보드 매핑 함수 (Fallback)
 function mapNaverScoreBoard(textRelayData, awayTeamName, homeTeamName) {
   const cgs = textRelayData.currentGameState || {};
   const inScore = textRelayData.inningScore || {};
@@ -234,6 +284,7 @@ function mapNaverScoreBoard(textRelayData, awayTeamName, homeTeamName) {
     ],
   };
 }
+
 
 // 3. 네이버 lineup -> 오늘의 경기 기록(박스스코어) 매핑 함수
 function mapNaverRecord(textRelayData, awayTeamName, homeTeamName) {
@@ -335,16 +386,32 @@ router.get("/", async (req, res) => {
     try {
       const apiGameId = getNaverGameId(g_id, sr_id);
       const naverUrl = `https://api-gw.sports.naver.com/schedule/games/${apiGameId}/relay?inning=${inning}`;
+      const recordUrl = `https://api-gw.sports.naver.com/schedule/games/${apiGameId}/record`;
 
-      const response = await axios.get(naverUrl, {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-          Referer: "https://sports.naver.com/",
-        },
-      });
+      const [relayRes, recordRes] = await Promise.allSettled([
+        axios.get(naverUrl, {
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+            Referer: "https://sports.naver.com/",
+          },
+          timeout: 8000,
+        }),
+        axios.get(recordUrl, {
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+            Referer: "https://sports.naver.com/",
+          },
+          timeout: 8000,
+        }),
+      ]);
 
-      const textRelayData = response.data?.result?.textRelayData;
+      if (relayRes.status === "rejected") {
+        throw relayRes.reason;
+      }
+
+      const textRelayData = relayRes.value.data?.result?.textRelayData;
       if (textRelayData) {
         const { awayName: defAway, homeName: defHome } = extractTeamNamesFromGameId(g_id);
         const { live, postGame, awayTeamName, homeTeamName } = mapNaverRelayToLive(
@@ -352,7 +419,25 @@ router.get("/", async (req, res) => {
           defAway,
           defHome
         );
-        const scoreBoard = mapNaverScoreBoard(textRelayData, awayTeamName, homeTeamName);
+
+        let scoreBoard = null;
+        if (recordRes.status === "fulfilled") {
+          const recordDataRaw = recordRes.value.data;
+          const recordData =
+            typeof recordDataRaw === "string" ? JSON.parse(recordDataRaw) : recordDataRaw;
+          const naverScoreBoard =
+            recordData?.result?.recordData?.scoreBoard || recordData?.result?.scoreBoard;
+
+          if (naverScoreBoard) {
+            scoreBoard = mapNaverRecordScoreBoard(naverScoreBoard, awayTeamName, homeTeamName);
+          }
+        }
+
+        // record API에서 scoreBoard를 가져오지 못한 경우 기존 textRelayData 기반으로 fallback
+        if (!scoreBoard) {
+          scoreBoard = mapNaverScoreBoard(textRelayData, awayTeamName, homeTeamName);
+        }
+
         const record = mapNaverRecord(textRelayData, awayTeamName, homeTeamName);
         const entry = {
           away: textRelayData.awayEntry || { batter: [], pitcher: [] },
