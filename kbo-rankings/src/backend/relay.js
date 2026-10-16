@@ -40,7 +40,14 @@ const KBO_CODE_MAP = {
 function getNaverGameId(gameId, seriesId) {
   if (!gameId) return "";
   const year = gameId.substring(0, 4);
+  const numYear = parseInt(year, 10);
   const sId = String(seriesId);
+
+  // 2015년 한국시리즈 이전 (2014년 이전 전체 및 2015년 플레이오프까지) 경기는 연도 반복 없이 KBO gameId 그대로 사용
+  if (numYear < 2015 || (numYear === 2015 && sId !== "7")) {
+    return gameId;
+  }
+
   if (["3", "4", "5", "7", "8", "9"].includes(sId)) {
     if (gameId === "20260925KRJP0") return "88880925S2S402026";
     if (gameId === "20260926CNKR0") return "88880926S2S302026";
