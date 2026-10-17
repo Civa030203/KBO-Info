@@ -577,9 +577,13 @@ export default function LiveTextPage() {
       try {
         let apiGameId = "";
         const year = gameId.substring(0, 4);
+        const numYear = parseInt(year, 10);
+        const sId = String(seriesId);
 
-        if (['3', '4', '5', '7', '8', '9'].includes(String(seriesId))) {
-          const prefix = String(seriesId).repeat(4);
+        if (numYear < 2015 || (numYear === 2015 && sId !== "7")) {
+          apiGameId = gameId;
+        } else if (['3', '4', '5', '7', '8', '9'].includes(sId)) {
+          const prefix = sId.repeat(4);
           if (gameId === "20260925KRJP0") {
             apiGameId = '88880925S2S402026';
           } else if (gameId === "20260926CNKR0") {
