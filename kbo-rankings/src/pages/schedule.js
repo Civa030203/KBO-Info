@@ -465,7 +465,7 @@ export default function Schedule() {
                             className="w-8 h-8 md:w-12 md:h-12 object-contain shrink-0 drop-shadow-md"
                           />
                         </div>
-                        {game.gameState < 2 && game.awaySPitcherName && (
+                        {game.gameState < 2 || game.gameState > 3 && game.awaySPitcherName && (
                           <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.awaySPitcherName}</span>
                         )}
                         {String(game.gameState) === "2" && game.awayTeamCurrentPlayer && (
