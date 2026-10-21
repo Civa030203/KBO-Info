@@ -504,7 +504,7 @@ export default function Schedule() {
                             <span className="text-[10px] md:text-xs text-gray-200 font-normal mt-0.5 bg-black/40 px-1.5 py-0.5 rounded shadow-sm">종료</span>
                           </div>
                         )}
-                        {game.gameState < 4 && game.gameType && (
+                        {game.gameType && (
                           <span className="text-[10px] text-gray-300 mt-0.5">{game.gameType}</span>
                         )}
                       </div>
