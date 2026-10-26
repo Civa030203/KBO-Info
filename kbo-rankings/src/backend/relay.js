@@ -105,7 +105,6 @@ function mapNaverRelayToLive(textRelayData, defaultAwayName, defaultHomeName) {
       let batName = "";
       let isPinchHitter = false;
       let winPercentage = tr.metricOption;
-      console.log(tr.textOptions[0]);
       if (tr.textOptions[0].type === 8) {
         try {
           if (tr.textOptions[0].batterRecord.posName === '대타' || tr.textOptions[0].batterRecord.posName === null) {
