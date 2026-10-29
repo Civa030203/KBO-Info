@@ -111,7 +111,6 @@ function mapNaverRelayToLive(textRelayData, defaultAwayName, defaultHomeName) {
             isPinchHitter = true;
           }
         } catch (error) {
-          console.log(error);
           if (tr.textOptions[0].text.split(" ")[0] === '대타') isPinchHitter = true;
         }
       }
