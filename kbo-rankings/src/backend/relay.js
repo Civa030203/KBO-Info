@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+const { naverAxios } = require("./naverClient");
 
 const router = express.Router();
 router.use(cors());
@@ -394,22 +395,8 @@ router.get("/", async (req, res) => {
       const recordUrl = `https://api-gw.sports.naver.com/schedule/games/${apiGameId}/record`;
 
       const [relayRes, recordRes] = await Promise.allSettled([
-        axios.get(naverUrl, {
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-            Referer: "https://sports.naver.com/",
-          },
-          timeout: 8000,
-        }),
-        axios.get(recordUrl, {
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-            Referer: "https://sports.naver.com/",
-          },
-          timeout: 8000,
-        }),
+        naverAxios.get(naverUrl),
+        naverAxios.get(recordUrl),
       ]);
 
       if (relayRes.status === "rejected") {
@@ -459,7 +446,7 @@ router.get("/", async (req, res) => {
         });
       }
     } catch (naverErr) {
-      console.warn("네이버 API 호출 실패, KBO 공식 API로 대체 시도:", naverErr);
+      console.warn("네이버 API 호출 실패, KBO 공식 API로 대체 시도:", naverErr.message || naverErr);
       // 네이버 호출 실패 시 하단의 KBO 공식 API로 자동 Fallback
     }
   }
@@ -504,14 +491,7 @@ router.get("/preview", async (req, res) => {
   const targetUrl = `https://api-gw.sports.naver.com/schedule/games/${gameId}/preview`;
 
   try {
-    const response = await axios.get(targetUrl, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-        Referer: "https://sports.naver.com/",
-        Origin: "https://sports.naver.com",
-      },
-    });
+    const response = await naverAxios.get(targetUrl);
 
     const previewData = typeof response.data === "string" ? JSON.parse(response.data) : response.data;
     res.json(previewData);
@@ -546,15 +526,8 @@ router.get("/pitching-result", async (req, res) => {
 
   const apiGameId = getNaverGameId(g_id, sr_id);
   try {
-    const response = await axios.get(
-      `https://api-gw.sports.naver.com/schedule/games/${apiGameId}/record`,
-      {
-        headers: {
-          "User-Agent": "Mozilla/5.0",
-          Referer: "https://sports.naver.com/",
-        },
-        timeout: 8000,
-      }
+    const response = await naverAxios.get(
+      `https://api-gw.sports.naver.com/schedule/games/${apiGameId}/record`
     );
     const data = typeof response.data === "string" ? JSON.parse(response.data) : response.data;
     const pitchingResult = data?.result?.recordData?.pitchingResult;

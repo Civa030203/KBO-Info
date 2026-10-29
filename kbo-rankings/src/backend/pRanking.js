@@ -1,5 +1,5 @@
 const express = require("express");
-const axios = require("axios");
+const { naverAxios } = require("./naverClient");
 
 const router = express.Router();
 
@@ -18,14 +18,7 @@ router.get("/", async (req, res) => {
     const fetchRankings = async (type, stat) => {
       const dir = ascStats.includes(stat) ? "asc" : "desc";
       const url = `https://api-gw.sports.naver.com/statistics/categories/kbo/seasons/${season}/players?sortField=${stat}&sortDirection=${dir}&playerType=${type}&gameType=REGULAR_SEASON&pageSize=${limit}`;
-      const response = await axios.get(url, {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-          Referer: "https://m.sports.naver.com/kbaseball/record/kbo",
-          Origin: "https://m.sports.naver.com",
-        },
-      });
+      const response = await naverAxios.get(url);
       return response.data?.result?.seasonPlayerStats || [];
     };
 
