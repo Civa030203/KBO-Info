@@ -169,8 +169,8 @@ router.get("/", async (req, res) => {
         "homeTeamCurrentPlayer": null
       },
       {
-        "date": "2026년 11월 2일",
-        "gameID": "20261102??KT0",
+        "date": "2026년 11월 3일",
+        "gameID": "20261103??KT0",
         "gameTime": "18:30",
         "stadium": "수원",
         "gameScore": "0 : 0",
@@ -195,8 +195,8 @@ router.get("/", async (req, res) => {
         "homeTeamCurrentPlayer": null
       },
       {
-        "date": "2026년 11월 3일",
-        "gameID": "20261103??KT0",
+        "date": "2026년 11월 4일",
+        "gameID": "20261104??KT0",
         "gameTime": "18:30",
         "stadium": "수원",
         "gameScore": "0 : 0",
@@ -221,8 +221,8 @@ router.get("/", async (req, res) => {
         "homeTeamCurrentPlayer": null
       },
       {
-        "date": "2026년 11월 5일",
-        "gameID": "20261105KT??0",
+        "date": "2026년 11월 6일",
+        "gameID": "20261106KT??0",
         "gameTime": "18:30",
         "stadium": "미정",
         "gameScore": "0 : 0",
@@ -247,8 +247,8 @@ router.get("/", async (req, res) => {
         "homeTeamCurrentPlayer": null
       },
       {
-        "date": "2026년 11월 6일",
-        "gameID": "20261106KT??0",
+        "date": "2026년 11월 7일",
+        "gameID": "20261107KT??0",
         "gameTime": "18:30",
         "stadium": "미정",
         "gameScore": "0 : 0",
@@ -273,8 +273,8 @@ router.get("/", async (req, res) => {
         "homeTeamCurrentPlayer": null
       },
       {
-        "date": "2026년 11월 7일",
-        "gameID": "20261107KT??0",
+        "date": "2026년 11월 8일",
+        "gameID": "20261108KT??0",
         "gameTime": "17:00",
         "stadium": "미정",
         "gameScore": "0 : 0",
@@ -299,8 +299,8 @@ router.get("/", async (req, res) => {
         "homeTeamCurrentPlayer": null
       },
       {
-        "date": "2026년 11월 9일",
-        "gameID": "20261109??KT0",
+        "date": "2026년 11월 10일",
+        "gameID": "20261110??KT0",
         "gameTime": "18:30",
         "stadium": "수원",
         "gameScore": "0 : 0",
@@ -325,8 +325,8 @@ router.get("/", async (req, res) => {
         "homeTeamCurrentPlayer": null
       },
       {
-        "date": "2026년 11월 10일",
-        "gameID": "20261110??KT0",
+        "date": "2026년 11월 11일",
+        "gameID": "20261111??KT0",
         "gameTime": "18:30",
         "stadium": "수원",
         "gameScore": "0 : 0",
