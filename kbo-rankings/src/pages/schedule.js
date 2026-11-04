@@ -466,7 +466,7 @@ export default function Schedule() {
                           />
                         </div>
                         {game.gameState < 2 && game.homeSPitcherName && (
-                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.homeSPitcherName}</span>
+                          <span className="text-[10px] md:text-xs text-gray-300 font-medium">선 - {game.awaySPitcherName}</span>
                         )}
                         {String(game.gameState) === "2" && game.awayTeamCurrentPlayer && (
                           <span className="text-[10px] md:text-xs text-gray-300 font-medium">
