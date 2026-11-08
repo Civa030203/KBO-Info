@@ -11,47 +11,47 @@ import { API_BASE_URL } from "./config/api.js";
 import { isNotificationEnabled, setNotificationEnabled, requestNotificationPermission } from "./services/notificationService";
 import { useGameNotification } from "./hooks/useGameNotification";
 
-const TEAM_LIST = ["LG", "한화", "SSG", "삼성", "NC", "KT", "롯데", "KIA", "두산", "키움"];
+const TEAM_LIST = ["삼성", "KT", "KIA", "LG", "두산", "SSG", "롯데", "NC", "한화", "키움"];
 
 const TEAM_NAMES_ENG = {
-  "LG": "LG TWINS",
-  "한화": "HANWHA EAGLES",
-  "SSG": "SSG LANDERS",
   "삼성": "SAMSUNG LIONS",
-  "NC": "NC DINOS",
   "KT": "KT WIZ",
-  "롯데": "LOTTE GIANTS",
   "KIA": "KIA TIGERS",
+  "LG": "LG TWINS",
   "두산": "DOOSAN BEARS",
+  "SSG": "SSG LANDERS",
+  "롯데": "LOTTE GIANTS",
+  "NC": "NC DINOS",
+  "한화": "HANWHA EAGLES",
   "키움": "KIWOOM HEROES"
 };
 
 const TEAM_CODE = {
-  "LG": "LG",
-  "한화": "HH",
-  "SSG": "SK",
   "삼성": "SS",
-  "NC": "NC",
   "KT": "KT",
-  "롯데": "LT",
   "KIA": "HT",
+  "LG": "LG",
   "두산": "OB",
+  "SSG": "SK",
+  "롯데": "LT",
+  "NC": "NC",
+  "한화": "HH",
   "키움": "WO"
 };
 
 // 💡 각 팀별 시즌 종료일 설정 (YYYY-MM-DD 형식)
 // PS 탈락팀 및 PS 진출팀의 최종 종료일에 맞춰 날짜를 다르게 설정할 수 있습니다.
 const SEASON_END_DATES = {
-  "키움": "2026-10-07",
-  "한화": "2026-10-11",
+  "삼성": "2026-11-08",
+  "KT": "2026-11-08",
+  "KIA": "2026-11-01",
+  "LG": "2026-10-21",
+  "두산": "2026-10-15",
   "롯데": "2026-10-13",
+  "한화": "2026-10-11",
   "NC": "2026-10-11",
   "SSG": "2026-10-11",
-  "두산": "2026-10-15",
-  "KT": "2026-11-11",
-  "삼성": "2026-11-11",
-  "LG": "2026-10-21",
-  "KIA": "2026-11-01"
+  "키움": "2026-10-07"
 };
 
 const DUMMY_SCHEDULE = [
@@ -71,11 +71,110 @@ const DUMMY_RANKING = {
   draw: 2
 };
 
+const TEAM_FULL_NAME = {
+  "삼성": "삼성 라이온즈",
+  "KT": "KT 위즈",
+  "KIA": "KIA 타이거즈",
+  "LG": "LG 트윈스",
+  "두산": "두산 베어스",
+  "SSG": "SSG 랜더스",
+  "롯데": "롯데 자이언츠",
+  "NC": "NC 다이노스",
+  "한화": "한화 이글스",
+  "키움": "키움 히어로즈"
+};
+
+// 💡 백엔드로부터 팀 일정 및 순위 데이터를 가져오는 비동기 함수 (Promise.all 병렬 호출)
+const fetchTeamData = async (team) => {
+  try {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const formattedDate = `${yyyy}${mm}${dd}`;
+
+    // 일정 및 순위 데이터를 동시에 병렬로 조회
+    const [scheduleRes, rankingRes] = await Promise.all([
+      fetch(`${API_BASE_URL}/api/schedule/weekly?date=${formattedDate}&leId=1`),
+      fetch(`${API_BASE_URL}/api/rankings`)
+    ]);
+
+    const [allGames, rankings] = await Promise.all([
+      scheduleRes.json(),
+      rankingRes.json()
+    ]);
+
+    const next7Days = [];
+    for (let i = 0; i < 6; i++) {
+      const d = new Date(today);
+      d.setDate(d.getDate() + i);
+      next7Days.push(d);
+    }
+
+    const newScheduleData = next7Days.map(d => {
+      const m = d.getMonth() + 1;
+      const day = d.getDate();
+      const dateQuery = `${m}월 ${day}일`;
+
+      const gamesForDay = allGames.filter(g => g.date && g.date.includes(dateQuery));
+      const game = gamesForDay.find(g => g.awayTeamName === team || g.homeTeamName === team);
+
+      const shortDate = `${m}/${day}`;
+
+      if (game) {
+        const isCanceled = game.gameState >= 4 || game.isCanceled === "1";
+        const opponent = game.awayTeamName === team ? game.homeTeamName : game.awayTeamName;
+        const myScore = game.awayTeamName === team ? game.awayScore : game.homeScore;
+        const opponentScore = game.awayTeamName === team ? game.homeScore : game.awayScore;
+
+        return {
+          date: shortDate,
+          opponent: opponent,
+          stadium: game.stadium,
+          noGame: isCanceled,
+          gameState: game.gameState,
+          gameScore: `${game.awayScore} : ${game.homeScore}`,
+          myScore: myScore,
+          opponentScore: opponentScore,
+          inning: game.gameMaxInn,
+          topOrBottom: game.isTopOrBottom,
+          gameID: game.gameID,
+          gameTime: game.gameTime
+        };
+      } else {
+        return {
+          date: shortDate,
+          opponent: "NO GAME",
+          noGame: true
+        };
+      }
+    });
+
+    let newRankingData = { ...DUMMY_RANKING };
+    const teamRank = rankings.find(r => r.team === team);
+    if (teamRank) {
+      newRankingData = {
+        rank: teamRank.rank,
+        win: teamRank.win,
+        lose: teamRank.lose,
+        draw: teamRank.draw
+      };
+    }
+
+    return { scheduleData: newScheduleData, rankingData: newRankingData };
+  } catch (error) {
+    console.error("데이터 연동 중 오류 발생:", error);
+    return { scheduleData: DUMMY_SCHEDULE, rankingData: DUMMY_RANKING };
+  }
+};
+
 function Home() {
   const [selectedTeam, setSelectedTeam] = useState(() => localStorage.getItem("selectedTeam") || null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [scheduleData, setScheduleData] = useState([]);
   const [rankingData, setRankingData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [isInitialLoading, setIsInitialLoading] = useState(() => !!localStorage.getItem("selectedTeam"));
   const [notiEnabled, setNotiEnabled] = useState(() => isNotificationEnabled());
 
   // 💡 Favorite 팀 경기 알림 훅 (경기 시작 1회 예약 및 진행 중일 때만 최소 주기 감지)
@@ -96,100 +195,57 @@ function Home() {
     }
   };
 
+  // 초기 마운트 시 저장된 팀 데이터 로드
   useEffect(() => {
-    if (selectedTeam) {
-      localStorage.setItem("selectedTeam", selectedTeam);
-    } else {
-      localStorage.removeItem("selectedTeam");
+    const initialTeam = localStorage.getItem("selectedTeam");
+    if (!initialTeam) {
+      setIsInitialLoading(false);
+      return;
     }
-  }, [selectedTeam]);
 
-  useEffect(() => {
-    if (!selectedTeam) return;
-
-    const fetchTeamData = async () => {
-      try {
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const dd = String(today.getDate()).padStart(2, '0');
-        const formattedDate = `${yyyy}${mm}${dd}`;
-
-        // 1. 일정 데이터 가져오기
-        const scheduleRes = await fetch(`${API_BASE_URL}/api/schedule/weekly?date=${formattedDate}&leId=1`);
-        const allGames = await scheduleRes.json();
-
-        const next7Days = [];
-        for (let i = 0; i < 6; i++) {
-          const d = new Date(today);
-          d.setDate(d.getDate() + i);
-          next7Days.push(d);
-        }
-
-        const newScheduleData = next7Days.map(d => {
-          const m = d.getMonth() + 1;
-          const day = d.getDate();
-          const dateQuery = `${m}월 ${day}일`; // KBO API에서 반환하는 "2026년 7월 16일" 문자열의 일부
-
-          const gamesForDay = allGames.filter(g => g.date && g.date.includes(dateQuery));
-          const game = gamesForDay.find(g => g.awayTeamName === selectedTeam || g.homeTeamName === selectedTeam);
-
-          const shortDate = `${m}/${day}`;
-
-          if (game) {
-            const isCanceled = game.gameState >= 4 || game.isCanceled === "1";
-            const opponent = game.awayTeamName === selectedTeam ? game.homeTeamName : game.awayTeamName;
-            const myScore = game.awayTeamName === selectedTeam ? game.awayScore : game.homeScore;
-            const opponentScore = game.awayTeamName === selectedTeam ? game.homeScore : game.awayScore;
-
-            return {
-              date: shortDate,
-              opponent: opponent,
-              stadium: game.stadium,
-              noGame: isCanceled,
-              gameState: game.gameState,
-              gameScore: `${game.awayScore} : ${game.homeScore}`,
-              myScore: myScore,
-              opponentScore: opponentScore,
-              inning: game.gameMaxInn,
-              topOrBottom: game.isTopOrBottom,
-              gameID: game.gameID,
-              gameTime: game.gameTime
-            };
-          } else {
-            return {
-              date: shortDate,
-              opponent: "NO GAME",
-              noGame: true
-            };
-          }
-        });
-        setScheduleData(newScheduleData);
-
-        // 2. 순위 데이터 가져오기
-        const rankingRes = await fetch(`${API_BASE_URL}/api/rankings`);
-        const rankings = await rankingRes.json();
-
-        const teamRank = rankings.find(r => r.team === selectedTeam);
-        if (teamRank) {
-          setRankingData({
-            rank: teamRank.rank,
-            win: teamRank.win,
-            lose: teamRank.lose,
-            draw: teamRank.draw
-          });
-        }
-
-      } catch (error) {
-        console.error("데이터 연동 중 오류 발생:", error);
-        // 에러 발생 시 더미 데이터로 폴백
-        setScheduleData(DUMMY_SCHEDULE);
-        setRankingData(DUMMY_RANKING);
+    let isMounted = true;
+    fetchTeamData(initialTeam).then((data) => {
+      if (isMounted) {
+        setScheduleData(data.scheduleData);
+        setRankingData(data.rankingData);
+        setIsInitialLoading(false);
       }
-    };
+    });
 
-    fetchTeamData();
-  }, [selectedTeam]);
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // 팀 변경 핸들러: 백엔드 데이터를 먼저 로드한 후 프론트엔드 상태를 한 번에 갱신
+  const handleSelectTeam = async (team) => {
+    setIsDropdownOpen(false);
+
+    if (team === null) {
+      setSelectedTeam(null);
+      setScheduleData([]);
+      setRankingData({});
+      localStorage.removeItem("selectedTeam");
+      return;
+    }
+
+    if (team === selectedTeam) return;
+    if (isLoading) return; // 이미 데이터 로드 중인 경우 중복 명령 방지
+
+    setIsLoading(true);
+    try {
+      const data = await fetchTeamData(team);
+      // 백엔드 데이터와 팀 선택 상태를 동시에 원자적으로 반영하여 레이아웃/데이터 불일치 방지
+      setSelectedTeam(team);
+      setScheduleData(data.scheduleData);
+      setRankingData(data.rankingData);
+      localStorage.setItem("selectedTeam", team);
+    } catch (error) {
+      console.error("팀 변경 실패:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   // 💡 시즌 종료 여부 판단 로직
   const isSeasonOver = () => {
@@ -205,10 +261,20 @@ function Home() {
     <div className="relative z-50 flex flex-col items-center gap-1.5">
       {/* 1. 팀 선택 드롭다운 버튼 */}
       <button
-        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className="flex flex-col items-center justify-center bg-white rounded-lg shadow-md px-2 py-2 border border-gray-200 w-20 md:w-24 transition-transform hover:scale-105"
+        onClick={() => !isLoading && setIsDropdownOpen(!isDropdownOpen)}
+        disabled={isLoading}
+        className={`flex flex-col items-center justify-center bg-white rounded-lg shadow-md px-2 py-2 border border-gray-200 w-20 md:w-24 transition-all ${
+          isLoading ? "opacity-75 cursor-wait" : "hover:scale-105"
+        }`}
       >
-        {selectedTeam ? (
+        {isLoading ? (
+          <>
+            <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+              <div className="w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <span className="text-[10px] md:text-xs font-semibold text-blue-600 mt-1">로딩 중</span>
+          </>
+        ) : selectedTeam ? (
           <>
             <img src={teamData[selectedTeam]?.icon} alt={selectedTeam} className="w-10 h-10 md:w-12 md:h-12 object-contain" />
             <span className="text-[10px] md:text-xs font-semibold text-gray-700 mt-1">팀 선택</span>
@@ -226,7 +292,7 @@ function Home() {
         <div className="absolute top-full left-0 mt-2 w-20 md:w-24 bg-white rounded-lg shadow-xl border border-gray-200 py-2 flex flex-col items-center max-h-96 overflow-y-auto z-50">
           <button
             className="w-full py-2 flex justify-center hover:bg-gray-100 transition-colors border-b border-gray-100"
-            onClick={() => { setSelectedTeam(null); setIsDropdownOpen(false); }}
+            onClick={() => handleSelectTeam(null)}
           >
             <span className="text-xs font-medium text-gray-500">초기화</span>
           </button>
@@ -234,7 +300,7 @@ function Home() {
             <button
               key={team}
               className="w-full py-2 flex justify-center hover:bg-gray-100 transition-colors"
-              onClick={() => { setSelectedTeam(team); setIsDropdownOpen(false); }}
+              onClick={() => handleSelectTeam(team)}
             >
               <img src={teamData[team]?.icon} alt={team} className="w-10 h-10 object-contain" />
             </button>
@@ -260,6 +326,15 @@ function Home() {
   );
 
   const seasonEnded = isSeasonOver();
+
+  if (isInitialLoading) {
+    return (
+      <div className="flex-1 flex flex-col items-center justify-center p-8">
+        <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p className="text-white text-base md:text-lg font-medium drop-shadow">데이터를 불러오는 중입니다...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex-1 flex flex-col p-4 sm:p-8 font-sans">
@@ -311,7 +386,7 @@ function Home() {
           </Link>
         </div>
       ) : (
-        <div className="flex-1 flex flex-col gap-4 sm:gap-6 pb-4 sm:pb-8 h-full">
+        <div className={`flex-1 flex flex-col gap-4 sm:gap-6 pb-4 sm:pb-8 h-full transition-opacity duration-200 ${isLoading ? "opacity-50 pointer-events-none" : "opacity-100"}`}>
           {/* Top Half: Schedule Banner */}
           <Link
             to={
@@ -336,11 +411,17 @@ function Home() {
               <div className="flex flex-col justify-between mb-4 md:mb-0">
                 <div className="flex items-center gap-4 md:gap-6">
                   {seasonEnded ? (
-                    <h2 className="text-white md:text-6xl text-4xl font-bold tracking-tight leading-none drop-shadow-lg">
-                      SEASON
-                      <br />
-                      OFF
-                    </h2>
+                    rankingData.rank === "1" ? (
+                      <h2 className="text-white md:text-6xl text-4xl font-bold tracking-tight leading-none drop-shadow-lg">
+                        CHAMPION
+                      </h2>
+                    ) : (
+                      <h2 className="text-white md:text-6xl text-4xl font-bold tracking-tight leading-none drop-shadow-lg">
+                        SEASON
+                        <br />
+                        OFF
+                      </h2>
+                    )
                   ) : scheduleData[0]?.gameState === "2" ? (
                     <h2 className="text-white md:text-6xl text-4xl font-bold tracking-tight leading-none drop-shadow-lg">
                       CURRENT
@@ -380,7 +461,9 @@ function Home() {
                 </div>
                 <div className="text-white/90 text-lg md:text-2xl font-medium drop-shadow mt-4 md:mt-0">
                   {seasonEnded
-                    ? "2026 시즌 종료"
+                    ? rankingData.rank === "1" ?
+                      `2026 시즌 우승팀 ${TEAM_FULL_NAME[selectedTeam]}` :
+                      "2026 시즌 종료"
                     : scheduleData.length > 0
                       ? scheduleData[0].noGame
                         ? "오늘 경기 없음"
